@@ -1,6 +1,6 @@
 {
   "name": "node-utils",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.16.3",
