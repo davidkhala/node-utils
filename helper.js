@@ -9,9 +9,26 @@ exports.JSONEqual = (json1, json2) => {
 	return JSON.stringify(JSON.parse(json1)) === JSON.stringify(JSON.parse(json2));
 };
 
-exports.sleep = async (ms) => {
+const sleep = async (ms) => {
 	logger.info(`sleep ${ms}ms`);
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
+exports.sleep = sleep;
 const util = require('util');
 exports.exec = util.promisify(require('child_process').exec);
+
+const looper = async (opts = {interval: 1000}, task, ...taskParams) => {
+	const {times, interval} = opts;
+
+	if (Number.isInteger(times)) {
+		for (let i = 0; i < times; i++) {
+			await task(...taskParams);
+			await sleep(interval);
+		}
+	} else {
+		await task(...taskParams);
+		await sleep(interval);
+		await looper(opts, task, ...taskParams);
+	}
+};
+exports.looper = looper;
