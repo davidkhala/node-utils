@@ -1,4 +1,6 @@
 const logger = require('./logger').new('helper util');
+const os = require('os');
+exports.hostname = os.hostname;
 exports.randomKeyOf = (obj) => {
 	const keys = Object.keys(obj);
 	const keyIndex = Math.floor(Math.random() * Math.floor(keys.length));
