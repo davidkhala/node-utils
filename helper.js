@@ -1,6 +1,11 @@
 const logger = require('./logger').new('helper util');
 const os = require('os');
+const path = require('path');
 exports.hostname = os.hostname;
+
+exports.homeResolve = (...tokens) => {
+	return path.resolve(os.homedir(), ...tokens);
+};
 exports.randomKeyOf = (obj) => {
 	const keys = Object.keys(obj);
 	const keyIndex = Math.floor(Math.random() * Math.floor(keys.length));
