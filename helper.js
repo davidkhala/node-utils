@@ -4,6 +4,7 @@ const path = require('path');
 exports.hostname = os.hostname;
 
 exports.homeResolve = (...tokens) => {
+	if (!tokens) return tokens;
 	return path.resolve(os.homedir(), ...tokens);
 };
 exports.randomKeyOf = (obj) => {
