@@ -1,6 +1,4 @@
-const Log4j = require('log4js');
-const logger = Log4j.getLogger('test');
-logger.level = 'debug';
+const logger = require('./testUtils').devLogger('test:error');
 try {
 	throw Error('abc');
 } catch (err) {
