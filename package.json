@@ -4,6 +4,9 @@
   "author": "davidliu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
+  "scripts": {
+    "test": "node test"
+  },
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.16.3",
