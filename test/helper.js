@@ -13,9 +13,9 @@ const execTest = async () => {
 };
 const pathTest = () => {
 	const relPath = helper.homeResolve('abc');
-	console.log(relPath);
+	logger.debug(relPath);
 
-	console.log(path.resolve('~'));
+	logger.debug(path.resolve('~'));
 };
 execTest();
 pathTest();
