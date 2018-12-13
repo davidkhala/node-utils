@@ -40,3 +40,7 @@ const looper = async (opts = {interval: 1000}, task, ...taskParams) => {
 	}
 };
 exports.looper = looper;
+const dateFormatter = require('date-format');
+exports.dateFormat = (format, date) => {
+	return dateFormatter(format, date);
+};
