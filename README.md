@@ -8,3 +8,4 @@ nodejs utils to be published to npm as node_module
     - npm login
     - npm whoami
 - npm publish
+- no alternative readFileSync wrapper in fsExtra
