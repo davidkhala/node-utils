@@ -7,11 +7,7 @@ exports.homeResolve = (...tokens) => {
 	if (!tokens) return tokens;
 	return path.resolve(os.homedir(), ...tokens);
 };
-exports.randomKeyOf = (obj) => {
-	const keys = Object.keys(obj);
-	const keyIndex = Math.floor(Math.random() * Math.floor(keys.length));
-	return keys[keyIndex];
-};
+
 exports.JSONReadable = (data) => JSON.stringify(data, null, 2);
 exports.JSONEqual = (json1, json2) => {
 	return JSON.stringify(JSON.parse(json1)) === JSON.stringify(JSON.parse(json2));
