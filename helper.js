@@ -1,7 +1,6 @@
 const logger = require('./logger').new('helper util');
 const os = require('os');
 const path = require('path');
-exports.hostname = os.hostname;
 exports.fsExtra = require('fs-extra');
 exports.homeResolve = (...tokens) => {
 	if (!tokens) return tokens;
