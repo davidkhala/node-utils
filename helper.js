@@ -39,3 +39,7 @@ const dateFormatter = require('date-format');
 exports.dateFormat = (format, date) => {
 	return dateFormatter(format, date);
 };
+
+exports.isArrayEven = arr => {
+	return Array.isArray(arr) && arr.length > 0 && arr.every(v => v === arr[0]);
+};

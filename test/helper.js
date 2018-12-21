@@ -17,5 +17,11 @@ const pathTest = () => {
 
 	logger.debug(path.resolve('~'));
 };
+const arrayEvenTest = () => {
+	logger.debug(helper.isArrayEven());
+	logger.debug(helper.isArrayEven([]));
+	logger.debug(helper.isArrayEven([1]));
+};
 execTest();
 pathTest();
+arrayEvenTest();
