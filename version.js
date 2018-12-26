@@ -22,9 +22,18 @@ exports.nextVersion = (prevVersion, incrementLevel) => {
 	}
 };
 exports.validVersion = validVersion;
+/**
+ * @typedef {function} versionComparator
+ * @param {string} newVersion
+ * @param {string} oldVersion
+ * @return boolean
+ */
 
-exports.newerVersion = (versionN, versionO) => {
-	let [majorN, minorN, patchN] = versionN.split('.').map((s) => parseInt(s));
-	let [majorO, minorO, patchO] = versionO.split('.').map((s) => parseInt(s));
+/**
+ * @type {versionComparator}
+ */
+exports.newerVersion = (newVersion, oldVersion) => {
+	let [majorN, minorN, patchN] = newVersion.split('.').map((s) => parseInt(s));
+	let [majorO, minorO, patchO] = oldVersion.split('.').map((s) => parseInt(s));
 	return majorN > majorO || minorN > minorO || patchN > patchO;
 };
