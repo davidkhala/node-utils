@@ -3,6 +3,7 @@ class dbInterface {
 		this.url = url;
 		this.name = name;
 		this.port = port;
+		this.connection = undefined
 	}
 
 	async get(key) {
@@ -27,6 +28,10 @@ class dbInterface {
 
 	async clear() {
 		throw Error('clear() to be implement');
+	}
+
+	async disconnect() {
+		throw Error('disconnect() to be implement');
 	}
 
 	async _connectBuilder() {
