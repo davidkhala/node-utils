@@ -1,10 +1,10 @@
 const logger = require('./logger').new('helper util');
-const os = require('os');
+const devOps = require('./devOps');
 const path = require('path');
 exports.fsExtra = require('fs-extra');
 exports.homeResolve = (...tokens) => {
 	if (!tokens) return tokens;
-	return path.resolve(os.homedir(), ...tokens);
+	return path.resolve(devOps.homedir, ...tokens);
 };
 
 exports.JSONReadable = (data) => JSON.stringify(data, null, 2);

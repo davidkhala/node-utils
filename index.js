@@ -8,6 +8,7 @@ module.exports = {
 	random: () => require('./random'),
 	request: () => require('./request'),
 	yaml: () => require('./yaml'),
+	LevelDB: require('./leveldb'),
 	/**
 	 *
 	 * @param {string} moduleName
@@ -26,7 +27,7 @@ module.exports = {
 			'INFO',	//infos are logged
 			'DEBUG',//debug infos are logged
 			'TRACE',//traces are logged
-			'ALL',	//everything is logged
+			'ALL'	//everything is logged
 		];
 		logger.level = levels[level];
 		return logger;
