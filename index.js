@@ -8,7 +8,6 @@ module.exports = {
 	random: () => require('./random'),
 	request: () => require('./request'),
 	yaml: () => require('./yaml'),
-	LevelDB: require('./leveldb'),
 	/**
 	 *
 	 * @param {string} moduleName
