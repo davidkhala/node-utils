@@ -41,7 +41,6 @@ class LevelDB extends DBInterface {
 			const results = [];
 			this.connection.createReadStream(opts)
 				.on('data', (data) => {
-					console.log(data.key, '=', data.value);
 					results.push(data);
 				})
 				.on('error', (err) => {
