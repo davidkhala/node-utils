@@ -40,8 +40,9 @@ class LevelDB extends DBInterface {
 		return new Promise((resolve, reject) => {
 			const results = [];
 			this.connection.createReadStream(opts)
-				.on('data', (data) => {
-					results.push(data);
+				.on('data', ({key, value}) => {
+					console.log(Buffer.from(key), Buffer.from(value));
+					results.push({key, value});
 				})
 				.on('error', (err) => {
 					reject(err);
