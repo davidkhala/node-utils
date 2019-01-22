@@ -6,7 +6,7 @@ const validVersion = (version) => version.match(versionPattern);
  * @param incrementLevel major|minor|patch
  * @return {string}
  */
-exports.nextVersion = (prevVersion, incrementLevel) => {
+exports.nextVersion = (prevVersion, incrementLevel = 'patch') => {
 	if (!prevVersion) return '0.0.0';
 	if (!validVersion(prevVersion)) throw Error(`invalid version format:${prevVersion}`);
 	const [major, minor, patch] = prevVersion.split('.').map((s) => parseInt(s));
@@ -17,8 +17,6 @@ exports.nextVersion = (prevVersion, incrementLevel) => {
 			return `${major}.${minor + 1}.${patch}`;
 		case 'patch':
 			return `${major}.${minor}.${patch + 1}`;
-		default:
-			throw Error(`invalid increment level:${incrementLevel}`);
 	}
 };
 exports.validVersion = validVersion;
