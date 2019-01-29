@@ -1,6 +1,7 @@
 # node-utils
 nodejs utils to be published to npm as node_module
 
+follows SEMVER[https://semver.org/]
 
 # Notes
 - `npm publish`
