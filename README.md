@@ -9,3 +9,6 @@ nodejs utils to be published to npm as node_module
 - no alternative readFileSync wrapper in fsExtra
 - node popular date formatter library: https://stackabuse.com/how-to-format-dates-in-javascript/
 - but the date formatter we are using is embedded provided. `date-format@^1.2.0`
+
+# TODO
+- `du -sh` of node_modules have a record of 61M
