@@ -1,6 +1,6 @@
 {
-  "name": "khala-level",
-  "version": "0.0.1",
+  "name": "khala-logger",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,6 @@
   "repository": "davidkhala/node-utils",
   "license": "ISC",
   "dependencies": {
-    "khala-kvdb": "^0.0.0",
-    "level": "^4.0.0"
+    "winston": "^2.4.4"
   }
 }

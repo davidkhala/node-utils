@@ -1,5 +1,5 @@
 const Level = require('level');
-const {DBInterface} = require('khala-nodeutils').kvDB();
+const {DBInterface} = require('khala-kvdb');
 
 class LevelDB extends DBInterface {
 	constructor(path) {
