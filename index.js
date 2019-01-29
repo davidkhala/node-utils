@@ -2,7 +2,6 @@ module.exports = {
 	baseApp: () => require('./baseApp'),
 	devOps: () => require('./devOps'),
 	helper: () => require('./helper'),
-	logger: () => require('./logger'),
 	random: () => require('./random'),
 	request: () => require('./request'),
 	yaml: () => require('./yaml'),

@@ -1,4 +1,4 @@
-const logger = require('./testUtils').devLogger('test:error');
+const logger = require('../').devLogger('test:error');
 try {
 	throw Error('abc');
 } catch (err) {

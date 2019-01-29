@@ -10,6 +10,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "pm2": "^3.2.9"
+    "pm2": "^3.2.9",
+    "khala-logger": "^0.0.0"
   }
 }

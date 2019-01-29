@@ -1,5 +1,5 @@
 const helper = require('../helper');
-const logger = require('./testUtils').devLogger('test:helper');
+const logger = require('../').devLogger('test:helper');
 const path = require('path');
 const execTest = async () => {
 	const requirePermission = 'apt update';

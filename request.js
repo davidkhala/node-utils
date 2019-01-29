@@ -1,4 +1,4 @@
-const logger = require('./logger').new('ServerClient');
+const logger = require('khala-logger').new('ServerClient');
 const Request = require('request');
 exports.RequestPromise = ({url, body, method = 'POST', formData}, otherOptions = {json: true}) => {
 	return new Promise((resolve, reject) => {

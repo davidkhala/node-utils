@@ -1,4 +1,4 @@
-const logger = require('./logger').new('helper util');
+const logger = require('khala-logger').new('helper util');
 const devOps = require('./devOps');
 const path = require('path');
 exports.fsExtra = require('fs-extra');

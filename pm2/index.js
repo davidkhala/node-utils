@@ -1,5 +1,5 @@
 const pm2 = require('pm2');
-const logger = require('../logger').new('pm2 Manager');
+const logger = require('khala-logger').new('pm2 Manager');
 const fs = require('fs');
 exports.PM2 = class {
 	constructor() {
