@@ -1,4 +1,4 @@
-const LevelDB = require('../leveldb');
+const LevelDB = require('..');
 
 
 const transientStore = '/home/mediconcen/Documents/backupVolumes/peer0.delphi/transientStore';
