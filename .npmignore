@@ -1,4 +1,4 @@
-/.idea
-/node_modules
-/test
-/scripts
+.idea
+node_modules
+test
+scripts
