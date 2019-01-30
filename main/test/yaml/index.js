@@ -1,5 +1,5 @@
 const yaml = require('../../yaml');
-const logger = require('../../').devLogger('test:yaml');
+const logger = require('../../.').devLogger('test:yaml');
 const path = require('path');
 const readFile = path.resolve(__dirname, 'read.yaml');
 const writtenFile = path.resolve(__dirname, 'write.yaml');

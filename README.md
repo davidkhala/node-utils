@@ -9,7 +9,7 @@ follows SEMVER[https://semver.org/]
 - khala-level:  leveldb toolset
 - khala-logger: logger toolset 
 - khala-pm2:    pm2 nodejs manager
-- khala-nodeutils:  major
+- khala-nodeutils:  main
 
 ## disc usage
 - express: 2.9M

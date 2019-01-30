@@ -1,5 +1,5 @@
 const {nextVersion, validVersion, newerVersion} = require('../version');
-const logger = require('../').devLogger('test:version');
+const logger = require('../.').devLogger('test:version');
 
 logger.debug(!!validVersion('0.0.0'));
 
