@@ -43,24 +43,28 @@ exports.dateFormat = (format, date) => {
  * TODO full test for pm2
  * @param key
  * @param data
- * @param pm2Compatible
+ * @param pm2Simulator
  */
-exports.envInject = (key, data, pm2Compatible) => {
+exports.envInject = (key, data, pm2Simulator) => {
 	switch (typeof data) {
 		case 'bigint':
 		case 'boolean':
+			if (pm2Simulator) {
+				process.env.key = data.toString();
+				return;
+			}
+			break;
 		case 'number':
 		case 'string':
 		case 'symbol':
 		case 'function':
 		case 'undefined':
 		case 'object':
-			if (pm2Compatible) {
+			if (pm2Simulator) {
 				process.env.key = JSON.stringify(data);
 				return;
-			} else {
-				break;
 			}
+			break;
 		default:
 			throw Error(`unknown type of data:${typeof data}`);
 	}
