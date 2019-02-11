@@ -39,15 +39,16 @@ exports.looper = looper;
  * TODO full test for pm2
  * @param key
  * @param data
+ * @param force
  * @param pm2Simulator
  */
-exports.envInject = (key, data, pm2Simulator) => {
+exports.envInject = (key, data, force, pm2Simulator) => {
+
 	switch (typeof data) {
 		case 'bigint':
 		case 'boolean':
 			if (pm2Simulator) {
-				process.env.key = data.toString();
-				return;
+				data = data.toString();
 			}
 			break;
 		case 'number':
@@ -57,14 +58,20 @@ exports.envInject = (key, data, pm2Simulator) => {
 		case 'undefined':
 		case 'object':
 			if (pm2Simulator) {
-				process.env.key = JSON.stringify(data);
-				return;
+				data = JSON.stringify(data);
 			}
 			break;
 		default:
 			throw Error(`unknown type of data:${typeof data}`);
 	}
-	process.env.key = data;
+	if (process.env[key]) {
+		if (force) {
+			logger.warn(`overwrite process.env.${key}`);
+		} else {
+			throw Error(`process.env.${key} already exists`);
+		}
+	}
+	process.env[key] = data;
 };
 
 exports.isArrayEven = arr => {
