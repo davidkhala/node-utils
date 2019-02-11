@@ -1,4 +1,4 @@
-const {int2Chars} = require('../helper');
+const {int2Chars} = require('../format');
 const charSpace = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 console.log(int2Chars(1, charSpace));
 console.log(int2Chars(2, charSpace));

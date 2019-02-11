@@ -7,6 +7,7 @@ module.exports = {
 	request: () => require('./request'),
 	yaml: () => require('./yaml'),
 	version: () => require('./version'),
+	format: () => require('./format'),
 	/**
 	 *
 	 * @param {string} moduleName
