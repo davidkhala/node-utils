@@ -39,6 +39,33 @@ const dateFormatter = require('date-format');
 exports.dateFormat = (format, date) => {
 	return dateFormatter(format, date);
 };
+/**
+ * TODO full test for pm2
+ * @param key
+ * @param data
+ * @param pm2Compatible
+ */
+exports.envInject = (key, data, pm2Compatible) => {
+	switch (typeof data) {
+		case 'bigint':
+		case 'boolean':
+		case 'number':
+		case 'string':
+		case 'symbol':
+		case 'function':
+		case 'undefined':
+		case 'object':
+			if (pm2Compatible) {
+				process.env.key = JSON.stringify(data);
+				return;
+			} else {
+				break;
+			}
+		default:
+			throw Error(`unknown type of data:${typeof data}`);
+	}
+	process.env.key = data;
+};
 
 exports.isArrayEven = arr => {
 	return Array.isArray(arr) && arr.length > 0 && arr.every(v => v === arr[0]);
