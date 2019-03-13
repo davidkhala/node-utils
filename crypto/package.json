@@ -1,0 +1,7 @@
+{
+  "name": "khala-crypto",
+  "version": "0.0.0",
+  "dependencies": {
+    "jsrsasign": "^8.0.12"
+  }
+}
