@@ -1,10 +1,10 @@
-const logger = require('../../').devLogger('test:ecdsa');
+const logger = require('../../main/').devLogger('test:ecdsa');
+const X500Name = require('../X500Name');
 const {ECDSACOnfig, ECDSAKey} = require('../ECDSA');
 const config = new ECDSACOnfig(256);
 const keypair = config.generateEphemeralKey();
 
 const taskPrintPriv = () => {
-	logger.debug(keypair.toBytes().prvKeyObj);
 	logger.debug(keypair.prvKeyObj);
 
 };
@@ -21,9 +21,24 @@ const taskSignVerifyWithHash = () => {
 };
 const taskSignVerify = () => {
 	const raw = '123';
-	const signature = keypair.prvKeyObj.signHex(raw,keypair.prvKeyObj.prvKeyHex);
+	const signature = keypair.prvKeyObj.signHex(raw, keypair.prvKeyObj.prvKeyHex);
 
-	const result = keypair.pubKeyObj.verifyHex(raw, signature,keypair.pubKeyObj.pubKeyHex);
+	const result = keypair.pubKeyObj.verifyHex(raw, signature, keypair.pubKeyObj.pubKeyHex);
 	logger.debug('result', result);
 };
-taskSignVerify();
+
+const x500Name = new X500Name();
+x500Name.setCountryName('HK');
+x500Name.setOrganizationName('ASTRI');
+x500Name.setOrgUnitName('ICDD');
+x500Name.setCommonName('david');
+const taskGenCSR = () => {
+
+	const csr = keypair.generateCSR(x500Name.build());
+	logger.debug('csr', csr);
+};
+const taskSelfSignCert = () => {
+	const cert = keypair.generateX509Certificate(x500Name.build());
+	logger.debug('cert', cert);
+};
+taskSelfSignCert();

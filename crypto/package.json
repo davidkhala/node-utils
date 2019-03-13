@@ -1,6 +1,9 @@
 {
   "name": "khala-crypto",
   "version": "0.0.0",
+  "keywords": [
+    "X500"
+  ],
   "dependencies": {
     "jsrsasign": "^8.0.12"
   }
