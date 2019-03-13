@@ -65,18 +65,19 @@ class ECPair {
 
 	/**
 	 * Generates a self-signed X.509 certificate
-	 * @param {string} subjectDN The common name to use as the subject for the X509 certificate
+	 * @param {string} subjectDN
+	 * @param {string} [issuerDN]
 	 * @returns {string} PEM-encoded X.509 certificate
 	 */
-	generateX509Certificate(subjectDN) {
+	generateX509Certificate(subjectDN,issuerDN=subjectDN) {
 
 		return asn1.x509.X509Util.newCertPEM({
 			serial: {int: 4},
 			sigalg: {name: 'SHA256withECDSA'},
-			issuer: {str: asn1.x509.X500Name.ldapToOneline(subjectDN)},
+			issuer: {str: asn1.x509.X500Name.ldapToOneline(issuerDN)},
 			notbefore: {str: jws.IntDate.intDate2Zulu(jws.IntDate.getNow() - 5000)},
 			notafter: {str: jws.IntDate.intDate2Zulu(jws.IntDate.getNow() + 60000)},
-			subject: {str: subjectDN},
+			subject: {str: asn1.x509.X500Name.ldapToOneline(subjectDN)},
 			sbjpubkey: this.pubKeyObj,
 			ext: [
 				{

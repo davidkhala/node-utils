@@ -1,5 +1,7 @@
 const logger = require('../../main/').devLogger('test:ecdsa');
 const X500Name = require('../X500Name');
+const fs = require('fs');
+const path = require('path');
 const {ECDSACOnfig, ECDSAKey} = require('../ECDSA');
 const config = new ECDSACOnfig(256);
 const keypair = config.generateEphemeralKey();
@@ -38,7 +40,13 @@ const taskGenCSR = () => {
 	logger.debug('csr', csr);
 };
 const taskSelfSignCert = () => {
+	const prvKeyPem = keypair.toBytes().prvKeyObj;
+
 	const cert = keypair.generateX509Certificate(x500Name.build());
-	logger.debug('cert', cert);
+
+	const keyPath = path.resolve(__dirname, 'fixture/key.pem');
+	const certPath = path.resolve(__dirname, 'fixture/cert.pem');
+	fs.writeFileSync(keyPath, prvKeyPem);
+	fs.writeFileSync(certPath, cert);
 };
 taskSelfSignCert();
