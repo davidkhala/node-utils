@@ -16,6 +16,21 @@ const bufferTest = (obj) => {
 	console.log(bytes.toString());
 };
 
+const testClass = () => {
+	class A {
+		constructor() {
+			this.p = "a";
+		}
+
+		foo() {
+
+		}
+	}
+
+	const a = new A();
+	console.log('function will not be displayed', Object.keys(a));
+
+};
 
 const tests = async () => {
 	await testArrowFunction();
@@ -23,4 +38,6 @@ const tests = async () => {
 	bufferTest('liu');
 
 };
-tests();
+
+// tests();
+testClass();

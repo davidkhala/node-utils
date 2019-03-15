@@ -1,35 +1,36 @@
+/**
+ *
+ * @type {module.X500Name}
+ */
 module.exports = class X500Name {
 
-	constructor() {
-		this._buildBuff = {};
-	}
 
 	setCommonName(s) {
-		this._buildBuff.CN = s;
+		this.CN = s;
 	}
 
 	setCountryName(s) {
-		this._buildBuff.C = s;
+		this.C = s;
 	}
 
 	setLocalityName(s) {
-		this._buildBuff.L = s;
+		this.L = s;
 	}
 
 	setOrganizationName(s) {
-		this._buildBuff.O = s;
+		this.O = s;
 	}
 
 	setOrgUnitName(s) {
-		this._buildBuff.OU = s;
+		this.OU = s;
 	}
 
 	setStateName(s) {
-		this._buildBuff.ST = s;
+		this.ST = s;
 	}
 
-	build() {
-		return Object.entries(this._buildBuff).map(([key, value]) => `${key}=${value}`).join(',');
+	toString() {
+		return Object.entries(this).map(([key, value]) => `${key}=${value}`).join(',');
 	}
 
 };

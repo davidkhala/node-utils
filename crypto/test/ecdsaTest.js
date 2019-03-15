@@ -31,18 +31,18 @@ const taskSignVerify = () => {
 
 const x500Name = new X500Name();
 x500Name.setCountryName('HK');
-x500Name.setOrganizationName('ASTRI');
-x500Name.setOrgUnitName('ICDD');
-x500Name.setCommonName('david');
+x500Name.setOrganizationName('BC');
+// x500Name.setOrgUnitName('ICDD');
+x500Name.setCommonName('BCMCCBlockchainApp');
 const taskGenCSR = () => {
 
-	const csr = keypair.generateCSR(x500Name.build());
+	const csr = keypair.generateCSR(x500Name);
 	logger.debug('csr', csr);
 };
 const taskSelfSignCert = () => {
 	const prvKeyPem = keypair.toBytes().prvKeyObj;
 
-	const cert = keypair.generateX509Certificate(x500Name.build());
+	const cert = keypair.generateX509Certificate(x500Name);
 
 	const keyPath = path.resolve(__dirname, 'fixture/key.pem');
 	const certPath = path.resolve(__dirname, 'fixture/cert.pem');

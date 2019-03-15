@@ -49,15 +49,15 @@ class ECPair {
 
 	/**
 	 * Generates a CSR/PKCS#10 certificate signing request for this key
-	 * @param {string} subjectDN The X500Name for the certificate request in LDAP(RFC 2253) format
+	 * @param {module.X500Name} subject
 	 * @returns {string} PEM-encoded PKCS#10 certificate signing request
 	 */
-	generateCSR(subjectDN) {
+	generateCSR(subject) {
 
 		return asn1.csr.CSRUtil.newCSRPEM({
-			subject: {str: asn1.x509.X500Name.ldapToOneline(subjectDN)},
+			subject,
 			sbjpubkey: this.pubKeyObj,
-			sigalg: 'SHA256withECDSA',
+			sigalg: 'SHA256withECDSA',//TODO keysize
 			sbjprvkey: this.prvKeyObj
 		});
 
@@ -65,19 +65,19 @@ class ECPair {
 
 	/**
 	 * Generates a self-signed X.509 certificate
-	 * @param {string} subjectDN
-	 * @param {string} [issuerDN]
 	 * @returns {string} PEM-encoded X.509 certificate
+	 * @param {module.X500Name} subject
+	 * @param {module.X500Name} [issuer]
 	 */
-	generateX509Certificate(subjectDN,issuerDN=subjectDN) {
+	generateX509Certificate(subject,issuer=subject) {
 
 		return asn1.x509.X509Util.newCertPEM({
 			serial: {int: 4},
-			sigalg: {name: 'SHA256withECDSA'},
-			issuer: {str: asn1.x509.X500Name.ldapToOneline(issuerDN)},
+			sigalg: {name: 'SHA256withECDSA'},//TODO keysize
+			issuer,
 			notbefore: {str: jws.IntDate.intDate2Zulu(jws.IntDate.getNow() - 5000)},
 			notafter: {str: jws.IntDate.intDate2Zulu(jws.IntDate.getNow() + 60000)},
-			subject: {str: asn1.x509.X500Name.ldapToOneline(subjectDN)},
+			subject,
 			sbjpubkey: this.pubKeyObj,
 			ext: [
 				{
