@@ -34,10 +34,10 @@ const testClass = () => {
 
 const tests = async () => {
 	await testArrowFunction();
+	testClass();
 	bufferTest({david: 'liu'});
 	bufferTest('liu');
-
+	bufferTest(123);
 };
 
-// tests();
-testClass();
+tests();

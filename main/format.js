@@ -1,9 +1,13 @@
 exports.JSONReadable = (data) => JSON.stringify(data, null, 2);
 const dateFormatter = require('date-format');
+const path = require('path');
 exports.dateFormat = (format, date) => {
 	return dateFormatter(format, date);
 };
 
+exports.isPath = (str) => {
+	return !!str && !(str === path.basename(str));
+};
 /**
  * nodejs version of ItoRunes
  * @param {number} i integer
@@ -29,5 +33,5 @@ exports.int2Chars = (i, namespace) => {
 	return result;
 };
 exports.chars2Hex = (str) => {
-	return Buffer.from(str).toString('hex')
+	return Buffer.from(str).toString('hex');
 };
