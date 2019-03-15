@@ -1,3 +1,4 @@
+const logger = require('../').devLogger('test:syntax');
 const testArrowFunction = async () => {
 	class TestClass {
 		async p() {
@@ -13,9 +14,17 @@ const testArrowFunction = async () => {
 };
 const bufferTest = (obj) => {
 	const bytes = Buffer.from(JSON.stringify(obj));
+	console.log(typeof obj, obj, 'stringify to', JSON.stringify(obj));
 	console.log(bytes.toString());
 };
-
+const bufferNumTest = () => {
+	try {
+		Buffer.from(11);
+		logger.error('assert fail: Buffer.from(number)');
+	} catch (e) {
+		logger.info(Buffer.from, e.message);
+	}
+};
 const testClass = () => {
 	class A {
 		constructor() {
