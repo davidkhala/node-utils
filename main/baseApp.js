@@ -34,7 +34,7 @@ exports.run = (port, host, tlsOptions) => {
 		});
 	} else {
 		server = http.createServer(app).listen(port, host, () => {
-			logger.info( 'http server started at', {host, port});
+			logger.info('http server started at', {host, port});
 		});
 	}
 

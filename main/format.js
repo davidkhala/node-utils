@@ -4,6 +4,11 @@ const path = require('path');
 exports.dateFormat = (format, date) => {
 	return dateFormatter(format, date);
 };
+/**
+ *
+ * @type {number} a year in millisecond
+ */
+exports.year = 31556926000;
 
 exports.isPath = (str) => {
 	return !!str && !(str === path.basename(str));
@@ -34,4 +39,9 @@ exports.int2Chars = (i, namespace) => {
 };
 exports.chars2Hex = (str) => {
 	return Buffer.from(str).toString('hex');
+};
+
+exports.RegxMatch = (str, pattern, flags) => {
+	const namePattern = new RegExp(pattern, flags);
+	return str.match(namePattern);
 };

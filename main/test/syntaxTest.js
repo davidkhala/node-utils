@@ -14,8 +14,8 @@ const testArrowFunction = async () => {
 };
 const bufferTest = (obj) => {
 	const bytes = Buffer.from(JSON.stringify(obj));
-	console.log(typeof obj, obj, 'stringify to', JSON.stringify(obj));
-	console.log(bytes.toString());
+	logger.info(typeof obj, obj, 'stringify to', JSON.stringify(obj));
+	logger.info(bytes.toString());
 };
 const bufferNumTest = () => {
 	try {
@@ -28,7 +28,7 @@ const bufferNumTest = () => {
 const testClass = () => {
 	class A {
 		constructor() {
-			this.p = "a";
+			this.p = 'a';
 		}
 
 		foo() {
@@ -37,7 +37,7 @@ const testClass = () => {
 	}
 
 	const a = new A();
-	console.log('function will not be displayed', Object.keys(a));
+	logger.info('function will not be displayed', Object.keys(a));
 
 };
 
@@ -49,4 +49,3 @@ const tests = async () => {
 	bufferTest(123);
 };
 
-tests();
