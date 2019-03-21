@@ -44,7 +44,7 @@ exports.run = (port, host, tlsOptions) => {
 exports.getRouter = () => {
 	return express.Router();
 };
-exports.expressError = (onError, logger = console) => {
+exports.expressError = (app, onError, logger = console) => {
 	if (!onError) {
 		onError = (err, res) => {
 			let status = 500;
@@ -57,12 +57,12 @@ exports.expressError = (onError, logger = console) => {
 			res.send(err);
 		};
 	}
-	return (err, req, res, next) => {
+	app.use((err, req, res, next) => {
 		logger.error(err);
 		if (res.headersSent) {
-			logger.info(`res.headersSent=${res.headersSent}`);
+			logger.error(`error happened after res.headersSent=${res.headersSent}`);
 			return next(err);
 		}
 		onError(err, res);
-	};
+	});
 };
