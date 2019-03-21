@@ -1,4 +1,4 @@
-const {int2Chars, dateFormat, chars2Hex, isPath, RegxMatch} = require('../format');
+const {int2Chars, dateFormat, chars2Hex, isPath, RegxMatch, isFloat} = require('../format');
 const charSpace = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const logger = require('../.').devLogger('test:format');
@@ -16,6 +16,7 @@ const tasks = () => {
 	logger.info('isPath', isPath(''));
 	logger.info('isPath', isPath());
 	logger.info('isPath', isPath(null));
+	testReg('david@mediconcen');
 };
 
 
@@ -25,4 +26,21 @@ const testReg = (str) => {
 	const result = RegxMatch(str, pattern, flags);
 	logger.info({pattern, str, result});
 };
-testReg('david@mediconcen');
+const testIsFloat = () => {
+	const test = (number) => {
+		logger.info(number, 'isFloat', isFloat(number));
+	};
+
+	test(1);
+	test(0);
+	test(null);
+	test(undefined);
+	test('1');
+	test('1.10');
+	test(1.10);
+	test(1.00);
+	console.log(Number.isInteger(1.00));//TODO how nodejs distinguished
+};
+
+
+testIsFloat();

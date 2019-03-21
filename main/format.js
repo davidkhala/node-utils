@@ -45,3 +45,12 @@ exports.RegxMatch = (str, pattern, flags) => {
 	const namePattern = new RegExp(pattern, flags);
 	return str.match(namePattern);
 };
+exports.isFloat = (number) => {
+	if (typeof number !== 'number') {
+		return false;
+	}
+	if (Number.isInteger(number)) {
+		return false;
+	}
+	return true;
+};

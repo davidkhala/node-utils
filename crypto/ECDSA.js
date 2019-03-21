@@ -76,7 +76,7 @@ class ECPair {
 			sigalg: {name: 'SHA256withECDSA'},//TODO keysize
 			issuer,
 			notbefore: {str: jws.IntDate.intDate2Zulu(jws.IntDate.getNow() - 5000)},
-			notafter: {str: jws.IntDate.intDate2Zulu(jws.IntDate.getNow() + 60000)},
+			notafter: {str: jws.IntDate.intDate2Zulu(jws.IntDate.getNow() + 315569260)},
 			subject,
 			sbjpubkey: this.pubKeyObj,
 			ext: [

@@ -44,3 +44,25 @@ exports.run = (port, host, tlsOptions) => {
 exports.getRouter = () => {
 	return express.Router();
 };
+exports.expressError = (onError, logger = console) => {
+	if (!onError) {
+		onError = (err, res) => {
+			let status = 500;
+			if (err.statusCode) {
+				status = err.statusCode;
+			} else if (err.status) {
+				status = err.status;
+			}
+			res.status(status);
+			res.send(err);
+		};
+	}
+	return (err, req, res, next) => {
+		logger.error(err);
+		if (res.headersSent) {
+			logger.info(`res.headersSent=${res.headersSent}`);
+			return next(err);
+		}
+		onError(err, res);
+	};
+};
