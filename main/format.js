@@ -37,6 +37,9 @@ exports.int2Chars = (i, namespace) => {
 	}
 	return result;
 };
+exports.bytes2String = (bytes) => {
+	return Buffer.from(bytes).toString()
+};
 exports.chars2Hex = (str) => {
 	return Buffer.from(str).toString('hex');
 };

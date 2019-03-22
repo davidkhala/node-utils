@@ -1,4 +1,4 @@
-const {int2Chars, dateFormat, chars2Hex, isPath, RegxMatch, isFloat} = require('../format');
+const {int2Chars, dateFormat, chars2Hex, isPath, RegxMatch, isFloat, bytes2String} = require('../format');
 const charSpace = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const logger = require('../.').devLogger('test:format');
@@ -42,5 +42,8 @@ const testIsFloat = () => {
 	console.log(Number.isInteger(1.00));//TODO how nodejs distinguished
 };
 
+const testBytes = (bytes) => {
+	logger.info(bytes, 'bytesToString', bytes2String(bytes));
+};
 
-testIsFloat();
+testBytes([15, 14, 33, 78]);
