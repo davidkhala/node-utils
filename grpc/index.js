@@ -26,7 +26,7 @@ exports.grpcServer = (baseUrl, services = [], creds = grpc.ServerCredentials.cre
 
 
 exports.grpcRequest = async (protoPath, serviceName, url, actionName, body, creds = grpc.credentials.createInsecure()) => {
-	const Service = load(protoPath)[serviceName];
+	const Service = load(protoPath).object[serviceName];
 	const client = new Service(url, creds);
 	return new Promise((resolve, reject) => {
 		client[actionName](body, (err, res) => {
