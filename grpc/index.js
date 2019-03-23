@@ -1,7 +1,9 @@
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 
-exports.load = (protoPath, options) => {
+exports.grpc = grpc;
+exports.protoLoader = protoLoader;
+const load = (protoPath, options) => {
 
 	const definition = protoLoader.loadSync(protoPath, options);
 	const object = grpc.loadPackageDefinition(definition);
@@ -10,7 +12,7 @@ exports.load = (protoPath, options) => {
 		object
 	};
 };
-
+exports.load = load;
 exports.grpcServer = (baseUrl, services = [], creds = grpc.ServerCredentials.createInsecure()) => {
 	const server = new grpc.Server();
 
