@@ -1,6 +1,6 @@
 {
   "name": "khala-nodeutils",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "author": "davidliu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
@@ -13,7 +13,7 @@
     "date-format": "^1.2.0",
     "express": "^4.16.3",
     "fs-extra": "^6.0.1",
-    "js-yaml": "^3.12.0",
+    "js-yaml": "^3.13.0",
     "request": "^2.85.0",
     "khala-logger": "^0.0.0"
   },
