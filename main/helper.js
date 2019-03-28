@@ -17,6 +17,14 @@ const sleep = async (ms) => {
 };
 exports.sleep = sleep;
 const util = require('util');
+/**
+ * @typedef {Object} execResponse
+ * @property {string} stdout TODO is it string type?
+ * @property {string} stderr TODO is it string type?
+ *
+ * @return {Promise<execResponse>}
+ *
+ */
 exports.exec = util.promisify(require('child_process').exec);
 
 const looper = async (opts = {interval: 1000}, task, ...taskParams) => {
