@@ -11,8 +11,10 @@ exports.JSONEqual = (json1, json2) => {
 	return JSON.stringify(JSON.parse(json1)) === JSON.stringify(JSON.parse(json2));
 };
 
-const sleep = async (ms) => {
-	logger.info(`sleep ${ms}ms`);
+const sleep = async (ms, silent) => {
+	if (!silent) {
+		logger.info(`sleep ${ms}ms`);
+	}
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
 exports.sleep = sleep;
