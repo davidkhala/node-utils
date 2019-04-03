@@ -13,7 +13,7 @@ exports.JSONEqual = (json1, json2) => {
 
 const sleep = async (ms, silent) => {
 	if (!silent) {
-		logger.info(`sleep ${ms}ms`);
+		logger.debug(`sleep ${ms}ms`);
 	}
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
