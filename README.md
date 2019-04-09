@@ -10,6 +10,8 @@ follows [SEMVER](https://semver.org/)
 - khala-logger: logger toolset 
 - khala-pm2:    pm2 nodejs manager
 - khala-nodeutils:  main
+- khala-grpc
+
 
 ## disc usage
 
