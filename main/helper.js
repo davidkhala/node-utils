@@ -29,8 +29,8 @@ const util = require('util');
  */
 exports.exec = util.promisify(require('child_process').exec);
 exports.execResponsePrint = ({stdout, stderr}) => {
-	console.log('[start]stdout|', stdout, '|[end]stdout');
-	console.error('[start]stderr|', stderr, '|[end]stderr');
+	console.log('stdout[start]\n', stdout, '\n[end]stdout');
+	console.error('stderr[start]\n', stderr, '\n[end]stderr');
 };
 
 const looper = async (opts = {interval: 1000}, task, ...taskParams) => {
