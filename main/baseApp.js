@@ -10,6 +10,7 @@ const {isPath} = require('./format');
  * @type {string[]} minVersion: set the minimum TLS version to allow. Cannot be specified along with the secureProtocol option.
  * It is not recommended to use less than TLSv1.2.
  * Default: 'TLSv1'
+ * Introduced in Nodejs 11
  */
 const minVersions = ['TLSv1', 'TLSv1.1', 'TLSv1.2'];
 /**
@@ -17,7 +18,7 @@ const minVersions = ['TLSv1', 'TLSv1.1', 'TLSv1.2'];
  * @type {string[]} secureProtocol The TLS protocol version to use.
  * The possible values are listed as [SSL_METHODS](https://www.openssl.org/docs/man1.1.0/man7/ssl.html#Dealing-with-Protocol-Methods), use the function names as strings.
  * It is not recommended to use TLS versions less than 1.2.
- * Default: none, see minVersion.
+ * Default: none.
  */
 const secureProtocols = [
 	'TLS_method',
