@@ -5,6 +5,7 @@ const http = require('http');
 const https = require('https');
 const cors = require('cors');
 const fs = require('fs');
+const {isPath} = require('./format')
 /**
  * @type {string[]} minVersion: set the minimum TLS version to allow. Cannot be specified along with the secureProtocol option.
  * It is not recommended to use less than TLSv1.2.
@@ -60,9 +61,9 @@ exports.run = (port, host, tlsOptions) => {
 		const {key, cert, ca, requestCert = false, minVersion = 2} = tlsOptions;
 
 		const options = {
-			key: fs.readFileSync(key),
-			cert: fs.readFileSync(cert),
-			ca: fs.readFileSync(ca),
+			key: isPath(key) ? fs.readFileSync(key) : key,
+			cert: isPath(cert) ? fs.readFileSync(cert) : cert,
+			ca: isPath(ca) ? fs.readFileSync(ca) : ca,
 			requestCert,
 			minVersion: minVersions[minVersion]
 		};
