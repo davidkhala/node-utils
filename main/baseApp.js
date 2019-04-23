@@ -59,7 +59,7 @@ exports.run = (port, host, tlsOptions) => {
 	}));
 	let server;
 	if (tlsOptions) {
-		const {key, cert, ca, requestCert = false} = tlsOptions;
+		const {key, cert, ca, requestCert} = tlsOptions;
 
 		tlsOptions.key = isPath(key) ? fs.readFileSync(key) : key;
 		tlsOptions.cert = isPath(cert) ? fs.readFileSync(cert) : cert;
