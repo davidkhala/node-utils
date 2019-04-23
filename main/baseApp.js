@@ -5,7 +5,7 @@ const http = require('http');
 const https = require('https');
 const cors = require('cors');
 const fs = require('fs');
-const {isPath} = require('./format')
+const {isPath} = require('./format');
 /**
  * @type {string[]} minVersion: set the minimum TLS version to allow. Cannot be specified along with the secureProtocol option.
  * It is not recommended to use less than TLSv1.2.
@@ -58,17 +58,13 @@ exports.run = (port, host, tlsOptions) => {
 	}));
 	let server;
 	if (tlsOptions) {
-		const {key, cert, ca, requestCert = false, minVersion = 2} = tlsOptions;
+		const {key, cert, ca, requestCert = false} = tlsOptions;
 
-		const options = {
-			key: isPath(key) ? fs.readFileSync(key) : key,
-			cert: isPath(cert) ? fs.readFileSync(cert) : cert,
-			ca: isPath(ca) ? fs.readFileSync(ca) : ca,
-			requestCert,
-			minVersion: minVersions[minVersion]
-		};
+		tlsOptions.key = isPath(key) ? fs.readFileSync(key) : key;
+		tlsOptions.cert = isPath(cert) ? fs.readFileSync(cert) : cert;
+		tlsOptions.ca = isPath(ca) ? fs.readFileSync(ca) : ca;
 
-		server = https.createServer(options, app).listen(port, () => {
+		server = https.createServer(tlsOptions, app).listen(port, () => {
 			logger.info('https server started at', {host, port, cert, ca, requestCert});
 		});
 	} else {
