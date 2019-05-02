@@ -86,7 +86,22 @@ class MySQL {
 	}
 }
 
-MySQL.dataTypes = Sequelize.DataTypes;
+MySQL.DataTypes = Sequelize.DataTypes;
+const dataTypes = {
+	string: Sequelize.DataTypes.STRING,
+	object: Sequelize.DataTypes.JSON,
+	number: Sequelize.DataTypes.FLOAT,
+	boolean: Sequelize.DataTypes.BOOLEAN
+};
+MySQL.dataTypes = dataTypes;
+
+MySQL.modelOf = (obj) => {
+	const result = {};
+	for (const key in obj) {
+		result.key = dataTypes[typeof key];
+	}
+	return result;
+};
 MySQL.Op = Sequelize.Op;
 
 MySQL.ORM = {
