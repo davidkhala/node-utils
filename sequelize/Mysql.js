@@ -93,7 +93,6 @@ const dataTypes = {
 	number: Sequelize.DataTypes.FLOAT,
 	boolean: Sequelize.DataTypes.BOOLEAN
 };
-MySQL.dataTypes = dataTypes;
 
 MySQL.modelOf = (obj) => {
 	const result = {};
