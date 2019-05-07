@@ -11,19 +11,30 @@ packageLock() {
 	echo $CMD
 	$CMD
 }
-if [[ -n "$fcn" ]]; then
-	$fcn $remain_params
-else
+install8() {
 	if ! node --version | grep 'v8.'; then
-		# install nodejs
 		if [[ $(uname) == "Darwin" ]]; then
 			brew install node@8
-			echo 'export PATH="/usr/local/opt/node@8/bin:$PATH"' >> ~/.bash_profile
+			echo 'export PATH="/usr/local/opt/node@8/bin:$PATH"' >>~/.bash_profile
 			export LDFLAGS="-L/usr/local/opt/node@8/lib"
-            export CPPFLAGS="-I/usr/local/opt/node@8/include"
+			export CPPFLAGS="-I/usr/local/opt/node@8/include"
 		else
 			curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 			sudo apt-get -qq install -y nodejs
 		fi
 	fi
-fi
+}
+install10(){
+	if ! node --version | grep 'v10.'; then
+		if [[ $(uname) == "Darwin" ]]; then
+			brew install node@10
+			echo 'export PATH="/usr/local/opt/node@10/bin:$PATH"' >>~/.bash_profile
+			export LDFLAGS="-L/usr/local/opt/node@10/lib"
+			export CPPFLAGS="-I/usr/local/opt/node@10/include"
+		else
+			curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+			sudo apt-get -qq install -y nodejs
+		fi
+	fi
+}
+$fcn $remain_params
