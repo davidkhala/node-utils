@@ -11,4 +11,3 @@ Total: 41M
     - Console -> Service: EC2 -> select an instance -> `Actions` -- `Instance Settings` -- `Attach/Replace IAM Role`
 - s3 bucket name only accept lowercase 
 ## TODO
-- 
