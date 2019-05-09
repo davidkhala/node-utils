@@ -5,16 +5,17 @@ class S3 {
 		AWS.config.update({region});
 		this.region = region;
 		this.s3 = new AWS.S3({apiVersion});
+		this.endpoint = this.s3.endpoint;
 	}
 
 	/**
 	 * Create a bucket in this AWS Region.
-	 * @param bucketName
+	 * @param Bucket
 	 * @return {Promise<PromiseResult<S3.CreateBucketOutput, AWSError>>}
 	 */
-	async createBucket(bucketName) {
+	async createBucket(Bucket) {
 		const opts = {
-			Bucket: bucketName.toLowerCase(),
+			Bucket,
 			CreateBucketConfiguration: {
 				LocationConstraint: this.region
 			}
@@ -24,11 +25,11 @@ class S3 {
 
 	/**
 	 *
-	 * @param bucketName
+	 * @param Bucket
 	 * @return {Promise<PromiseResult<{}, AWSError>>}
 	 */
-	async deleteBucket(bucketName) {
-		return this.s3.deleteBucket({Bucket: bucketName}).promise();
+	async deleteBucket(Bucket) {
+		return this.s3.deleteBucket({Bucket}).promise();
 	}
 
 	/**
