@@ -1,10 +1,18 @@
 const region = 'ap-southeast-1';
 const bucket_name = 'mcc-lgstorage';
+const newBucketName = 'test-S3';
 const S3 = require('../S3');
 
 const s3 = new S3(region);
 const task = async () => {
-	const buckets = await s3.listBuckets();
+	let buckets = await s3.listBuckets();
+	console.info('list buckets', buckets);
+	console.info('endpoint', s3.endpoint);
+	await s3.createBucket(newBucketName);
+	buckets = await s3.listBuckets();
+	console.info('list buckets', buckets);
+	await s3.deleteBucket(newBucketName)
+	buckets = await s3.listBuckets();
 	console.info('list buckets', buckets);
 };
 task();

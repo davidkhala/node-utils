@@ -38,6 +38,19 @@ class S3 {
 	async listBuckets() {
 		return this.s3.listBuckets().promise();
 	}
+
+
+	/**
+	 * TODO what is its return
+	 * https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property
+	 * @param {string} Bucket
+	 * @param {string} Key
+	 * @param {byte[]|string|ReadableStream|Blob} data Buffer, Typed Array, Blob, String, ReadableStream
+	 * @returns {Promise<ManagedUpload.SendData>}
+	 */
+	async upload(Bucket, Key, data) {
+		return this.s3.upload({Bucket, Key, Body: data}).promise();
+	}
 }
 
 module.exports = S3;
