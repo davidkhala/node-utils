@@ -1,0 +1,7 @@
+{
+  "name": "khala-aws",
+  "version": "0.0.0",
+  "dependencies": {
+    "aws-sdk": "^2.452.0"
+  }
+}
