@@ -6,7 +6,7 @@ AWS.config.update({
 });
 
 const s3 = new AWS.S3({apiVersion: '2006-03-01'});
-const bucket_name = 'my-test-bucket';
+const bucket_name = 'mcc-lgstorage';
 
 const create_bucket_params = {
 	Bucket: bucket_name,
