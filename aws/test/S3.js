@@ -7,7 +7,7 @@ const s3 = new S3(region);
 const task = async () => {
 	let buckets = await s3.listBuckets();
 	console.info('list buckets', buckets);
-	console.info('endpoint', s3.endpoint);
+	console.info('endpoint', s3.s3.endpoint);
 	await s3.createBucket(newBucketName);
 	buckets = await s3.listBuckets();
 	console.info('list buckets', buckets);
