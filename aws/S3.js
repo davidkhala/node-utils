@@ -14,7 +14,7 @@ class S3 {
 	 */
 	async createBucket(bucketName) {
 		const opts = {
-			Bucket: bucketName,
+			Bucket: bucketName.toLowerCase(),
 			CreateBucketConfiguration: {
 				LocationConstraint: this.region
 			}
