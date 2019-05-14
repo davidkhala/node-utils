@@ -24,7 +24,7 @@ install8() {
 		fi
 	fi
 }
-install10(){
+install10() {
 	if ! node --version | grep 'v10.'; then
 		if [[ $(uname) == "Darwin" ]]; then
 			brew install node@10
@@ -36,5 +36,8 @@ install10(){
 			sudo apt-get -qq install -y nodejs
 		fi
 	fi
+}
+typeScript() {
+	sudo npm install -g typescript
 }
 $fcn $remain_params
