@@ -9,7 +9,14 @@ exports.dateFormat = (format, date) => {
  * @type {number} a year in millisecond
  */
 exports.year = 31556926000;
-
+exports.base64 = {
+	encode: (data) => {
+		return Buffer.from(data).toString('base64');
+	},
+	decode: (data) => {
+		return Buffer.from(data, 'base64').toString();
+	}
+};
 exports.isPath = (str) => {
 	return !!str && !(str === path.basename(str));
 };
@@ -38,7 +45,7 @@ exports.int2Chars = (i, namespace) => {
 	return result;
 };
 exports.bytes2String = (bytes) => {
-	return Buffer.from(bytes).toString()
+	return Buffer.from(bytes).toString();
 };
 exports.chars2Hex = (str) => {
 	return Buffer.from(str).toString('hex');

@@ -20,7 +20,7 @@ install8() {
 			export CPPFLAGS="-I/usr/local/opt/node@8/include"
 		else
 			curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-			sudo apt-get -qq install -y nodejs
+			sudo apt -qq install -y nodejs
 		fi
 	fi
 }
@@ -33,7 +33,7 @@ install10() {
 			export CPPFLAGS="-I/usr/local/opt/node@10/include"
 		else
 			curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-			sudo apt-get -qq install -y nodejs
+			sudo apt -qq install -y nodejs
 		fi
 	fi
 }
