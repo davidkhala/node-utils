@@ -2,25 +2,24 @@ const Sequelize = require('sequelize');
 
 class MySQL {
 
-	constructor(database, username = 'root', password = '', logger = console) {
+	constructor(database, username = 'root', password = '', logger = console.log) {
 		this.database = database;
 		this.username = username;
 		this.password = password;
 		this.logger = logger;
 	}
 
-	static _createConnection(database, username, password, silence) {
+	static _createConnection(database, username, password, logging = false) {
 		return new Sequelize(database, username, password,
 			{
-				logging: silence ? false : console.log,
+				logging,
 				host: 'localhost',
 				dialect: 'mysql',
 				pool: {
 					max: 200,
 					min: 0,
 					idle: 10000
-				},
-				operatorsAliases: false//skip warning
+				}
 			}
 		);
 	}
@@ -48,9 +47,9 @@ class MySQL {
 	}
 
 	async connect(silence) {
-
+		const logger = silence ? false : this.logger;
 		if (!this.connection) {
-			this.connection = MySQL._createConnection(this.database, this.username, this.password, silence);
+			this.connection = MySQL._createConnection(this.database, this.username, this.password, logger);
 		}
 		try {
 			await this.connection.query('show databases;');
@@ -58,7 +57,7 @@ class MySQL {
 			const {name, original} = e;
 			if (name === 'SequelizeConnectionError' && original.sqlMessage.includes('Unknown database')) {
 				this.logger.warn(original.sqlMessage, 'creating');
-				const emptyConnection = MySQL._createConnection('', this.username, this.password, silence);
+				const emptyConnection = MySQL._createConnection('', this.username, this.password, logger);
 				await emptyConnection.query(`CREATE DATABASE IF NOT EXISTS \`${this.database}\`;`);
 				await emptyConnection.close();
 				this.logger.warn(original.sqlMessage, 'created');
