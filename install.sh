@@ -40,4 +40,8 @@ install10() {
 typeScript() {
 	sudo npm install -g typescript
 }
+nodeGYPDependencies(){
+    sudo apt install -y make g++ # required by node-gyp
+}
+
 $fcn $remain_params
