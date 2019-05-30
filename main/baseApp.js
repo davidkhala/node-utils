@@ -102,3 +102,9 @@ exports.expressError = (app, onError, logger = console) => {
 		onError(err, res);
 	});
 };
+exports.formDataRouter = (cacheDir, properties = []) => {
+	const Multer = require('multer');
+	const multerCache = Multer({dest: cacheDir});
+	return multerCache.fields(properties.map(name => ({name})));
+};
+

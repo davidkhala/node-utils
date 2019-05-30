@@ -3,7 +3,8 @@ const Request = require('request');
 const {sleep} = require('./helper');
 const {isPath} = require('./format');
 const fs = require('fs');
-exports.RequestPromise = ({url, body, method = 'POST', formData}, otherOptions = {json: true}) => {
+//formData: multipart/form-data
+exports.RequestPromise = async ({url, body, method = 'POST', formData}, otherOptions = {json: true}) => {
 	return new Promise((resolve, reject) => {
 		const opts = Object.assign(otherOptions, {
 			method,
@@ -18,6 +19,17 @@ exports.RequestPromise = ({url, body, method = 'POST', formData}, otherOptions =
 			resolve(body);
 		});
 	});
+};
+const axios = require('axios');
+exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptions = {responseType: 'json'}) => {
+	const config = Object.assign({
+		method,
+		url,
+		data: body,
+		formData
+	}, otherOptions);
+	const {data} = await axios.request(config);
+	return data;
 };
 
 
