@@ -4,7 +4,7 @@ const task = async () => {
 	const resp = await axios.get('http://localhost:3000');
 	console.log(resp.data);
 };
-const taskHttps = async () => {
+const taskHttpsPost = async () => {
 	const https = require('https');
 	const resp = await request.axiosPromise({
 		url: 'https://localhost:3000/post',
@@ -18,11 +18,7 @@ const taskHttps = async () => {
 
 	console.log(resp);
 };
-const taskPost = async () => {
-	request.axiosPromise({
-		url
-	});
-};
+
 const taskFormData = async () => {
 	const fs = require('fs');
 	const formData = {
@@ -34,6 +30,6 @@ const taskFormData = async () => {
 	};
 	const resp = await request.axiosPromise()
 };
-taskHttps();
+taskHttpsPost();
 
 
