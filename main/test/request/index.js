@@ -1,6 +1,6 @@
 const logger = require('../..').devLogger('test:request');
-const {ping} = require('../../request');
-
+const {ping, RequestPromise} = require('../../request');
+const path = require('path');
 const taskPing = async () => {
 	const resp = await ping('https://localhost');
 	logger.info(resp);
@@ -8,4 +8,20 @@ const taskPing = async () => {
 const task = async () => {
 	await taskPing();
 };
-task();
+
+
+const {fsExtra} = require('../../helper');
+const taskFormData = async () => {
+	const filePath = path.resolve(__dirname, 'web_ic_hyperledger.png');
+	const formData = {
+		files: [fsExtra.createReadStream(filePath)]
+	};
+	const resp = await RequestPromise({
+		url: 'http://localhost:3000/formData/',
+		formData,
+		method: 'post'
+	});
+	console.log(resp);
+
+};
+taskFormData();

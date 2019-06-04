@@ -107,4 +107,6 @@ exports.formDataRouter = (cacheDir, properties = []) => {
 	const multerCache = Multer({dest: cacheDir});
 	return multerCache.fields(properties.map(name => ({name})));
 };
-
+exports.formDataFilePaths = (req, property) => {
+	return req.files[property].map(({path}) => path);
+};

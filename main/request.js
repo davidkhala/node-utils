@@ -20,18 +20,6 @@ exports.RequestPromise = async ({url, body, method = 'POST', formData}, otherOpt
 		});
 	});
 };
-const axios = require('axios');
-exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptions = {responseType: 'json'}) => {
-	const config = Object.assign({
-		method,
-		url,
-		data: body,
-		formData
-	}, otherOptions);
-	const {data} = await axios.request(config);
-	return data;
-};
-
 
 exports.ping = async (serverBaseUrl, otherOptions = {}, timeInterval = 200, retryMax = 5) => {
 	let retryCounter = 0;

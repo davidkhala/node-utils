@@ -16,7 +16,6 @@
     "js-yaml": "^3.13.0",
     "request": "^2.85.0",
     "khala-logger": "^0.0.0",
-    "axios": "^0.18.0",
     "multer": "^1.4.1"
   },
   "devDependencies": {
