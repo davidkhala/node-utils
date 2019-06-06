@@ -54,7 +54,7 @@ exports.run = (port, host, tlsOptions) => {
 	app.options('*', cors());
 	app.use(cors());
 	app.use(bodyParser.json());
-	
+
 	app.use(bodyParser.urlencoded({
 		extended: true// req.body will contain key-value pairs, extended=false: value can be a string or array; extended=true: value can be any type
 	}));
@@ -111,3 +111,4 @@ exports.formDataRouter = (cacheDir, properties = []) => {
 exports.formDataFilePaths = (req, property) => {
 	return req.files[property].map(({path}) => path);
 };
+exports.express = express;
