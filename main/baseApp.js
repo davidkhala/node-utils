@@ -56,7 +56,7 @@ exports.run = (port, host, tlsOptions) => {
 	app.use(bodyParser.json());
 	
 	app.use(bodyParser.urlencoded({
-		extended: false// req.body will contain key-value pairs, extended=false: value can be a string or array; extended=true: value can be any type
+		extended: true// req.body will contain key-value pairs, extended=false: value can be a string or array; extended=true: value can be any type
 	}));
 	let server;
 	if (tlsOptions) {
