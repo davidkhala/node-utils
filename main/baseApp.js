@@ -6,6 +6,7 @@ const https = require('https');
 const cors = require('cors');
 const fs = require('fs');
 const {isPath} = require('./format');
+const Multer = require('multer');
 /**
  * @type {string[]} minVersion: set the minimum TLS version to allow. Cannot be specified along with the secureProtocol option.
  * It is not recommended to use less than TLSv1.2.
@@ -104,7 +105,6 @@ exports.expressError = (app, onError, logger = console) => {
 	});
 };
 exports.formDataRouter = (cacheDir, properties = []) => {
-	const Multer = require('multer');
 	const multerCache = Multer({dest: cacheDir});
 	return multerCache.fields(properties.map(name => ({name})));
 };
@@ -112,3 +112,4 @@ exports.formDataFilePaths = (req, property) => {
 	return req.files[property].map(({path}) => path);
 };
 exports.express = express;
+exports.multer = Multer;
