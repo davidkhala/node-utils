@@ -3,7 +3,9 @@ const devOps = require('./devOps');
 const path = require('path');
 exports.fsExtra = require('fs-extra');
 exports.homeResolve = (...tokens) => {
-	if (!tokens) return tokens;
+	if (!tokens) {
+		return tokens;
+	}
 	return path.resolve(devOps.homedir, ...tokens);
 };
 
