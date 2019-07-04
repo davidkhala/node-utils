@@ -5,4 +5,5 @@ const path = require('path');
 const filePath = path.resolve('test.Log');
 const fileLogger = Logger.newFile('test:file', filePath);
 logger.debug('abc');
+logger.info('abc');
 fileLogger.error('abc', 'cde');
