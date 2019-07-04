@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 class MySQL {
 
-	constructor(database, username = 'root', password = '', logger = console.log) {
+	constructor(database, username = 'root', password = '', logger = console) {
 		this.database = database;
 		this.username = username;
 		this.password = password;
