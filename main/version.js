@@ -1,9 +1,9 @@
 const versionPattern = /^\d+\.\d+\.\d+$/;
 const validVersion = (version) => version.match(versionPattern);
 /**
- * version pattern : 0.0.0
- * @param prevVersion
- * @param incrementLevel major|minor|patch
+ * version pattern : 0.0.0, not strictly SemVer format
+ * @param {string} prevVersion
+ * @param {string} incrementLevel major|minor|patch
  * @return {string}
  */
 exports.nextVersion = (prevVersion, incrementLevel = 'patch') => {
