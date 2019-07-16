@@ -41,6 +41,15 @@ const testClass = () => {
 
 };
 
+const testReadDir = () => {
+	const fs = require('fs');
+	try {
+		fs.readFileSync(__dirname).toString();
+	} catch (e) {
+		console.log(e);
+	}
+
+};
 const tests = async () => {
 	await testArrowFunction();
 	testClass();
@@ -48,4 +57,6 @@ const tests = async () => {
 	bufferTest('liu');
 	bufferTest(123);
 };
+
+testReadDir();
 

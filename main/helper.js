@@ -91,6 +91,6 @@ exports.envInject = (key, data, force, pm2Simulator) => {
 };
 
 exports.isArrayEven = arr => {
-	return Array.isArray(arr) && arr.length > 0 && arr.every(v => v === arr[0]);
+	return Array.isArray(arr) && arr.length > 0 && arr.every(v => JSON.stringify(v) === JSON.stringify(arr[0]));
 };
 
