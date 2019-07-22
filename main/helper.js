@@ -1,7 +1,6 @@
 const logger = require('khala-logger').new('helper util');
 const devOps = require('./devOps');
 const path = require('path');
-const childProcess = require('child_process');
 exports.fsExtra = require('fs-extra');
 exports.homeResolve = (...tokens) => {
 	if (!tokens) {
@@ -21,49 +20,6 @@ const sleep = async (ms, silent) => {
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
 exports.sleep = sleep;
-const util = require('util');
-/**
- * @typedef {Object} execResponse
- * @property {string} stdout
- * @property {string} stderr
- */
-
-/**
- * @async
- * @param {string} command
- * @param {Object} options
- * @return Promise<execResponse>
- */
-exports.exec = util.promisify(childProcess.exec);
-
-/**
- * powered by https://stackoverflow.com/questions/25323703/nodejs-execute-command-in-background-and-forget
- * @param {string} command
- * @param {string} stdLogFile
- */
-exports.execDetach = (command, stdLogFile) => {
-	const {spawn} = childProcess;
-	const stdio = ['ignore'];
-
-
-	const [cmd, ...args] = command.split(' ');
-
-	if (stdLogFile) {
-		stdio.push(fs.openSync(stdLogFile, 'a'));// for stdout
-		stdio.push(fs.openSync(stdLogFile, 'a'));// for stderr
-	}
-
-	spawn(cmd, args, {
-		stdio, // piping all stdio to /dev/null
-		detached: true
-	}).unref();
-};
-
-
-exports.execResponsePrint = ({stdout, stderr}) => {
-	console.log('stdout[start]\n', stdout, '\n[end]stdout');
-	console.error('stderr[start]\n', stderr, '\n[end]stderr');
-};
 
 const looper = async (opts = {interval: 1000}, task, ...taskParams) => {
 	const {times, interval} = opts;

@@ -1,11 +1,12 @@
 const localhost = '127.0.0.1';
 exports.localhost = localhost;
 const os = require('os');
+const childProcess = require('child_process');
 const findProcess = require('find-process');
 exports.hostname = os.hostname;
 exports.tempdir = os.tmpdir();
 exports.homedir = os.homedir();
-const {exec} = require('./helper');
+const util = require('util');
 
 /**
  * @typedef {Object} processObject
@@ -16,6 +17,22 @@ const {exec} = require('./helper');
  * @property {string} name
  * @property {string} cmd
  */
+
+/**
+ * @typedef {Object} execResponse
+ * @property {string} stdout
+ * @property {string} stderr
+ */
+
+/**
+ * @async
+ * @param {string} command
+ * @param {Object} options
+ * @return Promise<execResponse>
+ */
+const exec = util.promisify(childProcess.exec);
+
+exports.exec = exec;
 
 /**
  *
@@ -33,7 +50,36 @@ exports.killProcess = async (pid) => {
 	await exec(`kill ${pid}`);
 };
 
-class NetworkSocket {
+/**
+ * powered by https://stackoverflow.com/questions/25323703/nodejs-execute-command-in-background-and-forget
+ * @param {string} command
+ * @param {string} [stdLogFile]
+ */
+exports.execDetach = (command, stdLogFile) => {
+	const {spawn} = childProcess;
+	const stdio = ['ignore'];
+
+
+	const [cmd, ...args] = command.split(' ');
+
+	if (stdLogFile) {
+		stdio.push(fs.openSync(stdLogFile, 'a'));// for stdout
+		stdio.push(fs.openSync(stdLogFile, 'a'));// for stderr
+	}
+
+	spawn(cmd, args, {
+		stdio, // piping all stdio to /dev/null
+		detached: true
+	}).unref();
+};
+
+
+exports.execResponsePrint = ({stdout, stderr}) => {
+	console.log('stdout[start]\n', stdout, '\n[end]stdout');
+	console.error('stderr[start]\n', stderr, '\n[end]stderr');
+};
+
+class NetSocket {
 	constructor(port, host) {
 		const {Socket} = require('net');
 		this.socket = new Socket();
@@ -65,8 +111,10 @@ class NetworkSocket {
 	}
 }
 
+exports.NetSocket = NetSocket;
+
 exports.isPortInUse = async (port, host = localhost, timeout = 1000) => {
-	const socket = new NetworkSocket(port, host);
+	const socket = new NetSocket(port, host);
 	return new Promise((resolve, reject) => {
 		const onConnect = () => {
 			socket.close();
