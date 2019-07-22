@@ -12,6 +12,10 @@ const killProcess = async (port) => {
 	}
 
 };
+const execDetachTest = async () => {
+	const cmd = '/home/davidliu/Documents/delphi-fabric/common/bin/configtxlator start';
+	await devOps.execDetach(cmd);
+};
 
 const execTest = async () => {
 	const requirePermission = 'apt update';
@@ -25,5 +29,6 @@ const execTest = async () => {
 };
 const task = async () => {
 	await killProcess(7059);
+	await execDetachTest();
 };
 task();

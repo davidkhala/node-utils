@@ -57,15 +57,12 @@ exports.killProcess = async (pid) => {
  */
 exports.execDetach = (command, stdLogFile) => {
 	const {spawn} = childProcess;
-	const stdio = ['ignore'];
-
 
 	const [cmd, ...args] = command.split(' ');
 
-	if (stdLogFile) {
-		stdio.push(fs.openSync(stdLogFile, 'a'));// for stdout
-		stdio.push(fs.openSync(stdLogFile, 'a'));// for stderr
-	}
+	const out = stdLogFile ? fs.openSync(stdLogFile, 'a') : 'ignore';// for stdout
+	const err = stdLogFile ? fs.openSync(stdLogFile, 'a') : 'ignore';// for stderr
+	const stdio = ['ignore', out, err];
 
 	spawn(cmd, args, {
 		stdio, // piping all stdio to /dev/null
