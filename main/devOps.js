@@ -1,9 +1,37 @@
 const localhost = '127.0.0.1';
 exports.localhost = localhost;
 const os = require('os');
+const findProcess = require('find-process');
 exports.hostname = os.hostname;
 exports.tempdir = os.tmpdir();
 exports.homedir = os.homedir();
+const {exec} = require('./helper');
+
+/**
+ * @typedef {Object} processObject
+ * @property {number} pid
+ * @property {number} [ppid]
+ * @property {number} [uid]
+ * @property {number} [gid]
+ * @property {string} name
+ * @property {string} cmd
+ */
+
+/**
+ *
+ * @param {string} type "name" | "pid" | "port"
+ * @param {string|number|RegExp} value
+ * @param {boolean} [strict]
+ * @returns {Promise<processObject[]>}
+ */
+exports.findProcess = async (type, value, strict) => {
+
+	await exec('netstat >/dev/null'); // throw if not exist
+	return findProcess(type, value, strict);
+};
+exports.killProcess = async (pid) => {
+	await exec(`kill ${pid}`);
+};
 
 class NetworkSocket {
 	constructor(port, host) {
@@ -17,7 +45,6 @@ class NetworkSocket {
 			error: undefined,
 			close: undefined
 		};
-
 	}
 
 	connect(timeout) {
