@@ -60,9 +60,10 @@ exports.execDetach = (command, stdLogFile) => {
 
 	const [cmd, ...args] = command.split(' ');
 
-	const out = stdLogFile ? fs.openSync(stdLogFile, 'a') : 'ignore';// for stdout
-	const err = stdLogFile ? fs.openSync(stdLogFile, 'a') : 'ignore';// for stderr
-	const stdio = ['ignore', out, err];
+	const ignore = 'ignore';// string 'ignore' is a key word
+	const out = stdLogFile ? fs.openSync(stdLogFile, 'a') : ignore;// for stdout
+	const err = stdLogFile ? fs.openSync(stdLogFile, 'a') : ignore;// for stderr
+	const stdio = [ignore, out, err];
 
 	spawn(cmd, args, {
 		stdio, // piping all stdio to /dev/null
