@@ -40,9 +40,6 @@ install10() {
 typeScript() {
 	sudo npm install -g typescript
 }
-eslint() {
-	sudo npm install -g eslint
-}
 pm2() {
 	sudo npm install -g pm2
 }
