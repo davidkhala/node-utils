@@ -11,4 +11,13 @@ packageLock() {
 	echo $CMD
 	$CMD
 }
+tokenList() {
+	local format
+	if [[ "$1" == "json" ]]; then
+		format="--json"
+	elif [[ "$1" == "table" ]]; then
+		format="--parseable"
+	fi
+	npm token list $format
+}
 $fcn $remain_params
