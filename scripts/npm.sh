@@ -20,7 +20,4 @@ tokenList() {
 	fi
 	npm token list $format
 }
-tokenLast() {
-	tokenList table | head -2 | tail -1 | awk '{print $1}'
-}
 $fcn $remain_params

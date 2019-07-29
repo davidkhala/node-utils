@@ -27,3 +27,4 @@ follows [SEMVER](https://semver.org/)
 - npm install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
 # TODO
 - try stressTest on sequenlize
+- there is no automatic way to manage npm token explicitly
