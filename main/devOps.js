@@ -43,7 +43,7 @@ exports.exec = exec;
  */
 exports.findProcess = async (type, value, strict) => {
 
-	await exec('netstat >/dev/null'); // throw if not exist
+	await exec('netstat --version >/dev/null'); // throw if not exist
 	return findProcess(type, value, strict);
 };
 exports.killProcess = async (pid) => {
