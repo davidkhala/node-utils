@@ -1,6 +1,6 @@
 {
   "name": "khala-pm2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "author": "davidliu  <david-khala@hotmail.com>",
@@ -10,7 +10,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "pm2": "^3.2.9",
+    "pm2": "^3.5.1",
     "khala-logger": "^0.0.0"
   }
 }
