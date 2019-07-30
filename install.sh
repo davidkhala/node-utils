@@ -6,11 +6,6 @@ for ((i = 2; i <= ${#}; i++)); do
 	j=${!i}
 	remain_params="$remain_params $j"
 done
-packageLock() {
-	local CMD="npm config set package-lock $1"
-	echo $CMD
-	$CMD
-}
 install8() {
 	if ! node --version | grep 'v8.'; then
 		if [[ $(uname) == "Darwin" ]]; then
