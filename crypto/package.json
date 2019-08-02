@@ -7,5 +7,9 @@
   "dependencies": {
     "jsrsasign": "^8.0.12"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "otpauth": "^3.2.8",
+    "node-otp": "^1.2.2",
+    "otplib": "^11.0.1"
+  }
 }
