@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "8"
+dist: bionic
+install:
+  - cd logger; npm install ; cd -
+  - cd main; npm install; cd -
+  - cd pm2; npm install ; cd -
+script:
+  - node logger/test
+  - node main/test
+  - node pm2/test/CLI/test.sh
+
