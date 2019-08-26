@@ -34,7 +34,7 @@ const alter2 = () => {
 	const OTPAuth = require('otpauth');
 
 	const totp = new OTPAuth.TOTP({
-		algorithm: 'SHA1',
+		algorithm: 'SHA512',// 'SHA1'
 		digits: 6,
 		period: 30,
 		secret: OTPAuth.Secret.fromB32(secret)
