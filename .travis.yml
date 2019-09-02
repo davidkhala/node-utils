@@ -4,7 +4,7 @@ node_js:
 dist: bionic
 install:
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setup
-  - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password init
+  - sudo mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'";sudo systemctl restart mysql;
   - npm install logger; # using directory
   - npm install main; # using directory
   - npm install pm2@latest -g; npm install pm2; # using directory
