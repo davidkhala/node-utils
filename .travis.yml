@@ -4,11 +4,11 @@ node_js:
 dist: bionic
 install:
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setup
-  - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password --init
+  - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password init
   - cd logger; npm install ; cd -
   - cd main; npm install; cd -
   - cd pm2; npm install ; cd -;
-  - npm install pm2 -g
+  - npm install pm2 -g; which pm2;
   - cd sequelize; npm install; cd -
 script:
   - node logger/test
