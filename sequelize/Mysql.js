@@ -19,6 +19,10 @@ class MySQL {
 					max: 200,
 					min: 0,
 					idle: 10000
+				},
+				define: {
+					//prevent sequelize from pluralizing table names
+					freezeTableName: true
 				}
 			}
 		);
@@ -30,7 +34,7 @@ class MySQL {
 	}
 
 	/**
-	 * the table name will be `${modelName}s`
+	 * create table if not exist
 	 * @returns {Promise<void>}
 	 */
 	async sync() {
@@ -68,6 +72,7 @@ class MySQL {
 
 	}
 
+	// TODO move it out as it limited to mysql
 	async setIDBias(tableName, bias) {
 		await this.connection.query(`ALTER TABLE \`${tableName}\` AUTO_INCREMENT = ${bias};`);
 	}
