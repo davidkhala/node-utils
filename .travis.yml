@@ -3,7 +3,8 @@ node_js:
   - "8"
 dist: bionic
 before_install:
-  - npm install -g pm2; which pm2;
+  - npm install pm2@latest -g
+  - which pm2;
 install:
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setup
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password init
