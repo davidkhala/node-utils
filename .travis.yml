@@ -12,6 +12,6 @@ install:
 script:
   - node logger/test
   - node main/test
-  - node pm2/test/CLI/test.sh
+  - ./pm2/test/CLI/test.sh
   - node sequelize/test
 
