@@ -26,8 +26,11 @@ const execTest = async () => {
 
 	await devOps.exec('sudo apt update'); // Test passed: sudo have interactive input
 };
-const task = async () => {
+const taskConfigtxlator = async () => {
 	await killProcess(7059);
 	await execDetachTest();
+};
+const task = async () => {
+	await execTest();
 };
 task();

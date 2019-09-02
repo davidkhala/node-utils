@@ -1,6 +1,8 @@
 # node-utils
 nodejs utils to be published to npm as node_module
 
+[![Build Status](https://travis-ci.com/davidkhala/node-utils.svg?branch=master)](https://travis-ci.com/davidkhala/node-utils)
+
 follows [SEMVER](https://semver.org/)
 
 
