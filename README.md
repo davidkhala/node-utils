@@ -28,3 +28,4 @@ follows [SEMVER](https://semver.org/)
 # TODO
 - try stressTest on sequenlize
 - there is no automatic way to manage npm token explicitly
+- build a light-weight https proxy server
