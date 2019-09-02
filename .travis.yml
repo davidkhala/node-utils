@@ -2,14 +2,12 @@ language: node_js
 node_js:
   - "8"
 dist: bionic
-before_install:
-  - npm install pm2@latest -g
 install:
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setup
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password init
   - npm install logger; # using directory
   - npm install main; # using directory
-  - npm install pm2; # using directory
+  - npm install pm2@latest -g; npm install pm2; # using directory
   - npm install sequelize; # using directory
 script:
   - node logger/test
