@@ -31,3 +31,4 @@ follows [SEMVER](https://semver.org/)
 - try stressTest on sequenlize
 - there is no automatic way to manage npm token explicitly
 - build a light-weight https proxy server
+- [Rush.js](https://github.com/Microsoft/web-build-tools/): for who build and publish many NPM packages at once.
