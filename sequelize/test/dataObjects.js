@@ -3,9 +3,14 @@
  */
 const {DataTypes} = require('../Mysql');
 exports.User = {
+	id: {
+		type: DataTypes.INTEGER,
+		autoIncrement: true,
+		primaryKey: true
+	},
 	ID: {
 		type: DataTypes.STRING,
-		primaryKey: true
+		allowNull: false
 	},
 	Name: DataTypes.STRING,
 	Detail: DataTypes.JSON,
@@ -15,8 +20,12 @@ exports.User = {
 		type: DataTypes.BOOLEAN,
 		defaultValue: false
 	},
+	Time:DataTypes.TIME,
+	Date:DataTypes.DATE,
 	counter: {
 		type: DataTypes.INTEGER,
 		defaultValue: 0
-	}
+	},
+	remark: DataTypes.TEXT
+
 };
