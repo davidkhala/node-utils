@@ -13,6 +13,7 @@ follows [SEMVER](https://semver.org/)
 - khala-pm2:    pm2 nodejs manager
 - khala-nodeutils:  main
 - khala-grpc
+- khala-sequelize: nodejs ORM powered by npm sequelize 
 
 # Notes
 - `npm publish`

@@ -20,10 +20,11 @@ class MySQL {
 					min: 0,
 					idle: 10000
 				},
+				timestamps: false,
 				define: {
-					//prevent sequelize from pluralizing table names
-					freezeTableName: true
-				}
+					charset: 'utf8',
+					freezeTableName: true, //prevent sequelize from pluralizing table names
+				},
 			}
 		);
 	}
@@ -42,9 +43,29 @@ class MySQL {
 		await this.connection.sync({force: !!refresh});
 	}
 
+	async dropTable(tableName) {
+		this.logger.warn(`dropTable[${tableName}]`);
+		await this.connection.queryInterface.dropTable(tableName);
+	}
+
 	async dropAllTables() {
 		this.logger.warn('dropAllTables');
 		await this.connection.queryInterface.dropAllTables();
+	}
+
+	async dropDatabase(database) {
+		this.logger.warn(`dropDatabase[${database}]`);
+		await this.connection.queryInterface.dropDatabase(dropDatabase);
+	}
+
+	async dropSchema(schema) {
+		this.logger.warn(`dropSchema[${schema}]`);
+		await this.connection.queryInterface.dropSchema(schema);
+	}
+
+	async dropAllSchemas() {
+		this.logger.warn('dropAllSchemas');
+		await this.connection.queryInterface.dropAllSchemas();
 	}
 
 	async addColumn(table, column, type) {
@@ -92,6 +113,7 @@ class MySQL {
 }
 
 MySQL.DataTypes = Sequelize.DataTypes;
+MySQL.DataTypes.TIMESTAMP = 'TIMESTAMP'; // no any match for mysql dataType:TIMESTAMP
 const dataTypes = {
 	string: Sequelize.DataTypes.STRING,
 	object: Sequelize.DataTypes.JSON,

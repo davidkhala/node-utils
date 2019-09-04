@@ -1,13 +1,13 @@
 const MySQL = require('../Mysql');
 const {User} = require('./dataObjects');
+const {mysql, setup} = require('./_connection');
 const flow = async () => {
-	const mysql = new MySQL('database', 'root', 'password');
 	await mysql.connect();
 	await mysql.close();
 	console.log('test: then silent');
 	await mysql.connect(true);
-
-	const user = mysql.setModel('User', User);
+	const models = await setup(mysql);
+	const user = models.User;
 	await mysql.sync();
 	const rows = await MySQL.ORM.list(user);
 	console.log(rows);
