@@ -1,9 +1,11 @@
-const logger = require('../').devLogger('test:syntax');
+const logger = console;
+const fs = require('fs');
+const path = require('path');
 const testArrowFunction = async () => {
 	class TestClass {
 		async p() {
 			return new Promise(resolve => {
-				console.debug('this', this);
+				logger.debug('this', this);
 				resolve();
 			});
 		}
@@ -42,13 +44,11 @@ const testClass = () => {
 };
 
 const testReadDir = () => {
-	const fs = require('fs');
 	try {
 		fs.readFileSync(__dirname).toString();
 	} catch (e) {
-		console.log(e);
+		logger.error(e);
 	}
-
 };
 const tests = async () => {
 	await testArrowFunction();
@@ -56,7 +56,19 @@ const tests = async () => {
 	bufferTest({david: 'liu'});
 	bufferTest('liu');
 	bufferTest(123);
+	testReadDir();
 };
 
-testReadDir();
+const loadObjectTest = () => {
+	let files = fs.readdirSync(__dirname);
+	files = files.filter(name => name !== 'index.js' && name !== path.basename(__filename));
+	for (const file of files) {
+		const object = require(`./${file}`);
+		logger.debug(file, object);
+	}
+};
+loadObjectTest();
+// tests();
+
+
 

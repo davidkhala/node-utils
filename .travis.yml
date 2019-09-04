@@ -10,6 +10,7 @@ install:
   - npm install pm2@latest -g; cd pm2; npm install ; cd -;
   - cd sequelize; npm install; cd -
 script:
+  - node test # syntax test
   - node logger/test
   - node main/test
   - ./pm2/test/CLI/test.sh
