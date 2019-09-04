@@ -39,7 +39,7 @@ class MySQL {
 	 * @returns {Promise<void>}
 	 */
 	async sync(refresh) {
-		await this.connection.sync({force: !!refactor});
+		await this.connection.sync({force: !!refresh});
 	}
 
 	async dropAllTables() {

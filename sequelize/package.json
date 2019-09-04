@@ -1,6 +1,6 @@
 {
   "name": "khala-sequelize",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
     "sequelize": "^5.18.0",
     "mysql2": "^1.7.0"
