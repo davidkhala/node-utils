@@ -34,11 +34,12 @@ class MySQL {
 	}
 
 	/**
-	 * create table if not exist
+	 * create table
+	 * @param {boolean} refresh if truthy, drop existing database before creation
 	 * @returns {Promise<void>}
 	 */
-	async sync() {
-		await this.connection.sync();
+	async sync(refresh) {
+		await this.connection.sync({force: !!refactor});
 	}
 
 	async dropAllTables() {
