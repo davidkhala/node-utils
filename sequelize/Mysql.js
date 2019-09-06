@@ -23,8 +23,8 @@ class MySQL {
 				timestamps: false,
 				define: {
 					charset: 'utf8',
-					freezeTableName: true, //prevent sequelize from pluralizing table names
-				},
+					freezeTableName: true //prevent sequelize from pluralizing table names
+				}
 			}
 		);
 	}
@@ -55,12 +55,24 @@ class MySQL {
 
 	async dropDatabase(database) {
 		this.logger.warn(`dropDatabase[${database}]`);
-		await this.connection.queryInterface.dropDatabase(dropDatabase);
+		await this.connection.queryInterface.dropDatabase(database);
 	}
 
 	async dropSchema(schema) {
 		this.logger.warn(`dropSchema[${schema}]`);
+		if (this.connection.options.dialect === 'mysql') {
+			this.logger.warn(`sequelize:dropSchema in dialect[mysql] => dropTable[${schema}]`);
+		}
 		await this.connection.queryInterface.dropSchema(schema);
+	}
+
+	async showAllSchemas() {
+		const result = await this.connection.queryInterface.showAllSchemas();
+		if (this.connection.options.dialect === 'mysql') {
+			this.logger.debug('sequelize::showAllSchemas in dialect[mysql] => show all `Tables_in_database` ');
+			return result.map(e => e.Tables_in_database);
+		}
+		return result;
 	}
 
 	async dropAllSchemas() {

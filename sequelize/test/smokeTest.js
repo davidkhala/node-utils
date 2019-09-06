@@ -8,7 +8,6 @@ const flow = async () => {
 	await mysql.connect(true);
 	const models = await setup(mysql);
 	const user = models.User;
-	await mysql.sync();
 	const rows = await MySQL.ORM.list(user);
 	console.log(rows);
 	await mysql.close();
