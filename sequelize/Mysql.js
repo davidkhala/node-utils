@@ -36,7 +36,7 @@ class MySQL {
 
 	/**
 	 * create table
-	 * @param {boolean} refresh if truthy, drop existing database before creation
+	 * @param {boolean} [refresh] if truthy, drop existing database before creation
 	 * @returns {Promise<void>}
 	 */
 	async sync(refresh) {
