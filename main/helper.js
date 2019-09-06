@@ -2,6 +2,7 @@ const logger = require('khala-logger').new('helper util');
 const devOps = require('./devOps');
 const path = require('path');
 exports.fsExtra = require('fs-extra');
+exports.trimExtName = (filePath) => path.basename(filePath, path.extname(filePath));
 exports.homeResolve = (...tokens) => {
 	if (!tokens) {
 		return tokens;
