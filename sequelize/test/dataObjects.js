@@ -13,6 +13,7 @@ exports.User = {
 		allowNull: false
 	},
 	Name: DataTypes.STRING,// default is `mysql:varchar(255)`
+	Remark: DataTypes.STRING(400),
 	Detail: DataTypes.JSON,
 	Fee: DataTypes.FLOAT,
 	Role: DataTypes.ENUM('client', 'admin'),
@@ -22,7 +23,7 @@ exports.User = {
 	},
 	Time: DataTypes.TIME,// TIME values in 'hh:mm:ss' format
 	Date: DataTypes.DATE,// The mysql:DATETIME type in 'YYYY-MM-DD hh:mm:ss' format.
-	TIMESTAMP:DataTypes.TIMESTAMP,
+	TIMESTAMP: DataTypes.TIMESTAMP,
 	counter: {
 		type: DataTypes.INTEGER,
 		defaultValue: 0
