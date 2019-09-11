@@ -1,8 +1,8 @@
 const port = 4000;
-const nodeUtil = require('../index');
+const nodeUtil = require('../../index');
 const {run, expressError} = nodeUtil.baseApp();
 const {trimExtName} = nodeUtil.helper();
-const {errorSyntaxHandle, successHandle} = require('./baseAppHandlers');
+const {errorSyntaxHandle} = require('../baseAppHandlers');
 const moduleName = 'test:node-utils';
 let logger;
 if (process.env.deployment === 'prd') {
