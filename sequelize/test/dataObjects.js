@@ -13,7 +13,7 @@ exports.User = {
 		allowNull: false
 	},
 	Name: DataTypes.STRING,// default is `mysql:varchar(255)`
-	Remark: DataTypes.STRING(400),
+	Name_en: DataTypes.STRING(400),
 	Detail: DataTypes.JSON,
 	Fee: DataTypes.FLOAT,
 	Role: DataTypes.ENUM('client', 'admin'),
