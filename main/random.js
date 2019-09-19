@@ -11,7 +11,7 @@ exports.randomString = (length) => {
 	return [...Array(length)].map(() => (~~(Math.random() * 36)).toString(36)).join('');
 };
 
-exports.random = (length, charSet) => {
+exports.randomChars = (length, charSet) => {
 	if (!charSet) {
 		charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 	}
