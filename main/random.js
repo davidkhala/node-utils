@@ -7,6 +7,11 @@ exports.randomKeyOf = (obj) => {
 exports.randomHex = (length) => {
 	return crypto.randomBytes(length).toString('hex');
 };
+/**
+ *
+ * @param {number} length integer
+ * @return {string} alphaNumeric
+ */
 exports.randomString = (length) => {
 	return [...Array(length)].map(() => (~~(Math.random() * 36)).toString(36)).join('');
 };
