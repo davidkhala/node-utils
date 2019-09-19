@@ -10,3 +10,14 @@ exports.randomHex = (length) => {
 exports.randomString = (length) => {
 	return [...Array(length)].map(() => (~~(Math.random() * 36)).toString(36)).join('');
 };
+
+exports.random = (length, charSet) => {
+	if (!charSet) {
+		charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	}
+	let result = '';
+	for (let i = 0; i < length; i++) {
+		result += charSet.charAt(Math.floor(Math.random() * charSet.length));
+	}
+	return result;
+};
