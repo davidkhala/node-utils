@@ -33,3 +33,4 @@ follows [SEMVER](https://semver.org/)
 - there is no automatic way to manage npm token explicitly
 - build a light-weight https proxy server
 - [Rush.js](https://github.com/Microsoft/web-build-tools/): for who build and publish many NPM packages at once.
+- add npm badges for sub-project via https://nodei.co/
