@@ -1,7 +1,7 @@
 {
   "name": "khala-nodeutils",
   "version": "0.6.3",
-  "author": "davidliu  <david-khala@hotmail.com>",
+  "author": "david Liu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
   "scripts": {
