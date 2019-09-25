@@ -35,3 +35,4 @@ follows [SEMVER](https://semver.org/)
 - [Rush.js](https://github.com/Microsoft/web-build-tools/): for who build and publish many NPM packages at once.
 - add npm badges for sub-project via https://nodei.co/
 - activemq with STOMP.js 
+- try [github package registry](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry)
