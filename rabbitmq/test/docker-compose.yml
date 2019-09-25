@@ -1,0 +1,5 @@
+services:
+  rabbitmq:
+    image: bitnami/rabbitmq
+
+
