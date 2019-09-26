@@ -1,6 +1,6 @@
 const port = 4011;
-const nodeUtil = require('../../index');
-const {run} = nodeUtil.baseApp();
+const {baseApp} = require('../../index');
+const {run} = baseApp;
 const {app} = run(port);
 
 app.all('/', async (req, res) => {

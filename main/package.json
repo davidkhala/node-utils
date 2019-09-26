@@ -1,6 +1,6 @@
 {
   "name": "khala-nodeutils",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "author": "david Liu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
@@ -8,17 +8,17 @@
     "test": "node test"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.4",
-    "date-format": "^1.2.0",
-    "express": "^4.16.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "date-format": "^2.1.0",
+    "express": "^4.17.1",
     "find-process": "^1.4.2",
-    "fs-extra": "^6.0.1",
-    "js-yaml": "^3.13.0",
+    "fs-extra": "^8.1.0",
+    "js-yaml": "^3.13.1",
     "khala-logger": "^0.0.0",
-    "multer": "^1.4.1",
-    "papaparse": "^5.0.0",
-    "request": "^2.85.0"
+    "multer": "^1.4.2",
+    "papaparse": "^5.1.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "log4js": "^3.0.6"
