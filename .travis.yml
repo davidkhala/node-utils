@@ -11,6 +11,7 @@ install:
   - cd main; npm install; cd -
   - npm install pm2@latest -g; cd pm2; npm install ; cd -;
   - cd sequelize; npm install; cd -
+  - cd activemq; npm install; cd -
 script:
   - node test # syntax test
   - node logger/test
