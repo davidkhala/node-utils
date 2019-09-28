@@ -34,28 +34,90 @@ class STOMP {
 			// },
 		});
 
-		client.onConnect = (frame) => {
-			console.log('onConnect', frame);
-		};
-		client.onStompError = (frame) => {
-			// Will be invoked in case of error encountered at Broker
-			// Bad login/passcode typically will cause an error
-			// Complaint brokers will set `message` header with a brief message. Body may contain details.
-			// Compliant brokers will terminate the connection after any error
-			console.log('Broker reported error: ' + frame.headers['message']);
-			console.log('Additional details: ' + frame.body);
-		};
 		this.client = client;
 	}
 
-	connect() {
-		this.client.activate();
+	/**
+	 *
+	 * @param {closeEventCallbackType} listener
+	 */
+	setOnClose(listener) {
+		this.client.onWebSocketClose = listener;
+	}
+
+	/**
+	 *
+	 * @param {frameCallbackType} listener
+	 */
+	setOnError(listener) {
+		this.client.onStompError = listener;
+	}
+
+	async connect() {
+		return new Promise(resolve => {
+			this.client.onConnect = (frame) => {
+				delete this.client.onConnect;
+				resolve();
+			};
+			this.client.activate();
+		});
+
+	}
+
+	send(topic, message) {
+		if (typeof topic !== 'string') {
+			throw Error(`Invalid destination type:${typeof topic}`);
+		}
+		if (typeof message !== 'string') {
+			throw Error(`Invalid body type:${typeof message}`);
+		}
+		this.client.publish({
+			destination: topic,
+			body: message,
+			// skipContentLengthHeader: true, // TODO ??
+			// headers: {'priority': '9'} // TODO ??
+		});
+	}
+
+	/**
+	 *
+	 * @return {ITransaction}
+	 */
+	createTransaction() {
+		return this.client.begin();
+	}
+
+	/**
+	 *
+	 * @param {ITransaction} tx
+	 */
+	commit(tx) {
+		tx.commit();
+	}
+
+	/**
+	 *
+	 * @param {ITransaction} tx
+	 */
+	cancel(tx) {
+		tx.abort();
+	}
+
+	/**
+	 *
+	 * @param topic
+	 * @param {function(message:IMessage)} listener
+	 * @return {StompSubscription}
+	 */
+	subscribe(topic, listener) {
+		return this.client.subscribe(topic, listener);
 	}
 
 	close() {
 		this.client.deactivate();
 		delete this.client.onConnect;
 		delete this.client.onStompError;
+		delete this.client.onWebSocketClose;
 	}
 }
 

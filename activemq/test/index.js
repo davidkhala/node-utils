@@ -5,9 +5,15 @@ const sleep = async (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
 const task = async () => {
-
-	conn.connect();
-	await sleep(10000);
+	const topic = 'a';
+	await conn.connect();
+	const listener = conn.subscribe(topic, ({body, headers}) => {
+		console.log({body, headers});
+		listener.unsubscribe();
+	});
+	await sleep(5000);
+	conn.send(topic, 'b');
+	await sleep(5000);
 	conn.close();
 };
 task();
