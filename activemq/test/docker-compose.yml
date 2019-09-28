@@ -1,6 +1,6 @@
 version: '2'
 services:
-  activemq:
+  activemq-classic:
     image: rmohr/activemq
     ports:
       - 61616:61616 # JMS
