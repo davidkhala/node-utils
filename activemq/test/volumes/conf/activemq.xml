@@ -34,6 +34,13 @@
           init-method="start" destroy-method="stop">
     </bean>
 
+    <bean id="mysql-ds" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://192.168.3.1:3306/activemq?relaxAutoCommit=true"/>
+        <property name="username" value="root"/>
+        <property name="password" value="password"/>
+        <property name="poolPreparedStatements" value="true"/>
+    </bean>
     <!--
         The <broker> element is used to configure the ActiveMQ broker.
     -->
@@ -79,7 +86,8 @@
             http://activemq.apache.org/persistence.html
         -->
         <persistenceAdapter>
-            <kahaDB directory="${activemq.data}/kahadb"/>
+<!--            <kahaDB directory="${activemq.data}/kahadb"/>-->
+            <jdbcPersistenceAdapter dataDirectory="${activemq.data}/mysql" dataSource="#mysql-ds"/>
         </persistenceAdapter>
 
 
