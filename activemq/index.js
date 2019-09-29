@@ -115,9 +115,11 @@ class STOMP {
 
 	close() {
 		this.client.deactivate();
-		delete this.client.onConnect;
-		delete this.client.onStompError;
-		delete this.client.onWebSocketClose;
+		this.client.onWebSocketClose = () => {
+			delete this.client.onConnect;
+			delete this.client.onStompError;
+			delete this.client.onWebSocketClose;
+		};
 	}
 }
 
