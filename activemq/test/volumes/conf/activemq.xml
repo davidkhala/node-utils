@@ -86,8 +86,8 @@
             http://activemq.apache.org/persistence.html
         -->
         <persistenceAdapter>
-<!--            <kahaDB directory="${activemq.data}/kahadb"/>-->
-            <jdbcPersistenceAdapter dataDirectory="${activemq.data}/mysql" dataSource="#mysql-ds"/>
+            <kahaDB directory="${activemq.data}/kahadb"/>
+<!--            <jdbcPersistenceAdapter dataSource="#mysql-ds" createTablesOnStartup="false" useDatabaseLock="false"/>-->
         </persistenceAdapter>
 
 
