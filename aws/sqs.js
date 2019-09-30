@@ -23,8 +23,7 @@ class SQS extends AWSClass {
 			opts.QueueName = `${QueueName}.fifo`;
 		}
 		const createResult = await this.sqs.createQueue(opts).promise();
-		const {ResponseMetadata: {RequestId}, QueueUrl} = createResult;
-		return QueueUrl;
+		return createResult.QueueUrl;
 	}
 
 	async getQueueUrl(QueueName) {
@@ -34,19 +33,25 @@ class SQS extends AWSClass {
 
 	/**
 	 * If you delete a queue, you must wait at least 60 seconds before creating a queue with the same name.
-	 * @param topic
+	 * @param QueueUrl
 	 * @return {Promise<{} & {$response: Response<{}, AWSError>}>}
 	 */
-	async destroy(topic) {
+	async destroy(QueueUrl) {
 		const opts = {
-			QueueUrl: topic // TODO not QueueName ?
+			QueueUrl: QueueUrl // NOTE: not QueueName
 		};
 
 		return await this.sqs.purgeQueue(opts).promise();
 	}
 
+	/**
+	 *
+	 * @return {Promise<String[]>}
+	 */
 	async list() {
-		return this.sqs.listQueues().promise();
+		const listResult = await this.sqs.listQueues().promise();
+		const {QueueUrls}= listResult;
+		return QueueUrls;
 	}
 
 	async send(topic, message) {
