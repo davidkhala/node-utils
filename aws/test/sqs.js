@@ -5,18 +5,20 @@ const queue = 'topicA';
 const sleep = async (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
-const task = async () => {
-	await sqs.create(queue);
+const destoryTask = async () => {
 	let queues = await sqs.list();
-	console.debug(queues);
-
 	await sqs.destroy(queues[0]);
 	queues = await sqs.list();
 	console.debug('immediate after deletion', queues);
 	await sleep(61000);
 	queues = await sqs.list();
-	console.debug('60 seconds after deletion', queues);
+	console.debug('61 seconds after deletion', queues);
 };
-task();
+const task = async () => {
+	await sqs.create(queue);
+	await destoryTask();
+
+};
+destoryTask();
 
 
