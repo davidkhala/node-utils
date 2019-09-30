@@ -19,3 +19,14 @@ exports.regions = [
 	'eu-north-1',
 	'sa-east-1'
 ];
+class AWSClass {
+	constructor() {
+		this.AWS = require('aws-sdk');
+	}
+
+	updateRegion(region) {
+		this.AWS.config.update({region});
+	}
+}
+
+exports.AWSClass = AWSClass;

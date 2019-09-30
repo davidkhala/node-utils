@@ -1,8 +1,9 @@
-const AWS = require('aws-sdk');
+const {AWSClass} = require('./');
 
-class SQS {
+class SQS extends AWSClass {
 	constructor() {
-		this.sqs = new AWS.SQS({apiVersion: '2012-11-05'});
+		super();
+		this.sqs = new this.AWS.SQS({apiVersion: '2012-11-05'});
 	}
 
 	/**

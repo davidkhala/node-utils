@@ -1,10 +1,11 @@
-const AWS = require('aws-sdk');
+const {AWSClass} = require('./');
 
-class S3 {
+class S3 extends AWSClass {
 	constructor(region, apiVersion = '2006-03-01') {
-		AWS.config.update({region});
+		super();
+		this.updateRegion(region);
 		this.region = region;
-		this.s3 = new AWS.S3({apiVersion});
+		this.s3 = new this.AWS.S3({apiVersion});
 		this.endpoint = this.s3.endpoint;
 	}
 
