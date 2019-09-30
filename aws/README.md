@@ -22,7 +22,8 @@ Total: 41M
     - sample `QueueName`: topicA
     - sample `QueueUrl`: https://sqs.ap-southeast-1.amazonaws.com/616879594671/topicA
     - aws provide `sqs.getQueueUrl` to get QueueUrl from QueueName  
-
+- no way to subscribe listener,only polling to receiveMessage is supported [pull] like kafka
+- [message lag] If the number of messages in the queue is extremely small, you might not receive any messages in a particular ReceiveMessage response. If this happens, repeat the request.
 ### AWS MQ
 - Amazon MQ is a managed message broker service for Apache ActiveMQ, provides support for ActiveMQ versions 5.15.0, 5.15.6, 5.15.8, and 5.15.9.
 

@@ -59,22 +59,55 @@ class SQS extends AWSClass {
 		return QueueUrls;
 	}
 
-	async send(topic, message) {
+	/**
+	 *
+	 * @param QueueUrl
+	 * @param message
+	 * @param extraOpts for attribute `DelaySeconds`, `MessageGroupId`
+	 * @return {Promise<SQS.SendMessageResult>}
+	 */
+	async send(QueueUrl, message, extraOpts = {}) {
 		const opts = {
 			MessageBody: message,
-			QueueUrl: topic,
-			DelaySeconds: 0
+			QueueUrl
 		};
-		return this.sqs.sendMessage(opts).promise();
+		Object.assign(opts, extraOpts);
+		return await this.sqs.sendMessage(opts).promise();
 	}
 
+	/**
+	 *
+	 * @param QueueUrl
+	 * @param WaitTimeSeconds
+	 * @param MaxNumberOfMessages
+	 * @return {Promise<SQS.Message[]>}
+	 */
+	async get(QueueUrl, {WaitTimeSeconds, MaxNumberOfMessages} = {MaxNumberOfMessages: 1}) {
+		const opts = {QueueUrl};
+		if (WaitTimeSeconds && typeof WaitTimeSeconds === 'number') {
+			opts.WaitTimeSeconds = WaitTimeSeconds;
+		}
+		if (MaxNumberOfMessages && typeof MaxNumberOfMessages === 'number') {
+			opts.MaxNumberOfMessages = MaxNumberOfMessages;
+		}
+
+		const {Messages} = await this.sqs.receiveMessage(opts).promise();
+		return Messages;
+	}
+
+	/**
+	 *
+	 * @param topic
+	 * @param message
+	 * @param ReceiptHandle An identifier associated with the act of receiving the message. A new receipt handle is returned every time you receive a message. When deleting a message, you provide the last received receipt handle to delete the message.
+	 */
 	async delete(topic, message, ReceiptHandle) {
 		const opts = {
 			QueueUrl: topic,
 			ReceiptHandle
 		};
 
-		return this.sqs.deleteMessage(opts).promise();
+		await this.sqs.deleteMessage(opts).promise();
 	}
 }
 
