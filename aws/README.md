@@ -15,6 +15,9 @@ Total: 41M
 ### AWS S3
 - s3 bucket name only accept lowercase
 
+### AWS SQS
+- AWS.SimpleQueueService.PurgeQueueInProgress: Only one PurgeQueue operation on ${QueueName} is allowed every 60 seconds.
+
 ### AWS MQ
 - Amazon MQ is a managed message broker service for Apache ActiveMQ, provides support for ActiveMQ versions 5.15.0, 5.15.6, 5.15.8, and 5.15.9.
 
