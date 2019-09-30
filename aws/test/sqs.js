@@ -2,6 +2,7 @@ const {SQS} = require('../sqs');
 const region = 'ap-southeast-1';
 const sqs = new SQS(region);
 const queue = 'topicA';
+const message = 'messageB';
 const sleep = async (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
@@ -16,10 +17,14 @@ const destroyTask = async () => {
 	console.debug(`${sleepTime / 1000} seconds after deletion`, queues);
 };
 const task = async () => {
-	await sqs.create(queue);
+	const QueueUrl = await sqs.create(queue);
+
+	await sqs.send(QueueUrl, message);
+	const Messages = await sqs.receive(QueueUrl);
+	console.debug(Messages);
 	await destroyTask();
 
 };
-destroyTask();
+task();
 
 

@@ -82,7 +82,7 @@ class SQS extends AWSClass {
 	 * @param MaxNumberOfMessages
 	 * @return {Promise<SQS.Message[]>}
 	 */
-	async get(QueueUrl, {WaitTimeSeconds, MaxNumberOfMessages} = {MaxNumberOfMessages: 1}) {
+	async receive(QueueUrl, {WaitTimeSeconds, MaxNumberOfMessages} = {MaxNumberOfMessages: 1}) {
 		const opts = {QueueUrl};
 		if (WaitTimeSeconds && typeof WaitTimeSeconds === 'number') {
 			opts.WaitTimeSeconds = WaitTimeSeconds;
