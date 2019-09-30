@@ -11,7 +11,7 @@ class SQS extends AWSClass {
 	 *
 	 * @param QueueName
 	 * @param FifoQueue Designates a queue as FIFO, When you set this attribute, you must also provide the `MessageGroupId` for your messages explicitly.
-	 * @return {Promise<SQS.CreateQueueResult & {$response: Response<SQS.CreateQueueResult, AWSError>}>}
+	 * @return {Promise<String>} QueueUrl
 	 */
 	async create(QueueName, {FifoQueue} = {}) {
 		const opts = {
@@ -23,9 +23,8 @@ class SQS extends AWSClass {
 			opts.QueueName = `${QueueName}.fifo`;
 		}
 		const createResult = await this.sqs.createQueue(opts).promise();
-		console.debug(createResult);
-
-		return createResult;
+		const {ResponseMetadata: {RequestId}, QueueUrl} = createResult;
+		return QueueUrl;
 	}
 
 	async getQueueUrl(QueueName) {
