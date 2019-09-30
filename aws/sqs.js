@@ -1,8 +1,9 @@
 const {AWSClass} = require('./');
 
 class SQS extends AWSClass {
-	constructor() {
+	constructor(region) {
 		super();
+		this.updateRegion(region);
 		this.sqs = new this.AWS.SQS({apiVersion: '2012-11-05'});
 	}
 
