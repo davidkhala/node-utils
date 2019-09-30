@@ -11,4 +11,3 @@ services:
       - 61614:61614 # WS
     volumes:
       - ./volumes/conf:/opt/activemq/conf
-      - ./volumes/data:/opt/activemq/data
