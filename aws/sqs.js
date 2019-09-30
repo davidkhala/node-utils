@@ -32,16 +32,21 @@ class SQS extends AWSClass {
 	}
 
 	/**
-	 * If you delete a queue, you must wait at least 60 seconds before creating a queue with the same name.
+	 * Deletes the queue specified by the QueueUrl, regardless of the queue's contents.
 	 * @param QueueUrl
-	 * @return {Promise<{} & {$response: Response<{}, AWSError>}>} { ResponseMetadata: { RequestId: string } } }
 	 */
 	async destroy(QueueUrl) {
-		const opts = {
-			QueueUrl: QueueUrl // NOTE: not QueueName
-		};
+		const opts = {QueueUrl};
+		await this.sqs.deleteQueue(opts).promise();
+	}
 
-		return await this.sqs.purgeQueue(opts).promise();
+	/**
+	 * Deletes the messages in a queue specified by the QueueURL parameter.
+	 * @param QueueUrl
+	 */
+	async clean(QueueUrl) {
+		const opts = {QueueUrl};
+		await this.sqs.purgeQueue(opts).promise();
 	}
 
 	/**
@@ -50,7 +55,7 @@ class SQS extends AWSClass {
 	 */
 	async list() {
 		const listResult = await this.sqs.listQueues().promise();
-		const {QueueUrls}= listResult;
+		const {QueueUrls} = listResult;
 		return QueueUrls;
 	}
 

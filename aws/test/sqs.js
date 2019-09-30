@@ -5,7 +5,7 @@ const queue = 'topicA';
 const sleep = async (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
-const destoryTask = async () => {
+const destroyTask = async () => {
 	let queues = await sqs.list();
 	await sqs.destroy(queues[0]);
 	queues = await sqs.list();
@@ -16,9 +16,9 @@ const destoryTask = async () => {
 };
 const task = async () => {
 	await sqs.create(queue);
-	await destoryTask();
+	await destroyTask();
 
 };
-destoryTask();
+destroyTask();
 
 
