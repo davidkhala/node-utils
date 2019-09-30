@@ -11,7 +11,7 @@ class SQS {
 	 * @param FifoQueue Designates a queue as FIFO, When you set this attribute, you must also provide the `MessageGroupId` for your messages explicitly.
 	 * @return {Promise<SQS.CreateQueueResult & {$response: Response<SQS.CreateQueueResult, AWSError>}>}
 	 */
-	async create(QueueName, {FifoQueue}) {
+	async create(QueueName, {FifoQueue} = {}) {
 		const opts = {
 			QueueName,
 			Attributes: {}

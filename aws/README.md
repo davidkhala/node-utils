@@ -8,8 +8,14 @@ Total: 41M
 - aws-sdk API reference: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/
 
 ## Notes
-- promisify: use `.promise()` instead of callBack function
+- AWS Request promisify: use `.promise()` instead of callBack function
 - apply IAM role(with 'AdministratorAccess') to EC2, otherwise `CredentialsError: Missing credentials in config`
     - Console -> Service: EC2 -> select an instance -> `Actions` -- `Instance Settings` -- `Attach/Replace IAM Role`
-- s3 bucket name only accept lowercase 
+
+### AWS S3
+- s3 bucket name only accept lowercase
+
+### AWS MQ
+- Amazon MQ is a managed message broker service for Apache ActiveMQ, provides support for ActiveMQ versions 5.15.0, 5.15.6, 5.15.8, and 5.15.9.
+
 ## TODO
