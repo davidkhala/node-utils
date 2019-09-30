@@ -10,9 +10,10 @@ const destroyTask = async () => {
 	await sqs.destroy(queues[0]);
 	queues = await sqs.list();
 	console.debug('immediate after deletion', queues);
-	await sleep(61000);
+	const sleepTime = 61000;
+	await sleep(sleepTime);
 	queues = await sqs.list();
-	console.debug('61 seconds after deletion', queues);
+	console.debug(`${sleepTime / 1000} seconds after deletion`, queues);
 };
 const task = async () => {
 	await sqs.create(queue);
