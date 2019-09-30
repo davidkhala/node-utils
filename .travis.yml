@@ -21,7 +21,7 @@ script:
   - ./main/test/requireTest/test.sh
   - ./pm2/test/CLI/test.sh
   - node sequelize/test
-  - cd activemq/test;docker-compose up ; node index.js; cd -
+  - cd activemq/test;docker-compose up -d; node index.js; cd -
 deploy:
   provider: script
   script: bash .travisDeploy.sh
