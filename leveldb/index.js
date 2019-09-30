@@ -28,7 +28,7 @@ class LevelDB extends DBInterface {
 	}
 
 	async get(key) {
-		return this.connection.receive(key);
+		return this.connection.get(key);
 	}
 
 	async list(opts, onClose) {
