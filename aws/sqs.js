@@ -34,7 +34,7 @@ class SQS extends AWSClass {
 	/**
 	 * If you delete a queue, you must wait at least 60 seconds before creating a queue with the same name.
 	 * @param QueueUrl
-	 * @return {Promise<{} & {$response: Response<{}, AWSError>}>}
+	 * @return {Promise<{} & {$response: Response<{}, AWSError>}>} { ResponseMetadata: { RequestId: string } } }
 	 */
 	async destroy(QueueUrl) {
 		const opts = {
