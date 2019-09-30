@@ -1,0 +1,1 @@
+docker push davidkhala/activemq-mysql

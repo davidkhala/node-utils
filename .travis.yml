@@ -4,6 +4,8 @@ services:
 node_js:
   - "8"
 dist: bionic
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 install:
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setup
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password --init
@@ -19,5 +21,8 @@ script:
   - ./main/test/requireTest/test.sh
   - ./pm2/test/CLI/test.sh
   - node sequelize/test
-  - cd activemq/test;docker-compose up -d ; node index.js; cd -
+  - cd activemq/test;docker-compose up ; node index.js; cd -
+deploy:
+  provider: script
+  script: bash .travisDeploy.sh
 
