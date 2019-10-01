@@ -85,6 +85,9 @@ class SQS extends AWSClass {
 	async receive(QueueUrl, {WaitTimeSeconds, MaxNumberOfMessages} = {MaxNumberOfMessages: 1}) {
 		const opts = {QueueUrl};
 		if (WaitTimeSeconds && typeof WaitTimeSeconds === 'number') {
+			if(WaitTimeSeconds<0 || WaitTimeSeconds>20 ){
+				throw Error(`Invalid WaitTimeSeconds ${WaitTimeSeconds}; Valid value should be an integer from 0 to 20 (seconds)`)
+			}
 			opts.WaitTimeSeconds = WaitTimeSeconds;
 		}
 		if (MaxNumberOfMessages && typeof MaxNumberOfMessages === 'number') {
