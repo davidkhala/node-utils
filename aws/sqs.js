@@ -26,6 +26,10 @@ class SQS extends AWSClass {
 		return createResult.QueueUrl;
 	}
 
+	/**
+	 *
+	 * @param {string} QueueName
+	 */
 	async getQueueUrl(QueueName) {
 		const {QueueUrl} = await this.sqs.getQueueUrl({QueueName}).promise();
 		return QueueUrl;
@@ -33,7 +37,7 @@ class SQS extends AWSClass {
 
 	/**
 	 * Deletes the queue specified by the QueueUrl, regardless of the queue's contents.
-	 * @param QueueUrl
+	 * @param {string} QueueUrl
 	 */
 	async destroy(QueueUrl) {
 		const opts = {QueueUrl};
@@ -61,9 +65,9 @@ class SQS extends AWSClass {
 
 	/**
 	 *
-	 * @param QueueUrl
-	 * @param message
-	 * @param extraOpts for attribute `DelaySeconds`, `MessageGroupId`
+	 * @param {string} QueueUrl
+	 * @param {string} message
+	 * @param {object} extraOpts for attribute `DelaySeconds`, `MessageGroupId`
 	 * @return {Promise<SQS.SendMessageResult>}
 	 */
 	async send(QueueUrl, message, extraOpts = {}) {
@@ -77,7 +81,7 @@ class SQS extends AWSClass {
 
 	/**
 	 *
-	 * @param QueueUrl
+	 * @param {string} QueueUrl
 	 * @param WaitTimeSeconds
 	 * @param MaxNumberOfMessages
 	 * @return {Promise<SQS.Message[]>}
@@ -85,8 +89,8 @@ class SQS extends AWSClass {
 	async receive(QueueUrl, {WaitTimeSeconds, MaxNumberOfMessages} = {MaxNumberOfMessages: 1}) {
 		const opts = {QueueUrl};
 		if (WaitTimeSeconds && typeof WaitTimeSeconds === 'number') {
-			if(WaitTimeSeconds<0 || WaitTimeSeconds>20 ){
-				throw Error(`Invalid WaitTimeSeconds ${WaitTimeSeconds}; Valid value should be an integer from 0 to 20 (seconds)`)
+			if (WaitTimeSeconds < 0 || WaitTimeSeconds > 20) {
+				throw Error(`Invalid WaitTimeSeconds ${WaitTimeSeconds}; Valid value should be an integer from 0 to 20 (seconds)`);
 			}
 			opts.WaitTimeSeconds = WaitTimeSeconds;
 		}
@@ -100,13 +104,12 @@ class SQS extends AWSClass {
 
 	/**
 	 *
-	 * @param topic
-	 * @param message
-	 * @param ReceiptHandle An identifier associated with the act of receiving the message. A new receipt handle is returned every time you receive a message. When deleting a message, you provide the last received receipt handle to delete the message.
+	 * @param {string} QueueUrl
+	 * @param {string} ReceiptHandle An identifier associated with the act of receiving the message. A new receipt handle is returned every time you receive a message. When deleting a message, you provide the last received receipt handle to delete the message.
 	 */
-	async delete(topic, message, ReceiptHandle) {
+	async delete(QueueUrl, ReceiptHandle) {
 		const opts = {
-			QueueUrl: topic,
+			QueueUrl,
 			ReceiptHandle
 		};
 
