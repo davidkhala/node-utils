@@ -1,6 +1,10 @@
 const {AWSClass} = require('./');
 
 class SQS extends AWSClass {
+	/**
+	 *
+	 * @param {AWSRegion} region
+	 */
 	constructor(region) {
 		super();
 		this.updateRegion(region);
@@ -9,8 +13,8 @@ class SQS extends AWSClass {
 
 	/**
 	 *
-	 * @param QueueName
-	 * @param FifoQueue Designates a queue as FIFO, When you set this attribute, you must also provide the `MessageGroupId` for your messages explicitly.
+	 * @param {string} QueueName
+	 * @param {boolean} FifoQueue Designates a queue as FIFO, When you set this attribute, you must also provide the `MessageGroupId` for your messages explicitly.
 	 * @return {Promise<String>} QueueUrl
 	 */
 	async create(QueueName, {FifoQueue} = {}) {
@@ -46,7 +50,7 @@ class SQS extends AWSClass {
 
 	/**
 	 * Deletes the messages in a queue specified by the QueueURL parameter.
-	 * @param QueueUrl
+	 * @param {string} QueueUrl
 	 */
 	async clean(QueueUrl) {
 		const opts = {QueueUrl};
@@ -82,8 +86,8 @@ class SQS extends AWSClass {
 	/**
 	 *
 	 * @param {string} QueueUrl
-	 * @param WaitTimeSeconds
-	 * @param MaxNumberOfMessages
+	 * @param {number} WaitTimeSeconds
+	 * @param {number} MaxNumberOfMessages
 	 * @return {Promise<SQS.Message[]>}
 	 */
 	async receive(QueueUrl, {WaitTimeSeconds, MaxNumberOfMessages} = {MaxNumberOfMessages: 1}) {

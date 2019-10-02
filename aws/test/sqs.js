@@ -25,7 +25,7 @@ const task = async () => {
 	await sqs.delete(QueueUrl, ReceiptHandle);
 	Messages = await sqs.receive(QueueUrl);
 	console.debug('after delete', Messages);
-	// await destroyTask();
+	await destroyTask();
 
 };
 task();

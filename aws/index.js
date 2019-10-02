@@ -1,3 +1,7 @@
+/**
+ *
+ * @type {AWSRegion[]} regions
+ */
 exports.regions = [
 	'us-east-2',
 	'us-east-1',
