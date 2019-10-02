@@ -1,8 +1,19 @@
 const AMPQlib = require('amqplib');
 
 class AMPQ {
-	constructor(url) {
-		this.url = url;
+	/**
+	 *
+	 * @param {{domain:string, username:string, password:string}} opts
+	 */
+	constructor(opts) {
+		if (opts) {
+			const {domain = 'localhost', username, password} = opts;
+			this.url = `amqp://${username}:${password}@${domain}:5672`;
+		} else {
+			// If the URI is omitted entirely, it will default to 'amqp://localhost'
+			this.url = 'amqp://localhost';
+		}
+
 	}
 
 	async send(topic, message) {
@@ -22,6 +33,9 @@ class AMPQ {
 	async connect() {
 		this.client = await AMPQlib.connect(this.url);
 		this.channel = await this.client.createChannel();
+	}
+	async close(){
+		await this.client.close()
 	}
 }
 
