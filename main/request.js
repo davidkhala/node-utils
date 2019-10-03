@@ -16,6 +16,12 @@ exports.RequestPromise = async ({url, body, method = 'POST', formData}, otherOpt
 		}
 		Request(opts, (err, resp, body) => {
 			if (err) reject(err);
+			const {statusCode, statusMessage} = resp;
+			if (statusCode >= 400) {
+				reject({statusCode, statusMessage, resp, body});
+			} else if (statusCode !== 200) {
+				logger.debug({url, statusCode, statusMessage});
+			}
 			resolve(body);
 		});
 	});
