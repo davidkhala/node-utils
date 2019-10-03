@@ -31,5 +31,5 @@ module.exports = {
 		logger.level = levels[level];
 		return logger;
 	},
-	syntax: () => require('./syntax')
+	syntax: require('./syntax')
 };

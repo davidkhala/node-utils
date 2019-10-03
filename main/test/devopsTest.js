@@ -1,6 +1,6 @@
 const logger = require('../.').devLogger('devops');
 const devOps = require('../devOps');
-logger.info({tempdir: devOps.tempdir});
+
 
 const killProcess = async port => {
 	const isInUse = await devOps.isPortInUse(port);
@@ -12,7 +12,7 @@ const killProcess = async port => {
 	}
 };
 const execDetachTest = async () => {
-	const cmd = '/home/davidliu/Documents/delphi-fabric/common/bin/configtxlator start';
+	const cmd = '/home/davidliu/Documents/delphi-fabric/common/bin/configtxlator start --hostname=0.0.0.0 --port=7059 --CORS=*';
 	await devOps.execDetach(cmd);
 };
 
@@ -31,6 +31,7 @@ const taskConfigtxlator = async () => {
 	await execDetachTest();
 };
 const task = async () => {
+	logger.info({tempdir: devOps.tempdir});
 	await execTest();
 };
 task();

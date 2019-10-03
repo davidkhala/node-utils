@@ -2,7 +2,7 @@ const localhost = '127.0.0.1';
 exports.localhost = localhost;
 const os = require('os');
 const childProcess = require('child_process');
-const findProcess = require('find-process');
+
 exports.hostname = os.hostname;
 exports.tempdir = os.tmpdir();
 exports.homedir = os.homedir();
@@ -42,7 +42,7 @@ exports.exec = exec;
  * @returns {Promise<processObject[]>}
  */
 exports.findProcess = async (type, value, strict) => {
-
+	const findProcess = require('find-process');
 	await exec('netstat >/dev/null'); // throw if not exist
 	return findProcess(type, value, strict);
 };
@@ -57,10 +57,10 @@ exports.killProcess = async (pid) => {
  */
 exports.execDetach = (command, stdLogFile) => {
 	const {spawn} = childProcess;
-
-	const [cmd, ...args] = command.split(' ');
-
+	const {splitBySpace} = require('./syntax');
+	const [cmd, ...args] = splitBySpace(command);
 	const ignore = 'ignore';// string 'ignore' is a key word
+	// flag 'a' - Open file for appending. The file is created if it does not exist.
 	const out = stdLogFile ? fs.openSync(stdLogFile, 'a') : ignore;// for stdout
 	const err = stdLogFile ? fs.openSync(stdLogFile, 'a') : ignore;// for stderr
 	const stdio = [ignore, out, err];
