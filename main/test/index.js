@@ -5,4 +5,4 @@ require('./randomTest');
 require('./versionTest');
 require('./yaml');
 require('./formatTest');
-require('./syntax');
+require('./syntaxTest');
