@@ -16,3 +16,6 @@ const obj = {
 const {a} = obj;
 a.entry = 'c';
 logger.debug(obj);
+let {entry} = a;
+entry = 'd';
+logger.debug(obj);
