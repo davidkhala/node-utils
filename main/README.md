@@ -14,3 +14,6 @@ Total: 11M
     - axios:        644K
 - winston:  776K
 - log4js:   6.7M    (dev)
+
+## TODO
+- move "khala-logger" out of dependency
