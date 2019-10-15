@@ -13,7 +13,9 @@ exports.homeResolve = (...tokens) => {
 exports.JSONEqual = (json1, json2) => {
 	return JSON.stringify(JSON.parse(json1)) === JSON.stringify(JSON.parse(json2));
 };
-
+exports.ObjectEqual = (object1, object2) => {
+	return JSON.stringify(object1) === JSON.stringify(object2);
+};
 const sleep = async (ms, silent) => {
 	if (!silent) {
 		logger.debug(`sleep ${ms}ms`);
