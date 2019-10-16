@@ -12,5 +12,10 @@
   "dependencies": {
     "pm2": "^3.5.1",
     "khala-logger": "^0.0.0"
+  },
+  "devDependencies": {
+    "bluebird": "^3.7.1",
+    "khala-nodeutils": "^0.7.3",
+    "khala-sequelize": "^0.1.4"
   }
 }

@@ -15,7 +15,18 @@ follows [SEMVER](https://semver.org/)
 - khala-grpc
 - khala-sequelize: nodejs ORM powered by npm sequelize 
 
-# Notes
+## Performance
+
+### Nodejs Memory usage
+| Examples                      | Memory Usage (MB)     |
+| ----                          |:----:                 |
+| sleeping process (setTimeOut) | 35                    |
+| http server (native implement)| 38                    |
+| khala-nodeutils index         | 47 - 60               |
+| khala-sequelize               | 41 - 49               |
+
+## Notes
+
 - `npm publish`
     - npm version increment: https://docs.npmjs.com/cli/version
     - npm user: `npm login`,  `npm whoami`
@@ -28,7 +39,7 @@ follows [SEMVER](https://semver.org/)
     - `secureProtocol` The TLS protocol version to use. [Option list:`secureProtocols`](./main/baseApp.js). It is not recommended to use TLS versions less than 1.2. Default: none
 - node-gyp rebuild require `make` and `g++`
 - npm install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
-# TODO
+## TODO
 - try stressTest on sequenlize
 - there is no automatic way to manage npm token explicitly
 - build a light-weight https proxy server
