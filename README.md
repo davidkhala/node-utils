@@ -24,6 +24,7 @@ follows [SEMVER](https://semver.org/)
 | http server (native implement)| 38                    |
 | khala-nodeutils index         | 47 - 60               |
 | khala-sequelize               | 41 - 49               |
+| khala-sequelize + mysql connection instance| 56               |
 
 ## Notes
 
