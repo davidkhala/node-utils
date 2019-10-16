@@ -8,6 +8,7 @@ module.exports = {
 	yaml: require('./yaml'),
 	version: require('./version'),
 	format: require('./format'),
+	syntax: require('./syntax'),
 	/**
 	 *
 	 * @param {string} moduleName
@@ -31,5 +32,9 @@ module.exports = {
 		logger.level = levels[level];
 		return logger;
 	},
-	syntax: require('./syntax')
+
+	useBlueBird: () => {
+		global.Promise = require('bluebird');
+	}
+
 };
