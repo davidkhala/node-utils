@@ -23,6 +23,7 @@ exports.new = (moduleName, level = 4) => {
 				colorize: true,
 				label: moduleName,
 				timestamp: true,
+				prettyPrint: true
 			})
 		]
 	});

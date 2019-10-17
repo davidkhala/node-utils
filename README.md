@@ -22,9 +22,11 @@ follows [SEMVER](https://semver.org/)
 | ----                          |:----:                 |
 | sleeping process (setTimeOut) | 35                    |
 | http server (native implement)| 38                    |
-| khala-nodeutils index         | 47 - 60               |
-| khala-sequelize               | 41 - 49               |
-| khala-sequelize + mysql connection instance| 56               |
+| khala-nodeutils index         | 60               |
+| khala-sequelize               | 49               |
+| khala-sequelize + mysql connection instance| 56       |
+| Empty express.js server       | 63                    |
+
 
 ## Notes
 

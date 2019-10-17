@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "winston": "^2.4.4"
+  },
+  "devDependencies": {
+    "log4js": "^5.2.2"
   }
 }
