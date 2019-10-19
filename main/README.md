@@ -16,4 +16,3 @@ Total: 11M
 - log4js:   6.7M    (dev)
 
 ## TODO
-- move "khala-logger" out of dependency

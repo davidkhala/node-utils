@@ -1,16 +1,8 @@
 const port = 4000;
-const {baseApp, helper, logger: Logger, devLogger} = require('../../index');
+const {baseApp, helper} = require('../../index');
 const {run, expressError} = baseApp;
 const {trimExtName} = helper;
 const {errorSyntaxHandle} = require('../baseAppHandlers');
-const moduleName = 'test:node-utils';
-let logger;
-if (process.env.deployment === 'prd') {
-	logger = Logger.new(moduleName);
-} else {
-	logger = devLogger(moduleName);
-}
-
 
 const {app} = run(port);
 const path = require('path');
@@ -31,4 +23,4 @@ for (const filename of files) {
 	app.use(routing, require(path.resolve(RouterDir, filename)));
 }
 
-expressError(app, errorSyntaxHandle, logger);
+expressError(app, errorSyntaxHandle);
