@@ -1,3 +1,6 @@
+/**
+ * Do not put syntax test here but in `test/syntaxTest.js`**
+ */
 const Syntax = require('../syntax');
 const logger = require('khala-logger/dev').devLogger('syntax test');
 const splitBySpaceTest = () => {
@@ -10,35 +13,10 @@ start \
 	const tokens = Syntax.splitBySpace(str);
 	logger.debug(tokens);
 };
-const objectAssignTest = () => {
-	const obj = {
-		a: {
-			entry: 'b'
-		}
-	};
-	const {a} = obj;
-	a.entry = 'c';
-	logger.debug(obj);
-	let {entry} = a;
-	entry = 'd';
-	logger.debug(obj);
-};
-const util = require('util');
-const JSONStringfyTest = () => {
-	const complexObj = {
-		a: 'b',
-		next: this.next
-	};
 
-	console.log(JSON.stringify(complexObj));
-	console.log(util.format('%j', complexObj));
-};
 const task = () => {
 	splitBySpaceTest();
-	objectAssignTest();
-	JSONStringfyTest();
 };
 
-// task();
-JSONStringfyTest();
+task();
 

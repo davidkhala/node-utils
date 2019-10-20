@@ -7,6 +7,7 @@ follows [SEMVER](https://semver.org/)
 
 
 ## module lists
+**Do not put syntax test in khala-nodeutils but in `test/syntaxTest.js`**
 - khala-kvdb:   key-value data base abstract class
 - khala-level:  leveldb toolset
 - khala-logger: logger toolset 
