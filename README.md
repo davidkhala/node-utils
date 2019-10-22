@@ -31,6 +31,8 @@ follows [SEMVER](https://semver.org/)
 
 ## Notes
 
+- Ternary Operator in some case could be simplified as 
+    `a = a ? a : b` => `a = a || b` 
 - `npm publish`
     - npm version increment: https://docs.npmjs.com/cli/version
     - npm user: `npm login`,  `npm whoami`
@@ -43,6 +45,7 @@ follows [SEMVER](https://semver.org/)
     - `secureProtocol` The TLS protocol version to use. [Option list:`secureProtocols`](./main/baseApp.js). It is not recommended to use TLS versions less than 1.2. Default: none
 - node-gyp rebuild require `make` and `g++`
 - npm install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
+
 ## TODO
 - try stressTest on sequenlize
 - there is no automatic way to manage npm token explicitly
