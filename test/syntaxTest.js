@@ -44,7 +44,7 @@ const objectAssignTest = () => {
 
 const JSONStringifyTest = () => {
 	const complexObj = {
-		a: 'b',
+		a: 'b'
 	};
 	complexObj.this = complexObj;
 	try {
@@ -94,7 +94,18 @@ const loadObjectTest = () => {
 		logger.debug(file, object);
 	}
 };
-loadObjectTest();
+const forTest = () => {
+	const obj = {a: 'b'};
+	try {
+		for (const value of obj) {
+			console.log({value});
+		}
+	} catch (e) {
+		logger.info('error expected: TypeError: obj is not iterable');
+		logger.info(e);
+	}
+
+};
 const task = async () => {
 	await testArrowFunction();
 	testClass();
@@ -106,6 +117,7 @@ const task = async () => {
 	objectAssignTest();
 	JSONStringifyTest();
 	bufferNumTest();
+	forTest();
 };
 task();
 
