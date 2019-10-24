@@ -40,6 +40,8 @@ const objectAssignTest = () => {
 	let {entry} = a;
 	entry = 'd';
 	logger.debug(obj);
+	Object.assign(obj, {a: null});
+	logger.debug(obj);
 };
 
 const JSONStringifyTest = () => {
@@ -106,6 +108,12 @@ const forTest = () => {
 	}
 
 };
+const keyTest = () => {
+	const obj = {undefined: 'b'};
+	for (const [key, value] of Object.entries(obj)) {
+		console.log({key, value});
+	}
+};
 const task = async () => {
 	await testArrowFunction();
 	testClass();
@@ -118,6 +126,7 @@ const task = async () => {
 	JSONStringifyTest();
 	bufferNumTest();
 	forTest();
+	keyTest();
 };
 task();
 

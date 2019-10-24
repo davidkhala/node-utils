@@ -3,10 +3,44 @@ const Request = require('request');
 const {sleep} = require('./helper');
 const {isPath} = require('./format');
 const fs = require('fs');
-//formData: multipart/form-data
+
+/**
+ * @extends RequestExtraOptions
+ * @typedef {Object} RequestExtraOptions
+ * @property {boolean} [json]
+ * @property {string} [cert] client cert path
+ * @property {string} [key] client key path
+ * @property {string} [ca] rootCa cert path
+ * @property {boolean} [rejectUnauthorized]
+ * @property [passphrase]
+ */
+
+
+/**
+ *
+ * @param {RequestExtraOptions} otherOptions
+ */
+const requestExtraOptionsTransform = (otherOptions) => {
+	const {cert, key, ca} = otherOptions;
+	return Object.assign(otherOptions, {
+		cert: cert ? fs.readFileSync(cert) : undefined,
+		key: key ? fs.readFileSync(key) : undefined,
+		ca: ca ? fs.readFileSync(ca) : undefined
+	});
+};
+
+/**
+ *
+ * @param {string} url
+ * @param {Object} [body]
+ * @param {string} [method] http method
+ * @param [formData] multipart/form-data
+ * @param {RequestExtraOptions} [otherOptions]
+ * @return {Promise}
+ */
 exports.RequestPromise = async ({url, body, method = 'POST', formData}, otherOptions = {json: true}) => {
 	return new Promise((resolve, reject) => {
-		const opts = Object.assign(otherOptions, {
+		const opts = Object.assign(requestExtraOptionsTransform(otherOptions), {
 			method,
 			url,
 			body
@@ -15,7 +49,9 @@ exports.RequestPromise = async ({url, body, method = 'POST', formData}, otherOpt
 			opts.formData = formData;
 		}
 		Request(opts, (err, resp, body) => {
-			if (err) reject(err);
+			if (err) {
+				reject(err);
+			}
 			const {statusCode, statusMessage} = resp;
 			if (statusCode >= 400) {
 				reject({statusCode, statusMessage, resp, body});
@@ -45,7 +81,9 @@ exports.ping = async (serverBaseUrl, otherOptions = {}, timeInterval = 200, retr
 				logger.warn(`ping retry: ${retryCounter} of ${retryMax}`);
 				await sleep(timeInterval);
 				return aTry();
-			} else throw err;
+			} else {
+				throw err;
+			}
 		}
 
 	};
