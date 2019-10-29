@@ -15,6 +15,10 @@ Total: 41M
 ### AWS S3
 - s3 bucket name only accept lowercase
 
+### AWS CloudWatch
+- [statsD support](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html)
+
+
 ### AWS SQS
 - If you delete a queue, you must wait at least 60 seconds before creating a queue with the same name.
     - `AWS.SimpleQueueService.PurgeQueueInProgress: Only one PurgeQueue operation on ${QueueName} is allowed every 60 seconds.`
