@@ -51,6 +51,7 @@ exports.RequestPromise = async ({url, body, method = 'POST', formData}, otherOpt
 		Request(opts, (err, resp, body) => {
 			if (err) {
 				reject(err);
+				return; // when error, resp is undefined
 			}
 			const {statusCode, statusMessage} = resp;
 			if (statusCode >= 400) {
