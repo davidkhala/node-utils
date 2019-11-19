@@ -22,7 +22,7 @@ const fs = require('fs');
  */
 const requestExtraOptionsTransform = (otherOptions) => {
 	const {cert, key, ca} = otherOptions;
-	return Object.assign(otherOptions, {
+	return Object.assign({}, otherOptions, {
 		cert: cert ? fs.readFileSync(cert) : undefined,
 		key: key ? fs.readFileSync(key) : undefined,
 		ca: ca ? fs.readFileSync(ca) : undefined
