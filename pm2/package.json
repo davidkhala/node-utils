@@ -8,14 +8,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "pm2": "^3.5.1",
     "khala-logger": "^0.0.0"
   },
   "devDependencies": {
     "bluebird": "^3.7.1",
-    "khala-nodeutils": "^0.7.3",
+    "khala-nodeutils": "^0.7.7",
     "khala-sequelize": "^0.1.4"
   }
 }
