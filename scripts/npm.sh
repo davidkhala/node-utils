@@ -20,4 +20,11 @@ tokenList() {
 	fi
 	npm token list $format
 }
+login() {
+	if ! npm whoami &> /dev/null; then
+		echo "########## npm acount login ##########"
+		npm login
+		echo "########## npm acount login success ##########"
+	fi
+}
 $fcn $remain_params
