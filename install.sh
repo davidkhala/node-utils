@@ -39,6 +39,6 @@ pm2() {
 	sudo npm install -g pm2
 }
 nodeGYPDependencies() {
-	sudo apt install -y make g++ # required by node-gyp
+	sudo apt install -y gcc make g++ # required by node-gyp
 }
 $fcn $remain_params

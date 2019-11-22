@@ -1,6 +1,8 @@
-exports.JSONReadable = (data) => JSON.stringify(data, null, 2);
 const dateFormatter = require('date-format');
+const papaParse = require('papaparse');
 const path = require('path');
+const fs = require('fs');
+exports.JSONReadable = (data) => JSON.stringify(data, null, 2);
 exports.dateFormat = (format, date) => {
 	return dateFormatter(format, date);
 };
@@ -64,10 +66,10 @@ exports.isFloat = (number) => {
 	}
 	return true;
 };
-const papaParse = require('papaparse');
-const fs = require('fs');
+
+
 exports.csv = {
-	parseFile : (filepath) => {
+	parseFile: (filepath) => {
 		const str = fs.readFileSync(filepath).toString();
 		const result = papaParse.parse(str);
 		return result.data;
@@ -77,7 +79,7 @@ exports.csv = {
 	 * @param data
 	 * @returns {*}
 	 */
-	toCSV : (data = [{}]) => {
+	toCSV: (data = [{}]) => {
 		const fields = data.map(entry => (Object.keys(entry))).reduce((sum, entry) => sum.concat(entry), []);
 		if (fields.length > 0) {
 			const data1 = data[0];
