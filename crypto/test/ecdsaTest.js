@@ -1,4 +1,4 @@
-const logger = require('../../main/').devLogger('test:ecdsa');
+const logger = require('khala-logger/dev').devLogger('test:ecdsa');
 const X500Name = require('../X500Name');
 const fs = require('fs');
 const path = require('path');
