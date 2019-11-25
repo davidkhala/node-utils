@@ -1,5 +1,5 @@
 const {randomHex, randomString, randomChars} = require('../random');
-const logger = require('../.').devLogger('test:random');
+const logger = require('khala-logger/dev').devLogger('test:random');
 const hex = randomHex(20);
 logger.debug(hex);
 const randStr = randomString(16);
