@@ -43,11 +43,16 @@ exports.httpsOptions = {
 	minVersion: minVersions,
 	secureProtocol: secureProtocols
 };
+
+/**
+ * express application
+ * @typedef {Function} ExpressApp
+ */
 /**
  * @param port
  * @param [host] if specified, the access point is limited to host
  * @param [tlsOptions]
- * @returns {{app: express app, server: *}}
+ * @returns {{app: ExpressApp, server: Server}}
  */
 exports.run = (port, host, tlsOptions) => {
 	const app = express();
