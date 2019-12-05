@@ -1,3 +1,4 @@
+require('./log4jsTest');
 const Logger = require('../');
 const label = 'test';
 const logger = Logger.new(label);
