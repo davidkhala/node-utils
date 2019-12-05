@@ -5,7 +5,7 @@
  * @return {Logger}
  */
 exports.devLogger = (moduleName, level = 5) => {
-	const Log4j = require('log4js');// dependencies not provided
+	const Log4j = require('log4js');
 	const logger = Log4j.getLogger(moduleName);
 
 	const levels = [

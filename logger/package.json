@@ -1,6 +1,6 @@
 {
   "name": "khala-logger",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,9 +9,7 @@
   "author": "davidliu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "dependencies": {
-    "winston": "^2.4.4"
-  },
-  "devDependencies": {
-    "log4js": "^5.2.2"
+    "winston": "^2.4.4",
+    "log4js": "^6.1.0"
   }
 }
