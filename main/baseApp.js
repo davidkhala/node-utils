@@ -1,5 +1,5 @@
 const express = require('express');
-const logger = require('khala-logger').new('express server');
+const logger = require('khala-logger/log4js').consoleLogger('express server');
 const bodyParser = require('body-parser');
 const http = require('http');
 const https = require('https');

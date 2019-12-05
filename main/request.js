@@ -1,4 +1,4 @@
-const logger = require('khala-logger').new('ServerClient');
+const logger = require('khala-logger/log4js').consoleLogger('ServerClient');
 const Request = require('request');
 const {sleep} = require('./helper');
 const {isPath} = require('./format');
