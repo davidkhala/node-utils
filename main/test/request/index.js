@@ -1,4 +1,4 @@
-const logger = require('khala-logger/dev').devLogger('test:request');
+const logger = require('khala-logger/log4js').consoleLogger('test:request');
 const {ping, RequestPromise} = require('../../request');
 const path = require('path');
 const taskPing = async () => {

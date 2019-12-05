@@ -1,9 +1,9 @@
-const logger = require('khala-logger/dev').devLogger('test:ecdsa');
+const logger = require('khala-logger/log4js').consoleLogger('test:ecdsa');
 const X500Name = require('../X500Name');
 const fs = require('fs');
 const path = require('path');
-const {ECDSACOnfig, ECDSAKey} = require('../ECDSA');
-const config = new ECDSACOnfig(256);
+const {ECDSAConfig, ECDSAKey} = require('../ECDSA');
+const config = new ECDSAConfig(256);
 const keypair = config.generateEphemeralKey();
 
 const taskPrintPriv = () => {

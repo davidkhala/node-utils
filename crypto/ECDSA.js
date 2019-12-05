@@ -105,5 +105,5 @@ class ECPair {
 }
 
 
-module.exports.ECDSACOnfig = ECConfig;
+module.exports.ECDSAConfig = ECConfig;
 module.exports.ECDSAKey = ECPair;

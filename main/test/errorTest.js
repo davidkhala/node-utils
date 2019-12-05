@@ -1,4 +1,4 @@
-const logger = require('khala-logger/dev').devLogger('test:error');
+const logger = require('khala-logger/log4js').consoleLogger('test:error');
 try {
 	throw Error('abc');
 } catch (err) {

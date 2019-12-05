@@ -1,4 +1,4 @@
-const logger = require('khala-logger/dev').devLogger('devops');
+const logger = require('khala-logger/log4js').consoleLogger('devops');
 const devOps = require('../devOps');
 
 

@@ -1,5 +1,5 @@
 const helper = require('../helper');
-const logger = require('khala-logger/dev').devLogger('test:helper');
+const logger = require('khala-logger/log4js').consoleLogger('test:helper');
 const path = require('path');
 
 const pathTest = () => {

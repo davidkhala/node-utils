@@ -1,7 +1,7 @@
 const {int2Chars, dateFormat, chars2Hex, isPath, RegxMatch, isFloat, bytes2String, base64} = require('../format');
 const charSpace = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-const logger = require('khala-logger/dev').devLogger('test:format');
+const logger = require('khala-logger/log4js').consoleLogger('test:format');
 const dateString = dateFormat('yyyyMMdd', new Date());
 
 const testReg = (str) => {

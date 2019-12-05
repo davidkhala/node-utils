@@ -2,7 +2,7 @@
  * Do not put syntax test here but in `test/syntaxTest.js`**
  */
 const Syntax = require('../syntax');
-const logger = require('khala-logger/dev').devLogger('syntax test');
+const logger = require('khala-logger/log4js').consoleLogger('syntax test');
 const splitBySpaceTest = () => {
 	const str = ` 
 /home/davidliu/Documents/delphi-fabric/common/bin/configtxlator 

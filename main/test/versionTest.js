@@ -1,5 +1,5 @@
 const {nextVersion, validVersion, newerVersion} = require('../version');
-const logger = require('khala-logger/dev').devLogger('test:version');
+const logger = require('khala-logger/log4js').consoleLogger('test:version');
 
 logger.debug(!!validVersion('0.0.0'));
 

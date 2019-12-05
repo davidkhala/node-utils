@@ -21,7 +21,6 @@
     "bluebird": "^3.7.1"
   },
   "devDependencies": {
-    "log4js": "^5.1.0",
-    "khala-logger": "^0.0.1"
+    "khala-logger": "^0.2.0"
   }
 }
