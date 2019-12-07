@@ -10,7 +10,7 @@ install8() {
 	if ! node --version | grep 'v8.'; then
 		if [[ $(uname) == "Darwin" ]]; then
 			brew install node@8
-			echo 'export PATH="/usr/local/opt/node@8/bin:$PATH"' >>~/.bash_profile
+			echo 'export PATH="/usr/local/opt/node@8/bin:$PATH"' >> ~/.bash_profile
 			export LDFLAGS="-L/usr/local/opt/node@8/lib"
 			export CPPFLAGS="-I/usr/local/opt/node@8/include"
 		else
@@ -23,7 +23,7 @@ install10() {
 	if ! node --version | grep 'v10.'; then
 		if [[ $(uname) == "Darwin" ]]; then
 			brew install node@10
-			echo 'export PATH="/usr/local/opt/node@10/bin:$PATH"' >>~/.bash_profile
+			echo 'export PATH="/usr/local/opt/node@10/bin:$PATH"' >> ~/.bash_profile
 			export LDFLAGS="-L/usr/local/opt/node@10/lib"
 			export CPPFLAGS="-I/usr/local/opt/node@10/include"
 		else
@@ -34,6 +34,11 @@ install10() {
 }
 typeScript() {
 	sudo npm install -g typescript
+}
+nodeVersionManager() {
+	if ! nvm --version; then
+		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+	fi
 }
 pm2() {
 	sudo npm install -g pm2
