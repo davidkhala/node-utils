@@ -45,6 +45,10 @@ follows [SEMVER](https://semver.org/)
     - `secureProtocol` The TLS protocol version to use. [Option list:`secureProtocols`](./main/baseApp.js). It is not recommended to use TLS versions less than 1.2. Default: none
 - node-gyp rebuild require `make` and `g++`
 - npm install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
+- use nvm to install `npm pm2` globally will result in:
+```
+    Error: Cannot find module '/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js'
+```
 
 ## TODO
 - try stressTest on sequenlize
