@@ -29,17 +29,13 @@ const taskSignVerify = () => {
 	logger.debug('result', result);
 };
 
-const x500Name = new X500Name();
-x500Name.setCountryName('HK');
-x500Name.setOrganizationName('BC');
-// x500Name.setOrgUnitName('ICDD');
-x500Name.setCommonName('BCMCCBlockchainApp');
-const taskGenCSR = () => {
+
+const taskGenCSR = (x500Name) => {
 
 	const csr = keypair.generateCSR(x500Name);
 	logger.debug('csr', csr);
 };
-const taskSelfSignCert = () => {
+const taskSelfSignCert = (x500Name) => {
 	const prvKeyPem = keypair.toBytes().prvKeyObj;
 
 	const cert = keypair.generateX509Certificate(x500Name);
@@ -49,4 +45,18 @@ const taskSelfSignCert = () => {
 	fs.writeFileSync(keyPath, prvKeyPem);
 	fs.writeFileSync(certPath, cert);
 };
-taskSelfSignCert();
+const task = async () => {
+	const x500Name = new X500Name();
+	x500Name.setCountryName('HK');
+	x500Name.setOrganizationName('bowtie');
+	x500Name.setOrgUnitName('blockchain');
+	x500Name.setCommonName('bowtie.mediconcen.com');
+	switch (parseInt(process.env.taskID)) {
+		case 0:
+			taskGenCSR(x500Name);
+			break;
+		default:
+			taskSelfSignCert(x500Name);
+	}
+};
+task();
