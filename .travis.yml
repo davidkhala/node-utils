@@ -18,7 +18,6 @@ script:
   - node test # syntax test
   - node logger/test
   - node main/test
-  - ./main/test/requireTest/test.sh
   - ./pm2/test/CLI/test.sh
   - node sequelize/test
   - cd activemq/test;docker-compose up -d; node index.js; cd -
