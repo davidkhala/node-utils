@@ -13,3 +13,6 @@ exports.sleep = async (ms, silent) => {
 	}
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
+exports.isArrayEven = arr => {
+	return Array.isArray(arr) && arr.length > 0 && arr.every(v => JSON.stringify(v) === JSON.stringify(arr[0]));
+};
