@@ -1,4 +1,5 @@
 const WebSocket = require('ws');
+
 class WebsocketClient {
 	constructor(wsUrl, options = {}, logger = console) {
 		this.ws = new WebSocket(wsUrl, undefined, options);
@@ -28,6 +29,21 @@ class WebsocketClient {
 			for (const listenerEach of listeners) {
 				this.ws.removeEventListener(eventType, listenerEach);
 			}
+		}
+	}
+
+	/**
+	 *
+	 * @param {Number} [code] Status code explaining why the connection is closing
+	 * @param {String} [data] A string explaining why the connection is closing
+	 * @param {boolean} [force] Forcibly destroys the socket without closing frames or fin packets exchange,
+	 *  and does it instantly, without any timeout.
+	 */
+	close({code, data, force} = {}) {
+		if (force) {
+			this.ws.terminate();
+		} else {
+			this.ws.close(code, data);
 		}
 	}
 }

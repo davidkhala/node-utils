@@ -26,36 +26,30 @@ class WebsocketServer {
 		});
 	}
 
+	/**
+	 *
+	 * @param {number} beatInterval interval timeout
+	 */
 	setHeartBeat(beatInterval) {
 		const heartBeat = () => {
 			const clientsArray = this.currentClients();
-			this.logger.debug('ws heartBeat', 'clients pool size', clientsArray.length);
 
-			clientsArray.forEach((ws, index) => {
 
-				if (!ws.index) {// TODO use another indicator for remark
-					ws.index = index;
-				}
-				if (ws.isAlive === false) {
-					return ws.terminate();
-				}
+			for (const ws of clientsArray) {
+				this.logger.debug('wss heartBeat', `client domain[${ws.domain}]`, `among ${clientsArray.length}`);
+			}
+			// clientsArray.forEach((ws, index) => {
+			//
 
-				ws.isAlive = false;
-				ws.ping(() => {
-				});
-			});
+			//
+			// 	TODO
+			// 	ws.ping((a, b, c, d) => {
+			// 		console.info(a, b, c, d);
+			// 	});
+			// });
 		};
 		setInterval(heartBeat, beatInterval);
 	}
-
-//	TODO
-//	wss.on('connection', (ws) => {
-// 		ws.isAlive = true;
-// 		logger.debug('connection');
-// 		ws.on('pong', () => {
-// 			ws.isAlive = true;
-// 		});
-// 		heartBeat();
 }
 
 module.exports = WebsocketServer;

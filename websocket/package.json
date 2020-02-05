@@ -3,5 +3,9 @@
   "version": "0.0.0",
   "dependencies": {
     "ws": "^7.2.1"
+  },
+  "devDependencies": {
+    "khala-nodeutils": "^0.7.9",
+    "khala-logger": "^0.2.0"
   }
 }

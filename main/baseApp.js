@@ -1,5 +1,4 @@
 const express = require('express');
-const logger = require('khala-logger/log4js').consoleLogger('express server');
 const bodyParser = require('body-parser');
 const http = require('http');
 const https = require('https');
@@ -46,17 +45,21 @@ exports.httpsOptions = {
 
 /**
  * express application
- * @typedef {Function} ExpressApp
+ * @typedef {Function|app} ExpressApp
+ */
+/**
+ * net.Server
+ * @typedef {Server|http.Server|https.Server} Server
  */
 /**
  * @param port
  * @param [host] if specified, the access point is limited to host
  * @param [tlsOptions]
+ * @param [logger]
  * @returns {{app: ExpressApp, server: Server}}
  */
-exports.run = (port, host, tlsOptions) => {
+exports.run = (port, host, tlsOptions, logger = console) => {
 	const app = express();
-
 	app.options('*', cors());
 	app.use(cors());
 	app.use(bodyParser.json());
