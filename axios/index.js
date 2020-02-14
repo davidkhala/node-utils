@@ -1,4 +1,6 @@
 const axios = require('axios');
+const https = require('https');
+const fs = require('fs');
 /**
  *
  * @param url
@@ -10,6 +12,15 @@ const axios = require('axios');
  */
 exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptions = {}) => {
 
+	const {cert, key, ca, rejectUnauthorized, passphrase} = otherOptions;
+	if (cert || key || ca || passphrase || typeof rejectUnauthorized === 'boolean') {
+		otherOptions.httpsAgent = new https.Agent({
+			rejectUnauthorized, passphrase,
+			cert: cert ? fs.readFileSync(cert) : undefined,
+			key: key ? fs.readFileSync(key) : undefined,
+			ca: ca ? fs.readFileSync(ca) : undefined
+		});
+	}
 	const config = Object.assign({
 		method,
 		url
@@ -20,6 +31,7 @@ exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptio
 	} else {
 		config.data = body;
 	}
+
 	try {
 		const {data} = await axios.request(config);
 		return data;

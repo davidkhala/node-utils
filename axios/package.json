@@ -1,6 +1,6 @@
 {
   "name": "khala-axios",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "axios": "^0.19.2",
     "form-data": "^3.0.0"

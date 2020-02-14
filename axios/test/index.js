@@ -3,17 +3,15 @@ const logger = require('khala-logger/log4js').consoleLogger('test:axios');
 
 const task = async () => {
 	const url = 'http://localhost:3000';
+	const tlsUrl = 'https://localhost:3443';
 	switch (parseInt(process.env.taskID)) {
 		case 0: {
-			const https = require('https');
+			// taskID=0 node test # url-encoded https post case
 			const resp = await axiosPromise({
-				url: 'https://localhost:3000/post',
-				body: {mcc: 'david'},
-				method: 'post'
+				url: `${tlsUrl}/post`,
+				body: {mcc: 'david'}
 			}, {
-				httpsAgent: new https.Agent({
-					rejectUnauthorized: false
-				})
+				rejectUnauthorized: false
 			});
 
 			console.log(resp);
