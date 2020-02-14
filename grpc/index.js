@@ -13,13 +13,20 @@ const load = (protoPath, options) => {
 	};
 };
 exports.load = load;
-exports.grpcServer = (baseUrl, services = [], creds = grpc.ServerCredentials.createInsecure()) => {
+/**
+ *
+ * @param {integer|intString} port
+ * @param {string} [host] default to allow all inbound traffic
+ * @param services
+ * @param {ServerCredentials} creds
+ */
+exports.grpcServer = ({port, host = '0.0.0.0'}, services = [], creds = grpc.ServerCredentials.createInsecure()) => {
 	const server = new grpc.Server();
 
 	for (const {service, implementation} of services) {
 		server.addService(service, implementation);
 	}
-	server.bind(baseUrl, creds);
+	server.bind(`${host}:${port}`, creds);
 	server.start();
 
 };
