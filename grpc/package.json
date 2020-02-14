@@ -1,8 +1,8 @@
 {
   "name": "khala-grpc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "dependencies": {
-    "grpc": "^1.19.0",
-    "@grpc/proto-loader": "^0.4.0"
+    "grpc": "^1.24.2",
+    "@grpc/proto-loader": "^0.5.3"
   }
 }

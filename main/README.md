@@ -16,3 +16,6 @@ Total: 11M
 - log4js:   6.7M    (dev)
 
 ## TODO
+- request.js is deprecated
+    See in [Author post](https://github.com/request/request/issues/3142)
+      and [recommended alternatives](https://github.com/request/request/issues/3143)
