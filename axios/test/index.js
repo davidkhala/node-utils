@@ -20,21 +20,27 @@ const task = async () => {
 		}
 			break;
 		case 1: {
+			// taskID=1 node test # formData case
 			const fs = require('fs');
-
 			const FormData = require('form-data');
 
 			const form = new FormData();
 			form.append('files', fs.createReadStream(__dirname + '/web_ic_hyperledger.png'));
 
 			const resp = await axiosPromise({
-				url: 'http://localhost:3000/formData',
-				body: form,
-				method: 'post'
-			}, {
-				headers: form.getHeaders()
+				url: `${url}/formData`,
+				formData: form
 			});
-			console.log(resp);
+			logger.info(resp);
+		}
+			break;
+		case 2: {
+			// taskID=2 node test # url-encoded post case
+			const resp = await axiosPromise({
+				url: `${url}/post`,
+				body: {a: 'b'}
+			});
+			logger.info(resp);
 		}
 			break;
 		default: {

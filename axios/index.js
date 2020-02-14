@@ -1,11 +1,25 @@
 const axios = require('axios');
+/**
+ *
+ * @param url
+ * @param {Object} [body]
+ * @param [method]
+ * @param {FormData} [formData]
+ * @param [otherOptions]
+ * @return {Promise<T>}
+ */
 exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptions = {}) => {
+
 	const config = Object.assign({
 		method,
-		url,
-		data: body,
-		formData
+		url
 	}, otherOptions);
+	if (formData) {
+		config.headers = Object.assign(formData.getHeaders(), config.headers);
+		config.data = formData;
+	} else {
+		config.data = body;
+	}
 	try {
 		const {data} = await axios.request(config);
 		return data;
