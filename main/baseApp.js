@@ -112,9 +112,9 @@ exports.expressError = (app, onError, logger = console) => {
 		onError(err, res);
 	});
 };
-exports.formDataRouter = (cacheDir, properties = []) => {
+exports.formDataRouter = (cacheDir) => {
 	const multerCache = Multer({dest: cacheDir});
-	return multerCache.fields(properties.map(name => ({name})));
+	return multerCache.any();
 };
 exports.formDataFilePaths = (req, property) => {
 	return req.files[property].map(({path}) => path);
