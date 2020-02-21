@@ -8,7 +8,7 @@ const fs = require('fs');
  * @param [method]
  * @param {FormData} [formData]
  * @param [otherOptions]
- * @return {Promise<T>}
+ * @return {Promise<Object>}
  */
 exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptions = {}) => {
 
