@@ -6,7 +6,7 @@
     "aws-xray-sdk": "^2.5.0"
   },
   "devDependencies": {
-    "khala-nodeutils": "^0.7.8",
+    "khala-nodeutils": "^0.8.1",
     "khala-logger": "^0.0.1"
   }
 }
