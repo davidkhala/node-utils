@@ -1,13 +1,29 @@
 const axios = require('axios');
 const https = require('https');
 const fs = require('fs');
+
+/**
+ * @typedef {Object} TLSExtraOptions
+ * @property {string} [cert] client cert path
+ * @property {string} [key] client key path
+ * @property {string} [ca] rootCa cert path
+ * @property {boolean} [rejectUnauthorized]
+ * @property [passphrase]
+ */
+
+/**
+ * TODO add json flag
+ * @typedef {TLSExtraOptions} RequestExtraOptions
+ */
+
+
 /**
  *
  * @param url
  * @param {Object} [body]
  * @param [method]
  * @param {FormData} [formData]
- * @param [otherOptions]
+ * @param {RequestExtraOptions} [otherOptions]
  * @return {Promise<Object>}
  */
 exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptions = {}) => {
