@@ -37,6 +37,14 @@ exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptio
 			ca: ca ? fs.readFileSync(ca) : undefined
 		});
 	}
+	const {auth} = otherOptions;
+	if (auth) {
+		const {bearer} = auth;
+		if (bearer) {
+			otherOptions.headers = Object.assign({Authorization: `Bearer ${bearer}`}, otherOptions.headers);
+		}
+	}
+
 	const config = Object.assign({
 		method,
 		url
