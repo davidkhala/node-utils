@@ -12,8 +12,9 @@ const fs = require('fs');
  */
 
 /**
- * TODO add json flag
+ * responseType: 'json', // default
  * @typedef {TLSExtraOptions} RequestExtraOptions
+ * @property [auth] Please note that only HTTP Basic auth is configurable
  */
 
 
@@ -39,9 +40,13 @@ exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptio
 	}
 	const {auth} = otherOptions;
 	if (auth) {
-		const {bearer} = auth;
-		if (bearer) {
-			otherOptions.headers = Object.assign({Authorization: `Bearer ${bearer}`}, otherOptions.headers);
+		// Please note that only HTTP Basic auth is configurable through Axios config.auth.
+		const {bearer, username, password} = auth;
+		if (!username || !password) {
+			if (bearer) {
+				otherOptions.headers = Object.assign({Authorization: `Bearer ${bearer}`}, otherOptions.headers);
+			}
+			delete otherOptions.auth;
 		}
 	}
 
