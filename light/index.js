@@ -1,5 +1,5 @@
 const os = require('os');
-
+const path = require('path');
 exports.homeResolve = (...tokens) => {
 	if (!tokens) {
 		return tokens;
