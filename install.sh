@@ -44,7 +44,12 @@ nodeVersionManager() {
 	fi
 }
 pm2() {
-	sudo npm install -g pm2
+	if node --version | grep 'v8.'; then
+		sudo npm install -g pm2@4.1
+	else
+		sudo npm install -g pm2
+	fi
+	
 }
 nodeGYPDependencies() {
 	sudo apt install -y gcc make g++ python # required by node-gyp
