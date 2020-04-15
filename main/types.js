@@ -8,5 +8,8 @@
  * @typedef {string} hexString '58ab'
  */
 /**
- * @typedef {string} CertificatePem certificate containing the public key in PEM format.
+ * @typedef {PEM} CertificatePem certificate containing the public key in PEM format.
+ */
+/**
+ * @typedef {string} PEM format string
  */
