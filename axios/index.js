@@ -15,6 +15,7 @@ const fs = require('fs');
  * responseType: 'json', // default
  * @typedef {TLSExtraOptions} RequestExtraOptions
  * @property [auth] Please note that only HTTP Basic auth is configurable
+ * @property [headers]
  */
 
 
