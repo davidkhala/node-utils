@@ -12,7 +12,6 @@
     "light",
     "logger",
     "main",
-    "monoRepos",
     "pm2",
     "rabbitmq",
     "sequelize",

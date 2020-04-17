@@ -13,4 +13,6 @@
     - Installing all their dependencies and linking any cross-dependencies.
 - `lerna run [script]`
     - Run an npm script in each package that contains that script.
+- `lerna publish`
+    - [independent mode] guiding wizard to provide each package version strategy 
 
