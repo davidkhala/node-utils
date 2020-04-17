@@ -1,12 +1,2 @@
 require('./log4jsTest');
-const Logger = require('../');
-const label = 'test';
-const logger = Logger.new(label);
-const path = require('path');
-const filePath = path.resolve('test.Log');
-const fileLogger = Logger.newFile('test:file', filePath);
-logger.debug('abc');
-const obj = {a: 'vb'};
-const array = [1, 3, 4, 2];
-logger.info('abc', obj);
-fileLogger.error('abc', 'cde', obj, array);
+require('./winston2Test');

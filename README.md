@@ -2,6 +2,7 @@
 nodejs utils to be published to npm as node_module
 
 [![Build Status](https://travis-ci.com/davidkhala/node-utils.svg?branch=master)](https://travis-ci.com/davidkhala/node-utils)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 follows [SEMVER](https://semver.org/)
 
@@ -45,6 +46,7 @@ follows [SEMVER](https://semver.org/)
     - `secureProtocol` The TLS protocol version to use. [Option list:`secureProtocols`](./main/baseApp.js). It is not recommended to use TLS versions less than 1.2. Default: none
 - node-gyp rebuild require `make` and `g++`
 - npm install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
+- publish a module with local file dependency is problematic (even with `yarn`)
 - use nvm to install `npm pm2` globally will result in:
 ```
     Error: Cannot find module '/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js'
@@ -54,7 +56,6 @@ follows [SEMVER](https://semver.org/)
 - try stressTest on sequenlize
 - there is no automatic way to manage npm token explicitly
 - build a light-weight https proxy server
-- [Rush.js](https://github.com/Microsoft/web-build-tools/): for who build and publish many NPM packages at once.
 - try [github package registry](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry)
 - Redis的PUB/SUB机制, used to work as message queue
 - add koa.js support as alternative of express.js

@@ -48,9 +48,9 @@ const taskSelfSignCert = (x500Name) => {
 const task = async () => {
 	const x500Name = new X500Name();
 	x500Name.setCountryName('HK');
-	x500Name.setOrganizationName('bowtie');
+	x500Name.setOrganizationName('QHMS');
 	x500Name.setOrgUnitName('blockchain');
-	x500Name.setCommonName('bowtie.mediconcen.com');
+	x500Name.setCommonName('blockchain.QHMS.com');
 	switch (parseInt(process.env.taskID)) {
 		case 0:
 			taskGenCSR(x500Name);

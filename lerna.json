@@ -1,0 +1,23 @@
+{
+  "packages": [
+    "activemq",
+    "aws",
+    "axios",
+    "crypto",
+    "github",
+    "grpc",
+    "kafka",
+    "kvDB",
+    "leveldb",
+    "light",
+    "logger",
+    "main",
+    "monoRepos",
+    "pm2",
+    "rabbitmq",
+    "sequelize",
+    "travis",
+    "websocket"
+  ],
+  "version": "independent"
+}
