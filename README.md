@@ -31,31 +31,17 @@ follows [SEMVER](https://semver.org/)
 
 
 ## Notes
-
+- [NPM notes](./npm.md)
+- [jsDoc notes](./jsdoc.md)
 - Ternary Operator in some case could be simplified as 
     `a = a ? a : b` => `a = a || b` 
-- `npm publish`
-    - npm version increment: https://docs.npmjs.com/cli/version
-    - npm user: `npm login`,  `npm whoami`
-- no alternative readFileSync wrapper in fsExtra
-- node popular date formatter library: https://stackabuse.com/how-to-format-dates-in-javascript/
-- but the date formatter we are using is embedded provided. `date-format@^1.2.0`
-- "[]" brackets around property name will indicates it is optional 
 - TLS options:
     - [Nodejs 11+] `minVersion` set the minimum TLS version to allow. ['TLSv1.2', 'TLSv1.1', 'TLSv1']. Cannot be specified along with the secureProtocol option. It is not recommended to use less than TLSv1.2. Default: 'TLSv1'.
     - `secureProtocol` The TLS protocol version to use. [Option list:`secureProtocols`](./main/baseApp.js). It is not recommended to use TLS versions less than 1.2. Default: none
 - node-gyp rebuild require `make` and `g++`
-- npm install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
-- publish a module with local file dependency is problematic (even with `yarn`)
-- use nvm to install `npm pm2` globally will result in:
-```
-    Error: Cannot find module '/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js'
-```
 
 ## TODO
 - try stressTest on sequenlize
-- there is no automatic way to manage npm token explicitly
 - build a light-weight https proxy server
-- try [github package registry](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry)
 - Redis的PUB/SUB机制, used to work as message queue
-- add koa.js support as alternative of express.js
+

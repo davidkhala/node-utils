@@ -4,7 +4,16 @@
 
 Main toolset
 
-## disc usage
+
+
+## Notes
+- node popular [date formatter library](https://stackabuse.com/how-to-format-dates-in-javascript/)
+    - we use npm `date-format` 
+- request.js is deprecated, we use axios as alternative 
+    - See in [Author post](https://github.com/request/request/issues/3142)
+      and [recommended alternatives](https://github.com/request/request/issues/3143)
+- no alternative readFileSync wrapper in fsExtra
+### Disc Usage
 Total: 11M
 - express:  2.9M
 - js-yaml:  1.1M
@@ -16,6 +25,4 @@ Total: 11M
 - log4js:   6.7M    (dev)
 
 ## TODO
-- request.js is deprecated
-    See in [Author post](https://github.com/request/request/issues/3142)
-      and [recommended alternatives](https://github.com/request/request/issues/3143)
+- add koa.js support as alternative of express.js
