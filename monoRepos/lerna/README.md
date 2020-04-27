@@ -12,6 +12,7 @@
     - to skip confirmation as force, use flat `--yes`
 -  `lerna bootstrap`
     - Installing all their dependencies and linking any cross-dependencies.
+    - **WARN** It will not install dependencies on root itself
 - `lerna run [script]`
     - Run an npm script in each package that contains that script.
 - `lerna publish`
