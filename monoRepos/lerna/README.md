@@ -9,6 +9,7 @@
     - `--independent/-i` – Use independent versioning mode.
 - `lerna clean`  
     - removing any node_modules directories under package locations.
+    - to skip confirmation as force, use flat `--yes`
 -  `lerna bootstrap`
     - Installing all their dependencies and linking any cross-dependencies.
 - `lerna run [script]`
