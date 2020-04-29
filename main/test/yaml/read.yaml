@@ -1,9 +1,9 @@
 anchorPeers:
   Application:
     Organizations:
-    - Name: ASTRI.org
+    - Name: astri.org
       AnchorPeers:
-      - Host: peer0.ASTRI.org
+      - Host: peer0.astri.org
         Port: 7051
     - Name: icdd
       AnchorPeers:
