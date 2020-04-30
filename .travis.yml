@@ -2,7 +2,7 @@ language: node_js
 services:
   - docker
 node_js:
-  - "8"
+  - 10
 dist: bionic
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -15,11 +15,12 @@ install:
   - cd sequelize; npm install; cd -
   - cd activemq; npm install; docker build --tag=davidkhala/activemq-mysql . ;cd -
 script:
-  - node test # syntax test
+  - node test
   - node logger/test
   - node main/test
   - ./pm2/test/CLI/test.sh
   - node sequelize/test
+  - ./crypto/test/test.sh
   - cd activemq/test;docker-compose up -d; node index.js; cd -
 deploy:
   provider: script

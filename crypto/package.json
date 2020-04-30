@@ -8,9 +8,6 @@
     "jsrsasign": "^8.0.12"
   },
   "devDependencies": {
-    "otpauth": "^3.2.8",
-    "node-otp": "^1.2.2",
-    "otplib": "^11.0.1",
     "khala-logger": "^0.2.0"
   }
 }
