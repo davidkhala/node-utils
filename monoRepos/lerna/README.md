@@ -18,3 +18,10 @@
 - `lerna publish`
     - [independent mode] guiding wizard to provide each package version strategy 
 
+## TODO
+- fix
+    ```
+    npm ci
+    npm ERR! cipm can only install packages with an existing package-lock.json or npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or later to generate it, then try again.
+
+    ```
