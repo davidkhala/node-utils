@@ -19,5 +19,14 @@
 - `lerna publish`
     - [independent mode] guiding wizard to provide each package version strategy 
 
+## Notes
+- config npm scripts `"install": "lerna bootstrap --no-ci"` will introduce problem
+    - when another node project use this package as dependency, the packaged will be installed by running its `npm install` command 
+      ```
+      > khala-fabric-sdk-node@1.4.6-0.0.1 install ...
+      > lerna bootstrap --no-ci
+      ``` 
+      
+
 ## TODO
 
