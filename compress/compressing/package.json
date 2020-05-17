@@ -1,0 +1,7 @@
+{
+  "name": "khala-compressing",
+  "version": "0.0.0",
+  "dependencies": {
+    "compressing": "^1.5.1"
+  }
+}
