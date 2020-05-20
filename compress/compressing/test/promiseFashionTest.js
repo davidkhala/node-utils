@@ -12,6 +12,7 @@ const task = async () => {
 		}
 			break;
 		case 1: {
+			// taskID=1 node promiseFashionTest.js
 			const src = path.resolve(__dirname, 'dir.tar.gz');
 			const dest = path.resolve(__dirname);
 			await compress.tar.uncompress(src, dest);

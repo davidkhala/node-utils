@@ -1,0 +1,34 @@
+const assert = require('assert');
+
+describe('Calculator', () => {
+	before(() => {
+		console.log('before executes once before all tests');
+	});
+
+	after(() => {
+		console.log('after executes once after all tests');
+	});
+
+	describe('adding', () => {
+		beforeEach(() => {
+			console.log('beforeEach executes before every test');
+		});
+		it('should return 4 when adding 2 + 2', () => {
+			assert.strictEqual(2 + 2, 4);
+		});
+
+		it('should return 0 when adding zeros', () => {
+			assert.strictEqual(0 + 0, 0);
+		});
+	});
+
+	describe('error', () => {
+		it('should return an error', () => {
+			assert.throws(() => {
+				throw Error('abc');
+			}, {
+				message: 'abc'
+			});
+		});
+	});
+});
