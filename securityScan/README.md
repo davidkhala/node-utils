@@ -1,7 +1,8 @@
 ## Static scanner
 - [njsscan](https://github.com/ajinabraham/njsscan#command-line-options)
     - install `pip install njsscan`
-    - ```
+    - usage
+      ```
       usage: njsscan [-h] [--json] [-o OUTPUT] [--missing-controls] [-v]
                      [path [path ...]]
       
