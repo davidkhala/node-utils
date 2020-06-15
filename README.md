@@ -17,19 +17,6 @@ follows [SEMVER](https://semver.org/)
 - khala-grpc
 - khala-sequelize: nodejs ORM powered by npm sequelize 
 
-## Performance
-
-### Nodejs Memory usage
-| Examples                      | Memory Usage (MB)     |
-| ----                          |:----:                 |
-| sleeping process (setTimeOut) | 35                    |
-| http server (native implement)| 38                    |
-| khala-nodeutils index         | 60               |
-| khala-sequelize               | 49               |
-| khala-sequelize + mysql connection instance| 56       |
-| Empty express.js server       | 63                    |
-
-
 ## Notes
 - [NPM notes](./npm.md)
 - [jsDoc notes](./jsdoc.md)
