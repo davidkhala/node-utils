@@ -28,21 +28,6 @@ const bufferNumTest = () => {
 		logger.info(Buffer.from, e.message);
 	}
 };
-const objectAssignTest = () => {
-	const obj = {
-		a: {
-			entry: 'b'
-		}
-	};
-	const {a} = obj;
-	a.entry = 'c';
-	logger.debug(obj);
-	let {entry} = a;
-	entry = 'd';
-	logger.debug(obj);
-	Object.assign(obj, {a: null});
-	logger.debug(obj);
-};
 
 const JSONStringifyTest = () => {
 	const complexObj = {
@@ -64,29 +49,7 @@ const JSONStringifyTest = () => {
 	}
 
 };
-const testClass = () => {
-	class A {
-		constructor() {
-			this.p = 'a';
-		}
 
-		foo() {
-
-		}
-	}
-
-	const a = new A();
-	logger.info('function will not be displayed', Object.keys(a));
-
-};
-
-const testReadDir = () => {
-	try {
-		fs.readFileSync(__dirname).toString();
-	} catch (e) {
-		logger.error(e);
-	}
-};
 
 const loadObjectTest = () => {
 	let files = fs.readdirSync(__dirname);
@@ -114,21 +77,70 @@ const keyTest = () => {
 		console.log({key, value});
 	}
 };
-const task = async () => {
-	await testArrowFunction();
-	testClass();
-	bufferTest({david: 'liu'});
-	bufferTest('liu');
-	bufferTest(123);
-	testReadDir();
-	loadObjectTest();
-	objectAssignTest();
-	JSONStringifyTest();
-	bufferNumTest();
-	forTest();
-	keyTest();
-};
-task();
+describe('syntax test', () => {
+	it('arrow function', async () => {
+		await testArrowFunction();
+	});
+	it('class', () => {
+		class A {
+			constructor() {
+				this.p = 'a';
+			}
+
+			foo() {
+
+			}
+		}
+
+		const a = new A();
+		logger.info('function will not be displayed', Object.keys(a));
+	});
+	it('util.inspect() deprecated', () => {
+		const util = require('util');
+		util.inspect({a: 'abc'});
+	});
+	it('buffer', () => {
+		bufferTest({david: 'liu'});
+		bufferTest('liu');
+		bufferTest(123);
+		bufferNumTest();
+	});
+	it('read dir', () => {
+		try {
+			fs.readFileSync(__dirname).toString();
+		} catch (e) {
+			logger.error(e);
+		}
+
+	});
+	it('auto require', () => {
+		loadObjectTest();
+	});
+	it('Object assign', () => {
+		const obj = {
+			a: {
+				entry: 'b'
+			}
+		};
+		const {a} = obj;
+		a.entry = 'c';
+		logger.debug(obj);
+		let {entry} = a;
+		entry = 'd';
+		logger.debug(obj);
+		Object.assign(obj, {a: null});
+		logger.debug(obj);
+	});
+	it('JSON', () => {
+		JSONStringifyTest();
+	});
+	it('for loop', () => {
+		forTest();
+		keyTest();
+	});
+
+});
+
 
 
 
