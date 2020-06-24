@@ -2,7 +2,11 @@
   "name": "khala-github",
   "version": "0.0.0",
   "dependencies": {
-    "@octokit/rest": "^16.34.0"
+    "@octokit/rest": "latest",
+    "@octokit/graphql": "latest"
+  },
+  "devDependencies": {
+    "khala-logger": "^0.2.0"
   },
   "scripts": {
     "test": "mocha test"

@@ -10,7 +10,7 @@ install8() {
 	if ! node --version | grep 'v8.'; then
 		if [[ $(uname) == "Darwin" ]]; then
 			brew install node@8
-			echo 'export PATH="/usr/local/opt/node@8/bin:$PATH"' >> ~/.bash_profile
+			echo 'export PATH="/usr/local/opt/node@8/bin:$PATH"' >>~/.bash_profile
 			export LDFLAGS="-L/usr/local/opt/node@8/lib"
 			export CPPFLAGS="-I/usr/local/opt/node@8/include"
 		else
@@ -23,7 +23,7 @@ install12() {
 	if ! node --version | grep 'v12.'; then
 		if [[ $(uname) == "Darwin" ]]; then
 			brew install node@12
-			echo 'export PATH="/usr/local/opt/node@12/bin:$PATH"' >> ~/.bash_profile
+			echo 'export PATH="/usr/local/opt/node@12/bin:$PATH"' >>~/.bash_profile
 			export LDFLAGS="-L/usr/local/opt/node@12/lib"
 			export CPPFLAGS="-I/usr/local/opt/node@12/include"
 		else
@@ -43,7 +43,7 @@ nodeVersionManager() {
 		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 	fi
 }
-yarn(){
+yarn() {
 	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 	sudo apt update && sudo apt install yarn

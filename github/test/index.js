@@ -1,11 +1,14 @@
-const GithubAPI = require('../');
-const api = new GithubAPI('davidkhala', process.env.password, {twoFA: process.env.OTP});
-const scopes = ['user', 'public_repo', 'repo', 'repo:status', 'delete_repo', 'gist'];
+const GithubRestAPI = require('../');
+const logger = require('khala-logger/log4js');
 
-const task = async () => {
-	const result = await api.createToken('abc', {scopes});
-	console.log(result.token);
+describe('github Rest API', () => {
+	it('public access', async () => {
+		const api = new GithubRestAPI();
+	});
+	it('private access', async () => {
+		const token = process.env.GITHUB_TOKEN;
+		const api = new GithubRestAPI({token});
+	});
 
-};
-task();
+});
 
