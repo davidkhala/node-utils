@@ -5,6 +5,9 @@
     "aws-sdk": "^2.582.0",
     "aws-xray-sdk": "^2.5.0"
   },
+  "scripts": {
+    "test": "mocha test"
+  },
   "devDependencies": {
     "khala-nodeutils": "^0.8.1",
     "khala-logger": "^0.0.1"

@@ -6,7 +6,7 @@
   "author": "davidliu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "license": "Apache-2.0",
   "dependencies": {

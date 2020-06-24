@@ -3,23 +3,20 @@ services:
   - docker
 node_js:
   - 10
+  - 12
 dist: bionic
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 install:
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setup
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password --init
-  - cd logger; npm install ; cd -
-  - cd main; npm install; cd -
+  - npm install
   - npm install pm2@latest -g; cd pm2; npm install ; cd -;
-  - cd sequelize; npm install; cd -
-  - cd activemq; npm install; docker build --tag=davidkhala/activemq-mysql . ;cd -
+  - cd activemq; docker build --tag=davidkhala/activemq-mysql . ;cd -
+  - npm install --global mocha
 script:
-  - node test
-  - node logger/test
-  - node main/test
+  - npm test
   - ./pm2/test/CLI/test.sh
-  - node sequelize/test
   - ./crypto/test/test.sh
   - cd activemq/test;docker-compose up -d; node index.js; cd -
 deploy:

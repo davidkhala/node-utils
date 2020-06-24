@@ -95,9 +95,9 @@ describe('syntax test', () => {
 		const a = new A();
 		logger.info('function will not be displayed', Object.keys(a));
 	});
-	it('util.inspect() deprecated', () => {
-		const util = require('util');
+	it('util.inspect()', () => {
 		util.inspect({a: 'abc'});
+		util.inspect('abc');
 	});
 	it('buffer', () => {
 		bufferTest({david: 'liu'});

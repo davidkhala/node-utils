@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "khala-logger": "^0.2.0"
+  },
+  "scripts": {
+    "test": "mocha test"
   }
 }

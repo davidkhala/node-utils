@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "",
   "scripts": {
-    "test": "node test"
+    "test": "mocha test"
   },
   "author": "davidliu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",

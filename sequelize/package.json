@@ -4,5 +4,8 @@
   "dependencies": {
     "sequelize": "^5.18.0",
     "mysql2": "^1.7.0"
+  },
+  "scripts": {
+    "test": "mocha test"
   }
 }

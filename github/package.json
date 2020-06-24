@@ -3,5 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "@octokit/rest": "^16.34.0"
+  },
+  "scripts": {
+    "test": "mocha test"
   }
 }
