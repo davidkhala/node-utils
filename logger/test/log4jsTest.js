@@ -9,18 +9,18 @@ describe('Log4js:consoleLogger', () => {
 	});
 });
 describe('Log4js:fileLogger', () => {
-	const fs = require('fs');
+	const fsExtra = require('fs-extra');
+	const file = 'test.log';
 	it('info', () => {
-		const file = 'test.log';
 		const fileLog = fileLogger('fl', file);
 		fileLog.info('debug file');
-		fs.unlinkSync(file);
 	});
 	it('level higher than DEBUG', () => {
-		const file = 'test.log';
 		const fileLog2 = fileLogger('fl', file, 2);
 		fileLog2.debug('this should be hidden');
-		fs.unlinkSync(file);
+	});
+	after(() => {
+		fsExtra.removeSync(file);
 	});
 });
 

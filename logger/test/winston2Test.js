@@ -12,6 +12,7 @@ describe('Winston2:Console', () => {
 });
 describe('Winston2:File', () => {
 
+	const fsExtra = require('fs-extra');
 	const filePath = 'test.Log';
 	const fileLogger = Winston2.newFile('test:file', filePath);
 	it('error', () => {
@@ -20,8 +21,7 @@ describe('Winston2:File', () => {
 		fileLogger.error('abc', 'cde', obj, array);
 	});
 	after(() => {
-		const fs = require('fs');
-		fs.unlinkSync(filePath);
+		fsExtra.removeSync(filePath);
 	});
 });
 
