@@ -1,18 +1,25 @@
 const LevelDB = require('..');
 
+const path = require('path');
+const logger = require('khala-logger/log4js').consoleLogger('test:leveldb');
 
-const transientStore = '/home/mediconcen/Documents/backupVolumes/peer0.delphi/transientStore';
-const histroy = '/home/mediconcen/Documents/backupVolumes/peer0.delphi/ledgersData/historyLeveldb';
-const index = '/home/mediconcen/Documents/backupVolumes/peer0.delphi/ledgersData/chains/index';
-const path = histroy;
-const levelconn = new LevelDB(index);
+describe('Leveldb reader', () => {
+	it('transientStore', async () => {
+		const transientStore = path.resolve(__dirname, 'artifacts/transientStore');
+		const levelconn = new LevelDB(transientStore);
+		await levelconn.connect();
+	});
+	it('histroy', async () => {
+		const histroy = path.resolve(__dirname, 'artifacts/ledgersData/historyLeveldb');
+		const levelconn = new LevelDB(histroy);
+		await levelconn.connect();
+	});
+	it('index', async () => {
+		const index = path.resolve(__dirname, 'artifacts/ledgersData/chains/index');
+		const levelconn = new LevelDB(index);
+		await levelconn.connect();
+		const aValue = await levelconn.list();
+		logger.info(aValue);
+	});
 
-const flow = async () => {
-	await levelconn.connect();
-	const aValue = await levelconn.list();
-	console.log(aValue);
-	// await levelconn.set('name', 'level');
-	// const nameValue = await levelconn.get('name');
-	// console.log(nameValue);
-};
-flow();
+});
