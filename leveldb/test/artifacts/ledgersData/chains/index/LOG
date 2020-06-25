@@ -1,3 +1,6 @@
-2020/06/25-22:41:16.390090 7f2869585700 Recovering log #44
-2020/06/25-22:41:16.393572 7f2869585700 Delete type=3 #43
-2020/06/25-22:41:16.393592 7f2869585700 Delete type=0 #44
+=============== Jun 25, 2020 (UTC) ===============
+01:59:00.388458 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+01:59:00.390320 db@open opening
+01:59:00.390538 version@stat F·[] S·0B[] Sc·[]
+01:59:00.391469 db@janitor F·2 G·0
+01:59:00.391484 db@open done T·1.152907ms
