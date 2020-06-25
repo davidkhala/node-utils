@@ -23,7 +23,7 @@ class MySQL {
 				timestamps: false,
 				define: {
 					charset: 'utf8',
-					freezeTableName: true //prevent sequelize from pluralizing table names
+					freezeTableName: true // prevent sequelize from pluralizing table names
 				}
 			}
 		);

@@ -1,8 +1,10 @@
 const port = 4000;
-const {baseApp, helper} = require('../../index');
+const baseApp = require('../baseApp');
+const helper = require('../helper');
+const logger = require('khala-logger/log4js').consoleLogger('baseAppCase');
 const {run, expressError} = baseApp;
 const {trimExtName} = helper;
-const {errorSyntaxHandle} = require('../baseAppHandlers');
+const {errorSyntaxHandle} = require('./baseAppHandlers');
 
 const {app} = run(port);
 const path = require('path');
@@ -19,7 +21,7 @@ app.all('/', async (req, res) => {
 
 for (const filename of files) {
 	const routing = `/${trimExtName(filename)}`;
-	console.log({routing});
+	logger.debug({routing});
 	app.use(routing, require(path.resolve(RouterDir, filename)));
 }
 

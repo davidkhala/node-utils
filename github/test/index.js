@@ -1,11 +1,11 @@
 const GithubRestAPI = require('../');
-const logger = require('khala-logger/log4js');
+const logger = require('khala-logger/log4js').consoleLogger('Github API');
 
 describe('github Rest API', () => {
-	it('public access', async () => {
+	it('public access', () => {
 		const api = new GithubRestAPI();
 	});
-	it('private access', async () => {
+	it('private access', () => {
 		const token = process.env.GITHUB_TOKEN;
 		const api = new GithubRestAPI({token});
 	});

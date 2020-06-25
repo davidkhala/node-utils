@@ -21,8 +21,8 @@ exports.User = {
 		type: DataTypes.BOOLEAN,
 		defaultValue: false
 	},
-	Time: DataTypes.TIME,// TIME values in 'hh:mm:ss' format
-	Date: DataTypes.DATE,// The mysql:DATETIME type in 'YYYY-MM-DD hh:mm:ss' format.
+	Time: DataTypes.TIME, // TIME values in 'hh:mm:ss' format
+	Date: DataTypes.DATE, // The mysql:DATETIME type in 'YYYY-MM-DD hh:mm:ss' format.
 	TIMESTAMP: DataTypes.TIMESTAMP,
 	counter: {
 		type: DataTypes.INTEGER,

@@ -4,7 +4,7 @@ class GithubRestAPI {
 	/**
 	 * @param [token]
 	 */
-	constructor({token}) {
+	constructor({token} = {}) {
 		const opts = {};
 		if (token) {
 			Object.assign(opts, {

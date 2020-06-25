@@ -1,30 +1,32 @@
-const {mysql, setup} = require('./_connection');
-const dropAllTableTest = async () => {
-	await mysql.dropAllTables();
-	await showAllTables();
-};
-const dropDatabase = async (database) => {
-	await mysql.dropDatabase(database);
-};
-const dropTable = async (table) => {
-	await mysql.dropSchema(table);
-	await showAllTables();
-};
-const showAllTables = async () => {
-	const result = await mysql.showAllSchemas();
-	console.log(result);
-};
+const logger = require('khala-logger/log4js').consoleLogger('test:SQL');
 
-const run = async (callback, ...args) => {
-	await mysql.connect(true);
-	await setup(mysql);
-	await callback(...args);
-	await mysql.close();
-};
-const task = async () => {
-	await run(showAllTables);
-	await run(dropAllTableTest);
-	await run(dropDatabase, 'database');
-	await run(dropTable, 'User');
-};
-task();
+describe('SQL admin test', async () => {
+	const {mysql, setup} = require('./_connection');
+	beforeEach(async () => {
+		await mysql.connect(true);
+		await setup(mysql);
+	});
+	afterEach(async () => {
+		await mysql.close();
+	});
+	const showAllTables = async () => {
+		const result = await mysql.showAllSchemas();
+		logger.info(result);
+	};
+	it('showAllTables', async () => {
+		await showAllTables();
+	});
+	it('dropTable', async () => {
+		await mysql.dropSchema('User');
+		await showAllTables();
+	});
+	it('dropAllTableTest', async () => {
+		await mysql.dropAllTables();
+		await showAllTables();
+	});
+	it('dropDatabase', async () => {
+		await mysql.dropDatabase('database');
+	});
+
+});
+
