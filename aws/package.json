@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "khala-nodeutils": "^0.8.1",
-    "khala-logger": "^0.0.1"
+    "khala-logger": "^0.0.1",
+    "mocha": "latest"
   }
 }

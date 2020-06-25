@@ -1,5 +1,4 @@
 const region = 'ap-southeast-1';
-const bucket_name = 'mcc-lgstorage';
 const newBucketName = 'mcc-test-S3'.toLowerCase();
 const S3 = require('../S3');
 
