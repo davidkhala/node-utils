@@ -4,7 +4,7 @@ Tmp.setGracefulCleanup();
 
 /**
  *
- * @param options
+ * @param [options]
  * @return {[string, function(...[*]=)]} return a fileName, and a cleanup callback
  */
 const createTmpFile = (options) => {
@@ -15,10 +15,10 @@ const createTmpFile = (options) => {
 };
 /**
  *
- * @param options
+ * @param {Options} [options]
  * @return {[string, function(...[*]=)]}
  */
-const createTmpDir = (options) => {
+const createTmpDir = (options = {unsafeCleanup: true}) => {
 	const obj = Tmp.dirSync(options);
 	return [obj.name, () => {
 		obj.removeCallback();
