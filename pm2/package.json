@@ -5,9 +5,6 @@
   "main": "index.js",
   "author": "davidliu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
-  "scripts": {
-    "test": "mocha test"
-  },
   "license": "Apache-2.0",
   "dependencies": {
     "pm2": "^4.2.0",

@@ -6,7 +6,6 @@
     "aws-xray-sdk": "^2.5.0"
   },
   "scripts": {
-    "test": "mocha test"
   },
   "devDependencies": {
     "khala-nodeutils": "^0.8.1",

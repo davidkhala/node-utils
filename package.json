@@ -2,7 +2,7 @@
   "name": "node-utils",
   "private": true,
   "scripts": {
-    "test": "lerna run test",
+    "test": "mocha test; lerna run test",
     "install": "lerna bootstrap --no-ci"
   },
   "devDependencies": {

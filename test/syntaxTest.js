@@ -35,7 +35,7 @@ const JSONStringifyTest = () => {
 	};
 	complexObj.this = complexObj;
 	try {
-		console.log(JSON.stringify(complexObj));
+		JSON.stringify(complexObj);
 	} catch (e) {
 		logger.error('in JSON.stringify...');
 		logger.error(e);

@@ -5,6 +5,5 @@
     "compressing": "^1.5.1"
   },
   "scripts": {
-    "test": "mocha test"
   }
 }

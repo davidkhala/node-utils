@@ -85,7 +85,7 @@ class MySQL {
 	}
 
 	async connect(silence) {
-		const logger = silence ? false : this.logger.info;
+		const logger = silence ? false : this.logger.debug.bind(this.logger);
 		if (!this.connection) {
 			this.connection = MySQL._createConnection(this.database, this.username, this.password, logger);
 		}
