@@ -7,6 +7,7 @@ node_js:
 dist: bionic
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - npm config set package-lock false
 install:
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setup
   - curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password --init
