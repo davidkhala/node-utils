@@ -1,6 +1,6 @@
 {
   "name": "khala-level",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,8 @@
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
   "dependencies": {
-    "khala-kvdb": "^0.0.0",
-    "level": "^6.0.0"
+    "khala-kvdb": "latest",
+    "level": "latest"
   },
   "devDependencies": {
     "khala-logger": "latest"
