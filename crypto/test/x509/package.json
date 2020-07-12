@@ -3,6 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@ampretia/x509": "^0.4.7"
+    "@ampretia/x509": "latest"
   }
 }

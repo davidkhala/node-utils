@@ -8,7 +8,9 @@
     "jsrsasign": "^8.0.12"
   },
   "devDependencies": {
-    "khala-logger": "^0.2.0"
+    "khala-logger": "latest",
+    "mocha": "latest",
+    "@davidkhala/milagro-crypto-js": "unstable"
   },
   "scripts": {
   }
