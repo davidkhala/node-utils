@@ -20,6 +20,7 @@ follows [SEMVER](https://semver.org/)
 ## Notes
 - [NPM notes](./npm.md)
 - [jsDoc notes](./jsdoc.md)
+- [TypeScript notes](./typeScript.md)
 - Ternary Operator in some case could be simplified as 
     `a = a ? a : b` => `a = a || b` 
 - TLS options:
