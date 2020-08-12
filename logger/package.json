@@ -1,17 +1,22 @@
 {
   "name": "khala-logger",
-  "version": "0.2.0",
-  "description": "",
+  "version": "0.3.0",
   "scripts": {
     "test": "mocha test"
   },
   "author": "davidliu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "dependencies": {
-    "winston": "^2.4.4",
-    "log4js": "^6.1.0"
+    "winston": "2.x-latest",
+    "log4js": "latest"
   },
   "devDependencies": {
-    "fs-extra": "latest"
+    "fs-extra": "latest",
+    "signale": "^1.4.0",
+    "mocha": "^8.1.1",
+    "loglevel": "latest"
+  },
+  "publishConfig": {
+    "tag": "latest"
   }
 }

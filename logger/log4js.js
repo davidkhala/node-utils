@@ -22,6 +22,13 @@ exports.consoleLogger = (moduleName, level = 5) => {
 	return logger;
 };
 
+/**
+ * @deprecated This method has context pollution risk. Use winston file logger instead.
+ * @param moduleName
+ * @param filename
+ * @param level
+ * @return {Logger}
+ */
 exports.fileLogger = (moduleName, filename, level = 5) => {
 	const Log4js = require('log4js');
 	Log4js.configure({
