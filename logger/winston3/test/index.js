@@ -5,9 +5,13 @@ describe('Winston3: console', () => {
 		const logger = newLogger('b');
 		logger.debug({a: {a: 'b'}});
 	});
-	it('with `winston-json-formatter`', () => {
+
+});
+
+describe('Winston3 with `winston-json-formatter`', () => {
+	const {configuredFormatter} = require('winston-json-formatter');
+	it('console format', () => {
 		const logger = newLogger('b');
-		const {configuredFormatter} = require('winston-json-formatter');
 		const options = {
 			typeFormat: 'console',
 			service: 'service name',
@@ -16,8 +20,17 @@ describe('Winston3: console', () => {
 		logger.format = configuredFormatter(options); // overwriting
 		logger.info('string');
 		logger.info({json: 'json'}); // No logger label support
-
 	});
+	it('json format', () => {
+		const logger = newLogger('b');
+		const options = {
+			typeFormat: 'json',
+		};
+		logger.format = configuredFormatter(options); // overwriting
+		logger.info('string');
+		logger.info({json: 'json'}); // No logger label support
+	});
+
 });
 
 
