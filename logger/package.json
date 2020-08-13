@@ -11,9 +11,9 @@
     "log4js": "latest"
   },
   "devDependencies": {
-    "fs-extra": "latest",
+    "fs-extra": "8.1.0",
     "signale": "^1.4.0",
-    "mocha": "^8.1.1",
+    "mocha": "latest-6",
     "loglevel": "latest"
   },
   "publishConfig": {

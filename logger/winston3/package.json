@@ -3,7 +3,10 @@
   "description": "[experimental]",
   "version": "0.0.0",
   "dependencies": {
-    "winston": "^3.2.1"
+    "winston": "latest"
+  },
+  "devDependencies": {
+    "winston-json-formatter": "latest"
   },
   "publishConfig": {
     "tag": "unstable"
