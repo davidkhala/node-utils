@@ -7,8 +7,4 @@ module.exports = {
 	version: require('./version'),
 	format: require('./format'),
 	syntax: require('./syntax'),
-	useBlueBird: () => {
-		global.Promise = require('bluebird');
-	}
-
 };

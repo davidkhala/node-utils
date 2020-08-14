@@ -18,6 +18,9 @@ const files = fs.readdirSync(RouterDir);
 app.all('/', async (req, res) => {
 	res.send(req.method);
 });
+app.get('/500', async (req, res) => {
+	res.statsus(500);
+});
 
 for (const filename of files) {
 	const routing = `/${trimExtName(filename)}`;
