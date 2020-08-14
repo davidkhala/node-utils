@@ -69,9 +69,14 @@ exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptio
 		delete e.request;
 		const {response} = e;
 		if (response) {
+			delete e.config;
+			delete response.config;
+			delete response.request;
 			const {status, statusText} = response;
 			e.statusCode = status;
 			e.statusMessage = statusText;
+			delete response.status;
+			delete response.statusText;
 		}
 		throw e;
 	}
