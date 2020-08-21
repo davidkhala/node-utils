@@ -85,6 +85,16 @@ class MySQL {
 		await this.connection.queryInterface.addColumn(table, column, type);
 	}
 
+	async ping() {
+		try {
+			await this.connection.authenticate();
+			return true;
+		} catch (e) {
+			this.logger.error(e);
+			return false;
+		}
+	}
+
 	async connect(database, silence) {
 		const logger = silence ? false : this.logger.debug.bind(this.logger);
 		if (!this.connection) {
