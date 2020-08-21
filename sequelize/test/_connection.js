@@ -1,6 +1,6 @@
 const MySQL = require('../Mysql');
 const logger = require('khala-logger/log4js').consoleLogger('test:SQL');
-exports.mysql = new MySQL('database', 'root', 'password', logger);
+exports.mysql = new MySQL({username:'root', password:'password'}, logger);
 const dataObjects = require('./dataObjects');
 exports.setup = async (mysql) => {
 	const result = {};

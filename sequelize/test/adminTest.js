@@ -2,8 +2,9 @@ const logger = require('khala-logger/log4js').consoleLogger('test:SQL');
 
 describe('SQL admin test', async () => {
 	const {mysql, setup} = require('./_connection');
+	const DB_NAME = 'database';
 	beforeEach(async () => {
-		await mysql.connect(true);
+		await mysql.connect(DB_NAME, true);
 		await setup(mysql);
 	});
 	afterEach(async () => {
