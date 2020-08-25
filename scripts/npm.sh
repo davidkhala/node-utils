@@ -27,4 +27,7 @@ login() {
 		echo "########## npm acount login success ##########"
 	fi
 }
+sortDependency() {
+	npx sort-package-json # npm>=5.2.0, powered by https://github.com/keithamus/sort-package-json
+}
 $fcn $remain_params
