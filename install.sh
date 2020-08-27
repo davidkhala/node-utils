@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 set -e
-fcn=$1
-remain_params=""
-for ((i = 2; i <= ${#}; i++)); do
-	j=${!i}
-	remain_params="$remain_params $j"
-done
 install8() {
 	if ! node --version | grep 'v8.'; then
 		if [[ $(uname) == "Darwin" ]]; then
@@ -60,4 +54,4 @@ pm2() {
 nodeGYPDependencies() {
 	sudo apt install -y gcc make g++ python # required by node-gyp
 }
-$fcn $remain_params
+"$@"
