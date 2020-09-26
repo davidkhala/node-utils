@@ -104,7 +104,7 @@ class MySQL {
 			await this.connection.query('show databases;');
 		} catch (e) {
 			const {name, original} = e;
-			if (name === 'SequelizeConnectionError' && original.sqlMessage.includes('Unknown database')) {
+			if (name === 'SequelizeConnectionError' && original.sqlMessage && original.sqlMessage.includes('Unknown database')) {
 				this.logger.warn(original.sqlMessage, 'creating');
 				const emptyConnection = this._createConnection('', logger);
 				await emptyConnection.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`);
