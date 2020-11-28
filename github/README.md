@@ -1,5 +1,8 @@
 # Github utils
 
+## Github Registry
+- [Delete a published package]https://docs.github.com/en/free-pro-team@latest/packages/publishing-and-managing-packages/deleting-a-package
+    - You can only delete a version of a private package 
 ## Github APIs
 
 - [Github Rest API](https://developer.github.com/v3/)
