@@ -30,6 +30,7 @@ follows [SEMVER](https://semver.org/)
 - console.log() accepts three format characters, `%s` => `string`, `%d` => `integer`, and `%j` => `JSON data`
 
 ## TODO
+- Bump to latest nodejs LTS: 14.x
 - try stressTest on sequenlize
 - build a light-weight https proxy server
 - Redis的PUB/SUB机制, used to work as message queue
