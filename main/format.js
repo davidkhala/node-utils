@@ -3,9 +3,7 @@ const papaParse = require('papaparse');
 const path = require('path');
 const fs = require('fs');
 exports.JSONReadable = (data) => JSON.stringify(data, null, 2);
-exports.dateFormat = (format, date) => {
-	return dateFormatter(format, date);
-};
+exports.dateFormat = dateFormatter;
 /**
  *
  * @type {number} a year in millisecond
