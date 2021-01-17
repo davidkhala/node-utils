@@ -25,10 +25,11 @@ const fs = require('fs');
  * @param {Object} [body]
  * @param [method]
  * @param {FormData} [formData]
+ * @param {Object} [params] http url parameter part like <code>url?ID=12345</code>, could be expressed as `params` here as <code>{ID:12345}</code>
  * @param {RequestExtraOptions} [otherOptions]
  * @return {Promise<Object>}
  */
-exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptions = {}) => {
+exports.axiosPromise = async ({url, body, method = 'POST', formData, params}, otherOptions = {}) => {
 
 	const {cert, key, ca, rejectUnauthorized, passphrase} = otherOptions;
 	if (cert || key || ca || passphrase || typeof rejectUnauthorized === 'boolean') {
@@ -53,7 +54,8 @@ exports.axiosPromise = async ({url, body, method = 'POST', formData}, otherOptio
 
 	const config = Object.assign({
 		method,
-		url
+		url,
+		params
 	}, otherOptions);
 	if (formData) {
 		config.headers = Object.assign(formData.getHeaders(), config.headers);
