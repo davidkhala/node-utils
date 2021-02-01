@@ -1,0 +1,21 @@
+name: nodejs
+on: push
+jobs:
+  main:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+            node-version: 14.x
+      - run: npm config set package-lock false
+      - run: curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setup
+      - run: curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password --init
+      - run: npm install
+      - run: npm install pm2@latest -g; cd pm2; npm install ; cd -;
+      - run: cd activemq; docker build --tag=davidkhala/activemq-mysql . ;cd -
+      - run: npm test
+        name: npm test
+      - run: ./pm2/test/CLI/test.sh
+      - run: ./crypto/test/test.sh
+      - run: cd activemq/test;docker-compose up -d; node index.js; cd -
