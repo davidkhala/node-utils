@@ -13,15 +13,15 @@ install8() {
 		fi
 	fi
 }
-install12() {
-	if ! node --version | grep 'v12.'; then
+install14() {
+	if ! node --version | grep 'v14.'; then
 		if [[ $(uname) == "Darwin" ]]; then
-			brew install node@12
-			echo 'export PATH="/usr/local/opt/node@12/bin:$PATH"' >>~/.bash_profile
-			export LDFLAGS="-L/usr/local/opt/node@12/lib"
-			export CPPFLAGS="-I/usr/local/opt/node@12/include"
+			brew install node@14
+			echo 'export PATH="/usr/local/opt/node@14/bin:$PATH"' >>~/.bash_profile
+			export LDFLAGS="-L/usr/local/opt/node@14/lib"
+			export CPPFLAGS="-I/usr/local/opt/node@14/include"
 		else
-			curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+			curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 			sudo apt -qq install -y nodejs
 		fi
 	fi
