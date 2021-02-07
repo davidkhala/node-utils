@@ -1,7 +1,0 @@
-{
-  "name": "travis",
-  "version": "1.0.0",
-  "dependencies": {
-    "khala-axios": "^0.1.3"
-  }
-}

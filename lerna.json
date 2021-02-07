@@ -14,7 +14,6 @@
     "pm2",
     "rabbitmq",
     "sequelize",
-    "travis",
     "websocket"
   ],
   "version": "independent"
