@@ -99,6 +99,11 @@ class MySQL {
 		}
 	}
 
+	/**
+	 *
+	 * @param {string} database
+	 * @param {boolean} [silence]
+	 */
 	async connect(database, silence) {
 		const logger = silence ? false : this.logger.debug.bind(this.logger);
 		if (!this.connection) {
