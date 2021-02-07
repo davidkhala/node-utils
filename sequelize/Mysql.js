@@ -2,6 +2,10 @@ const Sequelize = require('sequelize');
 
 class MySQL {
 
+	/**
+	 * @param {SequelizeConnectOpts} connectOpts
+	 * @param logger
+	 */
 	constructor(connectOpts, logger = console) {
 		const {username = 'root', password = '', host = 'localhost', port = 3306} = connectOpts;
 		Object.assign(this, {username, password, host, port});
