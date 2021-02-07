@@ -16,5 +16,3 @@ exports.useXRay = (app, segmentName) => {
 exports.expressError = (app) => {
 	app.use(AWSXRay.express.closeSegment());
 };
-
-exports.daemonBinaryAddress = '';
