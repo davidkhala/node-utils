@@ -51,7 +51,12 @@ pm2() {
 	fi
 
 }
+build-essential(){
+	sudo apt-get install -y build-essential ## To install dependencies: , make, gcc, g++
+}
+# required by node-gyp
 nodeGYPDependencies() {
-	sudo apt install -y gcc make g++ python # required by node-gyp
+	build-essential
+	sudo apt install -y python 
 }
 "$@"
