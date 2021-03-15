@@ -13,7 +13,7 @@ install8() {
 		fi
 	fi
 }
-install14() {
+LTS() {
 	if ! node --version | grep 'v14.'; then
 		if [[ $(uname) == "Darwin" ]]; then
 			brew install node@14
