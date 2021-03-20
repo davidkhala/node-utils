@@ -1,11 +1,7 @@
 const localhost = '127.0.0.1';
-exports.localhost = localhost;
 const os = require('os');
 const childProcess = require('child_process');
-
-exports.hostname = os.hostname;
-exports.tempdir = os.tmpdir();
-exports.homedir = os.homedir();
+const fs = require('fs');
 const util = require('util');
 
 /**
@@ -32,21 +28,7 @@ const util = require('util');
  */
 const exec = util.promisify(childProcess.exec);
 
-exports.exec = exec;
-
-/**
- *
- * @param {string} type "name" | "pid" | "port"
- * @param {string|number|RegExp} value
- * @param {boolean} [strict]
- * @returns {Promise<processObject[]>}
- */
-exports.findProcess = async (type, value, strict) => {
-	const findProcess = require('find-process');
-	await exec('netstat >/dev/null'); // throw if not exist
-	return findProcess(type, value, strict);
-};
-exports.killProcess = async (pid) => {
+const killProcess = async (pid) => {
 	await exec(`kill ${pid}`);
 };
 
@@ -55,7 +37,7 @@ exports.killProcess = async (pid) => {
  * @param {string} command
  * @param {string} [stdLogFile]
  */
-exports.execDetach = (command, stdLogFile) => {
+const execDetach = (command, stdLogFile) => {
 	const {spawn} = childProcess;
 	const {splitBySpace} = require('./syntax');
 	const [cmd, ...args] = splitBySpace(command);
@@ -72,7 +54,7 @@ exports.execDetach = (command, stdLogFile) => {
 };
 
 
-exports.execResponsePrint = ({stdout, stderr}) => {
+const execResponsePrint = ({stdout, stderr}) => {
 	console.log('stdout[start]\n', stdout, '\n[end]stdout');
 	console.error('stderr[start]\n', stderr, '\n[end]stderr');
 };
@@ -109,9 +91,7 @@ class NetSocket {
 	}
 }
 
-exports.NetSocket = NetSocket;
-
-exports.isPortInUse = async (port, host = localhost, timeout = 1000) => {
+const isPortInUse = async (port, host = localhost, timeout = 1000) => {
 	const socket = new NetSocket(port, host);
 	return new Promise((resolve, reject) => {
 		const onConnect = () => {
@@ -136,4 +116,33 @@ exports.isPortInUse = async (port, host = localhost, timeout = 1000) => {
 		socket.connect(timeout);
 	});
 
+};
+module.exports = {
+	localhost,
+	os: {
+		type: os.type(), // "Windows_NT"
+		release: os.release(), // "10.0.14393"
+		platform: os.platform(), // "win32"
+	},
+	isPortInUse,
+	NetSocket,
+	execResponsePrint,
+	execDetach,
+	killProcess,
+	exec,
+	hostname: os.hostname,
+	tempdir: os.tmpdir(),
+	homedir: os.homedir(),
+	/**
+	 *
+	 * @param {string} type "name" | "pid" | "port"
+	 * @param {string|number|RegExp} value
+	 * @param {boolean} [strict]
+	 * @returns {Promise<processObject[]>}
+	 */
+	findProcess: async (type, value, strict) => {
+		const findProcess = require('find-process');
+		await exec('netstat >/dev/null'); // throw if not exist
+		return findProcess(type, value, strict);
+	},
 };
