@@ -1,7 +1,6 @@
 const logger = require('khala-logger/log4js').consoleLogger('devops');
 const devOps = require('../devOps');
 
-
 const killProcess = async port => {
 	const isInUse = await devOps.isPortInUse(port);
 	console.log({port, isInUse});
@@ -11,27 +10,31 @@ const killProcess = async port => {
 		await devOps.killProcess(pid);
 	}
 };
-const execDetachTest = async () => {
-	const cmd = '/home/davidliu/Documents/delphi-fabric/common/bin/configtxlator start --hostname=0.0.0.0 --port=7059 --CORS=*';
-	await devOps.execDetach(cmd);
-};
+describe('devOps', function () {
 
-const execTest = async () => {
-	const requirePermission = 'apt update';
-	try {
-		await devOps.exec(requirePermission);
-	} catch (e) {
-		logger.info('assertFail success', requirePermission);
-	}
+	this.timeout(999999);
+	it.skip('restart Configtxlator', async () => {
+		const port = 7059;
 
-	await devOps.exec('sudo apt update'); // Test passed: sudo have interactive input
-};
-const taskConfigtxlator = async () => {
-	await killProcess(7059);
-	await execDetachTest();
-};
-const task = async () => {
-	logger.info({tempdir: devOps.tempdir});
-	await execTest();
-};
-task();
+		await killProcess(port);
+		const cmd = '/home/davidliu/Documents/delphi-fabric/common/bin/configtxlator start --hostname=0.0.0.0 --port=7059 --CORS=*';
+		devOps.execDetach(cmd);
+	});
+	it.skip('exec: apt update', async () => {
+		const requirePermission = 'apt update';
+		try {
+			await devOps.exec(requirePermission);
+		} catch (e) {
+			logger.info('assertFail success', requirePermission);
+		}
+
+		await devOps.exec('sudo apt update'); // Test passed: sudo have interactive input
+	});
+	it('execStream: npm i', async () => {
+		devOps.execStream('npm install');
+	});
+	it.skip('os', async () => {
+		logger.info({tempdir: devOps.tempdir});
+	});
+});
+

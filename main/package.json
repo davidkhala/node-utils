@@ -1,11 +1,10 @@
 {
   "name": "khala-nodeutils",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "author": "david Liu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

@@ -3,7 +3,7 @@ const os = require('os');
 const childProcess = require('child_process');
 const fs = require('fs');
 const util = require('util');
-
+const {splitBySpace} = require('./syntax');
 /**
  * @typedef {Object} processObject
  * @property {number} pid
@@ -39,7 +39,7 @@ const killProcess = async (pid) => {
  */
 const execDetach = (command, stdLogFile) => {
 	const {spawn} = childProcess;
-	const {splitBySpace} = require('./syntax');
+
 	const [cmd, ...args] = splitBySpace(command);
 	const ignore = 'ignore';// string 'ignore' is a key word
 	// flag 'a' - Open file for appending. The file is created if it does not exist.
@@ -51,6 +51,11 @@ const execDetach = (command, stdLogFile) => {
 		stdio, // piping all stdio to /dev/null
 		detached: true
 	}).unref();
+};
+const execStream = (command) => {
+	const {spawn} = childProcess;
+	const [cmd, ...args] = splitBySpace(command);
+	return spawn(cmd, args, {stdio: 'inherit'});
 };
 
 
@@ -128,15 +133,16 @@ module.exports = {
 		release: os.release(), // "10.0.14393"
 		platform: os.platform(), // "win32" # https://nodejs.org/api/os.html#os_os_platform
 	},
+	hostname: os.hostname,
+	tempdir: os.tmpdir(),
+	homedir: os.homedir(),
 	isPortInUse,
 	NetSocket,
 	execResponsePrint,
 	execDetach,
+	execStream,
 	killProcess,
 	exec,
-	hostname: os.hostname,
-	tempdir: os.tmpdir(),
-	homedir: os.homedir(),
 	/**
 	 *
 	 * @param {string} type "name" | "pid" | "port"
