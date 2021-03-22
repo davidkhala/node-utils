@@ -55,8 +55,12 @@ const execDetach = (command, stdLogFile) => {
 
 
 const execResponsePrint = ({stdout, stderr}) => {
-	console.log('stdout[start]\n', stdout, '\n[end]stdout');
-	console.error('stderr[start]\n', stderr, '\n[end]stderr');
+	if (stdout.trim()) {
+		console.log('stdout[start]\n', stdout, '\n[end]stdout');
+	}
+	if (stderr.trim()) {
+		console.error('stderr[start]\n', stderr, '\n[end]stderr');
+	}
 };
 
 class NetSocket {
@@ -122,7 +126,7 @@ module.exports = {
 	os: {
 		type: os.type(), // "Windows_NT"
 		release: os.release(), // "10.0.14393"
-		platform: os.platform(), // "win32"
+		platform: os.platform(), // "win32" # https://nodejs.org/api/os.html#os_os_platform
 	},
 	isPortInUse,
 	NetSocket,
