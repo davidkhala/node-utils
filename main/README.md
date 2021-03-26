@@ -16,3 +16,4 @@ Main toolset
 
 ## TODO
 - add koa.js support as alternative of express.js
+- child_process.execSync exist as sync version of exec
