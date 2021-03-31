@@ -26,7 +26,7 @@ describe('format test', () => {
 		test('1.10');
 		test(1.10);
 		test(1.00);
-		console.log('Number.isInteger(1.00)', Number.isInteger(1.00));
+		assert.strictEqual(Number.isInteger(1.00), true, 'Number.isInteger(1.00) should be true');
 	});
 	it('test bytes2String', () => {
 		const bytes = [15, 14, 33, 78];
