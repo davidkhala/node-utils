@@ -12,6 +12,6 @@
 - npm install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
 - there is no automatic way to manage npm token explicitly
 - try [github package registry](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry)
-- bump to latest
+- [bump all dependencies to latest](https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version)
     - `npm outdated` will list out all latest versions of your dependencies
     - `npm update` will do the update
