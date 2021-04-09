@@ -2,7 +2,6 @@ const localhost = '127.0.0.1';
 const os = require('os');
 const childProcess = require('child_process');
 const fs = require('fs');
-const util = require('util');
 const {splitBySpace} = require('./syntax');
 /**
  * @typedef {Object} processObject
@@ -21,15 +20,14 @@ const {splitBySpace} = require('./syntax');
  */
 
 /**
- * @async
  * @param {string} command
- * @param {Object} options
- * @return Promise<execResponse>
+ * @param {Object} [options]
+ * @return {string}
  */
-const exec = util.promisify(childProcess.exec);
+const execSync = (command, options = {}) => childProcess.execSync(command, Object.assign(options, {encoding: 'utf-8'}));
 
-const killProcess = async (pid) => {
-	await exec(`kill ${pid}`);
+const killProcess = (pid) => {
+	execSync(`kill ${pid}`);
 };
 
 /**
@@ -142,7 +140,7 @@ module.exports = {
 	execDetach,
 	execStream,
 	killProcess,
-	exec,
+	execSync,
 	/**
 	 *
 	 * @param {string} type "name" | "pid" | "port"
@@ -150,9 +148,9 @@ module.exports = {
 	 * @param {boolean} [strict]
 	 * @returns {Promise<processObject[]>}
 	 */
-	findProcess: async (type, value, strict) => {
+	findProcess: (type, value, strict) => {
 		const findProcess = require('find-process');
-		await exec('netstat >/dev/null'); // throw if not exist
+		execSync('netstat >/dev/null'); // throw if not exist
 		return findProcess(type, value, strict);
 	},
 };

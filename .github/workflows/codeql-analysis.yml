@@ -1,6 +1,6 @@
 name: "CodeQL"
 
-on:  pull_request
+on:  workflow_dispatch
 
 jobs:
   analyze:

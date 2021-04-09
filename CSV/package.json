@@ -1,0 +1,10 @@
+{
+  "name": "khala-csv",
+  "version": "1.0.0",
+  "dependencies": {
+    "papaparse": "latest"
+  },
+  "devDependencies": {
+    "mocha": "latest"
+  }
+}

@@ -128,8 +128,8 @@ describe('syntax test', () => {
 		let {entry} = a;
 		entry = 'd';
 		logger.debug(obj);
-		Object.assign(obj, {a: null});
-		logger.debug(obj);
+		const assignResult = Object.assign(obj, {a: null});
+		logger.debug(obj, assignResult);
 	});
 	it('JSON', () => {
 		JSONStringifyTest();
@@ -138,6 +138,28 @@ describe('syntax test', () => {
 		forTest();
 		keyTest();
 	});
+	it('test:error', () => {
+		try {
+			throw Error('abc');
+		} catch (err) {
+			logger.debug(err);
+			logger.debug('err.code', err.code);
+			logger.debug('err.message', err.message);
+			logger.debug('err.stack', err.stack);
+			logger.error(err.toString());
+		}
+	});
+	it('test: promise', async () => {
+		const p = new Promise((resolve, reject) => {
+			const timer = setTimeout(() => {
+				clearTimeout(timer);
+				reject(new Error(123));
+			}, 1000);
+
+		});
+		await p;
+	});
+
 
 });
 
