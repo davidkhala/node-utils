@@ -9,8 +9,6 @@
     "light",
     "logger",
     "main",
-    "pm2",
-    "sequelize",
     "websocket"
   ],
   "version": "independent"

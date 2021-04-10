@@ -10,8 +10,9 @@
   "devDependencies": {
     "khala-logger": "latest",
     "mocha": "latest",
-    "@davidkhala/milagro-crypto-js": "unstable"
+    "@davidkhala/milagro-crypto-js": "latest"
   },
   "scripts": {
+    "test": "mocha test"
   }
 }

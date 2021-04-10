@@ -1,7 +1,7 @@
 name: nodejs frequent usage
 on: push
 jobs:
-  main:
+  root:
     strategy:
       matrix:
         node-version: [ 12.x, 14.x ]
@@ -15,8 +15,11 @@ jobs:
       - run: npm config set package-lock false
       - run: npm install
       - run: npm test
-        name: npm test
+      - run: npm run test-lerna
   pm2:
+    defaults:
+      run:
+        working-directory: pm2 # TODO see how it works
     strategy:
       matrix:
         node-version: [ 12.x, 14.x ]
@@ -28,13 +31,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm config set package-lock false
-      - run: npm install pm2@latest -g; cd pm2; npm install ; cd -;
-      - run: ./pm2/test/CLI/test.sh
+      - run: npm install pm2@latest -g;
+      - run: npm install;
+      - run: ./test/CLI/test.sh
   crypto:
+    defaults:
+      run:
+        working-directory: crypto # TODO see how it works
     strategy:
       matrix:
         node-version: [ 12.x, 14.x ]
         os: [ ubuntu-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
-      - run: ./crypto/test/test.sh
+      - run: npm install
+      - run: npm test

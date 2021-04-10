@@ -2,7 +2,7 @@
  *
  * @type {module.X500Name}
  */
-module.exports = class X500Name {
+class X500Name {
 
 	setCommonName(s) {
 		this.CN = s;
@@ -32,4 +32,6 @@ module.exports = class X500Name {
 		return Object.entries(this).map(([key, value]) => `${key}=${value}`).join(',');
 	}
 
-};
+}
+
+module.exports = X500Name;

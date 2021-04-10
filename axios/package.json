@@ -1,12 +1,16 @@
 {
   "name": "khala-axios",
   "version": "1.0.0",
+  "scripts": {
+    "test": "mocha test"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "form-data": "^3.0.0"
   },
   "devDependencies": {
     "khala-logger": "latest",
-    "fs-extra": "^9.0.1"
+    "fs-extra": "^9.0.1",
+    "mocha": "latest"
   }
 }
