@@ -1,8 +1,0 @@
-{
-  "name": "mocha-sample",
-  "version": "1.0.0",
-  "private": true,
-  "devDependencies": {
-    "mocha": "^7.1.2"
-  }
-}

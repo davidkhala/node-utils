@@ -1,18 +1,15 @@
 {
   "packages": [
-    "activemq",
     "axios",
     "crypto",
     "github",
     "grpc",
-    "kafka",
     "kvDB",
     "leveldb",
     "light",
     "logger",
     "main",
     "pm2",
-    "rabbitmq",
     "sequelize",
     "websocket"
   ],
