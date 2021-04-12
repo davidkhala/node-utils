@@ -19,7 +19,7 @@ jobs:
   pm2:
     defaults:
       run:
-        working-directory: pm2 # TODO see how it works
+        working-directory: pm2
     strategy:
       matrix:
         node-version: [ 12.x, 14.x ]
@@ -37,12 +37,16 @@ jobs:
   crypto:
     defaults:
       run:
-        working-directory: crypto # TODO see how it works
+        working-directory: crypto
     strategy:
       matrix:
         node-version: [ 12.x, 14.x ]
         os: [ ubuntu-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm test

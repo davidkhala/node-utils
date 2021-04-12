@@ -1,5 +1,8 @@
 name: npm khala-sequelize
 on: workflow_dispatch
+defaults:
+  run:
+    working-directory: sequelize
 jobs:
   sequelize:
     strategy:
@@ -13,6 +16,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setup
       - run: curl -sS https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/database/mysql.sh | bash -s setRootPassword password --init
-      - run: cd sequelize
       - run: npm install
       - run: npm test

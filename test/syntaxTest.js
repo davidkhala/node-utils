@@ -49,7 +49,8 @@ describe('syntax test', () => {
 			Buffer.from(11);
 			assert.fail('assert fail: Buffer.from(number)');
 		} catch (e) {
-			assert.ok(e.message.match(/The "value" argument must not be of type number. Received type number/));
+			const regExp = /^The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received type number/;
+			assert.match(e.message, regExp);
 		}
 	});
 	it('read dir', () => {
@@ -91,7 +92,7 @@ describe('syntax test', () => {
 		try {
 			JSON.stringify(complexObj);
 		} catch (e) {
-			assert.strictEqual(e.message, 'Converting circular structure to JSON');
+			assert.match(e.message, /^Converting circular structure to JSON/);
 		}
 
 		console.info(util.format('%j', complexObj));
