@@ -4,7 +4,7 @@
   "scripts": {
     "test": "mocha test",
     "test-lerna": "lerna run test",
-    "install": "lerna bootstrap --no-ci"
+    "install-lerna": "lerna bootstrap --no-ci"
   },
   "devDependencies": {
     "lerna": "^3.20.2",

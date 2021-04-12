@@ -2,84 +2,26 @@ const logger = console;
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-const testArrowFunction = async () => {
-	class TestClass {
-		async p() {
-			return new Promise(resolve => {
-				logger.debug('this', this);
-				resolve();
-			});
-		}
-	}
-
-	const testObj = new TestClass();
-	await testObj.p();
-};
+const assert = require('assert');
 const bufferTest = (obj) => {
 	const bytes = Buffer.from(JSON.stringify(obj));
 	logger.info(typeof obj, obj, 'stringify to', JSON.stringify(obj));
 	logger.info(bytes.toString());
 };
-const bufferNumTest = () => {
-	try {
-		Buffer.from(11);
-		logger.error('assert fail: Buffer.from(number)');
-	} catch (e) {
-		logger.info(Buffer.from, e.message);
-	}
-};
 
-const JSONStringifyTest = () => {
-	const complexObj = {
-		a: 'b'
-	};
-	complexObj.this = complexObj;
-	try {
-		JSON.stringify(complexObj);
-	} catch (e) {
-		logger.error('in JSON.stringify...');
-		logger.error(e);
-	}
-
-	try {
-		console.log(util.format('%j', complexObj));
-	} catch (e) {
-		logger.error('in util.format...');
-		logger.error(e);
-	}
-
-};
-
-
-const loadObjectTest = () => {
-	let files = fs.readdirSync(__dirname);
-	files = files.filter(name => name !== 'index.js' && name !== path.basename(__filename));
-	for (const file of files) {
-		const object = require(`./${file}`);
-		logger.debug(file, object);
-	}
-};
-const forTest = () => {
-	const obj = {a: 'b'};
-	try {
-		for (const value of obj) {
-			console.log({value});
-		}
-	} catch (e) {
-		logger.info('error expected: TypeError: obj is not iterable');
-		logger.info(e);
-	}
-
-};
-const keyTest = () => {
-	const obj = {undefined: 'b'};
-	for (const [key, value] of Object.entries(obj)) {
-		console.log({key, value});
-	}
-};
 describe('syntax test', () => {
 	it('arrow function', async () => {
-		await testArrowFunction();
+		class TestClass {
+			async p() {
+				return new Promise(resolve => {
+					logger.debug('this', this);
+					resolve();
+				});
+			}
+		}
+
+		const testObj = new TestClass();
+		await testObj.p();
 	});
 	it('class', () => {
 		class A {
@@ -103,18 +45,28 @@ describe('syntax test', () => {
 		bufferTest({david: 'liu'});
 		bufferTest('liu');
 		bufferTest(123);
-		bufferNumTest();
+		try {
+			Buffer.from(11);
+			assert.fail('assert fail: Buffer.from(number)');
+		} catch (e) {
+			assert.ok(e.message.match(/The "value" argument must not be of type number. Received type number/));
+		}
 	});
 	it('read dir', () => {
 		try {
 			fs.readFileSync(__dirname).toString();
 		} catch (e) {
-			logger.error(e);
+			assert.strictEqual(e.message, 'EISDIR: illegal operation on a directory, read');
 		}
 
 	});
 	it('auto require', () => {
-		loadObjectTest();
+		let files = fs.readdirSync(__dirname);
+		files = files.filter(name => name.endsWith('.js') && name !== path.basename(__filename));
+		for (const file of files) {
+			const object = require(`./${file}`);
+			logger.debug(file, object);
+		}
 	});
 	it('Object assign', () => {
 		const obj = {
@@ -132,11 +84,34 @@ describe('syntax test', () => {
 		logger.debug(obj, assignResult);
 	});
 	it('JSON', () => {
-		JSONStringifyTest();
+		const complexObj = {
+			a: 'b'
+		};
+		complexObj.this = complexObj;
+		try {
+			JSON.stringify(complexObj);
+		} catch (e) {
+			assert.strictEqual(e.message, 'Converting circular structure to JSON');
+		}
+
+		console.info(util.format('%j', complexObj));
 	});
 	it('for loop', () => {
-		forTest();
-		keyTest();
+		const obj = {a: 'b'};
+		try {
+			for (const value of obj) {
+				console.log({value});
+			}
+		} catch (e) {
+
+			assert.strictEqual(e.message, 'obj is not iterable');
+		}
+	});
+	it('test:key', () => {
+		const obj = {undefined: 'b'};
+		for (const [key, value] of Object.entries(obj)) {
+			console.log({key, value});
+		}
 	});
 	it('test:error', () => {
 		try {
@@ -153,11 +128,15 @@ describe('syntax test', () => {
 		const p = new Promise((resolve, reject) => {
 			const timer = setTimeout(() => {
 				clearTimeout(timer);
-				reject(new Error(123));
+				reject(new Error('123'));
 			}, 1000);
 
 		});
-		await p;
+		try {
+			await p;
+		} catch (e) {
+			assert.strictEqual(e.message, '123');
+		}
 	});
 
 
