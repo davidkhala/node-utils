@@ -1,0 +1,23 @@
+name: npm khala-axios
+on: workflow_dispatch
+defaults:
+  run:
+    working-directory: axios
+jobs:
+  axios:
+    strategy:
+      matrix:
+        node-version: [ 8.x 12.x, 14.x ]
+        os: [ ubuntu-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm config set package-lock false
+      - run: npm install
+      - run: npm install -g express-pong express-pongs
+      - run: port=3000 extensions=post,err,formData pong-http &
+      - run: key=test/key.pem cert=test/cert.pem port=3443 pong-https &
+      - run: npm test

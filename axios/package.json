@@ -2,15 +2,17 @@
   "name": "khala-axios",
   "version": "1.0.0",
   "scripts": {
+    "pretest": "npm install -g pm2; ",
     "test": "mocha test"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "form-data": "^3.0.0"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "khala-logger": "latest",
     "fs-extra": "^9.0.1",
-    "mocha": "latest"
+    "mocha": "latest",
+    "form-data": "^3.0.0",
+    "khala-nodeutils": "^1.0.0"
   }
 }

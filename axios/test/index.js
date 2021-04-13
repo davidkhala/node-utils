@@ -1,19 +1,25 @@
 const {axiosPromise} = require('../index');
 const logger = require('khala-logger/log4js').consoleLogger('test:axios');
-const fsExtra = require('fs-extra');
-describe('axios', () => {
-	const url = 'http://localhost:3000';
-	const tlsUrl = 'https://localhost:3443';
-	it('url-encoded https post case', async () => {
+const path = require('path');
+// server based on davidkhala/express-pong
+describe('https', () => {
+	const port = 3443;
+	const cert = path.resolve(__dirname, 'cert.pem');
+	it('ping', async () => {
+
 		const resp = await axiosPromise({
-			url: `${tlsUrl}/post`,
-			body: {mcc: 'david'}
+			url: `https://localhost:${port}`,
+			method: 'GET'
 		}, {
-			rejectUnauthorized: false
+			cert
 		});
 
 		logger.info(resp);
 	});
+});
+describe('http', () => {
+	const port = 3000;
+
 	it('formData case', async () => {
 		const fs = require('fs');
 		const FormData = require('form-data');
@@ -22,40 +28,32 @@ describe('axios', () => {
 		form.append('files', fs.createReadStream(__dirname + '/web_ic_hyperledger.png'));
 
 		const resp = await axiosPromise({
-			url: `${url}/formData`,
+			url: `http://localhost:${port}/formData`,
 			formData: form
 		});
 		logger.info(resp);
 	});
 	it('url-encoded post case', async () => {
 		const resp = await axiosPromise({
-			url: `${url}/post`,
+			url: `http://localhost:${port}/post`,
 			body: {a: 'b'}
 		});
 		logger.info(resp);
 	});
-	it('http get', async () => {
-		const resp = await axiosPromise({url, method: 'GET'});
+	it('ping', async () => {
+		const resp = await axiosPromise({url: `http://localhost:${port}`, method: 'GET'});
 		logger.info(resp);
 	});
 });
-describe('axios: error filter', () => {
-	const {newFile} = require('khala-logger/winston');
-	const logFile = 'test.log';
-	const fileLogger = newFile('file', logFile);
-	it.skip('propose', async () => {
-		const url = 'http://localhost:4000/500';
+describe('http: error filter', () => {
+	const port = 3000;
+	it('propose', async () => {
+		const url = `http://localhost:${port}/500`;
 		try {
 			await axiosPromise({url}, {rejectUnauthorized: false});
 		} catch (e) {
-			fileLogger.error(e);
-			fileLogger.info(e.response.data.message);
+			logger.error(e);
 		}
 	});
-	after(() => {
-		fsExtra.removeSync(logFile);
-	});
+
 });
-
-
-
