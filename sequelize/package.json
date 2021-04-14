@@ -1,14 +1,13 @@
 {
   "name": "khala-sequelize",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "dependencies": {
-    "sequelize": "^5.18.0",
-    "mysql2": "^1.7.0"
+    "sequelize": "latest",
+    "mysql2": "latest"
   },
   "devDependencies": {
     "khala-logger": "latest",
-    "mocha": "latest",
-    "should": "latest"
+    "mocha": "latest"
   },
   "scripts": {
     "test": "mocha test"

@@ -1,5 +1,5 @@
 const logger = require('khala-logger/log4js').consoleLogger('test:SQL');
-require('should');
+const assert = require('assert');
 describe('smoke test', () => {
 
 	const MySQL = require('../Mysql');
@@ -15,7 +15,7 @@ describe('smoke test', () => {
 	it('connect', async () => {
 		await mysql.connect('database', true);
 		const pong = await mysql.ping();
-		pong.should.equal(true);
+		assert.ok(pong);
 	});
 	it('connect with silence', async () => {
 		const {setup} = require('./_connection');

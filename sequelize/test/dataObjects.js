@@ -12,7 +12,7 @@ exports.User = {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	Name: DataTypes.STRING,// default is `mysql:varchar(255)`
+	Name: DataTypes.STRING, // default is `mysql:varchar(255)`
 	Name_en: DataTypes.STRING(400),
 	Detail: DataTypes.JSON,
 	Fee: DataTypes.FLOAT,
