@@ -139,6 +139,16 @@ describe('syntax test', () => {
 			assert.strictEqual(e.message, '123');
 		}
 	});
+	it('assert is an exception', async () => {
+
+		try {
+			assert.fail();
+		} catch (e) {
+			assert.ok(e instanceof assert.AssertionError);
+			console.error(e);
+		}
+
+	});
 
 
 });
