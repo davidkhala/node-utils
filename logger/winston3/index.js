@@ -1,5 +1,5 @@
 const {createLogger, format, transports} = require('winston');
-const {combine, timestamp, colorize} = format;
+const {combine, timestamp} = format;
 const levels = [
 	'error',
 	'warn',

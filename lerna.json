@@ -1,14 +1,10 @@
 {
   "packages": [
-    "axios",
     "github",
-    "grpc",
-    "kvDB",
     "leveldb",
     "light",
     "logger",
-    "main",
-    "websocket"
+    "main"
   ],
   "version": "independent"
 }

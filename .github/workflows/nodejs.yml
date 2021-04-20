@@ -15,6 +15,7 @@ jobs:
       - run: npm config set package-lock false
       - run: npm install
       - run: npm test
+      - run: npm run install-lerna
       - run: npm run test-lerna
   pm2:
     defaults:
