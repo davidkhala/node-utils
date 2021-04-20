@@ -6,7 +6,7 @@ exports.randomKeyOf = (obj) => {
 	return keys[keyIndex];
 };
 exports.randomHex = (length) => {
-	return crypto.randomBytes(length).toString('hex');
+	return crypto.randomBytes(length / 2).toString('hex');
 };
 /**
  *

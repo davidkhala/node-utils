@@ -1,11 +1,12 @@
 {
   "name": "khala-crypto",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "keywords": [
     "X500"
   ],
   "dependencies": {
-    "jsrsasign": "^8.0.12"
+    "jsrsasign": "latest",
+    "khala-light-util": "^0.0.5"
   },
   "devDependencies": {
     "khala-logger": "latest",

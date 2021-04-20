@@ -29,12 +29,12 @@ describe('key pair', () => {
 		x500Name.setOrganizationName('hyperledger');
 		x500Name.setOrgUnitName('blockchain');
 		x500Name.setCommonName('davidkhala');
-		const cert = keypair.generateX509Certificate(x500Name);
+		const cert = keypair.generateX509Certificate({subject:x500Name});
 
 		const keyPath = path.resolve(__dirname, 'fixture/key.pem');
 		const certPath = path.resolve(__dirname, 'fixture/cert.pem');
 		fs.writeFileSync(keyPath, prvKeyPem);
-		fs.writeFileSync(certPath, cert);
+		fs.writeFileSync(certPath, cert.getPEM());
 	});
 	it('print private', () => {
 		const keypair = config.generateEphemeralKey();

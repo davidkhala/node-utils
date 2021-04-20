@@ -1,5 +1,7 @@
 const Jsrsasign = require('jsrsasign');
-const {KEYUTIL, asn1, jws} = Jsrsasign;
+const {KEYUTIL, asn1} = Jsrsasign;
+const {x509} = asn1;
+const {TBSCertificate, Certificate, X500Name} = x509;
 
 class ECConfig {
 
@@ -59,39 +61,49 @@ class ECPair {
 	}
 
 	/**
-	 * Generates a self-signed X.509 certificate
+	 * Generates X.509 certificate
 	 * @returns {string} PEM-encoded X.509 certificate
-	 * @param {module.X500Name} subject
-	 * @param {module.X500Name} [issuer]
+	 * @param {X500Name} subject
+	 * @param {X500Name} [issuer] default to be same as subject and fall into a self-signed scenario
+	 * @param {Date|number|string} [effectiveTime] default to now
+	 * @param {Date|number|string} expiryTime
+	 * @param {number} [serial] default to a random generated 20 bytes HEX
 	 */
-	generateX509Certificate(subject, issuer = subject) {
+	generateX509Certificate({
+		subject,
+		issuer = subject,
+		effectiveTime, expiryTime,
+		serial
+	}) {
 
-		return asn1.x509.X509Util.newCertPEM({
-			serial: {int: 4},
+		if (!serial) {
+			const {randomHex} = require('khala-light-util/random');
+			serial = {hex: randomHex(20)};// length limit to 20 octets
+		}
+		const tbsobj = new TBSCertificate({
 			sigalg: {name: this.signatureAlgorithm},
-			issuer,
-			notbefore: {str: jws.IntDate.intDate2Zulu(jws.IntDate.getNow() - 5000)},
-			notafter: {str: jws.IntDate.intDate2Zulu(jws.IntDate.getNow() + 315569260)},
-			subject,
-			sbjpubkey: this.pubKeyObj,
-			ext: [
-				{
-					basicConstraints: {
-						cA: false,
-						critical: true
-					}
-				},
-				{
-					keyUsage: {bin: '11'}
-				},
-				{
-					extKeyUsage: {
-						array: [{name: 'clientAuth'}]
-					}
-				}
-			],
+			serial,
+			issuer, // X500Name parameter
+			notbefore: effectiveTime, // string, passed to Time, default is Date.now
+			notafter: expiryTime, // string, passed to Time, default is Date.now
+			subject, // X500Name parameter
+			sbjpubkey: this.pubKeyObj, // KEYUTIL.getKey pubkey parameter
+			// As for extension parameters, please see extension class TODO: how to use extension class
+			// All extension parameters need to have "extname" parameter additionaly.
+			ext: [{
+				extname: 'keyUsage', critical: true,
+				names: ['digitalSignature', 'keyEncipherment', 'clientAuth']
+			}],
+		});
+
+
+		const cert = new Certificate({
+			sigalg: {name: this.signatureAlgorithm},
+			tbsobj,
 			cakey: this.prvKeyObj
 		});
+		cert.sign();
+		return cert;
 
 	}
 
