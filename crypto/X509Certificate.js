@@ -10,7 +10,7 @@ class X509Certificate {
 	/**
 	 *
 	 * @param {boolean} [asString]
-	 * @return {string}
+	 * @return {string|Object}
 	 */
 	getSubject(asString) {
 		const subject = this.x509.getSubject();

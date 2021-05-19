@@ -15,21 +15,24 @@ BgNVHQ8BAf8EBAMCBaAwCgYIKoZIzj0EAwIDSAAwRQIhAPXXeOl/V03I+p7wJkBM
 uh/bNA==
 -----END CERTIFICATE-----
 `;
+	x509.readCertPEM(pem);
 	it('x509 class methods', () => {
 
 		const methods = Object.keys(x509);
 		console.info(methods);
 	});
-	it('readCertPEM', () => {
-		x509.readCertPEM(pem);
-	});
+
 	it('getSubject', () => {
-		x509.readCertPEM(pem);
 		const subject = x509.getSubject();
 		const {array, str} = subject;
-		console.log(array)
-		console.log(str)
-
+		console.log(array);
+		console.log(str);
 	});
+	it('get Extensions', () => {
+		const allExt = x509.getExtParamArray();
+		console.log(allExt);
+	});
+
+	// TODO WIP
 
 });
