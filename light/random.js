@@ -1,11 +1,11 @@
 // total: 293KB
 const crypto = require('crypto');
-exports.randomKeyOf = (obj) => {
+const randomKeyOf = (obj) => {
 	const keys = Object.keys(obj);
 	const keyIndex = Math.floor(Math.random() * keys.length);
 	return keys[keyIndex];
 };
-exports.randomHex = (length) => {
+const randomHex = (length) => {
 	return crypto.randomBytes(length / 2).toString('hex');
 };
 /**
@@ -13,11 +13,11 @@ exports.randomHex = (length) => {
  * @param {number} length integer
  * @return {string} alphaNumeric
  */
-exports.randomString = (length) => {
+const randomString = (length) => {
 	return [...Array(length)].map(() => (~~(Math.random() * 36)).toString(36)).join('');
 };
 
-exports.randomChars = (length, charSet) => {
+const randomChars = (length, charSet) => {
 	if (!charSet) {
 		charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 	}
@@ -26,4 +26,10 @@ exports.randomChars = (length, charSet) => {
 		result += charSet.charAt(Math.floor(Math.random() * charSet.length));
 	}
 	return result;
+};
+module.exports = {
+	randomChars,
+	randomKeyOf,
+	randomHex,
+	randomString,
 };
