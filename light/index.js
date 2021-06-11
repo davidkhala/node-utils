@@ -1,5 +1,6 @@
 const os = require('os');
 const path = require('path');
+const fs = require('fs');
 exports.homeResolve = (...tokens) => {
 	if (!tokens) {
 		return tokens;
@@ -16,3 +17,5 @@ exports.sleep = async (ms, logger = console) => {
 exports.isArrayEven = arr => {
 	return Array.isArray(arr) && arr.length > 0 && arr.every(v => JSON.stringify(v) === JSON.stringify(arr[0]));
 };
+
+exports.isDirectory = (file) => fs.existsSync(file) && fs.lstatSync(file).isDirectory();
