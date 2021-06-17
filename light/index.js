@@ -25,7 +25,7 @@ const isDirectory = (file) => fs.existsSync(file) && fs.lstatSync(file).isDirect
  * @param {Object} [options]
  * @return {string}
  */
-const execSync = (command, options = {}) => childProcess.execSync(command, Object.assign(options, {encoding: 'utf-8'}));
+const execSync = (command, options = {}) => require('child_process').execSync(command, Object.assign(options, {encoding: 'utf-8'}));
 module.exports = {
 	isDirectory,
 	execSync,
