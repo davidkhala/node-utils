@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
-
+const {DataTypes, Op} = Sequelize;
+DataTypes.TIMESTAMP = 'TIMESTAMP'; // no any match for mysql dataType:TIMESTAMP
 class MySQL {
 
 	/**
@@ -144,8 +145,7 @@ class MySQL {
 	}
 }
 
-MySQL.DataTypes = Sequelize.DataTypes;
-MySQL.DataTypes.TIMESTAMP = 'TIMESTAMP'; // no any match for mysql dataType:TIMESTAMP
+
 const dataTypes = {
 	string: Sequelize.DataTypes.STRING,
 	object: Sequelize.DataTypes.JSON,
@@ -153,42 +153,57 @@ const dataTypes = {
 	boolean: Sequelize.DataTypes.BOOLEAN
 };
 
-MySQL.modelOf = (obj) => {
+const modelOf = (obj) => {
 	const result = {};
 	for (const key in obj) {
 		result.key = dataTypes[typeof key];
 	}
 	return result;
 };
-MySQL.Op = Sequelize.Op;
 
-MySQL.ORM = {
-	list: async (model, filter = {}) => {
-		const all = await model.findAll({
+class ORM {
+	constructor(model) {
+		Object.assign(this, {model});
+	}
+
+	async list(filter = {}) {
+		return this.model.findAll({
 			where: filter
 		});
-		return all;
-	},
-	deleteAll: async (model) => {
-		await model.destroy({
+	}
+
+	async deleteAll() {
+		await this.model.destroy({
 			where: {}
 		});
-	},
-	findByPrimary: async (model, primary) => {
-		return model.findByPk(primary);
-	},
-	update: async (obj, diff) => {
-		await obj.update(diff);
-	},
-	insert: async (model, data) => {
-		await model.create(data);
-	},
-	count: async (model) => {
-		return await model.count();
-	},
-	lastID: async (model) => {
-		return await model.max('id');
 	}
-};
+
+	async clearData() {
+		await this.model.truncate({cascade: true});
+	}
+
+	async findByPrimary(primary) {
+		return this.model.findByPk(primary);
+	}
+
+	async update(obj, diff) {
+		await this.model.update(diff);
+	}
+
+	async insert(data) {
+		await this.model.create(data);
+	}
+
+	async count() {
+		return await this.model.count();
+	}
+
+	async lastID() {
+		return await this.model.max('id');
+	}
+}
+
+Object.assign(MySQL, {ORM, DataTypes, Op, modelOf});
+
 module.exports = MySQL;
 

@@ -1,5 +1,5 @@
 const logger = require('khala-logger/log4js').consoleLogger('test:SQL');
-
+const {ORM} = require('../Mysql');
 describe('SQL admin test', async () => {
 	const {mysql, setup} = require('./_connection');
 	const DB_NAME = 'database';
@@ -16,6 +16,18 @@ describe('SQL admin test', async () => {
 	};
 	it('showAllTables', async () => {
 		await showAllTables();
+	});
+
+	it('insert one', async () => {
+		const model = mysql.getModel('User');
+		const orm = new ORM(model);
+		await orm.insert({id: 1, email: 'david-khala@hotmail.com'});
+	});
+	it('clear table data', async () => {
+		const model = mysql.getModel('User');
+		const orm = new ORM(model);
+		await orm.clearData();
+
 	});
 	it('dropTable', async () => {
 		await mysql.dropSchema('User');
