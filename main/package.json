@@ -8,14 +8,15 @@
     "test": "mocha test"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "date-format": "^3.0.0",
-    "express": "^4.17.1",
-    "find-process": "^1.4.2",
-    "fs-extra": "^8.1.0",
-    "js-yaml": "^3.13.1",
-    "multer": "^1.4.2",
+    "bytebuffer": "latest",
+    "body-parser": "latest",
+    "cors": "latest",
+    "date-format": "latest",
+    "express": "latest",
+    "find-process": "latest",
+    "fs-extra": "latest",
+    "js-yaml": "latest",
+    "multer": "latest",
     "tmp": "latest"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 const dateFormatter = require('date-format');
 const path = require('path');
+const ByteBuffer = require('bytebuffer');
 exports.JSONReadable = (data) => JSON.stringify(data, null, 2);
 exports.dateFormat = dateFormatter;
 /**
@@ -47,6 +48,10 @@ exports.bytes2String = (bytes) => {
 };
 exports.chars2Hex = (str) => {
 	return Buffer.from(str).toString('hex');
+};
+
+exports.hex2Uint8Array = (hexString) => {
+	return ByteBuffer.fromHex(hexString);
 };
 
 exports.RegxMatch = (str, pattern, flags) => {
