@@ -59,7 +59,7 @@ exports.Uint8Array2String = (array) => array.toString();
  * @param {string} str comma split string
  * @return {Uint8Array}
  */
-exports.string2Uint8Array = (str) => Uint8Array.from(str.split(','));
+exports.String2Uint8Array = (str) => Uint8Array.from(str.split(','));
 
 exports.RegxMatch = (str, pattern, flags) => {
 	const namePattern = new RegExp(pattern, flags);
