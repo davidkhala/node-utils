@@ -48,18 +48,7 @@ exports.bytes2String = (bytes) => {
 exports.chars2Hex = (str) => {
 	return Buffer.from(str).toString('hex');
 };
-/**
- *
- * @param {Uint8Array} array
- * @return {string}
- */
-exports.Uint8Array2String = (array) => array.toString();
-/**
- *
- * @param {string} str comma split string
- * @return {Uint8Array}
- */
-exports.String2Uint8Array = (str) => Uint8Array.from(str.split(','));
+
 
 exports.RegxMatch = (str, pattern, flags) => {
 	const namePattern = new RegExp(pattern, flags);
