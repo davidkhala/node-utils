@@ -1,25 +1,22 @@
 // https://github.com/kjur/jsrsasign/wiki/Tutorial-for-extensions-when-generating-certificate
+
 class Extension {
-	constructor() {
-		this.extension = {};
+
+	static asBasicConstraints({cA = true, pathLen = 2} = {}) {
+		return {extname: 'basicConstraints', critical: true, cA, pathLen};
 	}
 
-	asBasicConstraints({cA = true, pathLen = 2} = {}) {
-		this.extension = {extname: 'basicConstraints', critical: true, cA, pathLen};
-	}
-
-
-	asKeyUsage({names = ['digitalSignature']} = {}) {
-		this.extension = {extname: 'keyUsage', names};
+	static asKeyUsage({names = ['digitalSignature']} = {}) {
+		return {extname: 'keyUsage', names};
 	}
 
 	/**
 	 * CRL Distribution Points https://github.com/kjur/jsrsasign/wiki/Tutorial-for-extensions-when-generating-certificate#crl-distribution-points
 	 * @param points
 	 */
-	asCRLDistributionPoints(...points) {
+	static asCRLDistributionPoints(...points) {
 		const array = points.map(point => ({fulluri: point}));
-		this.extension = {extname: 'cRLDistributionPoints', array};
+		return {extname: 'cRLDistributionPoints', array};
 	}
 
 	/**
@@ -28,15 +25,14 @@ class Extension {
 
 	/**
 	 * Subject Alternative Name
-	 * @param {DN} dn
-	 * @param {string} ip
-	 * @param {string} uri
-	 * @param {string} dns
-	 * @param {string} rfc822
 	 */
-	asSAN({dn, ip, uri, dns, rfc822}) {
+	static asSAN(dnsArray = [], ipArray = [], uriArray = [], dnArray = [], rfc822Array = []) {
 
-		this.extension = {extname: 'subjectAltName', dn, ip, uri, dns, rfc822};
+		const array = [].concat(dnsArray.map(dns => ({dns})))
+			.concat(ipArray.map(ip => ({ip}))).concat(uriArray.map(uri => ({uri})))
+			.concat(dnArray.map(dn => ({dn}))).concat(rfc822Array.map(rfc822 => ({rfc822})));
+
+		return {extname: 'subjectAltName', array};
 	}
 
 	/**
@@ -47,13 +43,12 @@ class Extension {
 	 * @param {string} dns
 	 * @param {string} rfc822
 	 */
-	asIAN({dn, ip, uri, dns, rfc822}) {
-
-		this.extension = {extname: 'issuerAltName', dn, ip, uri, dns, rfc822};
+	static asIAN({dn, ip, uri, dns, rfc822}) {
+		return {extname: 'issuerAltName', dn, ip, uri, dns, rfc822};
 	}
 
-	asAdobeTimeStamp({uri, reqauth = true}) {
-		this.extension = {extname: 'adobeTimeStamp', uri, reqauth};
+	static asAdobeTimeStamp({uri, reqauth = true}) {
+		return {extname: 'adobeTimeStamp', uri, reqauth};
 	}
 
 }

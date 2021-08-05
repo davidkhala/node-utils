@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const {ECDSAConfig} = require('../ECDSA');
 const config = new ECDSAConfig(256);
-
+const {Extension} = require('../extension');
 describe('csr', () => {
 
 	it('generate CSR', () => {
@@ -14,7 +14,9 @@ describe('csr', () => {
 		x500Name.setOrganizationName('Hyperledger');
 		x500Name.setOrgUnitName('blockchain');
 		x500Name.setCommonName('davidkhala');
-		const csr = keypair.generateCSR(x500Name);
+		const extension = Extension.asSAN(['*.hyperledger.org']);
+		const csr = keypair.generateCSR(x500Name, [extension]);
+		fs.writeFileSync(path.resolve(__dirname, 'artifacts', 'csr.pem'), csr);
 		logger.debug('csr', csr);
 	});
 
@@ -29,7 +31,7 @@ describe('key pair', () => {
 		x500Name.setOrganizationName('hyperledger');
 		x500Name.setOrgUnitName('blockchain');
 		x500Name.setCommonName('davidkhala');
-		const cert = keypair.generateX509Certificate({subject:x500Name});
+		const cert = keypair.generateX509Certificate({subject: x500Name});
 
 		const keyPath = path.resolve(__dirname, 'fixture/key.pem');
 		const certPath = path.resolve(__dirname, 'fixture/cert.pem');

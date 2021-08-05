@@ -46,13 +46,13 @@ class ECPair {
 
 	/**
 	 * Generates a CSR/PKCS#10 certificate signing request for this key
-	 * @param {module.X500Name} subject
+	 * @param {X500Name} subject
 	 * @param {[]} [extensions] array of certificate extension parameters // TODO WIP
 	 * @returns {string} PEM-encoded PKCS#10 certificate signing request
 	 */
 	generateCSR(subject, extensions) {
 
-		const csr = asn1.csr.CSRUtil.CertificationRequest({
+		const csr = new asn1.csr.CertificationRequest({
 			subject,
 			sbjpubkey: this.pubKeyObj,
 			sigalg: this.signatureAlgorithm,
