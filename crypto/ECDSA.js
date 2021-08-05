@@ -1,7 +1,7 @@
 const Jsrsasign = require('jsrsasign');
 const {KEYUTIL, asn1} = Jsrsasign;
 const {x509} = asn1;
-const {TBSCertificate, Certificate, X500Name} = x509;
+const {TBSCertificate, Certificate} = x509;
 
 class ECConfig {
 
@@ -47,17 +47,19 @@ class ECPair {
 	/**
 	 * Generates a CSR/PKCS#10 certificate signing request for this key
 	 * @param {module.X500Name} subject
+	 * @param {[]} [extensions] array of certificate extension parameters // TODO WIP
 	 * @returns {string} PEM-encoded PKCS#10 certificate signing request
 	 */
-	generateCSR(subject) {
+	generateCSR(subject, extensions) {
 
-		return asn1.csr.CSRUtil.newCSRPEM({
+		const csr = asn1.csr.CSRUtil.CertificationRequest({
 			subject,
 			sbjpubkey: this.pubKeyObj,
 			sigalg: this.signatureAlgorithm,
-			sbjprvkey: this.prvKeyObj
+			sbjprvkey: this.prvKeyObj,
+			extreq: extensions
 		});
-
+		return csr.getPEM();
 	}
 
 	/**
