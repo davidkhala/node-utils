@@ -1,4 +1,5 @@
 const jsrsasign = require('jsrsasign');
+
 describe('x509', () => {
 	const {X509} = jsrsasign;
 	const x509 = new X509();
@@ -32,7 +33,11 @@ uh/bNA==
 		const allExt = x509.getExtParamArray();
 		console.log(allExt);
 	});
+	it('ldapToOneline', () => {
+		const subjectDN = 'abc';
+		const oneLine = jsrsasign.asn1.x509.X500Name.ldapToOneline(subjectDN);
+		console.debug(oneLine);
+	});
 
-	// TODO WIP
 
 });

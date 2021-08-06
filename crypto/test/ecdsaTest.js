@@ -22,6 +22,11 @@ describe('csr', () => {
 
 });
 describe('key pair', () => {
+	it('explore structure', () => {
+		const keypair = config.generateEphemeralKey();
+		console.debug(keypair.prvKeyObj.toBytes());
+		console.debug(keypair.pubKeyObj.toBytes());
+	});
 	it('self-sign cert generate', () => {
 		const keypair = config.generateEphemeralKey();
 		const prvKeyPem = keypair.toBytes().prvKeyObj;
