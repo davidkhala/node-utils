@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "bluebird": "^3.7.1",
-    "khala-nodeutils": "^0.8.1",
-    "khala-sequelize": "^0.1.4"
+    "khala-nodeutils": "latest",
+    "khala-sequelize": "latest"
   }
 }
