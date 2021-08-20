@@ -6,7 +6,7 @@
   ],
   "dependencies": {
     "jsrsasign": "latest",
-    "khala-light-util": "^0.0.5"
+    "khala-light-util": "latest"
   },
   "devDependencies": {
     "khala-logger": "latest",

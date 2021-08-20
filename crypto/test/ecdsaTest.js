@@ -5,6 +5,7 @@ const path = require('path');
 const {ECDSAConfig} = require('../ECDSA');
 const config = new ECDSAConfig(256);
 const {Extension} = require('../extension');
+const {X509Time} = require('../x509');
 describe('csr', () => {
 
 	it('generate CSR', () => {
@@ -36,7 +37,8 @@ describe('key pair', () => {
 		x500Name.setOrganizationName('hyperledger');
 		x500Name.setOrgUnitName('blockchain');
 		x500Name.setCommonName('davidkhala');
-		const cert = keypair.generateX509Certificate({subject: x500Name});
+		const expiryTime = new X509Time(Date.now() + 31556926000);
+		const cert = keypair.generateX509Certificate({subject: x500Name, expiryTime});
 
 		const keyPath = path.resolve(__dirname, 'fixture/key.pem');
 		const certPath = path.resolve(__dirname, 'fixture/cert.pem');

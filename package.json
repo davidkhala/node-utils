@@ -12,6 +12,7 @@
     "lerna": "^3.20.2",
     "mocha": "^8.0.1",
     "tslint": "5.19.0",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.3",
+    "dateformat": "latest"
   }
 }

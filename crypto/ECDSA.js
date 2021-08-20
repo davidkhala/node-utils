@@ -71,8 +71,8 @@ class ECKeyPair {
 	 * @returns {string} PEM-encoded X.509 certificate
 	 * @param {X500Name} subject
 	 * @param {X500Name} [issuer] default to be same as subject and fall into a self-signed scenario
-	 * @param {Date|number|string} [effectiveTime] default to now
-	 * @param {Date|number|string} expiryTime
+	 * @param {X509Time|string} [effectiveTime] default to now
+	 * @param {X509Time|string} expiryTime
 	 * @param {number} [serial] default to a random generated 20 bytes HEX
 	 * @param extensions
 	 */
@@ -95,8 +95,8 @@ class ECKeyPair {
 			sigalg: {name: this.signatureAlgorithm},
 			serial,
 			issuer, // X500Name parameter
-			notbefore: effectiveTime, // string, passed to Time, default is Date.now
-			notafter: expiryTime, // string, passed to Time, default is Date.now
+			notbefore: effectiveTime && {str: effectiveTime.toString()}, // string, passed to Time, default is Date.now
+			notafter: expiryTime && { str: expiryTime.toString()}, // string, passed to Time, default is Date.now
 			subject, // X500Name parameter
 			sbjpubkey: this.pubKeyObj, // KEYUTIL.getKey pubkey parameter
 			// As for extension parameters, please see extension class TODO: how to use extension class
