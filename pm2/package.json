@@ -1,6 +1,6 @@
 {
   "name": "khala-pm2",
-  "version": "0.1.0-patch.1",
+  "version": "0.1.0-patch.2",
   "description": "",
   "main": "index.js",
   "author": "davidliu  <david-khala@hotmail.com>",
@@ -11,8 +11,7 @@
     "khala-logger": "^0.2.0"
   },
   "devDependencies": {
-    "bluebird": "^3.7.1",
-    "khala-nodeutils": "latest",
-    "khala-sequelize": "latest"
+    "mocha": "latest-6",
+    "khala-nodeutils": "latest"
   }
 }

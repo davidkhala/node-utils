@@ -12,8 +12,10 @@ class PM2 {
 			pm2.connect(err => {
 				if (err) {
 					reject(err);
+				} else {
+					resolve();
 				}
-				resolve();
+
 			});
 		});
 		return this;
@@ -24,25 +26,27 @@ class PM2 {
 	}
 
 	async run({name, script, env}) {
-		let process = await this.get(name);
-		if (process) {
+		const processList = await this.get(name);
+		if (processList) {
 			logger.warn(`process ${name} exist`);
 		} else {
 			if (!fs.existsSync(script)) {
 				throw Error(`invalid script path ${script}`);
 			}
-			process = await new Promise((resolve, reject) => {
+			const process = await new Promise((resolve, reject) => {
 				pm2.start({name, script, env}, (err, Proc) => {
 					if (err) {
 						logger.error(err);
 						reject(err);
+
+					} else {
+						resolve(Proc);
 					}
-					resolve(Proc);
 				});
 			});
 			logger.info(`process ${name} started`, script);
+			return process;
 		}
-		return process;
 	}
 
 	async reRun({name, script, env}) {
@@ -59,8 +63,9 @@ class PM2 {
 				pm2.delete(name, (err) => {
 					if (err) {
 						reject(err);
+					} else {
+						resolve();
 					}
-					resolve();
 				});
 			});
 			logger.info(`process ${name} deleted`);
@@ -69,19 +74,38 @@ class PM2 {
 	}
 
 	async list() {
-		return await new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			pm2.list((err, list) => {
 				if (err) {
 					reject(err);
+				} else {
+					resolve(list);
 				}
-				resolve(list);
 			});
 		});
 	}
 
-	async get(name) {
-		const list = await this.list();
-		return list.find(({name: pName}) => pName === name);
+	async get(name, verbose) {
+
+		const descList = await new Promise((resolve, reject) => {
+			pm2.describe(name, (err, list) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(list);
+				}
+			});
+		});
+
+		if (descList.length > 0) {
+			if (!verbose) {
+				return descList.map(desc => {
+					delete desc.pm2_env;
+					return desc;
+				});
+			}
+			return descList;
+		}
 	}
 }
 
