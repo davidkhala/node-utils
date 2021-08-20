@@ -24,7 +24,7 @@ class PM2 {
 	}
 
 	async run({name, script, env}) {
-		let process = await this.get({name});
+		let process = await this.get(name);
 		if (process) {
 			logger.warn(`process ${name} exist`);
 		} else {
@@ -32,12 +32,12 @@ class PM2 {
 				throw Error(`invalid script path ${script}`);
 			}
 			process = await new Promise((resolve, reject) => {
-				pm2.start({name, script, env}, (err, process) => {
+				pm2.start({name, script, env}, (err, Proc) => {
 					if (err) {
 						logger.error(err);
 						reject(err);
 					}
-					resolve(process);
+					resolve(Proc);
 				});
 			});
 			logger.info(`process ${name} started`, script);
@@ -51,7 +51,7 @@ class PM2 {
 	}
 
 	async delete(name) {
-		const process = await this.get({name});
+		const process = await this.get(name);
 		if (!process) {
 			logger.warn(`process ${name} not exist, delete skipped`);
 		} else {
