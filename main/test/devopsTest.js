@@ -3,16 +3,20 @@ const devOps = require('../devOps');
 
 describe('devOps', function () {
 
-	this.timeout(999999);
-	it.skip('exec: apt update', async () => {
+	this.timeout(0);
+	it.skip('exec: apt update', () => {
 		const requirePermission = 'apt update';
 		try {
-			await devOps.execSync(requirePermission);
+			devOps.execSync(requirePermission);
 		} catch (e) {
 			logger.info('assertFail success', requirePermission);
 		}
 
-		await devOps.execSync('sudo apt update'); // Test passed: sudo have interactive input
+		devOps.execSync('sudo apt update'); // Test passed: sudo have interactive input
+	});
+	it('find process', async () => {
+		const result = await devOps.findProcess({port: 3443});
+		console.debug(result);
 	});
 	it('execStream: npm i', async () => {
 		devOps.execStream('npm install');

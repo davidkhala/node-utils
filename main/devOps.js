@@ -3,6 +3,7 @@ const os = require('os');
 const childProcess = require('child_process');
 const fs = require('fs');
 const {splitBySpace} = require('./syntax');
+const findProcess = require('find-process');
 /**
  * @typedef {Object} processObject
  * @property {number} pid
@@ -143,14 +144,30 @@ module.exports = {
 	execSync,
 	/**
 	 *
-	 * @param {string} type "name" | "pid" | "port"
-	 * @param {string|number|RegExp} value
+	 * @param {string|RegExp} [name]
+	 * @param {string|number|RegExp} [pid]
+	 * @param {string|number} [port]
 	 * @param {boolean} [strict]
-	 * @returns {Promise<processObject[]>}
+	 * @param {boolean} [verbose]
+	 * @return {processObject|string[]}
 	 */
-	findProcess: (type, value, strict) => {
-		const findProcess = require('find-process');
+	findProcess: async ({name, pid, port}, strict, verbose) => {
 		execSync('netstat >/dev/null'); // throw if not exist
-		return findProcess(type, value, strict);
+
+		let result;
+		if (port) {
+			result = await findProcess('port', port, strict);
+		}
+		if (name) {
+			result = await findProcess('name', name, strict);
+		}
+		if (pid) {
+			result = await findProcess('pid', pid, strict);
+		}
+		if (!verbose) {
+			return result.map(({pid: _pid}) => _pid);
+		} else {
+			return result;
+		}
 	},
 };

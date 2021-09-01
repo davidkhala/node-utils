@@ -85,6 +85,11 @@ class PM2 {
 		});
 	}
 
+	/**
+	 * @param name Can either be the name or process id
+	 * @param [verbose]
+	 * @return Promise<undefined|[]> if not found, return undefined, otherwise return a list of all matching results
+	 */
 	async get(name, verbose) {
 
 		const descList = await new Promise((resolve, reject) => {
