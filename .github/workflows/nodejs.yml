@@ -4,14 +4,13 @@ jobs:
   root:
     strategy:
       matrix:
-        node-version: [ 12.x, 14.x ]
         os: [ ubuntu-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-            node-version: ${{ matrix.node-version }}
+            node-version: 14.x
       - run: npm config set package-lock false
       - run: npm install
       - run: npm test
@@ -23,14 +22,13 @@ jobs:
         working-directory: pm2
     strategy:
       matrix:
-        node-version: [ 12.x, 14.x ]
         os: [ ubuntu-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 14.x
       - run: npm config set package-lock false
       - run: npm install pm2@latest -g;
       - run: npm install;
@@ -41,13 +39,12 @@ jobs:
         working-directory: crypto
     strategy:
       matrix:
-        node-version: [ 12.x, 14.x ]
         os: [ ubuntu-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 14.x
       - run: npm install
       - run: npm test

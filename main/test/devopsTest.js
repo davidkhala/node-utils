@@ -16,7 +16,11 @@ describe('devOps', function () {
 	});
 	it('find process', async () => {
 		const result = await devOps.findProcess({port: 3443});
-		console.debug(result);
+		const [pid] = result;
+		if (pid) {
+			devOps.killProcess(pid);
+		}
+
 	});
 	it('execStream: npm i', async () => {
 		devOps.execStream('npm install');
