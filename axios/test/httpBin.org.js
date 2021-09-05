@@ -1,9 +1,9 @@
 const {axiosPromise} = require('../index');
 const logger = require('khala-logger/log4js').consoleLogger('test:axios');
 const path = require('path');
-describe('https', () => {
+describe('httpbin.org: https', () => {
 	const cert = path.resolve(__dirname, 'httpbin.org.pem');
-	it('ping', async () => {
+	it('get', async () => {
 
 		const url = 'https://eu.httpbin.org:443/get';
 		const resp = await axiosPromise({
@@ -16,7 +16,7 @@ describe('https', () => {
 		logger.info(resp);
 	});
 });
-describe('http', () => {
+describe('httpbin.org: http', () => {
 
 	it('get', async () => {
 
