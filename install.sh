@@ -1,31 +1,6 @@
 #!/usr/bin/env bash
 set -e
-install8() {
-	if ! node --version | grep 'v8.'; then
-		if [[ $(uname) == "Darwin" ]]; then
-			brew install node@8
-			echo 'export PATH="/usr/local/opt/node@8/bin:$PATH"' >>~/.bash_profile
-			export LDFLAGS="-L/usr/local/opt/node@8/lib"
-			export CPPFLAGS="-I/usr/local/opt/node@8/include"
-		else
-			curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-			sudo apt -qq install -y nodejs
-		fi
-	fi
-}
-LTS() {
-	if ! node --version | grep 'v14.'; then
-		if [[ $(uname) == "Darwin" ]]; then
-			brew install node@14
-			echo 'export PATH="/usr/local/opt/node@14/bin:$PATH"' >>~/.bash_profile
-			export LDFLAGS="-L/usr/local/opt/node@14/lib"
-			export CPPFLAGS="-I/usr/local/opt/node@14/include"
-		else
-			curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-			sudo apt -qq install -y nodejs
-		fi
-	fi
-}
+
 typeScript() {
 	sudo npm install -g typescript
 }
