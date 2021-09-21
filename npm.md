@@ -9,6 +9,9 @@
     - npm user: `npm login`,  `npm whoami`
     - [npmjs.com] `cannot be republished until 24 hours have passed.` after `unpublish` action
         - https://stackoverflow.com/questions/48661199/error-on-updating-packages-in-npm
+    - [npmjs.com] To publish package like `@davidkhala/myPack` to public, use
+        - `npm publish --access public`
+        - https://docs.npmjs.com/creating-and-publishing-scoped-public-packages#publishing-scoped-public-packages
 - npm install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
 - there is no automatic way to manage npm token explicitly
 - try [github package registry](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry)
