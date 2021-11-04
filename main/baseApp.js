@@ -75,7 +75,7 @@ exports.run = (port, host, tlsOptions, logger = console) => {
 		tlsOptions.cert = isPath(cert) ? fs.readFileSync(cert) : cert;
 		tlsOptions.ca = isPath(ca) ? fs.readFileSync(ca) : ca;
 
-		server = https.createServer(tlsOptions, app).listen(port, () => {
+		server = https.createServer(tlsOptions, app).listen(port, host, () => {
 			logger.info('https server started at', {host, port, cert, ca, requestCert});
 		});
 	} else {
