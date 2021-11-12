@@ -10,8 +10,5 @@ pm2 nodejs manger - API and code toolset
     Error: Cannot find module '/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js'
 ```
 
-## TODO
-
-## Abandoned
 
 
