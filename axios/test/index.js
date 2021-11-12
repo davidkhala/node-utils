@@ -1,6 +1,7 @@
 const {axiosPromise} = require('../index');
 const logger = require('khala-logger/log4js').consoleLogger('test:axios');
 const path = require('path');
+const assert = require('assert');
 // server based on davidkhala/express-pong
 describe('https', () => {
 	const port = 3443;
@@ -54,6 +55,8 @@ describe('http: error filter', () => {
 			await axiosPromise({url}, {rejectUnauthorized: false});
 		} catch (e) {
 			logger.error(e);
+			assert.strictEqual(e.statusCode, 404);
+			assert.strictEqual(e.statusMessage, 'Not Found');
 		}
 	});
 
