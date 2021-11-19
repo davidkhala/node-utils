@@ -21,13 +21,14 @@ const Autonomous = require('../autonomous');
 describe('autonomous', function () {
 	this.timeout(0);
 	const {password} = process.env;
-	const domain = 'UKYLLMQVBNKWZDY-FREEJSON.adb.ap-seoul-1.oraclecloudapps.com';
+	const domain = 'NNRTBQRBDEYLH1O-DEMO3.adb-preprod.us-phoenix-1.oraclecloudapps.com';
 
 	const connect = new Autonomous({domain, password});
 
 	it('touch', async () => {
 		await connect.connect();
-
+		const namesOnly = await connect.listCollections(true);
+		console.log(namesOnly);
 	});
 	after(async () => {
 		await connect.disconnect();

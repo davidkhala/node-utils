@@ -2,7 +2,7 @@
   "name": "@davidkhala/mongodb",
   "version": "0.0.0",
   "dependencies": {
-    "mongoose": "latest"
+    "mongodb": "latest"
   },
   "devDependencies": {
     "mocha": "latest"
