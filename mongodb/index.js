@@ -8,7 +8,7 @@ class MongoConnect {
 	 * @param password
 	 * @param [dbName] if not specified, specify in {@link connect}
 	 */
-	constructor(domain, username, password, dbName) {
+	constructor(domain, username, password, dbName = '') {
 		const uri = `mongodb+srv://${username}:${password}@${domain}/${dbName}?retryWrites=true&w=majority`;
 		this.dbName = dbName;
 		this.client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -37,8 +37,9 @@ class MongoConnect {
 		return collections;
 	}
 
-	disconnect() {
-		this.client.close();
+	async disconnect() {
+		await this.client.close();
+		delete this.db;
 	}
 
 }

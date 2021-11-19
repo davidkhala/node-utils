@@ -13,7 +13,23 @@ describe('sample data', () => {
 		console.log(namesOnly);
 
 	});
-	after(() => {
-		connect.disconnect();
+	after(async () => {
+		await connect.disconnect();
+	});
+});
+const Autonomous = require('../autonomous');
+describe('autonomous', function () {
+	this.timeout(0);
+	const {password} = process.env;
+	const domain = 'UKYLLMQVBNKWZDY-FREEJSON.adb.ap-seoul-1.oraclecloudapps.com';
+
+	const connect = new Autonomous({domain, password});
+
+	it('touch', async () => {
+		await connect.connect();
+
+	});
+	after(async () => {
+		await connect.disconnect();
 	});
 });
