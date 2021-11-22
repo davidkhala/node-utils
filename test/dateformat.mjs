@@ -1,6 +1,7 @@
-const dateFormat = require('dateformat');
+import dateFormat from 'dateformat';
+
 describe('why we not choosing date format', () => {
-	it('', () => {
+	it('different template pattern', () => {
 		const now = new Date();
 
 		console.debug(dateFormat(now, 'YYMMDDHHMMSSZ'));
