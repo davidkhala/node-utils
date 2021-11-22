@@ -18,6 +18,7 @@ class AutonomousJSON extends MongoConnect {
 		await client.connect();
 		this.db = client.db();
 	}
+
 }
 
 module.exports = AutonomousJSON;

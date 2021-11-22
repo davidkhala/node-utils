@@ -24,17 +24,53 @@ class MongoConnect {
 
 	}
 
+	async getCollection(name, boolResponse) {
+		const cursor = await this.db.listCollections({name});
+		const some = await cursor.next();
+		if (some) {
+			return boolResponse ? !!some : this.db.collection(name);
+		}
+		// else return undefined
+	}
+
+	async dropCollection(name, ifExist) {
+		try {
+			return await this.db.dropCollection(name);
+		} catch (e) {
+			const {code, codeName, message} = e;
+			if (ifExist && code === 26 && codeName === 'MONGO-26' && message === 'ns not found') {
+				return false;
+			}
+			throw e;
+		}
+	}
+
+	async createCollection(name, ensureExist = true) {
+		if (ensureExist) {
+			const exist = await this.getCollection(name);
+			if (exist) {
+				return exist;
+			}
+		}
+		return await this.db.createCollection(name);
+	}
+
 	/**
 	 *
 	 * @param {boolean} [nameOnly]
 	 * @return {Promise<(Pick<CollectionInfo, "name" | "type"> | CollectionInfo)[]|string[]>}
 	 */
 	async listCollections(nameOnly) {
-		const collections = await this.db.listCollections().toArray();
+		const collections = await this.db.listCollections(undefined, {nameOnly}).toArray();
+
 		if (nameOnly) {
 			return collections.map(({name}) => name);
 		}
 		return collections;
+	}
+
+	async dropDatabase() {
+		return await this.db.dropDatabase();
 	}
 
 	async disconnect() {
