@@ -1,4 +1,5 @@
 const MongoConnect = require('../index');
+const assert = require('assert');
 describe('sample data', () => {
 	const user = 'admin';
 	const {password} = process.env;
@@ -10,6 +11,7 @@ describe('sample data', () => {
 		const collections = await connect.listCollections();
 		console.log(collections);
 		const namesOnly = await connect.listCollections(true);
+		assert.ok(Array.isArray(namesOnly));
 		console.log(namesOnly);
 
 	});
@@ -21,14 +23,14 @@ const Autonomous = require('../autonomous');
 describe('autonomous', function () {
 	this.timeout(0);
 	const {password} = process.env;
-	const domain = 'NNRTBQRBDEYLH1O-DEMO3.adb-preprod.us-phoenix-1.oraclecloudapps.com';
+	const domain = 'UKYLLMQVBNKWZDY-FREEJSON.adb.ap-seoul-1.oraclecloudapps.com';
 
 	const connect = new Autonomous({domain, password});
 
 	it('touch', async () => {
 		await connect.connect();
 		const namesOnly = await connect.listCollections(true);
-		console.log(namesOnly);
+		assert.ok(Array.isArray(namesOnly));
 	});
 	after(async () => {
 		await connect.disconnect();
