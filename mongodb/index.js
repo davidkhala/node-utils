@@ -1,4 +1,5 @@
 const {MongoClient} = require('mongodb');
+const assert = require('assert');
 
 class MongoConnect {
 	/**
@@ -21,7 +22,16 @@ class MongoConnect {
 		const {client} = this;
 		await client.connect();
 		this.db = client.db(dbName);
+	}
 
+	async listDatabases(nameOnly) {
+
+		const {ok, databases, operationTime} = await this.db.admin().listDatabases({nameOnly});
+		assert.strictEqual(ok, 1);
+		if (nameOnly) {
+			return databases.map(({name}) => name);
+		}
+		return databases;
 	}
 
 	async getCollection(name, boolResponse) {
@@ -33,12 +43,12 @@ class MongoConnect {
 		// else return undefined
 	}
 
-	async dropCollection(name, ifExist) {
+	async dropCollection(name) {
 		try {
 			return await this.db.dropCollection(name);
 		} catch (e) {
 			const {code, codeName, message} = e;
-			if (ifExist && code === 26 && codeName === 'MONGO-26' && message === 'ns not found') {
+			if (code === 26 && codeName === 'MONGO-26' && message === 'ns not found') {
 				return false;
 			}
 			throw e;

@@ -1,5 +1,4 @@
 const MongoConnect = require('../index');
-const {as} = require('../collection');
 const assert = require('assert');
 describe('sample data', () => {
 	const user = 'admin';
@@ -9,66 +8,30 @@ describe('sample data', () => {
 	it('sample_airbnb', async () => {
 		const dbName = 'sample_airbnb';
 		await connect.connect(dbName);
-		const collections = await connect.listCollections();
-		console.log(collections);
 		const namesOnly = await connect.listCollections(true);
 		assert.ok(Array.isArray(namesOnly));
 		console.log(namesOnly);
 
 	});
-	after(async () => {
-		await connect.disconnect();
+	it('create collection', async () => {
+		await connect.connect('dev');
+		await connect.createCollection('foo');
+		const databases = await connect.listDatabases(true);
+		assert.ok(databases.includes('dev'));
 	});
-});
-const Autonomous = require('../autonomous');
-describe('autonomous', function () {
-	this.timeout(0);
-	const {password} = process.env;
-	const domain = 'UKYLLMQVBNKWZDY-FREEJSON.adb.ap-seoul-1.oraclecloudapps.com';
-
-	const connect = new Autonomous({domain, password});
-
-	before(async () => {
-		await connect.connect();
-	});
-
-	it('listCollections', async () => {
-
-		const namesOnly = await connect.listCollections(true);
-		assert.ok(Array.isArray(namesOnly));
-		console.debug(namesOnly);
-	});
-
-	it('create Collections', async () => {
-		const collectionName = 'foo';
-		const collectionHandler = await connect.createCollection(collectionName);
-
-		const wrapper = as(collectionHandler);
-		const result = await wrapper.insertOne({hello: 'world'});
-		console.debug(result);
-		const list = await wrapper.list();
-		console.debug(list);
-		// 619c3c38fede73d959c75a18
-	});
-
-	it('getCollection', async () => {
-		const collectionName = 'abc';
-		const collection = await connect.getCollection(collectionName);
-		assert.strictEqual(collection, undefined);
+	it('list database', async () => {
+		await connect.connect('dev');
+		const databases = await connect.listDatabases(true);
+		console.debug(databases);
 
 	});
-	it('drop Collections', async () => {
-		const collectionName = 'foo';
-		const result = await connect.dropCollection(collectionName, true);
-		console.debug(result);
-
-	});
-	it('drop database', async () => {
-		const result = await connect.dropDatabase();
-		console.debug(result);
+	it('dropDatabase', async () => {
+		await connect.connect('dev');
+		await connect.dropDatabase();
+		const databases = await connect.listDatabases(true);
+		assert.ok(!databases.includes('dev'));
 	});
 	after(async () => {
 		await connect.disconnect();
 	});
 });
-
