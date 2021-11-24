@@ -1,22 +1,22 @@
-const Level = require('level');
-const {DBInterface} = require('khala-kvdb');
+import Level from 'level';
+import {KvDB} from '@davidkhala/kvdb';
 
-class LevelDB extends DBInterface {
+
+export default class LevelDB extends KvDB {
 	constructor(path) {
-		super({name: path});
+		super(undefined, path, undefined);
 	}
 
-	async run() {
+
+	async connect() {
 		this.connection = Level(this.name);
-	}
-
-	async _connectBuilder() {
 		await this.connection.open();
 		return this.connection;
 	}
 
 	async set(key, value) {
-		return this.connection.put(key, value);
+		await this.connection.put(key, value);
+		return value;
 	}
 
 
@@ -78,6 +78,3 @@ class LevelDB extends DBInterface {
 		return {gt, gte, lt, lte, reverse, limit, keys, values};
 	}
 }
-
-
-module.exports = LevelDB;

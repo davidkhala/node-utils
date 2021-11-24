@@ -1,42 +1,5 @@
-class dbInterface {
-	constructor({url, port, name}) {
-		this.url = url;
-		this.name = name;
-		this.port = port;
-		this.connection = undefined
-	}
-
-	async get(key) {
-		throw Error(`get(${key}) to be implement`);
-	}
-
-	async set(key, value) {
-		return value;
-	}
-
-	async connect() {
-		if (!this.connection) {
-			await this.run();
-			this.connection = await this._connectBuilder();
-		}
-		return this.connection;
-	}
-
-	async run() {
-		throw Error('run() to be implement');
-	}
-
-	async clear() {
-		throw Error('clear() to be implement');
-	}
-
-	async disconnect() {
-		throw Error('disconnect() to be implement');
-	}
-
-	async _connectBuilder() {
-		throw Error('_connectBuilder() to be implement');
-	}
+export default class KvDB {
+    constructor(domain, name, port) {
+        Object.assign(this, { domain, name, port });
+    }
 }
-
-exports.DBInterface = dbInterface;

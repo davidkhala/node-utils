@@ -10,9 +10,10 @@
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
   "dependencies": {
-    "khala-kvdb": "latest",
+    "@davidkhala/kvdb": "latest",
     "level": "latest"
   },
+  "type": "module",
   "devDependencies": {
     "khala-logger": "latest"
   }

@@ -1,8 +1,15 @@
-const LevelDB = require('..');
+import LevelDB from '../index.js';
 
-const path = require('path');
-const logger = require('khala-logger/log4js').consoleLogger('test:leveldb');
+import path from 'path';
+import {consoleLogger} from 'khala-logger/log4js.js';
 
+const logger = consoleLogger('test:leveldb');
+import {fileURLToPath} from 'url';
+
+if (!global.__dirname) {
+	const __filename = fileURLToPath(import.meta.url);
+	global.__dirname = path.dirname(__filename);
+}
 describe('Leveldb reader', () => {
 
 	it('histroy', async () => {
