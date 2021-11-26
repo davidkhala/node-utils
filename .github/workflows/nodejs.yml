@@ -2,15 +2,12 @@ name: nodejs frequent usage
 on: push
 jobs:
   root:
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-            node-version: 14.x
+          node-version: 14.x
       - run: npm config set package-lock false
       - run: npm install
       - run: npm test
@@ -20,10 +17,7 @@ jobs:
     defaults:
       run:
         working-directory: pm2
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -37,10 +31,7 @@ jobs:
     defaults:
       run:
         working-directory: crypto
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
