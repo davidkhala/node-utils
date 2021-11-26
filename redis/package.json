@@ -3,5 +3,14 @@
   "version": "0.0.0",
   "dependencies": {
     "redis": "latest"
+  },
+  "scripts": {
+    "test": "mocha -r ts-node/register test/*"
+  },
+  "devDependencies": {
+    "@types/mocha": "latest",
+    "mocha": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
   }
 }
