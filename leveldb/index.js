@@ -1,5 +1,5 @@
 import Level from 'level';
-import {KvDB} from '@davidkhala/kvdb';
+import KvDB from '@davidkhala/kvdb';
 
 
 export default class LevelDB extends KvDB {

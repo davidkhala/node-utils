@@ -1,6 +1,7 @@
 const MongoConnect = require('../index');
 const assert = require('assert');
-describe('sample data', () => {
+describe('sample data', function () {
+	this.timeout(0);
 	const user = 'admin';
 	const {password} = process.env;
 	const domain = 'free.5afsx.mongodb.net';

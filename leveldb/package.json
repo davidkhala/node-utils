@@ -15,6 +15,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "mocha": "latest",
     "khala-logger": "latest"
   }
 }
