@@ -1,0 +1,7 @@
+{
+  "name": "@davidkhala/redis",
+  "version": "0.0.0",
+  "dependencies": {
+    "redis": "latest"
+  }
+}
