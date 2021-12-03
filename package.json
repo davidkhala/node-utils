@@ -7,12 +7,12 @@
     "install-lerna": "lerna bootstrap --no-ci"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "khala-logger": "^0.3.0",
-    "lerna": "^3.20.2",
-    "mocha": "^8.0.1",
-    "tslint": "5.19.0",
-    "typescript": "^3.9.3",
+    "eslint": "latest",
+    "khala-logger": "latest",
+    "lerna": "latest",
+    "mocha": "latest",
+    "tslint": "latest",
+    "typescript": "latest",
     "dateformat": "latest"
   }
 }

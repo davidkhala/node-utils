@@ -5,6 +5,9 @@ nodejs utils to be published to npm as node_module
 
 follows [SEMVER](https://semver.org/)
 
+## sibling
+- [node-databases](https://github.com/davidkhala/node-databases)
+
 ## Notes
 - [NPM notes](./npm.md)
 - [jsDoc notes](./jsdoc.md)
