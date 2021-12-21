@@ -4,7 +4,12 @@ const devOps = require('../devOps');
 describe('devOps', function () {
 
 	this.timeout(0);
-	it.skip('exec: apt update', () => {
+	it('exec: apt update', () => {
+		if (process.env.CI) {
+			// skip this check
+			return;
+		}
+
 		const requirePermission = 'apt update';
 		try {
 			devOps.execSync(requirePermission);
@@ -27,6 +32,8 @@ describe('devOps', function () {
 	});
 	it('os', async () => {
 		logger.info({tempdir: devOps.tempdir});
+		logger.info(devOps.hostname());
+
 	});
 });
 
