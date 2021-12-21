@@ -127,6 +127,19 @@ const isPortInUse = async (port, host = localhost, timeout = 1000) => {
 };
 module.exports = {
 	localhost,
+	ip: (addressOnly, ipv6) => {
+		const interfaces = os.networkInterfaces();
+		delete interfaces.lo;
+		const resultSet = {};
+		for (const [name, ipList] of Object.entries(interfaces)) {
+			resultSet[name] = ipList.find(({family}) => family === ipv6 ? 'IPv6' : 'IPv4');
+		}
+		if (addressOnly) {
+			return Object.values(resultSet).map(({address}) => address);
+		}
+		return resultSet;
+
+	},
 	os: {
 		type: os.type(), // "Windows_NT"
 		release: os.release(), // "10.0.14393"

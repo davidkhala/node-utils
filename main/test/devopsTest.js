@@ -1,5 +1,6 @@
 const logger = require('khala-logger/log4js').consoleLogger('devops');
 const devOps = require('../devOps');
+const assert = require('assert');
 
 describe('devOps', function () {
 
@@ -33,7 +34,8 @@ describe('devOps', function () {
 	it('os', async () => {
 		logger.info({tempdir: devOps.tempdir});
 		logger.info(devOps.hostname());
-
+		const address = devOps.ip(true);
+		assert.ok(Array.isArray(address));
 	});
 });
 
