@@ -1,12 +1,9 @@
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
 
-const CommonJSRequireSmoke = (rootFolder) => {
+export const CommonJSRequireSmoke = (rootFolder) => {
 	const allFiles = fs.readdirSync(rootFolder).filter(fileName => fileName.endsWith('.js'));
 	allFiles.forEach(file => {
 		require(path.resolve(rootFolder, file));
 	});
-};
-module.exports = {
-	CommonJSRequireSmoke
 };
