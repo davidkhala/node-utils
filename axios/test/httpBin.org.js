@@ -1,8 +1,10 @@
-const {axiosPromise} = require('../index');
-const logger = require('khala-logger/log4js').consoleLogger('test:axios');
-const path = require('path');
+import {axiosPromise} from '../index.js';
+import {consoleLogger} from 'khala-logger/log4js.js';
+import {URL} from 'url'
+const logger = consoleLogger('test:axios');
 describe('httpbin.org: https', () => {
-	const cert = path.resolve(__dirname, 'httpbin.org.pem');
+	const cert = new URL('httpbin.org.pem', import.meta.url).pathname;
+
 	it('get', async () => {
 
 		const url = 'https://eu.httpbin.org:443/get';

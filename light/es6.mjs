@@ -1,6 +1,5 @@
-import { URL } from 'url';
+import {URL} from 'url';
 
 const __filename = new URL('', import.meta.url).pathname;
 
 const __dirname = new URL('.', import.meta.url).pathname;
-

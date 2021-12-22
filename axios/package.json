@@ -1,5 +1,5 @@
 {
-  "name": "khala-axios",
+  "name": "@davidkhala/axios",
   "version": "1.0.0",
   "scripts": {
     "test": "mocha test"
@@ -11,5 +11,6 @@
     "khala-logger": "latest",
     "mocha": "latest",
     "form-data": "^3.0.0"
-  }
+  },
+  "type": "module"
 }

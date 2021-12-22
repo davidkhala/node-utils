@@ -1,6 +1,6 @@
-const axios = require('axios');
-const https = require('https');
-const fs = require('fs');
+import axios from 'axios';
+import https from 'https';
+import fs from 'fs';
 
 /**
  * @typedef {Object} TLSExtraOptions
@@ -29,7 +29,7 @@ const fs = require('fs');
  * @param {RequestExtraOptions} [otherOptions]
  * @return {Promise<Object>}
  */
-exports.axiosPromise = async ({url, body, method = 'POST', formData, params}, otherOptions = {}) => {
+export async function axiosPromise({url, body, method = 'POST', formData, params}, otherOptions = {}) {
 
 	const {cert, key, ca, rejectUnauthorized, passphrase} = otherOptions;
 	if (cert || key || ca || passphrase || typeof rejectUnauthorized === 'boolean') {
@@ -83,4 +83,4 @@ exports.axiosPromise = async ({url, body, method = 'POST', formData, params}, ot
 		throw e;
 	}
 
-};
+}

@@ -1,11 +1,14 @@
-const {axiosPromise} = require('../index');
-const logger = require('khala-logger/log4js').consoleLogger('test:axios');
-const path = require('path');
-const assert = require('assert');
+import {axiosPromise} from '../index.js';
+import {consoleLogger} from 'khala-logger/log4js.js';
+import assert from 'assert';
+import fs from 'fs';
+import FormData from 'form-data';
+
+const logger = consoleLogger('test:axios');
 // server based on davidkhala/express-pong
 describe('https', () => {
 	const port = 3443;
-	const cert = path.resolve(__dirname, 'cert.pem');
+	const cert = new URL('cert.pem', import.meta.url);
 	it.skip('ping', async () => { // TODO: skip due to :Error: certificate has expired
 
 
@@ -23,8 +26,7 @@ describe('http', () => {
 	const port = 3000;
 
 	it('formData case', async () => {
-		const fs = require('fs');
-		const FormData = require('form-data');
+
 
 		const form = new FormData();
 		form.append('files', fs.createReadStream(__dirname + '/web_ic_hyperledger.png'));
