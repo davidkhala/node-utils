@@ -1,13 +1,22 @@
 import {isDirectory} from '../index.js';
-
 import assert from 'assert';
 import fs from 'fs';
-import {URL} from 'url';
 import path from 'path';
+import {filedirname} from '../es6.mjs';
 
 describe('index Test', () => {
 
-	const __dirname = new URL('.', import.meta.url).pathname;
+
+	before(()=>{
+		filedirname(import.meta);
+	})
+	it('__dirname', () => {
+
+		const pathTokens = __dirname.split(path.sep);
+		assert.ok(pathTokens.includes('node-utils') && pathTokens.includes('light'));
+	});
+
+
 	it('isDir', () => {
 		assert.ok(isDirectory(__dirname));
 		const notExist = path.resolve(__dirname, 'abc');

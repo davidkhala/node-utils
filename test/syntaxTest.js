@@ -61,14 +61,6 @@ describe('syntax test', () => {
 		}
 
 	});
-	it('auto require', () => {
-		let files = fs.readdirSync(__dirname);
-		files = files.filter(name => name.endsWith('.js') && name !== path.basename(__filename));
-		for (const file of files) {
-			const object = require(`./${file}`);
-			logger.debug(file, object);
-		}
-	});
 	it('Object assign', () => {
 		const obj = {
 			a: {

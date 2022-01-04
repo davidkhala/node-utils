@@ -1,7 +1,11 @@
-const path = require('path');
-const {FromFile, ToFile} = require('../index');
+import path from 'path';
+import {FromFile, ToFile} from '../index';
+import {filedirname} from '@davidkhala/light/es6.mjs';
 
 describe('CSV', () => {
+	before(() => {
+		filedirname(import.meta)
+	});
 	it('FromFile', () => {
 		const recoveredJSON = FromFile(path.resolve(__dirname, 'test.csv'));
 		console.info(recoveredJSON);

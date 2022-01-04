@@ -5,6 +5,7 @@
     "papaparse": "latest"
   },
   "devDependencies": {
-    "mocha": "latest"
+    "mocha": "latest",
+    "@davidkhala/light": "latest"
   }
 }

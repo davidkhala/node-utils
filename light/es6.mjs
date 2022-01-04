@@ -1,5 +1,10 @@
 import {URL} from 'url';
 
-const __filename = new URL('', import.meta.url).pathname;
-
-const __dirname = new URL('.', import.meta.url).pathname;
+/**
+ *
+ * @param {ImportMeta} import_meta assign import.meta
+ */
+export const filedirname = (import_meta) => {
+	global.__filename = new URL('', import_meta.url).pathname;
+	global.__dirname = new URL('.', import_meta.url).pathname;
+};

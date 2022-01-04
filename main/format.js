@@ -1,13 +1,14 @@
-const dateFormatter = require('date-format');
-const path = require('path');
-exports.JSONReadable = (data) => JSON.stringify(data, null, 2);
-exports.dateFormat = dateFormatter;
+import dateFormatter from 'date-format';
+import path from 'path';
+
+export const JSONReadable = (data) => JSON.stringify(data, null, 2);
+export const dateFormat = dateFormatter;
 /**
  *
  * @type {number} a year in millisecond
  */
-exports.year = 31556926000;
-exports.base64 = {
+export const year = 31556926000;
+export const base64 = {
 	encode: (data) => {
 		return Buffer.from(data).toString('base64');
 	},
@@ -15,7 +16,7 @@ exports.base64 = {
 		return Buffer.from(data, 'base64').toString();
 	}
 };
-exports.isPath = (str) => {
+export const isPath = (str) => {
 	return !!str && !(str === path.basename(str));
 };
 /**
@@ -24,7 +25,7 @@ exports.isPath = (str) => {
  * @param {string} namespace
  * @returns {string}
  */
-exports.int2Chars = (i, namespace) => {
+export const int2Chars = (i, namespace) => {
 	i = parseInt(i);
 	const d = namespace.length;
 	const forward = (intNum) => {
@@ -42,24 +43,17 @@ exports.int2Chars = (i, namespace) => {
 	}
 	return result;
 };
-exports.bytes2String = (bytes) => {
+export const bytes2String = (bytes) => {
 	return Buffer.from(bytes).toString();
 };
-exports.chars2Hex = (str) => {
+export const chars2Hex = (str) => {
 	return Buffer.from(str).toString('hex');
 };
 
 
-exports.RegxMatch = (str, pattern, flags) => {
+export const RegxMatch = (str, pattern, flags) => {
 	const namePattern = new RegExp(pattern, flags);
 	return str.match(namePattern);
 };
-exports.isFloat = (number) => {
-	if (typeof number !== 'number') {
-		return false;
-	}
-	if (Number.isInteger(number)) {
-		return false;
-	}
-	return true;
-};
+export const isFloat = (number) => typeof number === 'number' && !Number.isInteger(number);
+

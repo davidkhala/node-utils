@@ -1,6 +1,6 @@
 {
-  "name": "khala-light-util",
-  "version": "0.0.9",
+  "name": "@davidkhala/light",
+  "version": "0.0.0",
   "devDependencies": {
     "mocha": "latest"
   },

@@ -1,4 +1,4 @@
-const {int2Chars, dateFormat, chars2Hex, isPath, RegxMatch, isFloat, bytes2String, base64} = require('../format');
+import {int2Chars, dateFormat, chars2Hex, isPath, RegxMatch, isFloat, bytes2String, base64} from '../format.js';
 const charSpace = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const logger = require('khala-logger/log4js').consoleLogger('test:format');
