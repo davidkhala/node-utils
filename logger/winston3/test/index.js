@@ -1,17 +1,17 @@
-const {new: newLogger} = require('../');
+import {consoleLogger} from '../index.js';
+import {configuredFormatter} from 'winston-json-formatter';
 describe('Winston3: console', () => {
 
 	it('smoke', () => {
-		const logger = newLogger('b');
+		const logger = consoleLogger('b');
 		logger.debug({a: {a: 'b'}});
 	});
 
 });
 
 describe('Winston3 with `winston-json-formatter`', () => {
-	const {configuredFormatter} = require('winston-json-formatter');
 	it('console format', () => {
-		const logger = newLogger('b');
+		const logger = consoleLogger('b');
 		const options = {
 			typeFormat: 'console',
 			service: 'service name',
@@ -22,7 +22,7 @@ describe('Winston3 with `winston-json-formatter`', () => {
 		logger.info({json: 'json'}); // No logger label support
 	});
 	it('json format', () => {
-		const logger = newLogger('b');
+		const logger = consoleLogger('b');
 		const options = {
 			typeFormat: 'json',
 		};

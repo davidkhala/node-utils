@@ -1,4 +1,4 @@
-const {createLogger, format, transports} = require('winston');
+import {createLogger, format, transports} from 'winston';
 const {combine, timestamp} = format;
 const levels = [
 	'error',
@@ -14,7 +14,7 @@ const levels = [
  * @param {number} level default 4:'debug'
  * @return {winston.Logger}
  */
-exports.new = (moduleName, level = 4) => {
+export const consoleLogger = (moduleName, level = 4) => {
 	return createLogger({
 		level: levels[level],
 

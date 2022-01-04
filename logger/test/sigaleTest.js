@@ -1,26 +1,6 @@
-const signale = require('signale');
+import signale from 'signale';
+
 const {Signale} = signale;
-/**
- * Below are all native logging function
- */
-
-// - `debug`
-// - `info`
-// - `log`
-// - `warn`
-// - `error`
-// - `fatal`
-
-// - `await`
-// - `complete`
-// - `fav`
-// - `note`
-// - `pause`
-// - `pending`
-// - `star`
-// - `start`
-// - `success`
-// - `watch`
 
 describe('signale', () => {
 

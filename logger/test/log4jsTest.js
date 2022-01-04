@@ -1,4 +1,4 @@
-const {consoleLogger, fileLogger} = require('../log4js');
+import {consoleLogger} from '../log4.js';
 describe('Log4js:consoleLogger', () => {
 	const logger = consoleLogger('a');
 	it('debug', () => {

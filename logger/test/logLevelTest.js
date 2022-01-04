@@ -1,4 +1,4 @@
-const log = require('loglevel');
+import log from 'loglevel';
 describe('logLevel', () => {
 	it('demo', () => {
 		log.trace('trace');

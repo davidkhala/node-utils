@@ -1,4 +1,4 @@
-const winston = require('winston');
+import winston from 'winston';
 const levels = [
 	'error',
 	'warn',
@@ -7,7 +7,7 @@ const levels = [
 	'debug',
 	'silly'
 ];
-const localDateCallback = () => {
+export const localDateCallback = () => {
 	const date = new Date();
 	return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000).toISOString();
 };
@@ -19,7 +19,7 @@ const localDateCallback = () => {
  * @param {function} [timestampCallback]
  * @return {winston.LoggerInstance}
  */
-exports.new = (moduleName, level = 4, timestampCallback) => {
+export const consoleLogger = (moduleName, level = 4, timestampCallback) => {
 	const timestamp = typeof timestampCallback === 'function' ? timestampCallback : () => new Date().toISOString();
 	return new (winston.Logger)({
 		transports: [
@@ -41,7 +41,7 @@ exports.new = (moduleName, level = 4, timestampCallback) => {
  * @param {function} [timestampCallback]
  * @return {winston.LoggerInstance}
  */
-exports.newFile = (moduleName, logFile, level = 4, timestampCallback) => {
+export const fileLogger = (moduleName, logFile, level = 4, timestampCallback) => {
 	const timestamp = typeof timestampCallback === 'function' ? timestampCallback : () => new Date().toISOString();
 	return new (winston.Logger)({
 		transports: [
@@ -57,4 +57,3 @@ exports.newFile = (moduleName, logFile, level = 4, timestampCallback) => {
 		]
 	});
 };
-exports.localDateCallback = localDateCallback;

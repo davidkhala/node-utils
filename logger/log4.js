@@ -1,3 +1,5 @@
+import Log4js from 'log4js';
+
 const levels = [
 	'OFF',  // nothing is logged
 	'FATAL', // fatal errors are logged
@@ -14,8 +16,8 @@ const levels = [
  * @param {number} level refer to `Log4j.levels` default 5:'debug'
  * @return {Logger}
  */
-exports.consoleLogger = (moduleName, level = 5) => {
-	const Log4js = require('log4js');
+export const consoleLogger = (moduleName, level = 5) => {
+
 	const logger = Log4js.getLogger(moduleName);
 
 	logger.level = levels[level];

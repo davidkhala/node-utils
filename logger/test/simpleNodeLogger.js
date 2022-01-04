@@ -1,4 +1,4 @@
-const Logger = require('simple-node-logger');
+import Logger from 'simple-node-logger';
 const opts = {
 	timestampFormat: 'YYYY-MM-DD HH:mm:ss.SSS'
 };

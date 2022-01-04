@@ -9,7 +9,7 @@ Util collection of multiple popular nodejs logging framework
     - has no audited security issue
     - much lighter now: ImportCost: 194 KB 
 - log4js configure as singleton, you have to take good care of global appenders by yourself.
-    - Deprecated: fileLogger for log4js      
+    - No fileLogger for log4js      
 ## TODO
 
 ## Abandoned

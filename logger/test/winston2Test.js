@@ -1,7 +1,8 @@
-const Winston2 = require('../winston');
+import {consoleLogger, localDateCallback, fileLogger} from '../winston.js';
+import fsExtra from 'fs-extra';
 describe('Winston2:Console', () => {
 	const label = 'test';
-	const logger = Winston2.new(label);
+	const logger = consoleLogger(label);
 	it('debug', () => {
 		logger.debug('abc');
 	});
@@ -11,29 +12,29 @@ describe('Winston2:Console', () => {
 	});
 	it('date format', () => {
 
-		const dateLogger = Winston2.new('date local', undefined, Winston2.localDateCallback);
+		const dateLogger = consoleLogger('date local', undefined, localDateCallback);
 		dateLogger.info('abc');
 	});
 });
 describe('Winston2:File', () => {
 
-	const fsExtra = require('fs-extra');
+
 	const file1 = 'test.Log';
 	const file2 = 'test2.log';
-	const fileLogger = Winston2.newFile('test:file', file1);
+	const logger = fileLogger('test:file', file1);
 	it('error', () => {
 		const obj = {a: 'vb'};
 		const array = [1, 3, 4, 2];
-		fileLogger.error('abc', 'cde', obj, array);
+		logger.error('abc', 'cde', obj, array);
 	});
 	it('no logger pollution', () => {
-		const logger2 = Winston2.newFile('test:file', file2);
-		fileLogger.info('it should show up in ', file1);
+		const logger2 = fileLogger('test:file', file2);
+		logger.info('it should show up in ', file1);
 		logger2.info('it should show up in ', file2);
 	});
 	it('use date formatter', () => {
-		const logger = Winston2.newFile('test:file', file1, undefined, Winston2.localDateCallback);
-		logger.info('abc');
+		const logger3 = fileLogger('test:file', file1, undefined, localDateCallback);
+		logger3.info('abc');
 	});
 
 	after(() => {
