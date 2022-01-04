@@ -2,7 +2,8 @@
   "name": "@davidkhala/light",
   "version": "0.0.0",
   "devDependencies": {
-    "mocha": "latest"
+    "mocha": "latest",
+    "@davidkhala/logger": "latest"
   },
   "scripts": {
     "test": "mocha test"

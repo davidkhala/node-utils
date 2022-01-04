@@ -1,8 +1,6 @@
-/**
- * Do not put syntax test here but in `test/syntaxTest.js`**
- */
-const Syntax = require('../syntax');
-const logger = require('khala-logger/log4js').consoleLogger('syntax test');
+import {splitBySpace} from '../syntax.js';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+const logger = consoleLogger('syntax test');
 
 describe('test:syntax', () => {
 	it('splitBySpace', () => {
@@ -12,7 +10,7 @@ start \
 --hostname=0.0.0.0 
 --port=7059  
 --CORS=* `;
-		const tokens = Syntax.splitBySpace(str);
+		const tokens = splitBySpace(str);
 		logger.debug(tokens);
 	});
 });

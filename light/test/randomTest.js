@@ -1,5 +1,6 @@
-const {randomHex, randomString, randomChars} = require('../random');
-const logger = require('khala-logger/log4js').consoleLogger('test:random');
+import {randomHex, randomString, randomChars} from '../random.js';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+const logger = consoleLogger('test:random');
 describe('test:random', () => {
 	it('randomHex', () => {
 		const hex = randomHex(20);
