@@ -1,5 +1,5 @@
 import {axiosPromise} from '../index.js';
-import {consoleLogger} from 'khala-logger/log4js.js';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
 import assert from 'assert';
 import fs from 'fs';
 import FormData from 'form-data';

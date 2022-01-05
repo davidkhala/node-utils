@@ -1,11 +1,11 @@
 {
-  "name": "khala-websocket",
+  "name": "@davidkhala/websocket",
   "version": "0.0.0",
   "dependencies": {
     "ws": "^7.2.1"
   },
   "devDependencies": {
-    "khala-nodeutils": "^0.8.1",
-    "khala-logger": "^0.2.0"
+    "@davidkhala/nodeutils": "latest",
+    "@davidkhala/logger": "latest"
   }
 }

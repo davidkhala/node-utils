@@ -1,5 +1,7 @@
-const X500Name = require('../X500Name');
-const logger = require('khala-logger/log4js').consoleLogger('X500Name');
+import X500Name from '../X500Name.js';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+
+const logger = consoleLogger('X500Name');
 describe('X500Name', () => {
 	it('build', () => {
 		const name = new X500Name();

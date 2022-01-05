@@ -1,9 +1,15 @@
 {
   "packages": [
+    "axios",
+    "crypto",
+    "CSV",
     "github",
+    "grpc",
     "light",
     "logger",
-    "main"
+    "main",
+    "pm2",
+    "websocket"
   ],
   "version": "independent"
 }

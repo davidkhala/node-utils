@@ -1,7 +1,7 @@
-const papaParse = require('papaparse');
-const fs = require('fs');
+import papaParse from 'papaparse';
+import fs from 'fs';
 
-const FromFile = (filepath) => {
+export const FromFile = (filepath) => {
 	const str = fs.readFileSync(filepath).toString();
 	const result = papaParse.parse(str);
 	return result.data;
@@ -11,7 +11,7 @@ const FromFile = (filepath) => {
  * @param data
  * @returns {*}
  */
-const ToFile = (data = [{}]) => {
+export const ToFile = (data = [{}]) => {
 	const fields = data.map(entry => (Object.keys(entry))).reduce((sum, entry) => sum.concat(entry), []);
 	if (fields.length > 0) {
 		const data1 = data[0];
@@ -23,4 +23,3 @@ const ToFile = (data = [{}]) => {
 	}
 	return papaParse.unparse(data);
 };
-module.exports = {FromFile, ToFile};

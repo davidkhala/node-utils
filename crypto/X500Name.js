@@ -2,7 +2,7 @@
  *
  * @type {module.X500Name}
  */
-class X500Name {
+export default class X500Name {
 
 	setCommonName(s) {
 		this.CN = s;
@@ -34,4 +34,4 @@ class X500Name {
 
 }
 
-module.exports = X500Name;
+

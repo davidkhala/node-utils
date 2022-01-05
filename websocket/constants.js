@@ -1,18 +1,17 @@
 /**
  * @enum {string}
  */
-const WebsocketState = {
+export const WebsocketState = {
 	CONNECTING: 'CONNECTING',
 	OPEN: 'OPEN',
 	CLOSING: 'CLOSING',
 	CLOSED: 'CLOSED'
 };
-exports.WebsocketState = WebsocketState;
 
 /**
  * @enum {string}
  */
-const WebsocketEventType = {
+export const WebsocketEventType = {
 	open: 'open',
 	message: 'message',
 	close: 'close',
@@ -20,4 +19,3 @@ const WebsocketEventType = {
 	connection: 'connection',
 	pong: 'pong'
 };
-exports.WebsocketEventType = WebsocketEventType;

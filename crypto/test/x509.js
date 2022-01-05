@@ -1,5 +1,7 @@
-const {asn1: {x509: {Time}}} = require('jsrsasign');
-const {X509Time} = require('../x509');
+import {asn1} from 'jsrsasign';
+import {X509Time} from '../x509.js';
+
+const {Time} = asn1.x509;
 describe('x509Time', () => {
 	it('build date-time', () => {
 

@@ -1,8 +1,10 @@
-const pm2 = require('pm2');
-const logger = require('khala-logger/log4js').consoleLogger('pm2 Manager');
-const fs = require('fs');
+import pm2 from 'pm2';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
 
-class PM2 {
+const logger = consoleLogger('pm2 Manager');
+import fs from 'fs';
+
+export class PM2 {
 	constructor() {
 
 	}
@@ -113,7 +115,3 @@ class PM2 {
 		}
 	}
 }
-
-module.exports = {
-	PM2
-};

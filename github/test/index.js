@@ -1,6 +1,7 @@
-const GithubRestAPI = require('../');
-const logger = require('khala-logger/log4js').consoleLogger('Github API');
+import * as GithubRestAPI from '../index.js';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
 
+const logger = consoleLogger('Github API');
 describe('github Rest API', () => {
 	it('public access', () => {
 		const api = new GithubRestAPI();

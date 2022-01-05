@@ -1,8 +1,7 @@
 const logger = console;
-const fs = require('fs');
-const path = require('path');
-const util = require('util');
-const assert = require('assert');
+import fs from 'fs';
+import util from 'util';
+import assert from 'assert';
 const bufferTest = (obj) => {
 	const bytes = Buffer.from(JSON.stringify(obj));
 	logger.info(typeof obj, obj, 'stringify to', JSON.stringify(obj));

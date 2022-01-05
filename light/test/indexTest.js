@@ -1,4 +1,4 @@
-import {isDirectory} from '../index.js';
+import {isDirectory, isArrayEven} from '../index.js';
 import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
@@ -24,5 +24,10 @@ describe('index Test', () => {
 		const aFile = path.resolve(__dirname, 'randomTest.js');
 
 		assert.ok(!isDirectory(aFile) && fs.existsSync(aFile));
+	});
+	it('arrayEvenTest', () => {
+		logger.debug(isArrayEven());
+		logger.debug(isArrayEven([]));
+		logger.debug(isArrayEven([1]));
 	});
 });

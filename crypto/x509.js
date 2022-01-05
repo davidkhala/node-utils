@@ -1,9 +1,10 @@
 // https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5.1
 // YYMMDDHHMMSSZ
-const dateFormat = require('date-format');
+import dateFormat from 'date-format';
+
 const dateFormatMask = 'yyMMddhhmmssZ';
 
-class X509Time {
+export class X509Time {
 	/**
 	 * @param {Date|number} [date]
 	 */
@@ -18,7 +19,3 @@ class X509Time {
 		return dateFormat(dateFormatMask, this.date);
 	}
 }
-
-module.exports = {
-	X509Time
-};

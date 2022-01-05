@@ -1,5 +1,5 @@
-const X509Certificate = require('../X509Certificate');
-const assert = require('assert');
+import X509Certificate from '../X509Certificate';
+import assert from 'assert';
 describe('X509Certificate', () => {
 	const pem = `-----BEGIN CERTIFICATE-----
 MIIBsDCCAVagAwIBAgIK4I7KBQLVmJNP1zAKBggqhkjOPQQDAjBTMREwDwYDVQQG

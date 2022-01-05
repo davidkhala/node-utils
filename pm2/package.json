@@ -8,11 +8,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "pm2": "^4.2.0",
-    "khala-logger": "^0.2.0"
+    "@davidkhala/logger": "latest"
   },
   "devDependencies": {
     "mocha": "latest",
-    "khala-nodeutils": "latest",
+    "@davidkhala/nodeutils": "latest",
     "@davidkhala/light": "latest"
   }
 }

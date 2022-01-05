@@ -1,19 +1,20 @@
 {
-  "name": "khala-crypto",
-  "version": "0.1.1-beta",
+  "name": "@davidkhala/crypto",
+  "version": "0.0.0",
   "keywords": [
     "X500"
   ],
   "dependencies": {
     "jsrsasign": "latest",
-    "khala-light-util": "latest"
+    "@davidkhala/light": "latest"
   },
   "devDependencies": {
-    "khala-logger": "latest",
+    "@davidkhala/logger": "latest",
     "mocha": "latest",
     "@davidkhala/milagro-crypto-js": "latest"
   },
   "scripts": {
     "test": "mocha test"
-  }
+  },
+  "type": "module"
 }

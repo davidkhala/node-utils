@@ -7,7 +7,7 @@ const logger = consoleLogger('devops');
 describe('devOps', function () {
 
 	this.timeout(0);
-	it('exec: apt update', () => {
+	it.skip('exec: apt update', () => {
 		if (process.env.CI) {
 			// skip this check
 			return;
@@ -25,6 +25,7 @@ describe('devOps', function () {
 		logger.info({hostname});
 		const address = ip(true);
 		assert.ok(Array.isArray(address));
+		logger.info(os);
 	});
 });
 

@@ -1,6 +1,6 @@
-const WebSocket = require('ws');
+import WebSocket from 'ws';
 
-class WebsocketServer {
+export default class WebsocketServer {
 	/**
 	 *
 	 * @param {http.Server} server A pre-created HTTP/S server to use
@@ -51,5 +51,3 @@ class WebsocketServer {
 		setInterval(heartBeat, beatInterval);
 	}
 }
-
-module.exports = WebsocketServer;

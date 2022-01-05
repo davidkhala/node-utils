@@ -1,4 +1,4 @@
-const WebsocketClient = require('../client');
+import WebsocketClient from '../client.js';
 const wsUrl = 'ws://localhost:3003';
 const ws = new WebsocketClient(wsUrl);
 const logger = console;

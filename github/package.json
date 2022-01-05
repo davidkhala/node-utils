@@ -6,9 +6,10 @@
     "@octokit/graphql": "latest"
   },
   "devDependencies": {
-    "khala-logger": "^0.2.0"
+    "@davidkhala/logger": "latest"
   },
   "scripts": {
     "test": "mocha test"
-  }
+  },
+  "type": "module"
 }

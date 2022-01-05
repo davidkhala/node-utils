@@ -1,6 +1,6 @@
-const {Octokit} = require('@octokit/rest');
+import {Octokit} from '@octokit/rest';
 
-class GithubRestAPI {
+export default class GithubRestAPI {
 	/**
 	 * @param [token]
 	 */
@@ -15,7 +15,5 @@ class GithubRestAPI {
 	}
 
 }
-
-module.exports = GithubRestAPI;
 
 

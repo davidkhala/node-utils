@@ -1,6 +1,6 @@
-const {X509} = require('jsrsasign');
+import {X509} from 'jsrsasign';
 
-class X509Certificate {
+export default class X509Certificate {
 	constructor(pem) {
 		const x509 = new X509();
 		x509.readCertPEM(pem);
@@ -26,5 +26,3 @@ class X509Certificate {
 		return result;
 	}
 }
-
-module.exports = X509Certificate;

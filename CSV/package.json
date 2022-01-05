@@ -1,5 +1,5 @@
 {
-  "name": "khala-csv",
+  "name": "@davidkhala/csv",
   "version": "1.0.0",
   "dependencies": {
     "papaparse": "latest"

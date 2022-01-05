@@ -1,9 +1,7 @@
-const grpc = require('grpc');
-const protoLoader = require('@grpc/proto-loader');
+import grpc from 'grpc';
+import protoLoader from '@grpc/proto-loader';
 
-exports.grpc = grpc;
-exports.protoLoader = protoLoader;
-const load = (protoPath, options) => {
+export const load = (protoPath, options) => {
 
 	const definition = protoLoader.loadSync(protoPath, options);
 	const object = grpc.loadPackageDefinition(definition);
@@ -12,7 +10,6 @@ const load = (protoPath, options) => {
 		object
 	};
 };
-exports.load = load;
 /**
  *
  * @param {integer|intString} port
@@ -20,7 +17,7 @@ exports.load = load;
  * @param services
  * @param {ServerCredentials} creds
  */
-exports.grpcServer = ({port, host = '0.0.0.0'}, services = [], creds = grpc.ServerCredentials.createInsecure()) => {
+export const grpcServer = ({port, host = '0.0.0.0'}, services = [], creds = grpc.ServerCredentials.createInsecure()) => {
 	const server = new grpc.Server();
 
 	for (const {service, implementation} of services) {
@@ -32,7 +29,7 @@ exports.grpcServer = ({port, host = '0.0.0.0'}, services = [], creds = grpc.Serv
 };
 
 
-exports.grpcRequest = async (protoPath, serviceName, url, actionName, body, creds = grpc.credentials.createInsecure()) => {
+export const grpcRequest = async (protoPath, serviceName, url, actionName, body, creds = grpc.credentials.createInsecure()) => {
 	const Service = load(protoPath).object[serviceName];
 	const client = new Service(url, creds);
 	return new Promise((resolve, reject) => {

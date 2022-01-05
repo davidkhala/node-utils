@@ -1,11 +1,14 @@
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+import CTX from '@davidkhala/milagro-crypto-js';
+
+const logger = consoleLogger('test:amcl');
 const algorithmList = [
 	'ED25519', 'C25519', 'SECP256K1', 'NIST256', 'NIST384', 'BRAINPOOL',
 	'ANSSI', 'HIFIVE', 'GOLDILOCKS', 'C41417', 'NIST521', 'NUMS256W', 'NUMS256E',
 	'NUMS384W', 'NUMS384E', 'NUMS512W', 'NUMS512E', 'FP256BN', 'FP512BN', 'BN254',
 	'BN254CX', 'BLS383', 'BLS24', 'BLS48', 'BLS381', 'BLS461', undefined
 ];
-const logger = require('khala-logger/log4js').consoleLogger('test:amcl');
-const CTX = require('@davidkhala/milagro-crypto-js');
+
 describe('amcl', () => {
 	it('algorithm smoke', () => {
 		algorithmList.forEach(algo => {

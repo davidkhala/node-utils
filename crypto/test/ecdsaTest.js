@@ -1,11 +1,14 @@
-const logger = require('khala-logger/log4js').consoleLogger('test:ecdsa');
-const X500Name = require('../X500Name');
-const fs = require('fs');
-const path = require('path');
-const {ECDSAConfig} = require('../ECDSA');
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+import X500Name from '../X500Name.js';
+import {ECDSAConfig} from '../ECDSA.js';
+import fs from 'fs';
+import path from 'path';
+import {Extension} from '../extension.js';
+import {X509Time} from '../x509.js';
+const logger = consoleLogger('test:ecdsa');
+
 const config = new ECDSAConfig(256);
-const {Extension} = require('../extension');
-const {X509Time} = require('../x509');
+
 describe('csr', () => {
 
 	it('generate CSR', () => {

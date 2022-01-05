@@ -1,4 +1,4 @@
-const jsrsasign = require('jsrsasign');
+import jsrsasign from 'jsrsasign';
 
 describe('x509', () => {
 	const {X509} = jsrsasign;

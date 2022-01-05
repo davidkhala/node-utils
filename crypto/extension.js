@@ -1,6 +1,6 @@
 // https://github.com/kjur/jsrsasign/wiki/Tutorial-for-extensions-when-generating-certificate
 
-class Extension {
+export class Extension {
 
 	static asBasicConstraints({cA = true, pathLen = 2} = {}) {
 		return {extname: 'basicConstraints', critical: true, cA, pathLen};
@@ -52,7 +52,3 @@ class Extension {
 	}
 
 }
-
-module.exports = {
-	Extension,
-};

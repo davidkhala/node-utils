@@ -5,10 +5,10 @@
     "test": "mocha test"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "latest"
   },
   "devDependencies": {
-    "khala-logger": "latest",
+    "@davidkhala/logger": "latest",
     "mocha": "latest",
     "form-data": "^3.0.0"
   },

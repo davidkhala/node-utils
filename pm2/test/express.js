@@ -1,4 +1,4 @@
-const {run} = require('khala-nodeutils/baseApp');
+import {run} from '@davidkhala/nodeutils/baseApp.js';
 const {app} = run(3000);
 app.get('/panic', async (req, res) => {
 	throw Error('panic');

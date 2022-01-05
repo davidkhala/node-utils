@@ -1,6 +1,6 @@
-const WebSocket = require('ws');
+import WebSocket from 'ws';
 
-class WebsocketClient {
+export class WebsocketClient {
 	constructor(wsUrl, options = {}, logger = console) {
 		this.ws = new WebSocket(wsUrl, undefined, options);
 		this.logger = logger;
@@ -47,5 +47,3 @@ class WebsocketClient {
 		}
 	}
 }
-
-module.exports = WebsocketClient;
