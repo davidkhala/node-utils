@@ -1,6 +1,6 @@
 {
-  "name": "khala-nodeutils",
-  "version": "1.0.2",
+  "name": "@davidkhala/nodeutils",
+  "version": "0.0.0",
   "author": "david Liu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
@@ -16,9 +16,11 @@
     "fs-extra": "latest",
     "js-yaml": "latest",
     "multer": "latest",
-    "tmp": "latest"
+    "tmp": "latest",
+    "@davidkhala/light": "latest"
   },
   "devDependencies": {
-    "khala-logger": "latest"
-  }
+    "@davidkhala/logger": "latest"
+  },
+  "type": "module"
 }

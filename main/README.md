@@ -1,8 +1,5 @@
-# khala-nodeutils
+# @davidkhala/nodeutils
 Nodejs utils including date-format, express.js and tmp file manager
-
-[![NPM](https://nodei.co/npm/khala-nodeutils.png)](https://nodei.co/npm/khala-nodeutils/)
-
 
 
 ## Notes

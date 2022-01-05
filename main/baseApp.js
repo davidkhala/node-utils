@@ -1,11 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const http = require('http');
-const https = require('https');
-const cors = require('cors');
-const fs = require('fs');
-const {isPath} = require('./format');
-const Multer = require('multer');
+import express from 'express';
+import bodyParser from 'body-parser';
+import http from 'http';
+import https from 'https';
+import cors from 'cors';
+import fs from 'fs';
+import {isPath} from './format.js';
+import Multer from 'multer';
 /**
  * @type {string[]} minVersion: set the minimum TLS version to allow. Cannot be specified along with the secureProtocol option.
  * It is not recommended to use less than TLSv1.2.
@@ -38,7 +38,7 @@ const secureProtocols = [
 	'SSLv3_server_method'
 ];
 
-exports.httpsOptions = {
+export const httpsOptions = {
 	minVersion: minVersions,
 	secureProtocol: secureProtocols
 };
@@ -58,7 +58,7 @@ exports.httpsOptions = {
  * @param [logger]
  * @returns {{app: ExpressApp, server: Server}}
  */
-exports.run = (port, host, tlsOptions, logger = console) => {
+export const run = (port, host, tlsOptions, logger = console) => {
 	const app = express();
 	app.options('*', cors());
 	app.use(cors());
@@ -87,10 +87,10 @@ exports.run = (port, host, tlsOptions, logger = console) => {
 	server.timeout = 240000;
 	return {app, server};
 };
-exports.getRouter = () => {
+export const getRouter = () => {
 	return express.Router();
 };
-exports.expressError = (app, onError, logger = console) => {
+export const expressError = (app, onError, logger = console) => {
 	if (!onError) {
 		onError = (err, res) => {
 			let status = 500;
@@ -112,12 +112,10 @@ exports.expressError = (app, onError, logger = console) => {
 		onError(err, res);
 	});
 };
-exports.formDataRouter = (cacheDir) => {
+export const formDataRouter = (cacheDir) => {
 	const multerCache = Multer({dest: cacheDir});
 	return multerCache.any();
 };
-exports.formDataFilePaths = (req, property) => {
+export const formDataFilePaths = (req, property) => {
 	return req.files[property].map(({path}) => path);
 };
-exports.express = express;
-exports.multer = Multer;

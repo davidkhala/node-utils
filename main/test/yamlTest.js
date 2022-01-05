@@ -1,16 +1,25 @@
-const yamlTest = require('../yaml');
-const logger = require('khala-logger/log4js').consoleLogger('test:yaml');
-const path = require('path');
-const readFile = path.resolve(__dirname, 'fixtures', 'read.yaml');
-const writtenFile = path.resolve(__dirname, 'fixtures', 'write.yaml');
+import {read, write} from '../yaml.js';
+import path from 'path';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+import {filedirname} from '@davidkhala/light/es6.mjs';
+
+
+const logger = consoleLogger('test:yaml');
+
 describe('yaml', () => {
+	let readFile, writtenFile
+	before(()=>{
+		filedirname(import.meta);
+		readFile = path.resolve(__dirname, 'fixtures', 'read.yaml');
+		writtenFile = path.resolve(__dirname, 'fixtures', 'write.yaml');
+	})
 	it('read', () => {
-		const readResult = yamlTest.read(readFile);
+		const readResult = read(readFile);
 		logger.debug(readResult);
 	});
 	it('write', () => {
-		const readResult = yamlTest.read(readFile);
+		const readResult = read(readFile);
 		delete readResult.anchorPeers.Application.Organizations;
-		yamlTest.write(readResult, writtenFile);
+		write(readResult, writtenFile);
 	});
 });

@@ -1,4 +1,4 @@
-exports.successHandle = (message, res, logger) => {
+export const successHandle = (message, res, logger) => {
 	if (logger) {
 		logger.info('message', message);
 	}
@@ -7,7 +7,7 @@ exports.successHandle = (message, res, logger) => {
 		message
 	});
 };
-exports.errorSyntaxHandle = (err, res, logger) => {
+export const errorSyntaxHandle = (err, res, logger) => {
 	if (logger) {
 		logger.error(err);
 	}

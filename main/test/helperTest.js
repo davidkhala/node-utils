@@ -1,18 +1,16 @@
-const helper = require('../helper');
-const logger = require('khala-logger/log4js').consoleLogger('test:helper');
-const path = require('path');
+import {homeResolve} from '../helper.js';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+import path from 'path';
+
+const logger = consoleLogger('test:helper');
 
 describe('test:helper', () => {
 	it('pathTest', () => {
-		const relPath = helper.homeResolve('abc');
+		const relPath = homeResolve('abc');
 		logger.debug(relPath);
 
 		logger.debug(path.resolve('~'));
 	});
-	it('arrayEvenTest', () => {
-		logger.debug(helper.isArrayEven());
-		logger.debug(helper.isArrayEven([]));
-		logger.debug(helper.isArrayEven([1]));
-	});
+
 });
 

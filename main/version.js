@@ -1,14 +1,13 @@
 const versionPattern = /^\d+\.\d+\.\d+$/;
-const validVersion = (version) => version.match(versionPattern);
+export const validVersion = (version) => version.match(versionPattern);
 /**
  * @enum {string}
  */
-const IncrementLevel = {
+export const IncrementLevel = {
 	major: 'major',
 	minor: 'minor',
 	patch: 'patch'
 };
-exports.IncrementLevel = IncrementLevel;
 
 /**
  * version pattern : 0.0.0, not strictly SemVer format
@@ -16,7 +15,7 @@ exports.IncrementLevel = IncrementLevel;
  * @param {IncrementLevel} incrementLevel
  * @return {string}
  */
-exports.nextVersion = (prevVersion, incrementLevel = IncrementLevel.patch) => {
+export const nextVersion = (prevVersion, incrementLevel = IncrementLevel.patch) => {
 	if (!prevVersion) {
 		return '0.0.0';
 	}
@@ -33,7 +32,6 @@ exports.nextVersion = (prevVersion, incrementLevel = IncrementLevel.patch) => {
 			return `${major}.${minor}.${patch + 1}`;
 	}
 };
-exports.validVersion = validVersion;
 /**
  * @typedef {function} versionComparator
  * @param {string} newVersion
@@ -44,7 +42,7 @@ exports.validVersion = validVersion;
 /**
  * @type {versionComparator}
  */
-exports.newerVersion = (newVersion, oldVersion) => {
+export const newerVersion = (newVersion, oldVersion) => {
 	const [majorN, minorN, patchN] = newVersion.split('.').map((s) => parseInt(s));
 	const [majorO, minorO, patchO] = oldVersion.split('.').map((s) => parseInt(s));
 	return majorN > majorO || minorN > minorO || patchN > patchO;

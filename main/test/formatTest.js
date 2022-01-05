@@ -1,8 +1,9 @@
 import {int2Chars, dateFormat, chars2Hex, isPath, RegxMatch, isFloat, bytes2String, base64} from '../format.js';
-const charSpace = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+import assert from 'assert';
 
-const logger = require('khala-logger/log4js').consoleLogger('test:format');
-const assert = require('assert');
+const logger = consoleLogger('test:format');
+const charSpace = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 describe('format test', () => {
 	it('test RegX', () => {
 		const testReg = (str) => {

@@ -1,30 +1,29 @@
-const logger = require('khala-logger/log4js').consoleLogger('helper util');
-const devOps = require('./devOps');
-const path = require('path');
-exports.fsExtra = require('fs-extra');
-exports.trimExtName = (filePath) => path.basename(filePath, path.extname(filePath));
-exports.homeResolve = (...tokens) => {
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+import {homedir} from '@davidkhala/light/devOps.js';
+import path from 'path';
+const logger = consoleLogger('helper util');
+export const trimExtName = (filePath) => path.basename(filePath, path.extname(filePath));
+export const homeResolve = (...tokens) => {
 	if (!tokens) {
 		return tokens;
 	}
-	return path.resolve(devOps.homedir, ...tokens);
+	return path.resolve(homedir, ...tokens);
 };
 
-exports.JSONEqual = (json1, json2) => {
+export const JSONEqual = (json1, json2) => {
 	return JSON.stringify(JSON.parse(json1)) === JSON.stringify(JSON.parse(json2));
 };
-exports.ObjectEqual = (object1, object2) => {
+export const ObjectEqual = (object1, object2) => {
 	return JSON.stringify(object1) === JSON.stringify(object2);
 };
-const sleep = async (ms, silent) => {
+export const sleep = async (ms, silent) => {
 	if (!silent) {
 		logger.debug(`sleep ${ms}ms`);
 	}
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
-exports.sleep = sleep;
 
-const looper = async (opts = {interval: 1000}, task, ...taskParams) => {
+export const looper = async (opts = {interval: 1000}, task, ...taskParams) => {
 	const {times, interval} = opts;
 
 	if (Number.isInteger(times)) {
@@ -38,21 +37,19 @@ const looper = async (opts = {interval: 1000}, task, ...taskParams) => {
 		await looper(opts, task, ...taskParams);
 	}
 };
-exports.looper = looper;
 
 /**
- * TODO full test for pm2
  * @param key
  * @param data
  * @param force
- * @param pm2Simulator
+ * @param {boolean} [stringOnly]
  */
-exports.envInject = (key, data, force, pm2Simulator) => {
+export const envInject = (key, data, force, stringOnly) => {
 
 	switch (typeof data) {
 		case 'bigint':
 		case 'boolean':
-			if (pm2Simulator) {
+			if (stringOnly) {
 				data = data.toString();
 			}
 			break;
@@ -62,7 +59,7 @@ exports.envInject = (key, data, force, pm2Simulator) => {
 		case 'function':
 		case 'undefined':
 		case 'object':
-			if (pm2Simulator) {
+			if (stringOnly) {
 				data = JSON.stringify(data);
 			}
 			break;
@@ -77,9 +74,5 @@ exports.envInject = (key, data, force, pm2Simulator) => {
 		}
 	}
 	process.env[key] = data;
-};
-
-exports.isArrayEven = arr => {
-	return Array.isArray(arr) && arr.length > 0 && arr.every(v => JSON.stringify(v) === JSON.stringify(arr[0]));
 };
 

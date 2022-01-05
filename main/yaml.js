@@ -1,8 +1,9 @@
-const yaml = require('js-yaml');
-const fs = require('fs');
-exports.read = (yamlFile) => {
+import yaml from 'js-yaml';
+import fs from 'fs';
+
+export const read = (yamlFile) => {
 	return yaml.load(fs.readFileSync(yamlFile));
 };
-exports.write = (data, yamlFile) => {
+export const write = (data, yamlFile) => {
 	fs.writeFileSync(yamlFile, yaml.dump(data, {lineWidth: 180}));
 };

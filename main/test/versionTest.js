@@ -1,6 +1,8 @@
-const {nextVersion, validVersion, newerVersion} = require('../version');
-const logger = require('khala-logger/log4js').consoleLogger('test:version');
-const assert = require('assert');
+import {nextVersion, validVersion, newerVersion} from '../version.js';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+import assert from 'assert';
+
+const logger = consoleLogger('test:version');
 describe('test:version', () => {
 	it('validVersion', () => {
 		assert.ok(validVersion('0.0.0'));

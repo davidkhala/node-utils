@@ -1,4 +1,4 @@
-const Tmp = require('tmp');
+import Tmp from 'tmp';
 Tmp.setGracefulCleanup();
 
 
