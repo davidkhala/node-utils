@@ -8,6 +8,7 @@
     "axios": "latest"
   },
   "devDependencies": {
+    "@davidkhala/light": "latest",
     "@davidkhala/logger": "latest",
     "mocha": "latest",
     "form-data": "^3.0.0"

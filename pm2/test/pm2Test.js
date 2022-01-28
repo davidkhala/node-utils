@@ -1,12 +1,12 @@
 import {PM2} from '../index.js';
 import path from 'path';
 import {filedirname} from '@davidkhala/light/es6.mjs';
-
+filedirname(import.meta);
 describe('api test', () => {
 	const pm2 = new PM2();
 	const name = 'express';
 	before(async () => {
-		filedirname(import.meta);
+
 		await pm2.connect();
 	});
 

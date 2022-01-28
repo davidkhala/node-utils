@@ -1,9 +1,11 @@
 import {axiosPromise} from '../index.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
+import {filedirname} from '@davidkhala/light/es6.mjs';
 import assert from 'assert';
 import fs from 'fs';
 import FormData from 'form-data';
 
+filedirname(import.meta);
 const logger = consoleLogger('test:axios');
 // server based on davidkhala/express-pong
 describe('https', () => {

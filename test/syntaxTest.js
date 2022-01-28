@@ -2,6 +2,8 @@ const logger = console;
 import fs from 'fs';
 import util from 'util';
 import assert from 'assert';
+import {filedirname} from '../light/es6.mjs';
+filedirname(import.meta)
 const bufferTest = (obj) => {
 	const bytes = Buffer.from(JSON.stringify(obj));
 	logger.info(typeof obj, obj, 'stringify to', JSON.stringify(obj));

@@ -5,6 +5,10 @@ import fs from 'fs';
 import path from 'path';
 import {Extension} from '../extension.js';
 import {X509Time} from '../x509.js';
+import {filedirname} from '@davidkhala/light/es6.mjs';
+
+filedirname(import.meta);
+
 const logger = consoleLogger('test:ecdsa');
 
 const config = new ECDSAConfig(256);

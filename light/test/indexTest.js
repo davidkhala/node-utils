@@ -3,13 +3,10 @@ import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import {filedirname} from '../es6.mjs';
-
+filedirname(import.meta);
 describe('index Test', () => {
 
 
-	before(()=>{
-		filedirname(import.meta);
-	})
 	it('__dirname', () => {
 
 		const pathTokens = __dirname.split(path.sep);

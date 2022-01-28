@@ -5,11 +5,11 @@ import {filedirname} from '@davidkhala/light/es6.mjs';
 
 
 const logger = consoleLogger('test:yaml');
-
+filedirname(import.meta);
 describe('yaml', () => {
 	let readFile, writtenFile
 	before(()=>{
-		filedirname(import.meta);
+
 		readFile = path.resolve(__dirname, 'fixtures', 'read.yaml');
 		writtenFile = path.resolve(__dirname, 'fixtures', 'write.yaml');
 	})
