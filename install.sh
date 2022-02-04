@@ -22,6 +22,7 @@ pm2() {
 
 }
 build-essential(){
+	lsb_dist=$(curl https://raw.githubusercontent.com/davidkhala/linux-utils/main/system.sh | bash -s get_distribution)
 	case "$lsb_dist" in
 
 		ubuntu)
