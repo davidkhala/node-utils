@@ -11,9 +11,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - run: npm config set package-lock false
       - run: npm install
       - run: npm install -g express-pong express-pongs
-      - run: port=3000 extensions=post,err,formData pong-http &
-      - run: key=test/key.pem cert=test/cert.pem port=3443 pong-https &
+      - run: PORT=3000 extensions=post,err,formData pong-http &
+      - run: key=test/key.pem cert=test/cert.pem PORT=3443 pong-https &
       - run: npm test
