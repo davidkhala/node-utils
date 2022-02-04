@@ -28,6 +28,8 @@ pm2() {
 }
 build-essential(){
 	sudo apt-get install -y build-essential ## To install dependencies: , make, gcc, g++
+	# sudo yum install yum-utils
+
 }
 # required by node-gyp
 nodeGYPDependencies() {
