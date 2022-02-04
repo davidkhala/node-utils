@@ -12,12 +12,7 @@ nodeVersionManager() {
 		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 	fi
 }
-yarn() {
-	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-	sudo apt update && sudo apt install yarn
 
-}
 pm2() {
 	if node --version | grep 'v8.'; then
 		sudo npm install -g pm2@4.1
@@ -27,9 +22,19 @@ pm2() {
 
 }
 build-essential(){
-	sudo apt-get install -y build-essential ## To install dependencies: , make, gcc, g++
-	# sudo yum install yum-utils
+	case "$lsb_dist" in
 
+		ubuntu)
+			sudo apt-get install -y build-essential
+		;;
+
+		
+
+		rhel|ol)
+			sudo yum install yum-utils
+		;;
+
+	esac
 }
 # required by node-gyp
 nodeGYPDependencies() {
