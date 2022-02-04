@@ -1,4 +1,4 @@
-import * as GithubRestAPI from '../index.js';
+import GithubRestAPI from '../index.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 
 const logger = consoleLogger('Github API');

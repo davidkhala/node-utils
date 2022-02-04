@@ -1,9 +1,13 @@
 import {isDirectory, isArrayEven} from '../index.js';
+import {consoleLogger} from '@davidkhala/logger/log4.js';
+
 import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 import {filedirname} from '../es6.mjs';
+
 filedirname(import.meta);
+const logger = consoleLogger('light');
 describe('index Test', () => {
 
 

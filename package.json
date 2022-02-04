@@ -15,5 +15,6 @@
     "tslint": "latest",
     "typescript": "latest",
     "dateformat": "latest"
-  }
+  },
+  "type": "module"
 }

@@ -1,6 +1,6 @@
 import Jsrsasign from 'jsrsasign';
 const {KEYUTIL, asn1} = Jsrsasign;
-import {randomHex} from '@davidkhala/light/random';
+import {randomHex} from '@davidkhala/light/random.js';
 const {x509} = asn1;
 const {TBSCertificate, Certificate} = x509;
 import {Extension} from './extension.js';

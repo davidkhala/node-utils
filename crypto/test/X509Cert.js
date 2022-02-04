@@ -1,4 +1,4 @@
-import X509Certificate from '../X509Certificate';
+import X509Certificate from '../X509Certificate.js';
 import assert from 'assert';
 describe('X509Certificate', () => {
 	const pem = `-----BEGIN CERTIFICATE-----

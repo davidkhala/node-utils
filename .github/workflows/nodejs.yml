@@ -8,7 +8,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - run: npm config set package-lock false
       - run: npm install
       - run: npm test
       - run: npm run install-lerna
