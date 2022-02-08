@@ -1,4 +1,4 @@
-import grpc from 'grpc';
+import grpc from '@grpc/grpc-js';
 import protoLoader from '@grpc/proto-loader';
 
 export const load = (protoPath, options) => {
@@ -14,17 +14,27 @@ export const load = (protoPath, options) => {
  *
  * @param {integer|intString} port
  * @param {string} [host] default to allow all inbound traffic
+ * @param logger
  * @param services
  * @param {ServerCredentials} creds
  */
-export const grpcServer = ({port, host = '0.0.0.0'}, services = [], creds = grpc.ServerCredentials.createInsecure()) => {
+export const grpcServer = async ({port, host = '0.0.0.0', logger = console}, services = [], creds = grpc.ServerCredentials.createInsecure()) => {
 	const server = new grpc.Server();
 
 	for (const {service, implementation} of services) {
 		server.addService(service, implementation);
 	}
-	server.bind(`${host}:${port}`, creds);
-	server.start();
+	return new Promise((resolve, reject) => {
+		const callback = (error, PORT) => {
+			if (error) {
+				reject(error);
+			}
+			server.start();
+			logger.info('Server running at', {PORT});
+			resolve(PORT);
+		};
+		server.bindAsync(`${host}:${port}`, creds, callback);
+	});
 
 };
 
