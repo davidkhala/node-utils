@@ -1,8 +1,12 @@
 import {int2Chars, chars2Hex, bytes2String, base64} from '../format.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
+import fs from 'fs';
+import path from 'path';
+import assert from 'assert';
 
 const logger = consoleLogger('test:format');
 const charSpace = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 describe('format test', () => {
 
 
@@ -14,7 +18,8 @@ describe('format test', () => {
 		const dataString = 'abc';
 		const base64encoded = base64.encode(dataString);
 		logger.info('base64.encode', base64encoded);
-		logger.info('base64.decode', base64.decode(base64encoded));
+
+		assert.strictEqual(base64.decode(base64encoded), dataString);
 	});
 
 	it('int2Chars', () => {
