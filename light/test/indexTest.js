@@ -1,4 +1,4 @@
-import {isDirectory, isArrayEven} from '../index.js';
+import {isDirectory, isPath} from '../index.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 
 import assert from 'assert';
@@ -26,9 +26,10 @@ describe('index Test', () => {
 
 		assert.ok(!isDirectory(aFile) && fs.existsSync(aFile));
 	});
-	it('arrayEvenTest', () => {
-		logger.debug(isArrayEven());
-		logger.debug(isArrayEven([]));
-		logger.debug(isArrayEven([1]));
+
+	it('test isPath', () => {
+		logger.info('isPath', isPath(''));
+		logger.info('isPath', isPath());
+		logger.info('isPath', isPath(null));
 	});
 });

@@ -1,8 +1,6 @@
-import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {findProcess} from '../devOps.js';
 import {killProcess} from '@davidkhala/light/devOps.js';
 
-const logger = consoleLogger('devops');
 
 describe('devOps', function () {
 
