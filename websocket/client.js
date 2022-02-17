@@ -1,6 +1,6 @@
 import WebSocket from 'ws';
 
-export class WebsocketClient {
+export default class WebsocketClient {
 	constructor(wsUrl, options = {}, logger = console) {
 		this.ws = new WebSocket(wsUrl, undefined, options);
 		this.logger = logger;

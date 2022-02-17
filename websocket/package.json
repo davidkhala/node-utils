@@ -2,10 +2,11 @@
   "name": "@davidkhala/websocket",
   "version": "0.0.0",
   "dependencies": {
-    "ws": "^7.2.1"
+    "ws": "latest"
   },
   "devDependencies": {
     "@davidkhala/nodeutils": "latest",
     "@davidkhala/logger": "latest"
-  }
+  },
+  "type": "module"
 }
