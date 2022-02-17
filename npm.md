@@ -19,7 +19,7 @@
     - `npm outdated` will list out all latest versions of your dependencies
     - `npm update` will do the update
 - `npm deprecate <package-name>@<version> "<deprecation message>"`
-    - To undeprecate a package, replace "<deprecation message>" with "" (an empty string)
+    - To undeprecate a package, replace "\<deprecation message\>" with "" (an empty string)
 
 ## Tools
 - [npm包热度对比网站](https://www.npmtrends.com/)
