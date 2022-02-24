@@ -1,4 +1,5 @@
 import {URL} from 'url';
+import fs from 'fs';
 
 /**
  *
@@ -8,3 +9,5 @@ export const filedirname = (import_meta) => {
 	global.__filename = new URL('', import_meta.url).pathname;
 	global.__dirname = new URL('.', import_meta.url).pathname;
 };
+
+export const importFrom = (jsonFile) => JSON.parse(fs.readFileSync(jsonFile));

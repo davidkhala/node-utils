@@ -4,7 +4,7 @@ import {consoleLogger} from '@davidkhala/logger/log4.js';
 import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
-import {filedirname} from '../es6.mjs';
+import {filedirname, importFrom} from '../es6.mjs';
 
 filedirname(import.meta);
 const logger = consoleLogger('light');
@@ -31,5 +31,9 @@ describe('index Test', () => {
 		logger.info('isPath', isPath(''));
 		logger.info('isPath', isPath());
 		logger.info('isPath', isPath(null));
+	});
+	it('json from', () => {
+		const json = importFrom('./test/test.json');
+		logger.info(json);
 	});
 });
