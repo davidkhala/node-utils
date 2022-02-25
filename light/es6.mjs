@@ -10,4 +10,6 @@ export const filedirname = (import_meta) => {
 	global.__dirname = new URL('.', import_meta.url).pathname;
 };
 
-export const importFrom = (jsonFile) => JSON.parse(fs.readFileSync(jsonFile,'utf-8'));
+export const importFrom = (jsonFile, import_meta) => {
+	return JSON.parse(fs.readFileSync(new URL(jsonFile, import_meta.url).pathname, 'utf-8'));
+};

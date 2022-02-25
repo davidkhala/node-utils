@@ -33,7 +33,7 @@ describe('index Test', () => {
 		logger.info('isPath', isPath(null));
 	});
 	it('json from', () => {
-		const {a} = importFrom('./test/test.json');
+		const {a} = importFrom('./test.json', import.meta);
 		assert.strictEqual(a, 1);
 	});
 });
