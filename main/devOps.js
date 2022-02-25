@@ -1,5 +1,5 @@
 import find_process from 'find-process';
-import {execSync} from '@davidkhala/light';
+import {execSync} from '@davidkhala/light/devOps.js';
 
 /**
  * @typedef {Object} processObject
