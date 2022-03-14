@@ -44,10 +44,6 @@ export const httpsOptions = {
 };
 
 /**
- * express application
- * @typedef {Function|app} ExpressApp
- */
-/**
  * net.Server
  * @typedef {Server|http.Server|https.Server} Server
  */
@@ -56,7 +52,7 @@ export const httpsOptions = {
  * @param [host] if specified, the access point is limited to host
  * @param [tlsOptions]
  * @param [logger]
- * @returns {{app: ExpressApp, server: Server}}
+ * @returns {{app: Express, server: Server}}
  */
 export const run = (port, host, tlsOptions, logger = console) => {
 	const app = express();
