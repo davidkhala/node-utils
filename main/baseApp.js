@@ -4,7 +4,7 @@ import http from 'http';
 import https from 'https';
 import cors from 'cors';
 import fs from 'fs';
-import {isPath} from './format.js';
+import {isPath} from '@davidkhala/light/index.js';
 import Multer from 'multer';
 /**
  * @type {string[]} minVersion: set the minimum TLS version to allow. Cannot be specified along with the secureProtocol option.
