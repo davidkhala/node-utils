@@ -1,0 +1,16 @@
+{
+  "name": "@davidkhala/compress",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "tar": "latest",
+    "@davidkhala/light": "latest"
+  },
+  "devDependencies": {
+    "tar-fs": "latest",
+    "mocha": "latest",
+    "khala-fabric-formatter": "latest",
+    "compressing": "latest"
+  },
+  "type": "module"
+}
