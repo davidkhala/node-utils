@@ -9,7 +9,8 @@
     "tar-fs": "latest",
     "mocha": "latest",
     "khala-fabric-formatter": "latest",
-    "compressing": "latest"
+    "compressing": "latest",
+    "fs-extra": "latest"
   },
   "type": "module"
 }
