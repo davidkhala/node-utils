@@ -10,30 +10,30 @@ import fsExtra from 'fs-extra';
 
 filedirname(import.meta);
 
-describe('compress', function () {
+describe('tar', function () {
 	this.timeout(0);
-
-	it('tar: zip a directory', async () => {
+	it('zip single directory', async () => {
 
 		const src = path.resolve(__dirname, 'fixture');
-		const dst = path.resolve(__dirname, 'fixture.tgz');
-		const srcCopy = path.resolve('src');
-		fsExtra.copySync(src, srcCopy, {preserveTimestamps: true});
-		create(dst, src);
+		const dst = path.resolve(__dirname, 'fixture.tar');
+
+		create(dst, {}, src);
 
 		const digest = sha2_256(fs.readFileSync(dst).toString());
 
 
-		create(dst, srcCopy);
-		const digestCopy = sha2_256(fs.readFileSync(dst).toString());
-		console.debug({digestCopy});// 2a7724dfc54f02559e9909d1204ad9113b3c33bf928978ba6b5d5e987750bd25
 		fs.unlinkSync(dst);
 		await sleep(1000);
-		create(dst, src);
+		create(dst, {}, src);
 		const digest2 = sha2_256(fs.readFileSync(dst).toString());
 		console.debug(digest === digest2);
 
 	});
+});
+
+
+describe('compress', function () {
+	this.timeout(0);
 
 	it('compressing: result time-inconsistent', async () => {
 		const src = path.resolve(__dirname, './fixture');
