@@ -1,7 +1,6 @@
 {
   "name": "@davidkhala/compress",
   "version": "0.0.0",
-  "private": true,
   "dependencies": {
     "tar": "latest",
     "@davidkhala/light": "latest"

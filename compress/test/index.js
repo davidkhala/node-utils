@@ -9,7 +9,7 @@ import {create} from '../npm-tar.js'
 
 filedirname(import.meta);
 
-describe('tar-fs', function () {
+describe('compress', function () {
 	this.timeout(0);
 
 	it('tar: zip a directory', async () => {
