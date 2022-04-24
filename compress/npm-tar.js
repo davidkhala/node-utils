@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import {isDirectory} from '@davidkhala/light/index.js';
 
-export const create = (dst, opt, src) => {
+export const create = (src, dst, opt = {}) => {
 	Object.assign(opt, {
 		gzip: true,
 		sync: true,
