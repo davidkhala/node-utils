@@ -12,7 +12,7 @@ filedirname(import.meta);
 
 describe('tar', function () {
 	this.timeout(0);
-	it('zip single directory', async () => {
+	it('gzip single directory', async () => {
 
 		const src = path.resolve(__dirname, 'fixture');
 		const dst = path.resolve(__dirname, 'fixture.tar');
@@ -29,6 +29,7 @@ describe('tar', function () {
 		console.debug(digest === digest2);
 
 	});
+
 });
 
 
