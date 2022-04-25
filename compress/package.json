@@ -3,10 +3,10 @@
   "version": "0.2.0-rc1",
   "dependencies": {
     "tar": "latest",
-    "@davidkhala/light": "latest"
+    "@davidkhala/light": "latest",
+    "tar-fs": "latest"
   },
   "devDependencies": {
-    "tar-fs": "latest",
     "mocha": "latest",
     "khala-fabric-formatter": "latest",
     "compressing": "latest",
