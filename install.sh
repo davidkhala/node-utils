@@ -13,14 +13,7 @@ nodeVersionManager() {
 	fi
 }
 
-pm2() {
-	if node --version | grep 'v8.'; then
-		sudo npm install -g pm2@4.1
-	else
-		sudo npm install -g pm2
-	fi
 
-}
 build-essential(){
 	lsb_dist=$(curl https://raw.githubusercontent.com/davidkhala/linux-utils/main/system.sh | bash -s get_distribution)
 	case "$lsb_dist" in
