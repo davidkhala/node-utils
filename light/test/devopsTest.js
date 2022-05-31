@@ -1,7 +1,8 @@
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import assert from 'assert';
 
-import {execStream, hostname, ip, tempdir, execSync, os} from '../devOps.js';
+import {execStream, hostname, ip, tempdir, execSync, os, uid} from '../devOps.js';
+
 const logger = consoleLogger('devops');
 
 describe('devOps', function () {
@@ -26,6 +27,9 @@ describe('devOps', function () {
 		const address = ip(true);
 		assert.ok(Array.isArray(address));
 		logger.info(os);
+	});
+	it('uid', () => {
+		logger.info({uid});
 	});
 });
 
