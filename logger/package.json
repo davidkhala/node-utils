@@ -1,6 +1,6 @@
 {
   "name": "@davidkhala/logger",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "test": "mocha test"
   },
@@ -15,7 +15,7 @@
     "signale": "latest",
     "mocha": "latest",
     "loglevel": "latest",
-    "simple-node-logger": "^18.12.24"
+    "simple-node-logger": "latest"
   },
   "publishConfig": {
     "tag": "latest"
