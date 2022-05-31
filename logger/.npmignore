@@ -1,3 +1,4 @@
 node_modules
 test
 winston3
+*.log

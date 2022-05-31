@@ -1,6 +1,6 @@
 {
   "name": "@davidkhala/logger",
-  "version": "0.0.1",
+  "version": "0.0.1-rc1",
   "scripts": {
     "test": "mocha test"
   },
