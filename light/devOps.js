@@ -120,6 +120,7 @@ export const os = {
 	release: OS.release(), // "10.0.14393"
 	platform: OS.platform(), // "win32" # https://nodejs.org/api/os.html#os_os_platform
 };
-export const hostname = OS.hostname(); 'localhost.localdomain';
+export const uid = OS.userInfo().uid;
+export const hostname = OS.hostname();// 'localhost.localdomain';
 export const tempdir = OS.tmpdir();// '/tmp'
 export const homedir = OS.homedir();//
