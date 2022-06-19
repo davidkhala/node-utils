@@ -1,6 +1,7 @@
 
 ## `package.json` syntax
 - Consider also setting `"private": true` to prevent accidental publication.
+- There is a forgoten command option can format the package.json. Alternatively, use `npx format-package -w`
 
 
 ## npm cli
