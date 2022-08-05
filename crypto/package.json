@@ -1,12 +1,16 @@
 {
   "name": "@davidkhala/crypto",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=17"
+  },
   "keywords": [
     "X500"
   ],
   "dependencies": {
     "jsrsasign": "latest",
-    "@davidkhala/light": "latest"
+    "@davidkhala/light": "latest",
+    "node-forge": "latest"
   },
   "devDependencies": {
     "@davidkhala/logger": "latest",

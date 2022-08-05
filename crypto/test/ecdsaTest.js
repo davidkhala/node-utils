@@ -6,7 +6,7 @@ import path from 'path';
 import {Extension} from '../extension.js';
 import {X509Time} from '../x509.js';
 import {filedirname} from '@davidkhala/light/es6.mjs';
-
+import forge from 'node-forge'
 filedirname(import.meta);
 
 const logger = consoleLogger('test:ecdsa');
