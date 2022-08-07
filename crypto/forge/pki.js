@@ -1,6 +1,7 @@
 import forge from 'node-forge';
 
-const {pki} = forge;
+const {pki, asn1} = forge;
+
 const DNSType = 2;
 
 export class CSR {
@@ -10,6 +11,34 @@ export class CSR {
 			publicKey, subject, attributes
 		};
 		this.reset();
+	}
+
+	//csr.sign = function(key, md) {
+	//     // TODO: get signature OID from private key
+	//     csr.md = md || forge.md.sha1.create();
+	//     var algorithmOid = oids[csr.md.algorithm + 'WithRSAEncryption'];
+	//     if(!algorithmOid) {
+	//       var error = new Error('Could not compute certification request digest. ' +
+	//         'Unknown message digest algorithm OID.');
+	//       error.algorithm = csr.md.algorithm;
+	//       throw error;
+	//     }
+	//     csr.signatureOid = csr.siginfo.algorithmOid = algorithmOid;
+	//
+	//     // get CertificationRequestInfo, convert to DER
+	//     csr.certificationRequestInfo = pki.getCertificationRequestInfo(csr);
+	//     var bytes = asn1.toDer(csr.certificationRequestInfo);
+	//
+	//     // digest and sign
+	//     csr.md.update(bytes.getBytes());
+	//     csr.signature = key.sign(csr.md);
+	//   };
+
+	toDer() {
+		const certificationRequestInfo = pki.getCertificationRequestInfo(this.csr);
+		const bytes = asn1.toDer(certificationRequestInfo);
+		return bytes.getBytes();
+
 	}
 
 	reset() {
