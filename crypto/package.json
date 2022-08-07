@@ -1,8 +1,11 @@
 {
   "name": "@davidkhala/crypto",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "engines": {
     "node": ">=17"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "X500"
