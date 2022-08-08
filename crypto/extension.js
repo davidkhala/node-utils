@@ -1,5 +1,6 @@
-// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-extensions-when-generating-certificate
-
+/**
+ * https://github.com/kjur/jsrsasign/wiki/Tutorial-for-extensions-when-generating-certificate
+ */
 export class Extension {
 
 	static asBasicConstraints({cA = true, pathLen = 2} = {}) {
@@ -52,12 +53,12 @@ export class Extension {
 	}
 
 	static asChallenge() {
+		// TODO https://github.com/kjur/jsrsasign/issues/522
 		throw Error('jsrsasign: extension not supported:{"extname":"challengePassword"}');
 	}
 
 	static asUnstructuredName() {
-		throw Error(`jsrsasign: extension not supported:{"extname":"unstructuredName"}`);
+		// TODO https://github.com/kjur/jsrsasign/issues/522
+		throw Error('jsrsasign: extension not supported:{"extname":"unstructuredName"}');
 	}
-
-	static as;
 }
