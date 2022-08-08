@@ -2,14 +2,6 @@ import {asn1, crypto} from 'jsrsasign';
 
 const {CertificationRequestInfo} = asn1.csr;
 const {Signature} = crypto;
-//const csr = new asn1.csr.CertificationRequest({
-// 			subject,
-// 			sbjpubkey: this.pubKeyObj,
-// 			sigalg: this.signatureAlgorithm,
-// 			sbjprvkey: this.prvKeyObj,
-// 			extreq: extensions
-// 		});
-// 		return csr.getPEM();
 
 export class CSR {
 
