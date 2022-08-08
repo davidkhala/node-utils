@@ -1,7 +1,11 @@
-import jsrsasign from 'jsrsasign';
+import {asn1, X509} from 'jsrsasign';
+import {CSR} from '../pkcs10.js';
+import {ECDSAKey} from '../ECDSA.js';
+import X500Name from '../X500Name.js';
+import {Extension} from '../extension.js';
 
 describe('x509', () => {
-	const {X509} = jsrsasign;
+
 	const x509 = new X509();
 	const pem = `-----BEGIN CERTIFICATE-----
 MIIBsDCCAVagAwIBAgIK4I7KBQLVmJNP1zAKBggqhkjOPQQDAjBTMREwDwYDVQQG
@@ -35,9 +39,29 @@ uh/bNA==
 	});
 	it('ldapToOneline', () => {
 		const subjectDN = 'abc';
-		const oneLine = jsrsasign.asn1.x509.X500Name.ldapToOneline(subjectDN);
+		const oneLine = asn1.x509.X500Name.ldapToOneline(subjectDN);
 		console.debug(oneLine);
 	});
 
 
+});
+describe('public key PEM', () => {
+	it('from PEM, get unsigned CSR', () => {
+		const pem = `-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYI7cFGMwqDz17Tywc0bMIZbcIrQP
+0QWAvGo+DBLMk5v+zX2C/dHFhgTXhdBI4TnVX6PWv3I6BgVTKEAPxmlW4Q==
+-----END PUBLIC KEY-----`;
+		const key = ECDSAKey.FromPEM(pem);
+		const subject = new X500Name();
+		subject.setCountryName('HK');
+		subject.setOrganizationName('Hyperledger');
+		subject.setOrgUnitName('blockchain');
+		subject.setCommonName('davidkhala');
+		const extensions = Extension.asSAN(['*.hyperledger.org']);
+
+		const csr = new CSR({subject, pubKeyObj: key.pubKeyObj, extensions});
+
+		const unsignedHex = csr.getUnsignedHex();
+		console.info(unsignedHex);
+	});
 });

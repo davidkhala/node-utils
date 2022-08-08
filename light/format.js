@@ -35,6 +35,9 @@ export const int2Chars = (i, namespace) => {
 };
 export const bytes2String = (bytes) => Buffer.from(bytes).toString();
 
+export const hex2chars = (hexString) => {
+	return Buffer.from(hexString, 'hex').toString();
+};
 export const chars2Hex = (str) => {
 	return Buffer.from(str).toString('hex');
 };

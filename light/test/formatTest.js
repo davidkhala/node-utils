@@ -1,7 +1,5 @@
-import {int2Chars, chars2Hex, bytes2String, base64} from '../format.js';
+import {int2Chars, chars2Hex, bytes2String, base64, hex2chars} from '../format.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
-import fs from 'fs';
-import path from 'path';
 import assert from 'assert';
 
 const logger = consoleLogger('test:format');
@@ -30,7 +28,9 @@ describe('format test', () => {
 		logger.info(int2Chars(51, charSpace));
 	});
 	it('chars2Hex', () => {
-		logger.info('chars2Hex', chars2Hex('=!f'));
+		const raw = '=!f';
+		logger.info('chars2Hex', chars2Hex(raw));
+		assert.strictEqual(hex2chars(chars2Hex(raw)), raw);
 
 	});
 
