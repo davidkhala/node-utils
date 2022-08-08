@@ -1,6 +1,9 @@
 import {asn1, crypto} from 'jsrsasign';
+import {hex2pem} from './format.js';
 
+const {DERBitString, DERSequence} = asn1;
 const {CertificationRequestInfo} = asn1.csr;
+const {AlgorithmIdentifier} = asn1.x509;
 const {Signature} = crypto;
 
 export class CSR {
@@ -26,11 +29,19 @@ export class CSR {
 	 * @param {string} signatureAlgorithm
 	 */
 	getSignedBy(privateKey, signatureAlgorithm) {
+
+		const algorithmIdentifier = new AlgorithmIdentifier({name: signatureAlgorithm});
+
 		const sig = new Signature({alg: signatureAlgorithm});
 		sig.init(privateKey);
 		sig.updateHex(this.getUnsignedHex());
-		const sighex = sig.sign();
-		return Buffer.from(sighex, 'hex');
+		const sig_hex = sig.sign();
+
+		const asn1Sig = new DERBitString({hex: `00${sig_hex}`});
+		const seq = new DERSequence({array: [this.csrData, algorithmIdentifier, asn1Sig]});
+		const seq_hex = seq.tohex();
+		// to pem
+		return hex2pem(seq_hex, 'CERTIFICATE REQUEST');
 	}
 
 }

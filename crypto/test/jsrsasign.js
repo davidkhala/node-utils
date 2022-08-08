@@ -1,6 +1,6 @@
 import {asn1, X509} from 'jsrsasign';
 import {CSR} from '../pkcs10.js';
-import {ECDSAKey} from '../ECDSA.js';
+import {ECDSAKey, ECDSAConfig} from '../ECDSA.js';
 import X500Name from '../X500Name.js';
 import {Extension} from '../extension.js';
 
@@ -45,23 +45,31 @@ uh/bNA==
 
 
 });
-describe('public key PEM', () => {
+describe('csr', () => {
+	const subject = new X500Name();
+	subject.setCountryName('HK');
+	subject.setOrganizationName('Hyperledger');
+	subject.setOrgUnitName('blockchain');
+	subject.setCommonName('davidkhala');
+	const extension = Extension.asSAN(['*.hyperledger.org']);
+	const extensions = [extension];
 	it('from PEM, get unsigned CSR', () => {
 		const pem = `-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYI7cFGMwqDz17Tywc0bMIZbcIrQP
 0QWAvGo+DBLMk5v+zX2C/dHFhgTXhdBI4TnVX6PWv3I6BgVTKEAPxmlW4Q==
 -----END PUBLIC KEY-----`;
 		const key = ECDSAKey.FromPEM(pem);
-		const subject = new X500Name();
-		subject.setCountryName('HK');
-		subject.setOrganizationName('Hyperledger');
-		subject.setOrgUnitName('blockchain');
-		subject.setCommonName('davidkhala');
-		const extensions = Extension.asSAN(['*.hyperledger.org']);
 
 		const csr = new CSR({subject, pubKeyObj: key.pubKeyObj, extensions});
 
 		const unsignedHex = csr.getUnsignedHex();
 		console.info(unsignedHex);
+	});
+	it('self generate key, get CSR in PEM', () => {
+		const keyConfig = new ECDSAConfig(256);
+		const keyPair = keyConfig.generateEphemeralKey();
+		const csr = new CSR({subject, pubKeyObj: keyPair.pubKeyObj, extensions});
+		const pem = csr.getSignedBy(keyPair.prvKeyObj, keyPair.signatureAlgorithm);
+		console.debug(pem);
 	});
 });
