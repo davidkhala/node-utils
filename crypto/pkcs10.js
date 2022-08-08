@@ -30,13 +30,17 @@ export class CSR {
 	 */
 	getSignedBy(privateKey, signatureAlgorithm) {
 
-		const algorithmIdentifier = new AlgorithmIdentifier({name: signatureAlgorithm});
 
 		const sig = new Signature({alg: signatureAlgorithm});
 		sig.init(privateKey);
 		sig.updateHex(this.getUnsignedHex());
 		const sig_hex = sig.sign();
 
+		return this.toPemWithSignature(sig_hex, signatureAlgorithm);
+	}
+
+	toPemWithSignature(sig_hex, signatureAlgorithm) {
+		const algorithmIdentifier = new AlgorithmIdentifier({name: signatureAlgorithm});
 		const asn1Sig = new DERBitString({hex: `00${sig_hex}`});
 		const seq = new DERSequence({array: [this.csrData, algorithmIdentifier, asn1Sig]});
 		const seq_hex = seq.tohex();

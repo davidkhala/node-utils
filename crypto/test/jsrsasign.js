@@ -51,8 +51,8 @@ describe('csr', () => {
 	subject.setOrganizationName('Hyperledger');
 	subject.setOrgUnitName('blockchain');
 	subject.setCommonName('davidkhala');
-	const extension = Extension.asSAN(['*.hyperledger.org']);
-	const extensions = [extension];
+	const extension0 = Extension.asSAN(['*.hyperledger.org']);
+	const extensions = [extension0];
 	it('from PEM, get unsigned CSR', () => {
 		const pem = `-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYI7cFGMwqDz17Tywc0bMIZbcIrQP

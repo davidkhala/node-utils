@@ -51,4 +51,13 @@ export class Extension {
 		return {extname: 'adobeTimeStamp', uri, reqauth};
 	}
 
+	static asChallenge() {
+		throw Error('jsrsasign: extension not supported:{"extname":"challengePassword"}');
+	}
+
+	static asUnstructuredName() {
+		throw Error(`jsrsasign: extension not supported:{"extname":"unstructuredName"}`);
+	}
+
+	static as;
 }
