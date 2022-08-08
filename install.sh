@@ -29,6 +29,7 @@ build-essential(){
 		;;
 
 	esac
+	sudo npm install -g node-pre-gyp
 }
 # required by node-gyp
 nodeGYPDependencies() {
