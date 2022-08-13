@@ -19,21 +19,15 @@ build-essential(){
 	case "$lsb_dist" in
 
 		ubuntu)
-			sudo apt-get install -y build-essential
+			curl https://raw.githubusercontent.com/davidkhala/ubuntu-utils/master/nodejs.sh | bash -s build-essential
 		;;
-
 		
-
 		rhel|ol)
-			sudo yum install yum-utils
+			curl https://raw.githubusercontent.com/davidkhala/fedora-utils/master/nodejs.sh | bash -s nodeGYPDependencies
 		;;
 
 	esac
 	sudo npm install -g node-pre-gyp
 }
-# required by node-gyp
-nodeGYPDependencies() {
-	build-essential
-	sudo apt install -y python 
-}
+
 "$@"
