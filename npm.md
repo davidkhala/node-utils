@@ -13,7 +13,9 @@
     - [npmjs.com] To publish package like `@davidkhala/myPack` to public, use
         - `npm publish --access public`
         - https://docs.npmjs.com/creating-and-publishing-scoped-public-packages#publishing-scoped-public-packages
-- npm install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
+- `npm install`
+    - how to install private package in docker image: https://docs.npmjs.com/docker-and-private-modules
+    - [WARN] npm config global `--global`, `--local` are deprecated. Use `npm i --location=global` instead.
 - there is no automatic way to manage npm token explicitly
 - try [github package registry](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry)
 - [bump all dependencies to latest](https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version)
