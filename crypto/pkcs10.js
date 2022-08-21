@@ -1,5 +1,6 @@
 import {asn1, crypto} from 'jsrsasign';
 import {hex2pem} from './format.js';
+import {Attribute} from './attribute.js';
 
 const {DERBitString, DERSequence} = asn1;
 const {CertificationRequestInfo} = asn1.csr;
@@ -12,11 +13,21 @@ export class CSR {
 	 * Generates a unsigned CSR/PKCS#10 (Certificate Signing Request)
 	 * @param {X500Name} subject
 	 * @param pubKeyObj public key object
-	 * @param {[]} [extensions] array of certificate extension parameters // TODO WIP
+	 * @param {[]} [extensions] array of certificate extension parameters
+	 * @param {[]} attributes
 	 */
-	constructor({subject, pubKeyObj, extensions}) {
+	constructor({subject, pubKeyObj, extensions, attributes = []}) {
 
-		this.csrData = new CertificationRequestInfo({subject, sbjpubkey: pubKeyObj, extreq: extensions});
+		const attrs = [
+			...attributes,
+			{attr: 'extensionRequest', ext: extensions},
+		];
+		this.csrData = new CertificationRequestInfo({
+			subject,
+			sbjpubkey: pubKeyObj,
+			extreq: extensions,
+			attrs,
+		});
 	}
 
 	getUnsignedHex() {

@@ -3,6 +3,7 @@ import {CSR} from '../pkcs10.js';
 import {ECDSAKey, ECDSAConfig} from '../ECDSA.js';
 import X500Name from '../X500Name.js';
 import {Extension} from '../extension.js';
+import {Attribute} from '../attribute.js';
 
 describe('x509', () => {
 
@@ -53,6 +54,9 @@ describe('csr', () => {
 	subject.setCommonName('davidkhala');
 	const extension0 = Extension.asSAN(['*.hyperledger.org']);
 	const extensions = [extension0];
+	const attr0 = Attribute.asChallengePassword('password');
+	const attr1 = Attribute.asUnstructuredName('name');
+	const attributes = [attr0, attr1];
 	it('from PEM, get unsigned CSR', () => {
 		const pem = `-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYI7cFGMwqDz17Tywc0bMIZbcIrQP
@@ -60,7 +64,7 @@ MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYI7cFGMwqDz17Tywc0bMIZbcIrQP
 -----END PUBLIC KEY-----`;
 		const key = ECDSAKey.FromPEM(pem);
 
-		const csr = new CSR({subject, pubKeyObj: key.pubKeyObj, extensions});
+		const csr = new CSR({subject, pubKeyObj: key.pubKeyObj, extensions, attributes});
 
 		const unsignedHex = csr.getUnsignedHex();
 		console.info(unsignedHex);
@@ -68,8 +72,8 @@ MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYI7cFGMwqDz17Tywc0bMIZbcIrQP
 	it('self generate key, get CSR in PEM', () => {
 		const keyConfig = new ECDSAConfig(256);
 		const keyPair = keyConfig.generateEphemeralKey();
-		const csr = new CSR({subject, pubKeyObj: keyPair.pubKeyObj, extensions});
+		const csr = new CSR({subject, pubKeyObj: keyPair.pubKeyObj, extensions, attributes});
 		const pem = csr.getSignedBy(keyPair.prvKeyObj, keyPair.signatureAlgorithm);
-		console.debug(pem);
+		console.debug(pem);// TODO not recognized by KSE 5.5.1
 	});
 });
