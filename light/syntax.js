@@ -13,3 +13,31 @@ export const isArrayEven = arr => {
 };
 
 export const RegXMatch = (str, pattern, flags) => str.match(new RegExp(pattern, flags));
+
+export const removeUndefinedValues = (object, recursive, clone) => {
+	const cloned = {};
+	for (const [key, value] of Object.entries(object)) {
+		const valueType = typeof value;
+		if (clone) {
+			if (value && recursive && valueType === 'object') {
+				cloned[key] = removeUndefinedValues(value, recursive, clone);
+			} else {
+				if (valueType !== 'undefined') {
+					cloned[key] = value;
+				}
+			}
+		} else {
+			if (!value && valueType === 'undefined') {
+				delete object[key];
+			} else if (recursive && valueType === 'object') {
+				object[key] = removeUndefinedValues(value, recursive, clone);
+			}
+		}
+	}
+	if (clone) {
+		return cloned;
+	} else {
+		return object;
+	}
+
+};

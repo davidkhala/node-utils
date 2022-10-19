@@ -6,7 +6,8 @@ import path from 'path';
 import {Extension} from '../extension.js';
 import {X509Time} from '../x509.js';
 import {filedirname} from '@davidkhala/light/es6.mjs';
-import forge from 'node-forge'
+import forge from 'node-forge';
+
 filedirname(import.meta);
 
 const logger = consoleLogger('test:ecdsa');
@@ -24,8 +25,8 @@ describe('csr', () => {
 		x500Name.setCommonName('davidkhala');
 		const extension = Extension.asSAN(['*.hyperledger.org']);
 		const csr = keypair.generateCSR(x500Name, [extension]);
-		fs.writeFileSync(path.resolve(__dirname, 'artifacts', 'csr.pem'), csr);
-		logger.debug('csr', csr);
+		fs.writeFileSync(path.resolve('test', 'artifacts', 'csr.pem'), csr);
+		logger.debug('csr\n', csr);
 	});
 
 });
