@@ -88,8 +88,8 @@ start \
 		};
 		const trimmed = removeUndefinedValues(object, true, true);
 		console.debug(trimmed);
-		removeUndefinedValues(object, true, false)// inline change
-		console.debug(object)
+		removeUndefinedValues(object, true, false);// inline change
+		console.debug(object);
 
 	});
 });
