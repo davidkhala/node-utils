@@ -8,18 +8,20 @@ export const FromFile = (filepath) => {
 };
 /**
  * keys of first object populate header row
- * @param data
- * @returns {*}
+ * @returns {string}
+ * @param {[Object]} data
  */
 export const ToFile = (data = [{}]) => {
 	const fields = data.map(entry => (Object.keys(entry))).reduce((sum, entry) => sum.concat(entry), []);
 	if (fields.length > 0) {
 		const data1 = data[0];
 		for (const field of fields) {
-			if (!data1.hasOwnProperty(field)) {
+			if (!data1[field]) {
 				data1[field] = '';
 			}
 		}
 	}
-	return papaParse.unparse(data);
+	return papaParse.unparse(data, {
+		newline: '\n'
+	});
 };

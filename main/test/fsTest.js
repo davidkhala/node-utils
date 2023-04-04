@@ -8,6 +8,7 @@ describe('fs', () => {
 		const dir = path.resolve(__dirname);
 
 		const result = listDir(dir, undefined, true);
+		console.debug(result)
 	});
 
 });

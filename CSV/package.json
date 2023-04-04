@@ -1,11 +1,15 @@
 {
   "name": "@davidkhala/csv",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "papaparse": "latest"
   },
   "devDependencies": {
     "mocha": "latest",
     "@davidkhala/light": "latest"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module"
 }
