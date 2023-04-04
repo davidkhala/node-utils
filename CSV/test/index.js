@@ -4,24 +4,33 @@ import {filedirname} from '@davidkhala/light/es6.mjs';
 import * as assert from 'assert';
 
 filedirname(import.meta);
-describe('CSV', () => {
+describe('FromFile', () => {
 
-	it('FromFile', () => {
-		const recoveredJSON = FromFile(path.resolve(__dirname, 'test.csv'));
-		console.info(recoveredJSON);
+	it('dummy', () => {
+		const recoveredMatrix = FromFile(path.resolve(__dirname, 'dummy.csv'));
+		console.info(recoveredMatrix);
 	});
-	it('ToFile', () => {
+	it('sample', () => {
+		const recoveredMatrix = FromFile(path.resolve(__dirname, 'HRDataset_v14.csv'));
+		console.info(recoveredMatrix);
+	});
+
+});
+
+describe('ToFile', () => {
+	it('dummy', () => {
+		const opts = {newline: '\n'};
 		const recoveredCSV = ToFile([
 			{a: 'b', c: 'd'},
 			{a: 'b', c: 'd', Column1: 'foo', Column2: 'bar',}
-		]);
+		], opts);
 		const expected = `a,c,Column1,Column2
 b,d,,
-b,d,foo,bar`
-		assert.strictEqual(recoveredCSV, expected)
+b,d,foo,bar`;
+		assert.strictEqual(recoveredCSV, expected);
 		console.debug(recoveredCSV);
 	});
-	it('ToFile: boundary', () => {
+	it('boundary', () => {
 		const recoveredCSV = ToFile([]);
 		assert.strictEqual(recoveredCSV, '');
 

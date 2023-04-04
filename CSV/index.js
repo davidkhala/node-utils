@@ -1,17 +1,42 @@
 import papaParse from 'papaparse';
 import fs from 'fs';
 
-export const FromFile = (filepath) => {
+/**
+ * @typedef {Object} Meta
+ * @property {string} delimiter
+ * @property {string} linebreak
+ * @property {boolean} aborted
+ * @property {boolean} truncated
+ * @property {number} cursor
+ * @property {string[]} [fields] optional when dictate `header` in configuration
+ */
+
+/**
+ * @typedef {Object} CSVError
+ * @property {string} type
+ * @property {string} code
+ * @property {string} message
+ */
+
+/**
+ *
+ * @param filepath
+ * @param {boolean} [headerLess]
+ * @returns {{data:string[][], meta:Meta, errors:CSVError[]}}
+ */
+export const FromFile = (filepath, headerLess) => {
 	const str = fs.readFileSync(filepath).toString();
-	const result = papaParse.parse(str);
-	return result.data;
+	return papaParse.parse(str, {
+		header: !headerLess
+	});
 };
 /**
  * keys of first object populate header row
  * @returns {string}
  * @param {[Object]} data
+ * @param {Object} opts Options
  */
-export const ToFile = (data = [{}]) => {
+export const ToFile = (data = [{}], opts = {newline: '\r\n'}) => {
 	const fields = data.map(entry => (Object.keys(entry))).reduce((sum, entry) => sum.concat(entry), []);
 	if (fields.length > 0) {
 		const data1 = data[0];
@@ -21,7 +46,5 @@ export const ToFile = (data = [{}]) => {
 			}
 		}
 	}
-	return papaParse.unparse(data, {
-		newline: '\n'
-	});
+	return papaParse.unparse(data, opts);
 };
