@@ -1,11 +1,14 @@
 {
   "name": "@davidkhala/nodeutils",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "author": "david Liu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
   "scripts": {
     "test": "mocha test"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "body-parser": "latest",
@@ -17,7 +20,8 @@
     "js-yaml": "latest",
     "multer": "latest",
     "tmp": "latest",
-    "@davidkhala/light": "latest"
+    "@davidkhala/light": "latest",
+    "klaw-sync": "latest"
   },
   "devDependencies": {
     "@davidkhala/logger": "latest"

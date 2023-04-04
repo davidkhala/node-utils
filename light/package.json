@@ -5,6 +5,9 @@
     "mocha": "latest",
     "@davidkhala/logger": "latest"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "mocha test"
   },

@@ -1,6 +1,5 @@
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import assert from 'assert';
-
 import {execStream, hostname, ip, tempdir, execSync, os, uid} from '../devOps.js';
 
 const logger = consoleLogger('devops');
@@ -8,16 +7,14 @@ const logger = consoleLogger('devops');
 describe('devOps', function () {
 
 	this.timeout(0);
-	it.skip('exec: apt update', () => {
-		if (process.env.CI) {
-			// skip this check
-			return;
-		}
+	if (os.platform === 'linux' && !process.env.CI) {
+		it('exec: apt update', () => {
+			execSync('sudo apt update');
+			// Test passed: sudo have interactive input
+			// Test failed: on Oracle Linux 8
+		});
+	}
 
-		execSync('sudo apt update');
-		// Test passed: sudo have interactive input
-		// Test failed: on Oracle Linux 8
-	});
 	it('execStream: npm i', async () => {
 		execStream('npm install');
 	});
