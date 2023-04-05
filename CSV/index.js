@@ -35,16 +35,25 @@ export const FromFile = (filepath, headerLess) => {
  * @returns {string}
  * @param {[Object]} data
  * @param {Object} opts Options
+ * @param {boolean} [discoverFields]
  */
-export const ToFile = (data = [{}], opts = {newline: '\r\n'}) => {
-	const fields = data.map(entry => (Object.keys(entry))).reduce((sum, entry) => sum.concat(entry), []);
-	if (fields.length > 0) {
-		const data1 = data[0];
-		for (const field of fields) {
-			if (!data1[field]) {
-				data1[field] = '';
+export const ToFile = (data = [{}], opts = {newline: '\r\n'}, discoverFields) => {
+	if (discoverFields) {
+		const fields = data.map(entry => (Object.keys(entry))).reduce((sum, entry) => sum.concat(entry), []);
+		if (fields.length > 0) {
+			const data1 = data[0];
+			for (const field of fields) {
+				if (!data1[field]) {
+					data1[field] = '';
+				}
 			}
 		}
+	} else {
+		// case: first row as header
+		// case: data = {fields, data}
+		// rely on papaParse:do nothing
 	}
+
+
 	return papaParse.unparse(data, opts);
 };

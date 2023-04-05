@@ -23,7 +23,7 @@ describe('ToFile', () => {
 		const recoveredCSV = ToFile([
 			{a: 'b', c: 'd'},
 			{a: 'b', c: 'd', Column1: 'foo', Column2: 'bar',}
-		], opts);
+		], opts, true);
 		const expected = `a,c,Column1,Column2
 b,d,,
 b,d,foo,bar`;

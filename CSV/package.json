@@ -1,6 +1,9 @@
 {
   "name": "@davidkhala/csv",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "scripts": {
+    "test": "mocha test"
+  },
   "dependencies": {
     "papaparse": "latest"
   },
