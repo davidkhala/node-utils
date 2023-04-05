@@ -3,10 +3,6 @@ nodejs utils to be published to npm as node_module
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-follows [SEMVER](https://semver.org/)
-
-## sibling
-- [node-databases](https://github.com/davidkhala/node-databases)
 
 ## Notes
 - [NPM notes](./npm.md)
