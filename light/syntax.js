@@ -41,3 +41,7 @@ export const removeUndefinedValues = (object, recursive, clone) => {
 	}
 
 };
+
+export function getClassSimpleName(object) {
+	return object.constructor.name;
+}
