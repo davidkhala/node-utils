@@ -24,7 +24,7 @@ export class File {
 
 	get lines() {
 		if (!this._lines) {// a memory cache
-			this._lines = this.content.split('\n');
+			this._lines = this.content.split(/\r?\n/);
 		}
 		return this._lines;
 	}
