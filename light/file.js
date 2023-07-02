@@ -23,7 +23,10 @@ export class File {
 	}
 
 	get lines() {
-		return this.content.split('\n');
+		if (!this._lines) {// a memory cache
+			this._lines = this.content.split('\n');
+		}
+		return this._lines;
 	}
 }
 
