@@ -49,10 +49,7 @@ export class NetSocket {
 		this.port = port;
 		this.host = host;
 		this.listeners = {
-			connect: undefined,
-			timeout: undefined,
-			error: undefined,
-			close: undefined
+			connect: undefined, timeout: undefined, error: undefined, close: undefined
 		};
 	}
 

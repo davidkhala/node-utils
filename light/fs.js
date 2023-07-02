@@ -2,12 +2,20 @@ import Path from 'path';
 import fs from 'fs';
 import os from 'os';
 
-export const homeResolve = (...tokens) => {
+export function homeResolve(...tokens) {
 	if (!tokens) {
 		return tokens;
 	}
 	return Path.resolve(os.homedir(), ...tokens);
-};
+}
+
+export function read(_path) {
+	return fs.readFileSync(_path, 'utf8');
+}
+
+export function write(_path, data) {
+	fs.writeFileSync(_path, data);
+}
 
 export function isHiddenFile({path}) {
 	const basename = Path.basename(path);

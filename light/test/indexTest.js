@@ -22,7 +22,7 @@ describe('index Test', () => {
 		logger.info('isPath', isPath(null));
 	});
 	it('json from', () => {
-		const {a} = importFrom('./test.json', import.meta);
+		const {a} = importFrom(import.meta, './test.json', );
 		assert.strictEqual(a, 1);
 	});
 });
