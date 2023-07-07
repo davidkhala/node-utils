@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 export class File {
 	constructor(content) {
 		this.content = content;
@@ -29,4 +31,10 @@ export class File {
 		return this._lines;
 	}
 }
+
+export const read = (_path) => fs.readFileSync(_path, 'utf8');
+
+export const write = (_path, data) => fs.writeFileSync(_path, data);
+export const isDirectory = (file) => fs.existsSync(file) && fs.lstatSync(file).isDirectory();
+
 
