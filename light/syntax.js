@@ -12,7 +12,7 @@ export const isArrayEven = arr => {
 	return Array.isArray(arr) && arr.length > 0 && arr.every(v => JSON.stringify(v) === JSON.stringify(arr[0]));
 };
 
-export const RegXMatch = (str, pattern, flags) => str.match(new RegExp(pattern, flags));
+
 
 export const removeUndefinedValues = (object, recursive, clone) => {
 	const cloned = {};

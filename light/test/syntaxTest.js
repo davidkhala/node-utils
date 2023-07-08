@@ -1,7 +1,8 @@
+import assert from 'assert';
 import {splitBySpace} from '../syntax.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
-import {isArrayEven, isFloat, RegXMatch, removeUndefinedValues} from '../syntax.js';
-import assert from 'assert';
+import {isArrayEven, isFloat, removeUndefinedValues} from '../syntax.js';
+import {captureGroups, match, clone} from '../regx.js';
 
 const logger = consoleLogger('syntax test');
 
@@ -36,15 +37,7 @@ start \
 		test(1.00);
 		assert.strictEqual(Number.isInteger(1.00), true, 'Number.isInteger(1.00) should be true');
 	});
-	it('RegX', () => {
-		const testReg = (str) => {
-			const pattern = /[*|,":<>[\]{}`';()@&$#%]/;
-			const flags = 'i';// m|i|g
-			const result = RegXMatch(str, pattern, flags);
-			logger.info({pattern, str, result});
-		};
-		testReg('david@mediconcen');
-	});
+
 	it('removeUndefinedValues', () => {
 		const object = {
 			'$metadata': {
@@ -94,4 +87,19 @@ start \
 	});
 });
 
+describe('RegExp', () => {
+	it('build and match', () => {
+		const str = 'david@mediconcen';
+		const source = /[*|,":<>[\]{}`';()@&$#%]/;
+		const flags = 'i';// m|i|g
+		const regExp = clone({source, flags});
+		assert.ok(match(str, regExp));
+	});
+	it('capture groups', () => {
+		const str = 'david@mediconcen';
+		const regExp = /^(\S*)@\S*$/;
+		const results = captureGroups(str, regExp);
+		assert.strictEqual(results[0], 'david');
+	});
+});
 
