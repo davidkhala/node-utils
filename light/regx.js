@@ -7,6 +7,11 @@ import assert from 'assert';
  */
 export const clone = ({source, flags}) => new RegExp(source, flags);
 
+export function countGroup(regExp) {
+	const {source} = regExp;
+	return source.match(/\([^()]*\)/g).length;
+}
+
 /**
  *
  * @param {string} str
