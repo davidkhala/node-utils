@@ -102,8 +102,10 @@ describe('RegExp', () => {
 		assert.strictEqual(results[0], 'david');
 	});
 	it('count group', () => {
-		const exp = new RegExp('\\s*\\$\\{?(\\w*)}?\\.([$\\w{}]*)\\s*;$');
-		assert.strictEqual(countGroup(exp), 2);
+
+		assert.strictEqual(countGroup(new RegExp('\\s*\\$\\{?(\\w*)}?\\.([$\\w{}]*)\\s*;$')), 2);
+		assert.strictEqual(countGroup(/drop\s*table/i), 0);
+
 
 	});
 });
