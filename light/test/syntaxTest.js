@@ -1,8 +1,9 @@
 import assert from 'assert';
 import {splitBySpace} from '../syntax.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
-import {isArrayEven, isFloat, removeUndefinedValues} from '../syntax.js';
+import {isFloat, removeUndefinedValues} from '../syntax.js';
 import {captureGroups, match, clone, countGroup} from '../regx.js';
+import {isEven, repeat, union} from '../array.js';
 
 const logger = consoleLogger('syntax test');
 
@@ -17,11 +18,7 @@ start \
 		const tokens = splitBySpace(str);
 		logger.debug(tokens);
 	});
-	it('arrayEvenTest', () => {
-		logger.debug(isArrayEven());
-		logger.debug(isArrayEven([]));
-		logger.debug(isArrayEven([1]));
-	});
+
 	it('IsFloat', () => {
 		const test = (number) => {
 			logger.info(number, 'isFloat', isFloat(number));
@@ -106,6 +103,25 @@ describe('RegExp', () => {
 		assert.strictEqual(countGroup(new RegExp('\\s*\\$\\{?(\\w*)}?\\.([$\\w{}]*)\\s*;$')), 2);
 		assert.strictEqual(countGroup(/drop\s*table/i), 0);
 
+
+	});
+});
+describe('array', () => {
+	it('repeat', () => {
+		const arr = repeat(2, 100);
+		assert.ok(isEven(arr));
+	});
+	it('isEven', () => {
+		assert.ok(!isEven());
+		assert.ok(!isEven([]));
+		assert.ok(isEven([1]));
+	});
+	it('union', () => {
+		const l1 = [1, 4, 2];
+		const l2 = [1, 4, 5];
+		const l3 = [0];
+		const set = union(l1, l2, l3);
+		assert.deepEqual(set, [1, 4, 2, 5, 0]);
 
 	});
 });
