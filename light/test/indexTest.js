@@ -1,12 +1,11 @@
-import {isPath} from '../fs.js';
-import {consoleLogger} from '@davidkhala/logger/log4.js';
-
 import assert from 'assert';
 import path from 'path';
+
 import {filedirname, importFrom} from '../es6.mjs';
+import {isPath} from '../path.js';
 
 filedirname(import.meta);
-const logger = consoleLogger('light');
+
 describe('index Test', () => {
 
 
@@ -17,12 +16,15 @@ describe('index Test', () => {
 	});
 
 	it('test isPath', () => {
-		logger.info('isPath', isPath(''));
-		logger.info('isPath', isPath());
-		logger.info('isPath', isPath(null));
+		assert.ok(!isPath(''));
+		assert.ok(!isPath());
+		assert.ok(!isPath(null));
+		assert.ok(isPath('/tmp/date.tmp'));
+		assert.ok(isPath('/tmp/'));
+
 	});
 	it('json from', () => {
-		const {a} = importFrom(import.meta, './test.json', );
+		const {a} = importFrom(import.meta, './test.json',);
 		assert.strictEqual(a, 1);
 	});
 });
