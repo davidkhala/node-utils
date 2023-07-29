@@ -6,3 +6,5 @@ export const isEven = arr => {
 };
 
 export const union = (...arrayList) => unique(arrayList.reduce((sum, array) => sum.concat(array), []));
+
+export const minus = (minuend, subtrahend) => minuend.filter(x => !subtrahend.includes(x));

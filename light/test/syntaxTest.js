@@ -3,7 +3,7 @@ import {splitBySpace} from '../syntax.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {isFloat, removeUndefinedValues} from '../syntax.js';
 import {captureGroups, match, clone, countGroup} from '../regx.js';
-import {isEven, repeat, union} from '../array.js';
+import {isEven, minus, repeat, union} from '../array.js';
 
 const logger = consoleLogger('syntax test');
 
@@ -122,7 +122,13 @@ describe('array', () => {
 		const l3 = [0];
 		const set = union(l1, l2, l3);
 		assert.deepEqual(set, [1, 4, 2, 5, 0]);
-
+	});
+	it('minus', () => {
+		const a = [1, 4, 5];
+		const b = [4, 1];
+		const c = minus(a, b);
+		assert.strictEqual(c.length, 1);
+		assert.strictEqual(c[0], 5);
 	});
 });
 
