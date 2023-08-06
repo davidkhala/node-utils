@@ -8,3 +8,5 @@ export const isEven = arr => {
 export const union = (...arrayList) => unique(arrayList.reduce((sum, array) => sum.concat(array), []));
 
 export const minus = (minuend, subtrahend) => minuend.filter(x => !subtrahend.includes(x));
+
+export const intersection = (arr1, arr2) => arr1.filter(x => arr2.includes(x));

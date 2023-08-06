@@ -3,7 +3,7 @@ import {splitBySpace} from '../syntax.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {isFloat, removeUndefinedValues} from '../syntax.js';
 import {captureGroups, match, clone, countGroup} from '../regx.js';
-import {isEven, minus, repeat, union} from '../array.js';
+import {intersection, isEven, minus, repeat, union} from '../array.js';
 
 const logger = consoleLogger('syntax test');
 
@@ -129,6 +129,14 @@ describe('array', () => {
 		const c = minus(a, b);
 		assert.strictEqual(c.length, 1);
 		assert.strictEqual(c[0], 5);
+	});
+	it('intersection', () => {
+		const a = [1, 4, 5];
+		const b = [4, 1];
+		const c = intersection(a, b);
+		assert.strictEqual(c.length, 2);
+		assert.ok(c.includes(1));
+		assert.ok(c.includes(4));
 	});
 });
 
