@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 export const isFloat = (number) => typeof number === 'number' && !Number.isInteger(number);
 /**
  *
@@ -37,8 +39,20 @@ export const removeUndefinedValues = (object, recursive, clone) => {
 
 export const getClassSimpleName = (object) => object.constructor.name;
 
-export const findIndexOf = (str, pattern, from = 0) => {
-	const index = str.indexOf(pattern, from);
-	return index < 0 ? undefined : index;
+export const findIndexesOf = (str, pattern, from = 0) => {
+	let index = str.indexOf(pattern, from);
+	const result = [];
+	while (index !== -1) {
+		result.push(index);
+		index = str.indexOf(pattern, from + index + 1);
+	}
+	return result.length ? result : undefined;
+};
+
+export const isCommentOnly = (str) => {
+
+	const commentStart = str.indexOf('/*');
+	const commentEnd = str.indexOf('*/', commentStart);
+	return commentEnd - commentStart + 2 === str.length;
 };
 

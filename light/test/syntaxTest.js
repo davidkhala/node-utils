@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {findIndexOf, splitBySpace} from '../syntax.js';
+import {findIndexesOf, isCommentOnly, splitBySpace} from '../syntax.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {isFloat, removeUndefinedValues} from '../syntax.js';
 import {captureGroups, match, clone, countGroup} from '../regx.js';
@@ -140,8 +140,22 @@ describe('array', () => {
 	});
 	it('findIndexOf', () => {
 		const str = 'abcde';
-		assert.ok(findIndexOf(str, 'bcd'));
-		assert.ok(!findIndexOf(str, 'ab', 1));
+		assert.ok(findIndexesOf(str, 'abc'));
+		assert.ok(!findIndexesOf(str, 'ab', 1));
+
+		const shakespeare = 'To be, or not to be, that is the question.';
+		const pattern = 'be';
+
+		for (const index of findIndexesOf(shakespeare, pattern)) {
+			assert.strictEqual(shakespeare.substring(index, index + pattern.length), pattern);
+		}
+
+		const comment = `/*
+			abc
+		*/`;
+		assert.ok(isCommentOnly(comment));
+
+
 	});
 });
 
