@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {splitBySpace} from '../syntax.js';
+import {findIndexOf, splitBySpace} from '../syntax.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {isFloat, removeUndefinedValues} from '../syntax.js';
 import {captureGroups, match, clone, countGroup} from '../regx.js';
@@ -137,6 +137,11 @@ describe('array', () => {
 		assert.strictEqual(c.length, 2);
 		assert.ok(c.includes(1));
 		assert.ok(c.includes(4));
+	});
+	it('findIndexOf', () => {
+		const str = 'abcde';
+		assert.ok(findIndexOf(str, 'bcd'));
+		assert.ok(!findIndexOf(str, 'ab', 1));
 	});
 });
 

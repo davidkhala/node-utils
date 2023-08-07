@@ -37,3 +37,8 @@ export const removeUndefinedValues = (object, recursive, clone) => {
 
 export const getClassSimpleName = (object) => object.constructor.name;
 
+export const findIndexOf = (str, pattern, from = 0) => {
+	const index = str.indexOf(pattern, from);
+	return index < 0 ? undefined : index;
+};
+
