@@ -2,7 +2,7 @@ import assert from 'assert';
 import {findIndexesOf, isCommentOnly, splitBySpace} from '../syntax.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {isFloat, removeUndefinedValues} from '../syntax.js';
-import {captureGroups, match, clone, countGroup} from '../regx.js';
+import {captureGroups, match, clone, countGroup, equal} from '../regx.js';
 import {intersection, isEven, minus, repeat, union} from '../array.js';
 
 const logger = consoleLogger('syntax test');
@@ -99,11 +99,11 @@ describe('RegExp', () => {
 		assert.strictEqual(results[0], 'david');
 	});
 	it('count group', () => {
-
 		assert.strictEqual(countGroup(new RegExp('\\s*\\$\\{?(\\w*)}?\\.([$\\w{}]*)\\s*;$')), 2);
 		assert.strictEqual(countGroup(/drop\s*table/i), 0);
-
-
+	});
+	it('equals', () => {
+		assert.ok(equal(/a/, /a/));
 	});
 });
 describe('array', () => {

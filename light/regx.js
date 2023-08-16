@@ -1,4 +1,5 @@
 import assert from 'assert';
+import util from 'util';
 
 /**
  * @param {string} source
@@ -6,6 +7,8 @@ import assert from 'assert';
  * @returns {RegExp}
  */
 export const clone = ({source, flags}) => new RegExp(source, flags);
+
+export const equal = (regExpA, regExpB) => util.isDeepStrictEqual(regExpA, regExpB);
 
 export function countGroup({source}) {
 	const result = source.match(/\([^()]*\)/g);
