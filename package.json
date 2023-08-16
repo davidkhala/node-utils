@@ -4,7 +4,6 @@
   "scripts": {
     "test": "mocha test",
     "test-lerna": "lerna run --ignore axios --ignore crypto --ignore grpc --ignore pm2 --ignore websocket test",
-    "install-lerna": "lerna bootstrap --no-ci",
     "clean": "lerna clean"
   },
   "devDependencies": {
