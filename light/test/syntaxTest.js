@@ -99,11 +99,17 @@ describe('RegExp', () => {
 		assert.strictEqual(results[0], 'david');
 	});
 	it('count group', () => {
-		assert.strictEqual(countGroup(new RegExp('\\s*\\$\\{?(\\w*)}?\\.([$\\w{}]*)\\s*;$')), 2);
+		assert.strictEqual(countGroup(/\s*\$\{?(\w*)}?\.([$\w{}]*)\s*;$/), 2);
 		assert.strictEqual(countGroup(/drop\s*table/i), 0);
+		assert.strictEqual(countGroup(/(?:\$(database)\.)?/), 1);
+		assert.strictEqual(countGroup(/(?:\$database\.)?/), 0);
 	});
 	it('equals', () => {
 		assert.ok(equal(/a/, /a/));
+	});
+	it('nested sample: div', () => {
+		//  TODO WIP 下面这个例子可以匹配嵌套的<div>标签
+		// const regExp = /<div[^>]*>[^<>]*(((?<Open><div[^>]*>)[^<>]*)+((?'-Open'</div>)[^<>]*)+)*(?(Open)(?!))</div>/i
 	});
 });
 describe('array', () => {

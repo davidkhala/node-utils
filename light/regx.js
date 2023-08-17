@@ -12,7 +12,8 @@ export const equal = (regExpA, regExpB) => util.isDeepStrictEqual(regExpA, regEx
 
 export function countGroup({source}) {
 	const result = source.match(/\([^()]*\)/g);
-	return result ? result.length : 0;
+	const result1 = source.match(/\(?:[^()]*\)/g);
+	return result ? result.length : 0 - result1 ? result1.length : 0;
 }
 
 /**
