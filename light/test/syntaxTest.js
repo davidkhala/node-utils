@@ -103,6 +103,8 @@ describe('RegExp', () => {
 		assert.strictEqual(countGroup(/drop\s*table/i), 0);
 		assert.strictEqual(countGroup(/(?:\$(database)\.)?/), 1);
 		assert.strictEqual(countGroup(/(?:\$database\.)?/), 0);
+		assert.strictEqual(countGroup(/\bdelete\b\s*(?:from)?/i), 0);
+
 	});
 	it('equals', () => {
 		assert.ok(equal(/a/, /a/));
