@@ -1,4 +1,7 @@
+import util from 'util';
+
 export const JSONReadable = (data) => JSON.stringify(data, null, 2);
+export const ObjectReadable = (object) => util.inspect(object);
 
 export const base64 = {
 	encode: (data) => {

@@ -4,10 +4,11 @@ import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {isFloat, removeUndefinedValues} from '../syntax.js';
 import {captureGroups, match, clone, countGroup, equal} from '../regx.js';
 import {intersection, isEven, minus, repeat, union} from '../array.js';
+import {JSONReadable, ObjectReadable} from '../format.js';
 
 const logger = consoleLogger('syntax test');
 
-describe('test:syntax', () => {
+describe('', () => {
 	it('splitBySpace', () => {
 		const str = ` 
 /home/davidliu/Documents/delphi-fabric/common/bin/configtxlator 
@@ -81,6 +82,19 @@ start \
 		removeUndefinedValues(object, true, false);// inline change
 		console.debug(object);
 
+	});
+});
+describe('stringify', () => {
+	const obj = {
+		a: 'b',
+		c: 1
+	};
+	it('object', () => {
+
+		console.debug(ObjectReadable(obj));
+	});
+	it('JSON', () => {
+		console.debug(JSONReadable(obj));
 	});
 });
 

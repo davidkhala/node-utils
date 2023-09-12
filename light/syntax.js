@@ -1,4 +1,3 @@
-import assert from 'assert';
 
 export const isFloat = (number) => typeof number === 'number' && !Number.isInteger(number);
 /**

@@ -1,6 +1,6 @@
 {
   "name": "@davidkhala/light",
-  "version": "0.2.4-alpha.rc1",
+  "version": "0.2.4-beta",
   "devDependencies": {
     "mocha": "latest",
     "@davidkhala/logger": "latest"
