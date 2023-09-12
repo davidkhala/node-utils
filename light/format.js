@@ -4,12 +4,8 @@ export const JSONReadable = (data) => JSON.stringify(data, null, 2);
 export const ObjectReadable = (object) => util.inspect(object);
 
 export const base64 = {
-	encode: (data) => {
-		return Buffer.from(data).toString('base64');
-	},
-	decode: (data) => {
-		return Buffer.from(data, 'base64').toString();
-	}
+	encode: (data) => Buffer.from(data).toString('base64'),
+	decode: (data) => Buffer.from(data, 'base64').toString()
 };
 
 /**
@@ -18,7 +14,7 @@ export const base64 = {
  * @param {string} namespace
  * @returns {string}
  */
-export const int2Chars = (i, namespace) => {
+export function int2Chars(i, namespace) {
 	i = parseInt(i);
 	const d = namespace.length;
 	const forward = (intNum) => {
@@ -35,15 +31,14 @@ export const int2Chars = (i, namespace) => {
 		result = mod + result;
 	}
 	return result;
-};
+}
+
 export const bytes2String = (bytes) => Buffer.from(bytes).toString();
 
-export const hex2chars = (hexString) => {
-	return Buffer.from(hexString, 'hex').toString();
-};
-export const chars2Hex = (str) => {
-	return Buffer.from(str).toString('hex');
-};
+export const hex2chars = (hexString) => Buffer.from(hexString, 'hex').toString();
+
+export const chars2Hex = (str) => Buffer.from(str).toString('hex');
+
 /**
  *
  * @param {Uint8Array} array

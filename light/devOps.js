@@ -1,10 +1,10 @@
-export const localhost = '127.0.0.1';
 import OS from 'os';
 import childProcess from 'child_process';
 import fs from 'fs';
 import {Socket} from 'net';
 import {splitBySpace} from './syntax.js';
 
+export const localhost = '127.0.0.1';
 /**
  * @param {string} command
  * @param {Object} [options]
@@ -12,16 +12,15 @@ import {splitBySpace} from './syntax.js';
  */
 export const execSync = (command, options = {}) => childProcess.execSync(command, Object.assign(options, {encoding: 'utf-8'}));
 
-export const killProcess = (pid) => {
-	execSync(`kill ${pid}`);
-};
+export const killProcess = (pid) => execSync(`kill ${pid}`);
+
 
 /**
  * powered by https://stackoverflow.com/questions/25323703/nodejs-execute-command-in-background-and-forget
  * @param {string} command
  * @param {string} [stdLogFile]
  */
-export const execDetach = (command, stdLogFile) => {
+export function execDetach(command, stdLogFile) {
 	const {spawn} = childProcess;
 
 	const [cmd, ...args] = splitBySpace(command);
@@ -35,12 +34,13 @@ export const execDetach = (command, stdLogFile) => {
 		stdio, // piping all stdio to /dev/null
 		detached: true
 	}).unref();
-};
-export const execStream = (command) => {
+}
+
+export function execStream(command) {
 	const {spawn} = childProcess;
 	const [cmd, ...args] = splitBySpace(command);
 	return spawn(cmd, args, {stdio: 'inherit'});
-};
+}
 
 export class NetSocket {
 	constructor(port, host) {

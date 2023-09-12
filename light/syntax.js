@@ -1,4 +1,3 @@
-
 export const isFloat = (number) => typeof number === 'number' && !Number.isInteger(number);
 /**
  *
@@ -8,7 +7,7 @@ export const isFloat = (number) => typeof number === 'number' && !Number.isInteg
 export const splitBySpace = (str) => str.trim().split(/\b\s+/);
 
 
-export const removeUndefinedValues = (object, recursive, clone) => {
+export function removeUndefinedValues(object, recursive, clone) {
 	const cloned = {};
 	for (const [key, value] of Object.entries(object)) {
 		const valueType = typeof value;
@@ -34,11 +33,11 @@ export const removeUndefinedValues = (object, recursive, clone) => {
 		return object;
 	}
 
-};
+}
 
 export const getClassSimpleName = (object) => object.constructor.name;
 
-export const findIndexesOf = (str, pattern, from = 0) => {
+export function findIndexesOf(str, pattern, from = 0) {
 	let index = str.indexOf(pattern, from);
 	const result = [];
 	while (index !== -1) {
@@ -46,12 +45,12 @@ export const findIndexesOf = (str, pattern, from = 0) => {
 		index = str.indexOf(pattern, from + index + 1);
 	}
 	return result.length ? result : undefined;
-};
+}
 
-export const isCommentOnly = (str) => {
+export function isCommentOnly(str) {
 
 	const commentStart = str.indexOf('/*');
 	const commentEnd = str.indexOf('*/', commentStart);
 	return commentEnd - commentStart + 2 === str.length;
-};
+}
 

@@ -30,7 +30,7 @@ export const match = (str, regExp) => regExp.test(str);
  * @param {RegExp} regExp
  * @return {string[]|undefined}
  */
-export const captureGroups = (str, regExp) => {
+export function captureGroups (str, regExp)  {
 	const {source, flags} = regExp;
 	const newRegExp = clone({source, flags: flags.replace('g', '')});
 	const result = str.match(newRegExp);
@@ -38,4 +38,4 @@ export const captureGroups = (str, regExp) => {
 		assert.ok(result.length > 1, `no groups captured, found ${result}`);
 		return result.slice(1);
 	}
-};
+}
