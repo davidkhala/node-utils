@@ -83,6 +83,23 @@ start \
 		console.debug(object);
 
 	});
+	it('Object.assign: function in class is not copied', () => {
+		class C {
+			constructor() {
+				this.b = 'b';
+			}
+
+			a() {
+				return 'a';
+			}
+		}
+
+		const c = new C();
+		const copy = Object.assign({}, c);
+
+		assert.throws(() => copy.a());
+
+	});
 });
 describe('stringify', () => {
 	const obj = {
