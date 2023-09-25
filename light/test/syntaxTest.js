@@ -36,6 +36,24 @@ start \
 		assert.strictEqual(Number.isInteger(1.00), true, 'Number.isInteger(1.00) should be true');
 	});
 
+	it('finally', () => {
+		const func = (exec) => {
+			try {
+				exec();
+				return true;
+			} catch (e) {
+
+				return false;
+			} finally {
+				console.debug('finally');
+			}
+		};
+		assert.ok(func(() => true));
+		assert.ok(!func(() => {
+			throw Error('panic');
+		}));
+
+	});
 	it('removeUndefinedValues', () => {
 		const object = {
 			'$metadata': {
