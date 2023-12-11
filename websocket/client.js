@@ -1,9 +1,22 @@
 import WebSocket from 'ws';
 
 export default class WebsocketClient {
-	constructor(wsUrl, options = {}, logger = console) {
-		this.ws = new WebSocket(wsUrl, undefined, options);
+	constructor(url, options = {}, logger = console) {
+		Object.assign(this, options, {url});
 		this.logger = logger;
+	}
+
+	async connect() {
+		const {url} = this;
+		const ws = new WebSocket(url, undefined, this);
+		return new Promise((resolve) => {
+			ws.on('open', () => {
+				this.logger.debug('onOpen');
+				this.ws = ws;
+				resolve();
+			});
+
+		});
 	}
 
 	/**
@@ -45,5 +58,6 @@ export default class WebsocketClient {
 		} else {
 			this.ws.close(code, data);
 		}
+		delete this.ws;
 	}
 }

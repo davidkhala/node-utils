@@ -1,10 +1,16 @@
 {
   "name": "@davidkhala/websocket",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "ws": "latest"
   },
+  "scripts": {
+    "start": "pm2 start test/app.js",
+    "test": "mocha test/client.js"
+  },
   "devDependencies": {
+    "mocha": "latest",
+    "pm2": "latest",
     "@davidkhala/nodeutils": "latest",
     "@davidkhala/logger": "latest"
   },

@@ -15,11 +15,11 @@ jobs:
       - uses: actions/checkout@main
       - run: npm install
       - run: npm test
-  base_lib:
+  base-lib:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
-        dir: [CSV, grpc,light,logger, main, websocket]
+        dir: [CSV, light,logger, main]
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -46,6 +46,24 @@ jobs:
       - run: npm install pm2@latest -g;
       - run: npm install;
       - run: ./test/CLI/test.sh
+  client-server:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        dir: [ grpc, websocket ]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: ${{ matrix.dir }}
+    steps:
+      - uses: actions/setup-node@main
+        with:
+          check-latest: true
+          node-version: lts/*
+      - uses: actions/checkout@main
+      - run: npm start
+      - run: npm install
+      - run: npm test
   crypto:
     defaults:
       run:

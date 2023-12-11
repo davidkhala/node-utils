@@ -1,4 +1,4 @@
-import WebSocket from 'ws';
+import {WebSocketServer as Server}  from 'ws';
 
 export default class WebsocketServer {
 	/**
@@ -8,7 +8,7 @@ export default class WebsocketServer {
 	 * @param [logger]
 	 */
 	constructor(server, listeningCB, logger = console) {
-		this.wss = new WebSocket.Server({server}, listeningCB);
+		this.wss = new Server({server}, listeningCB);
 		this.logger = logger;
 	}
 

@@ -1,10 +1,14 @@
 import WebsocketClient from '../client.js';
-const wsUrl = 'ws://localhost:3003';
-const ws = new WebsocketClient(wsUrl);
+
+
 const logger = console;
-ws.ws.on('open', (event) => {
-	logger.debug('onOpen', {event});
-	setTimeout(() => {
-		ws.ws.terminate();
-	}, 1000);
+describe('websocket', function () {
+	this.timeout(0);
+	it('connect', async () => {
+		const wsUrl = 'ws://localhost:3003';
+		const client = new WebsocketClient(wsUrl, undefined, logger);
+
+		await client.connect();
+		client.close();
+	});
 });

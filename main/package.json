@@ -1,6 +1,6 @@
 {
   "name": "@davidkhala/nodeutils",
-  "version": "0.1.0",
+  "version": "0.1.1-alpha",
   "author": "david Liu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
@@ -24,6 +24,7 @@
     "klaw-sync": "latest"
   },
   "devDependencies": {
+    "mocha": "latest",
     "@davidkhala/logger": "latest"
   },
   "type": "module"
