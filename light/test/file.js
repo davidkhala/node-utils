@@ -2,7 +2,7 @@ import assert from 'assert';
 import path from 'path';
 import fs from 'fs';
 import {File, isDirectory, read} from '../file.js';
-import {filedirname, importFrom} from '../es6.mjs';
+import {filedirname, importFrom, resolve} from '../es6.mjs';
 
 describe('es6.js', () => {
 	it('windows test', () => {
@@ -12,17 +12,16 @@ describe('es6.js', () => {
 
 	});
 	it('require json', () => {
-		const jsonOut = importFrom(import.meta, '.\\test.json')
+		const jsonOut = importFrom(import.meta, './test.json')
 		assert.deepEqual(jsonOut, {a:1})
 	});
 	it('grep', () => {
-		const content = read(import.meta, './test.json');
+		const content = read(resolve(import.meta, './test.json'));
 		const file = new File(content);
 		const {line, content: _content} = file.grep('a', true)[0];
-		const expectedContent = '  "a": 1\r';
 		assert.strictEqual(line, 1);
-		assert.strictEqual(_content, expectedContent);
-		assert.strictEqual(file.grep('a')[0], '  "a": 1\r');
+		assert.strictEqual(_content, '  "a": 1');
+		assert.strictEqual(file.grep('a')[0], '  "a": 1');
 	});
 	it('isDir', () => {
 		filedirname(import.meta);
