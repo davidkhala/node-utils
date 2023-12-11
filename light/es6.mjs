@@ -28,5 +28,5 @@ export function resolve(import_meta, ...tokens) {
 }
 
 export function importFrom(import_meta, jsonFile) {
-	return JSON.parse(fs.readFileSync(new URL(jsonFile, import_meta.url).pathname, 'utf-8'));
+	return JSON.parse(fs.readFileSync(resolve(import_meta, jsonFile), 'utf-8'));
 }

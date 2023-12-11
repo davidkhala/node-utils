@@ -1,8 +1,6 @@
 # node-utils
 nodejs utils to be published to npm as node_module
 
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-
 
 ## Notes
 - [NPM notes](./npm.md)

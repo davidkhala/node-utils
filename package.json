@@ -2,17 +2,12 @@
   "name": "node-utils",
   "private": true,
   "scripts": {
-    "test": "mocha test",
-    "test-lerna": "lerna run --ignore axios --ignore crypto --ignore grpc --ignore pm2 --ignore websocket test",
-    "clean": "lerna clean"
+    "test": "mocha test"
   },
   "devDependencies": {
     "eslint": "latest",
     "@davidkhala/logger": "latest",
-    "lerna": "latest",
     "mocha": "latest",
-    "tslint": "latest",
-    "typescript": "latest",
     "dateformat": "latest"
   },
   "type": "module"

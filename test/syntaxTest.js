@@ -3,7 +3,8 @@ import fs from 'fs';
 import util from 'util';
 import assert from 'assert';
 import {filedirname} from '../light/es6.mjs';
-filedirname(import.meta)
+import {object} from './esExport.mjs';
+filedirname(import.meta);
 const bufferTest = (obj) => {
 	const bytes = Buffer.from(JSON.stringify(obj));
 	logger.info(typeof obj, obj, 'stringify to', JSON.stringify(obj));
@@ -11,6 +12,10 @@ const bufferTest = (obj) => {
 };
 
 describe('syntax test', () => {
+	it('esModuleTest', async () => {
+        assert.deepEqual(object, {a:'b'})
+
+	});
 	it('arrow function', async () => {
 		class TestClass {
 			async p() {
