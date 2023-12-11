@@ -61,8 +61,8 @@ jobs:
           check-latest: true
           node-version: lts/*
       - uses: actions/checkout@main
-      - run: npm start
       - run: npm install
+      - run: npm start
       - run: npm test
   crypto:
     defaults:
