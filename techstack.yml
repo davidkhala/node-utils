@@ -1,0 +1,437 @@
+repo_name: davidkhala/node-utils
+report_id: 159f516971285d0f48e9dcc679d365e7
+repo_type: Public
+timestamp: '2023-11-17T00:45:59+00:00'
+requested_by: davidkhala
+provider: github
+branch: master
+detected_tools_count: 36
+tools:
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source: Repo Metadata
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source: package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-12-03 09:11:59.000000000 Z
+- name: ExpressJS
+  description: Sinatra inspired web development framework for node.js -- insanely
+    fast, flexible, and simple
+  website_url: http://expressjs.com/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Microframeworks (Backend)
+  image_url: https://img.stackshare.io/service/1163/hashtag.png
+  detection_source: main/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-07-28 09:41:14.000000000 Z
+- name: ServiceStack
+  description: 'A configuration free, code-first, light-weight framework '
+  website_url: https://servicestack.net/
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/2773/JuTVEkWX_400x400.jpg
+  detection_source: compress/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2022-04-21 15:11:20.000000000 Z
+- name: ws
+  description: A Node.js WebSocket library
+  website_url: https://github.com/websockets/ws
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Realtime Backend / API
+  image_url: https://img.stackshare.io/service/11381/no-img-open-source.png
+  detection_source: websocket/package.json
+  last_updated_by: david
+  last_updated_on: 2020-02-05 07:48:06.000000000 Z
+- name: ESLint
+  description: The fully pluggable JavaScript code quality tool
+  website_url: http://eslint.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source: package.json
+  last_updated_by: david
+  last_updated_on: 2020-04-17 08:14:50.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source: ".github/workflows/shiftleft-analysis.yml"
+  last_updated_by: DavidLiu
+  last_updated_on: 2022-02-08 09:15:07.000000000 Z
+- name: Mocha
+  description: Simple, flexible, fun javascript test framework for node.js &amp; the
+    browser
+  website_url: http://mochajs.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/832/mocha.png
+  detection_source: pm2/package.json
+  last_updated_by: David Liu
+  last_updated_on: 2023-04-05 01:44:04.000000000 Z
+- name: Octokit
+  description: GitHub API Client Library for .NET
+  website_url: https://github.com/octokit/octokit.net
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Tools for GitHub
+  image_url: https://img.stackshare.io/service/9827/octokit-dotnet_2.png
+  detection_source: github/package.json
+  last_updated_by: david
+  last_updated_on: 2020-06-24 06:42:47.000000000 Z
+- name: PM2
+  description: Ease-to-use Node.js process manager, like forever
+  website_url: https://github.com/Unitech/pm2
+  version: 4.2.0
+  open_source: true
+  hosted_saas: false
+  category: Monitoring
+  sub_category: Node.js Process Manager
+  image_url: https://img.stackshare.io/service/2237/757747.png
+  detection_source_url: pm2/package.json
+  detection_source: pm2/package.json
+  last_updated_by: davidLiu
+  last_updated_on: 2019-01-29 10:45:47.000000000 Z
+- name: TSLint
+  description: An extensible linter for the TypeScript language
+  website_url: https://github.com/palantir/tslint
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/5561/303157.png
+  detection_source: package.json
+  last_updated_by: david
+  last_updated_on: 2020-04-17 08:14:50.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source: websocket/package.json
+  last_updated_by: david
+  last_updated_on: 2020-02-05 07:48:06.000000000 Z
+- name: Lerna
+  description: A tool for managing JavaScript projects
+  website_url: https://lerna.js.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/6207/OwqAUSQi_400x400.jpg
+  detection_source: package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2022-01-05 07:40:58.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source: Repo Metadata
+- name: axios
+  description: Promise based HTTP client for the browser and node.js
+  website_url: https://github.com/mzabriskie/axios
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/no-img-open-source.png
+  detection_source: axios/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2022-01-05 07:40:58.000000000 Z
+- name: "@grpc/proto-loader"
+  description: GRPC utility library for loading .proto files
+  package_url: https://www.npmjs.com/@grpc/proto-loader
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/18549/default_0e8c62fd0420ce3873a7b150d09fb9d1094266c0.png
+  detection_source: grpc/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2022-02-08 09:15:07.000000000 Z
+- name: "@octokit/rest"
+  description: GitHub REST API client for Node.js
+  package_url: https://www.npmjs.com/@octokit/rest
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16999/default_43f23668e39c9b3381720c9c76540776b8a49167.png
+  detection_source: github/package.json
+  last_updated_by: david
+  last_updated_on: 2020-06-24 06:42:47.000000000 Z
+- name: body-parser
+  description: Node.js body parsing middleware
+  package_url: https://www.npmjs.com/body-parser
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15906/default_7c39a83d4acd952df89b1ebfdb94c8646324fbf1.png
+  detection_source: main/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-07-28 09:41:14.000000000 Z
+- name: cors
+  description: Node.js CORS middleware
+  package_url: https://www.npmjs.com/cors
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16165/default_41f04716a804e853d5c38a5b81ee0ea8a842ad82.png
+  detection_source: main/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-07-28 09:41:14.000000000 Z
+- name: dateformat
+  description: A node.js package for Steven Levithan's excellent dateFormat
+  package_url: https://www.npmjs.com/dateformat
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16480/default_55f3303d620c93eecbee69c43373d484f2be492f.png
+  detection_source: package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-08-20 03:03:26.000000000 Z
+- name: express
+  description: Fast, unopinionated, minimalist web framework
+  package_url: https://www.npmjs.com/express
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15818/default_db4a7791d2f1174547374b9b587bc10fec088a5a.png
+  detection_source: main/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-07-28 09:41:14.000000000 Z
+- name: form-data
+  description: A library to create readable "multipart/form-data" streams
+  package_url: https://www.npmjs.com/form-data
+  version: 3.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16415/default_aa91da3cee4d961f0eea8ca5de77f399ec7ec794.png
+  detection_source_url: axios/package.json
+  detection_source: axios/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-09-05 13:11:02.000000000 Z
+- name: fs-extra
+  description: Fs-extra contains methods that aren't included in the vanilla Node.js
+    fs package
+  package_url: https://www.npmjs.com/fs-extra
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15836/default_b71c906aeda030a5e2f1fe40bf12a93be52404ab.png
+  detection_source: main/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2022-04-23 14:16:42.000000000 Z
+- name: js-yaml
+  description: YAML 1.2 parser and serializer
+  package_url: https://www.npmjs.com/js-yaml
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15997/default_f8be85789693a9901dbcfa43c135c60525ae49a1.png
+  detection_source: main/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-07-28 09:41:14.000000000 Z
+- name: jsrsasign
+  description: Opensource free pure JavaScript cryptographic library supports RSA/RSAPSS/ECDSA/DSA
+    signing/validation
+  package_url: https://www.npmjs.com/jsrsasign
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/18778/default_3be76d99a52e16f70b30a0e5904930d202d7a045.png
+  detection_source: crypto/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-04-20 03:17:02.000000000 Z
+- name: log4js
+  description: Port of Log4js to work with node
+  package_url: https://www.npmjs.com/log4js
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16355/default_22cf6cee54c697b5a223902962cc57a55ee80be9.png
+  detection_source: logger/package.json
+  last_updated_by: davidliu
+  last_updated_on: 2020-08-12 13:28:36.000000000 Z
+- name: loglevel
+  description: Minimal lightweight logging for JavaScript
+  package_url: https://www.npmjs.com/loglevel
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17004/default_43f23668e39c9b3381720c9c76540776b8a49167.png
+  detection_source: logger/package.json
+  last_updated_by: davidliu
+  last_updated_on: 2020-08-14 11:43:14.000000000 Z
+- name: multer
+  description: Middleware for handling `multipart/form-data`
+  package_url: https://www.npmjs.com/multer
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16421/default_23e0dabcd0197f0c1f0a41268f8ca3f7e8b1f1e2.png
+  detection_source: main/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-07-28 09:41:14.000000000 Z
+- name: node-forge
+  description: JavaScript implementations of network transports
+  package_url: https://www.npmjs.com/node-forge
+  license: BSD-3-Clause,GPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17082/default_5b9eca95ab3651165eb280ed5e0bc9a9382ad24d.png
+  detection_source: crypto/package.json
+  last_updated_by: David Liu
+  last_updated_on: 2022-08-05 15:33:32.000000000 Z
+- name: papaparse
+  description: Fast and powerful CSV parser for the browser that supports web workers
+    and streaming large files
+  package_url: https://www.npmjs.com/papaparse
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17945/default_40b5ae806e118a20c1717c75a46652a7358d8b42.png
+  detection_source: CSV/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2021-04-09 16:32:22.000000000 Z
+- name: signale
+  description: "\U0001F44B Hackable console logger"
+  package_url: https://www.npmjs.com/signale
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/18368/default_0af6490274b5a036f3c8f06302acc539142987d3.png
+  detection_source: logger/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2022-01-04 12:58:01.000000000 Z
+- name: tar
+  description: Tar for node
+  package_url: https://www.npmjs.com/tar
+  license: ISC
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16466/default_fc6e1fc17e404d936593b5b901d67abb3386daa3.png
+  detection_source: compress/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2022-04-21 15:11:20.000000000 Z
+- name: tar-fs
+  description: Filesystem bindings for tar-stream
+  package_url: https://www.npmjs.com/tar-fs
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17431/default_f52a9ea80d1a46080182faf142d844b81ca11aa6.png
+  detection_source: compress/package.json
+  last_updated_by: DavidLiu
+  last_updated_on: 2022-04-25 08:59:42.000000000 Z
+- name: tmp
+  description: Temporary file and directory creator
+  package_url: https://www.npmjs.com/tmp
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16251/default_380ae3d73e22c7ca1f42b96479bcd0095dabc0d3.png
+  detection_source: main/package.json
+  last_updated_by: davidliu
+  last_updated_on: 2018-10-30 07:02:50.000000000 Z
+- name: winston
+  description: A logger for just about everything
+  package_url: https://www.npmjs.com/winston
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16003/default_261820f5687b4c88a3e8f95c71b5e8dccd34c1d7.png
+  detection_source: logger/winston3/package.json
+  last_updated_by: davidliu
+  last_updated_on: 2020-08-12 13:28:36.000000000 Z
