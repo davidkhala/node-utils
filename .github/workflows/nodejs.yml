@@ -15,15 +15,15 @@ jobs:
       - uses: actions/checkout@main
       - run: npm install
       - run: npm test
-  base-lib:
+  extensions:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
-        dir: [CSV, light,logger, main]
+        extension: [CSV, light,logger, main]
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        working-directory: ${{ matrix.dir }}
+        working-directory: ${{ matrix.extension }}
     steps:
       - uses: actions/setup-node@main
         with:
