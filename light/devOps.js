@@ -120,4 +120,4 @@ export const os = {
 export const uid = OS.userInfo().uid;
 export const hostname = OS.hostname();// 'localhost.localdomain';
 export const tempdir = OS.tmpdir();// '/tmp'
-export const homedir = OS.homedir();//
+export const homedir = OS.homedir();

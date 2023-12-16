@@ -1,4 +1,4 @@
-name: npm khala-axios
+name: @davidkhala/axios
 on: [workflow_dispatch, push]
 defaults:
   run:
