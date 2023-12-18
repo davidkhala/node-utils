@@ -1,7 +1,7 @@
 import tar from 'tar';
 import fs from 'fs';
 import path from 'path';
-import {isDirectory} from '@davidkhala/light/index.js';
+import {isDirectory} from '@davidkhala/light/file.js';
 
 export const create = (src, dst, opt = {}) => {
 	Object.assign(opt, {
