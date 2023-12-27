@@ -16,7 +16,7 @@ describe('devOps', function () {
 		});
 	}
 
-	it('execStream: npm i', async () => {
+	it('execStream: npm i', () => {
 		execStream('npm install');
 	});
 	it('tempdir', () => {

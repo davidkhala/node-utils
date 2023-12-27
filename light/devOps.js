@@ -1,6 +1,5 @@
 import OS from 'os';
 import childProcess from 'child_process';
-import fs from 'fs';
 import {Socket} from 'net';
 import {splitBySpace} from './syntax.js';
 
@@ -15,31 +14,16 @@ export const execSync = (command, options = {}) => childProcess.execSync(command
 export const killProcess = (pid) => execSync(`kill ${pid}`);
 
 
-/**
- * powered by https://stackoverflow.com/questions/25323703/nodejs-execute-command-in-background-and-forget
- * @param {string} command
- * @param {string} [stdLogFile]
- */
-export function execDetach(command, stdLogFile) {
-	const {spawn} = childProcess;
-
-	const [cmd, ...args] = splitBySpace(command);
-	const ignore = 'ignore';// string 'ignore' is a key word
-	// flag 'a' - Open file for appending. The file is created if it does not exist.
-	const out = stdLogFile ? fs.openSync(stdLogFile, 'a') : ignore;// for stdout
-	const err = stdLogFile ? fs.openSync(stdLogFile, 'a') : ignore;// for stderr
-	const stdio = [ignore, out, err];
-
-	spawn(cmd, args, {
-		stdio, // piping all stdio to /dev/null
-		detached: true
-	}).unref();
-}
-
 export function execStream(command) {
 	const {spawn} = childProcess;
 	const [cmd, ...args] = splitBySpace(command);
-	return spawn(cmd, args, {stdio: 'inherit'});
+	const opts = {
+		stdio: 'inherit'
+	};
+	if (os.platform === 'win32') {
+		opts.shell = true;
+	}
+	return spawn(cmd, args, opts);
 }
 
 export class NetSocket {
