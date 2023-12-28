@@ -1,6 +1,5 @@
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import assert from 'assert';
-import {homeResolve,} from '../path.js';
 import {execStream, hostname, ip, tempdir, execSync, os, uid, homedir} from '../devOps.js';
 import OS from 'os';
 import Path from 'path';
@@ -23,18 +22,15 @@ describe('devOps', function () {
 	});
 	it('tempdir', () => {
 		logger.info({tempdir});
-		switch (os.platform) {
-			case 'win32':
-				const {username, homedir} = OS.userInfo();
-				console.debug({homedir});
-				let expectedTEMPRoot = homedir;
-				if (username.length > 6) {
-					expectedTEMPRoot = homedir.replaceAll(username, `${username.toUpperCase().substring(0, 6)}~1`);
-				}
-				assert.equal(tempdir, Path.resolve(expectedTEMPRoot, 'AppData', 'Local', 'Temp'));
-				break;
-			case 'linux':
-				assert.equal(tempdir, '/tmp');
+		if (os.platform === 'win32') {
+			const {username} = OS.userInfo();
+			let expectedTEMPRoot = homedir;
+			if (username.length > 6) {
+				expectedTEMPRoot = homedir.replaceAll(username, `${username.toUpperCase().substring(0, 6)}~1`);
+			}
+			assert.equal(tempdir, Path.resolve(expectedTEMPRoot, 'AppData', 'Local', 'Temp'));
+		} else if (os.platform === 'linux') {
+			assert.equal(tempdir, '/tmp');
 		}
 
 	});

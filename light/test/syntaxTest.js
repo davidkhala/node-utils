@@ -124,8 +124,9 @@ describe('stringify', () => {
 		a: 'b', c: 1
 	};
 	it('object', () => {
-
-		console.debug(ObjectReadable(obj));
+		assert.strictEqual(obj.toString(), '[object Object]');
+		// eslint-disable-next-line quotes
+		assert.strictEqual(ObjectReadable(obj), `{ a: 'b', c: 1 }`);
 	});
 	it('JSON', () => {
 		console.debug(JSONReadable(obj));
