@@ -63,8 +63,7 @@ start \
 				cfId: undefined,
 				attempts: 1,
 				totalRetryDelay: 0
-			},
-			Table: {
+			}, Table: {
 				ArchivalSummary: undefined,
 				AttributeDefinitions: [],
 				BillingModeSummary: undefined,
@@ -95,10 +94,11 @@ start \
 				TableStatus: 'ACTIVE'
 			}
 		};
+		const keySize = Object.keys(object.Table).length;
 		const trimmed = removeUndefinedValues(object, true, true);
-		console.debug(trimmed);
+		assert.ok(Object.keys(trimmed.Table).length < keySize, `should have ${Object.keys(trimmed.Table).length} < ${keySize}`);
 		removeUndefinedValues(object, true, false);// inline change
-		console.debug(object);
+		assert.ok(Object.keys(object.Table).length < keySize, `should have ${Object.keys(object.Table).length} < ${keySize}`);
 
 	});
 	it('Object.assign: function in class is not copied', () => {
@@ -122,18 +122,12 @@ start \
 describe('stringify', () => {
 	const obj = {
 		a: 'b',
-		c: 1,
-		l1: {
-			l2: {
-				l3: {
-					l4: []
-				}
-			}
-		}
+		c: 1
 	};
 	it('object', () => {
-
-		console.debug(ObjectReadable(obj));
+		assert.strictEqual(obj.toString(), '[object Object]');
+		// eslint-disable-next-line quotes
+		assert.strictEqual(ObjectReadable(obj), `{ a: 'b', c: 1 }`);
 	});
 	it('JSON', () => {
 		console.debug(JSONReadable(obj));
