@@ -1,7 +1,7 @@
 const logger = console;
-import fs from 'fs';
-import util from 'util';
-import assert from 'assert';
+import fs from 'node:fs';
+import util from 'node:util';
+import assert from 'node:assert';
 import {filedirname} from '../light/es6.mjs';
 import {object} from './esExport.mjs';
 filedirname(import.meta);

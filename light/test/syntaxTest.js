@@ -66,13 +66,13 @@ start \
 			},
 			Table: {
 				ArchivalSummary: undefined,
-				AttributeDefinitions: [[Object], [Object]],
+				AttributeDefinitions: [],
 				BillingModeSummary: undefined,
 				CreationDateTime: '2022-10-19T12:22:50.559Z',
 				GlobalSecondaryIndexes: undefined,
 				GlobalTableVersion: undefined,
 				ItemCount: 0,
-				KeySchema: [[Object], [Object]],
+				KeySchema: [],
 				LatestStreamArn: undefined,
 				LatestStreamLabel: undefined,
 				LocalSecondaryIndexes: undefined,
@@ -122,7 +122,14 @@ start \
 describe('stringify', () => {
 	const obj = {
 		a: 'b',
-		c: 1
+		c: 1,
+		l1: {
+			l2: {
+				l3: {
+					l4: []
+				}
+			}
+		}
 	};
 	it('object', () => {
 

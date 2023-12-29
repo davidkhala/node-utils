@@ -1,7 +1,9 @@
 import util from 'util';
 
 export const JSONReadable = (data) => JSON.stringify(data, null, 2);
-export const ObjectReadable = (object) => util.inspect(object);
+export const ObjectReadable = (object, useColor) => util.inspect(object, {
+	depth: Infinity, colors: !!useColor
+});
 
 export const base64 = {
 	encode: (data) => Buffer.from(data).toString('base64'),
