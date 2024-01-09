@@ -1,5 +1,6 @@
 import X509Certificate from '../X509Certificate.js';
 import assert from 'assert';
+
 describe('X509Certificate', () => {
 	const pem = `-----BEGIN CERTIFICATE-----
 MIIBsDCCAVagAwIBAgIK4I7KBQLVmJNP1zAKBggqhkjOPQQDAjBTMREwDwYDVQQG
@@ -23,5 +24,11 @@ uh/bNA==
 		assert.strictEqual(subject.O, 'hyperledger');
 		assert.strictEqual(subject.OU, 'blockchain');
 		assert.strictEqual(subject.CN, 'davidkhala');
+	});
+	it('aki', () => {
+		assert.ifError(x509.authorityKeyIdentifier);
+	});
+	it('serial', () => {
+		assert.strictEqual(x509.serial, 'e08eca0502d598934fd7');
 	});
 });

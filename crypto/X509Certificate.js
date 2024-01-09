@@ -25,4 +25,20 @@ export default class X509Certificate {
 		}
 		return result;
 	}
+
+	// authorityKeyIdentifier (AKI)
+	get authorityKeyIdentifier() {
+		const authorityKeyIdentifier = this.x509.getExtAuthorityKeyIdentifier();
+		// it is possible that certificate does not contain Authority Key Identifier
+		if (!authorityKeyIdentifier) {
+			return undefined;
+		}
+		return authorityKeyIdentifier.kid.hex;
+	}
+
+	// serial number
+	get serial() {
+		return this.x509.getSerialNumberHex();
+	}
+
 }
