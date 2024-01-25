@@ -1,10 +1,11 @@
 {
   "name": "@davidkhala/light",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "devDependencies": {
     "mocha": "latest",
     "@davidkhala/logger": "latest"
   },
+  "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },

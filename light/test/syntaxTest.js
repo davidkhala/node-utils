@@ -173,6 +173,9 @@ describe('array', () => {
 		assert.ok(!isEven());
 		assert.ok(!isEven([]));
 		assert.ok(isEven([1]));
+		assert.ok(isEven([{
+			a: 'b', c: 'd'
+		}, {c: 'd', a: 'b'}]));
 	});
 	it('union', () => {
 		const l1 = [1, 4, 2];
