@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
-        extension: [CSV, light,logger, main]
+        extension: [CSV, light,logger, main, crypto]
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -42,7 +42,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - run: npm config set package-lock false
       - run: npm install pm2@latest -g;
       - run: npm install;
       - run: ./test/CLI/test.sh
@@ -63,16 +62,4 @@ jobs:
       - uses: actions/checkout@main
       - run: npm install
       - run: npm start
-      - run: npm test
-  crypto:
-    defaults:
-      run:
-        working-directory: crypto
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - run: npm install
       - run: npm test

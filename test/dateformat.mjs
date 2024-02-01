@@ -1,10 +1,9 @@
 import dateFormat from 'dateformat';
+import assert from 'assert';
 
-describe('why we not choosing date format', () => {
-	it('different template pattern', () => {
+describe('why we not choosing npm dateformat', () => {
+	it('case sensitive pattern', () => {
 		const now = new Date();
-
-		console.debug(dateFormat(now, 'YYMMDDHHMMSSZ'));
-		console.debug(dateFormat(now, 'yymmddhhmmssz'));
+		assert.notEqual(dateFormat(now, 'YYYYMMDDHHMMSS'), dateFormat(now, 'yyyymmddhhmmss'));
 	});
 });

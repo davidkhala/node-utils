@@ -1,4 +1,4 @@
-import {dateFormat} from '../format.js';
+import dateFormat from 'date-format';
 import assert from 'assert';
 
 describe('format test', () => {
