@@ -8,30 +8,31 @@ export const splitBySpace = (str) => str.trim().split(/\b\s+/);
 
 
 export function removeUndefinedValues(object, recursive, clone) {
-	const cloned = {};
-	for (const [key, value] of Object.entries(object)) {
-		const valueType = typeof value;
-		if (clone) {
+	if (clone) {
+		const cloned = {};
+		for (const [key, value] of Object.entries(object)) {
+			const valueType = typeof value;
 			if (value && recursive && valueType === 'object') {
 				cloned[key] = removeUndefinedValues(value, recursive, clone);
-			} else {
-				if (valueType !== 'undefined') {
-					cloned[key] = value;
-				}
-			}
-		} else {
-			if (!value && valueType === 'undefined') {
-				delete object[key];
-			} else if (recursive && valueType === 'object') {
-				object[key] = removeUndefinedValues(value, recursive, clone);
+			} else if (valueType !== 'undefined') {
+				cloned[key] = value;
 			}
 		}
-	}
-	if (clone) {
 		return cloned;
-	} else {
-		return object;
 	}
+
+	for (const [key, value] of Object.entries(object)) {
+		const valueType = typeof value;
+
+		if (!value && valueType === 'undefined') {
+			delete object[key];
+		} else if (recursive && valueType === 'object') {
+			object[key] = removeUndefinedValues(value, recursive, clone);
+		}
+
+	}
+	return object;
+
 
 }
 

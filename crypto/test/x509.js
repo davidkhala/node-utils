@@ -4,13 +4,12 @@ import {X509Time} from '../x509.js';
 const {Time} = asn1.x509;
 describe('x509Time', () => {
 	it('build date-time', () => {
-
 		console.debug(new X509Time().toString());
-
 	});
 	it('default utcTime', () => {
 
 		const time1 = new Time({'str': new X509Time().toString()});
+		console.debug(time1);
 
 	});
 	it('generalTime', () => {
