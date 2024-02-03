@@ -1,7 +1,19 @@
-import {randomHex, randomString, randomChars} from '../random.js';
+import {randomHex, randomString, randomChars, randomKeyOf} from '../random.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
+import assert from 'assert';
+
 const logger = consoleLogger('test:random');
+
+
 describe('test:random', () => {
+
+	it('randomKeyOf', () => {
+		const key = randomKeyOf({
+			a: 'B',
+			c: 'D'
+		});
+		assert.ok(['a', 'c'].includes(key));
+	});
 	it('randomHex', () => {
 		const hex = randomHex(20);
 		logger.debug(hex);

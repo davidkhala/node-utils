@@ -1,5 +1,6 @@
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import CTX from '@davidkhala/milagro-crypto-js';
+import assert from 'assert';
 
 const logger = consoleLogger('test:amcl');
 const algorithmList = [
@@ -12,7 +13,7 @@ const algorithmList = [
 describe('amcl', () => {
 	it('algorithm smoke', () => {
 		algorithmList.forEach(algo => {
-			new CTX(algo);
+			assert.doesNotThrow(() => new CTX(algo));
 		});
 	});
 
