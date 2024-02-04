@@ -145,6 +145,7 @@ describe('For idemix', () => {
 
 	const rand = new ctx.RAND();
 	const fp = new ctx.FP();
+	// TODO
 //	public IdemixCredRequest(BIG sk, BIG issuerNonce, IdemixIssuerPublicKey ipk) {
 //         final RAND rng = IdemixUtils.getRand();
 //         nym = ipk.getHsk().mul(sk);

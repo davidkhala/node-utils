@@ -23,7 +23,7 @@ export const sleep = async (ms, silent) => {
 	return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-export const looper = async (opts = {interval: 1000}, task, ...taskParams) => {
+export const looper = async (task, opts = {interval: 1000}, ...taskParams) => {
 	const {times, interval} = opts;
 
 	if (Number.isInteger(times)) {

@@ -14,12 +14,10 @@ export class File {
 				return origin.filter((e) => e.content.toLowerCase().indexOf(word.toLowerCase()) >= 0);
 			}
 
-		} else {
-			if (word.constructor === RegExp) {
-				return this.lines.filter(e => word.test(e));
-			} else if (typeof word === 'string') {
-				return this.lines.filter((e) => e.toLowerCase().indexOf(word.toLowerCase()) >= 0);
-			}
+		} else if (word.constructor === RegExp) {
+			return this.lines.filter(e => word.test(e));
+		} else if (typeof word === 'string') {
+			return this.lines.filter((e) => e.toLowerCase().indexOf(word.toLowerCase()) >= 0);
 		}
 		return [];
 	}

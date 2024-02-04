@@ -36,7 +36,7 @@ describe('syntax test', () => {
 			}
 
 			foo() {
-
+				return 'bar'
 			}
 		}
 
@@ -75,9 +75,6 @@ describe('syntax test', () => {
 		};
 		const {a} = obj;
 		a.entry = 'c';
-		logger.debug(obj);
-		let {entry} = a;
-		entry = 'd';
 		logger.debug(obj);
 		const assignResult = Object.assign(obj, {a: null});
 		logger.debug(obj, assignResult);
