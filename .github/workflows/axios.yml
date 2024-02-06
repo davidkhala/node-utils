@@ -1,6 +1,6 @@
-name: axios
 on:
   push:
+  workflow_dispatch:
 defaults:
   run:
     working-directory: axios

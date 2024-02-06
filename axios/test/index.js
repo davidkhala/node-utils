@@ -11,7 +11,7 @@ const logger = consoleLogger('test:axios');
 describe('https', () => {
 	const port = 3443;
 	const cert = new URL('cert.pem', import.meta.url);
-	it.skip('ping', async () => { // TODO: skip due to :Error: certificate has expired
+	it('ping', async () => {
 
 
 		const resp = await axiosPromise({
@@ -58,7 +58,6 @@ describe('http: error filter', () => {
 		try {
 			await axiosPromise({url}, {rejectUnauthorized: false});
 		} catch (e) {
-			logger.error(e);
 			assert.strictEqual(e.statusCode, 404);
 			assert.strictEqual(e.statusMessage, 'Not Found');
 		}
