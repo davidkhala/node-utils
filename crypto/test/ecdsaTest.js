@@ -6,6 +6,7 @@ import path from 'path';
 import {Extension} from '../extension.js';
 import {X509Time} from '../x509.js';
 import {filedirname} from '@davidkhala/light/es6.mjs';
+import {year} from '@davidkhala/light/constants.js';
 
 filedirname(import.meta);
 
@@ -44,11 +45,11 @@ describe('key pair', () => {
 		x500Name.setOrganizationName('hyperledger');
 		x500Name.setOrgUnitName('blockchain');
 		x500Name.setCommonName('davidkhala');
-		const expiryTime = new X509Time(Date.now() + 31556926000);
+		const expiryTime = new X509Time(Date.now() + 10 * year);
 		const cert = keypair.generateX509Certificate({subject: x500Name, expiryTime});
 
-		const keyPath = path.resolve(__dirname, 'fixture/key.pem');
-		const certPath = path.resolve(__dirname, 'fixture/cert.pem');
+		const keyPath = path.resolve(__dirname, 'artifacts/key.pem');
+		const certPath = path.resolve(__dirname, 'artifacts/cert.pem');
 		fs.writeFileSync(keyPath, prvKeyPem);
 		fs.writeFileSync(certPath, cert.getPEM());
 	});

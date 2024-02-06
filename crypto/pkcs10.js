@@ -1,6 +1,5 @@
 import {asn1, crypto} from 'jsrsasign';
 import {hex2pem} from './format.js';
-import {Attribute} from './attribute.js';
 
 const {DERBitString, DERSequence} = asn1;
 const {CertificationRequestInfo} = asn1.csr;
