@@ -18,7 +18,8 @@ describe('https', () => {
 			url: `https://localhost:${port}`,
 			method: 'GET'
 		}, {
-			cert
+			cert, 
+			rejectUnauthorized: false
 		});
 
 		logger.info(resp);
