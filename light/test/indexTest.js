@@ -21,6 +21,7 @@ describe('index Test', () => {
 		assert.ok(!isPath(null));
 		assert.ok(isPath('/tmp/date.tmp'));
 		assert.ok(isPath('/tmp/'));
+		assert.ok(!isPath('date.tmp'));
 
 	});
 	it('json from', () => {

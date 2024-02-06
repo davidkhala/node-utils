@@ -6,6 +6,7 @@ import cors from 'cors';
 import fs from 'fs';
 import {isPath} from '@davidkhala/light/path.js';
 import Multer from 'multer';
+
 /**
  * @type {string[]} minVersion: set the minimum TLS version to allow. Cannot be specified along with the secureProtocol option.
  * It is not recommended to use less than TLSv1.2.
@@ -108,8 +109,17 @@ export const expressError = (app, onError, logger = console) => {
 		onError(err, res);
 	});
 };
-export const formDataRouter = (cacheDir) => {
-	const multerCache = Multer({dest: cacheDir});
+export const formDataRouter = (cacheDir, fileSize) => {
+	const options = {
+		dest: cacheDir,
+		limits: {}
+	};
+
+	if (Number.isInteger(fileSize) && fileSize > 0) {
+		options.limits.fileSize = fileSize; // Compliant value: 8000000
+	}
+
+	const multerCache = Multer(options);
 	return multerCache.any();
 };
 export const formDataFilePaths = (req, property) => {
