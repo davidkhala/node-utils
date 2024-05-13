@@ -1,13 +1,19 @@
 import util from 'util';
+import {hash} from 'node:crypto';
 
 export const JSONReadable = (data) => JSON.stringify(data, null, 2);
 export const ObjectReadable = (object) => util.inspect(object, {
-	depth: Infinity
+    depth: Infinity
 });
 
+
+export function md5(content) {
+    return hash('md5', content, 'hex');
+}
+
 export const base64 = {
-	encode: (data) => Buffer.from(data).toString('base64'),
-	decode: (data) => Buffer.from(data, 'base64').toString()
+    encode: (data) => Buffer.from(data).toString('base64'),
+    decode: (data) => Buffer.from(data, 'base64').toString()
 };
 
 /**
@@ -17,22 +23,22 @@ export const base64 = {
  * @returns {string}
  */
 export function int2Chars(i, namespace) {
-	i = parseInt(i);
-	const d = namespace.length;
-	const forward = (intNum) => {
-		const rest = Math.floor(intNum / d);
-		const mod = intNum % d;
-		return {rest, mod};
-	};
-	let {rest, mod} = forward(i);
-	let result = namespace[mod];
-	while (rest > 0) {
-		const temp = forward(rest);
-		rest = temp.rest;
-		mod = temp.mod;
-		result = mod + result;
-	}
-	return result;
+    i = parseInt(i);
+    const d = namespace.length;
+    const forward = (intNum) => {
+        const rest = Math.floor(intNum / d);
+        const mod = intNum % d;
+        return {rest, mod};
+    };
+    let {rest, mod} = forward(i);
+    let result = namespace[mod];
+    while (rest > 0) {
+        const temp = forward(rest);
+        rest = temp.rest;
+        mod = temp.mod;
+        result = mod + result;
+    }
+    return result;
 }
 
 export const bytes2String = (bytes) => Buffer.from(bytes).toString();
