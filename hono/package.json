@@ -1,0 +1,28 @@
+{
+  "name": "@davidkhala/hono",
+  "version": "0.0.0",
+  "description": "hono stack",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidkhala/node-utils.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "latest",
+    "hono": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "vitest": "latest",
+    "@hono/node-server": "latest"
+  },
+  "type": "module"
+}
