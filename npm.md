@@ -23,6 +23,9 @@
     - `npm update` will do the update
 - `npm deprecate <package-name>@<version> "<deprecation message>"`
     - To undeprecate a package, replace "\<deprecation message\>" with "" (an empty string)
+- `npm create` is an alias, for `npm init`
+    - This was done using npm 6.10.1+.
+    - [`npm create ${package-name}` is a shorthand for running: `npx create-${package-name}`](https://stackoverflow.com/a/76870223/4229693)
 
 ## Tools
 - [npm包热度对比网站](https://www.npmtrends.com/)
