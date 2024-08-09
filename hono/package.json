@@ -22,7 +22,8 @@
   "devDependencies": {
     "typescript": "latest",
     "vitest": "latest",
-    "@hono/node-server": "latest"
+    "@hono/node-server": "latest",
+    "ts-node": "latest"
   },
   "type": "module"
 }
