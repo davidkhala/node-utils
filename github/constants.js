@@ -1,1 +1,0 @@
-export const runningWorkflow = process.env.CI;
