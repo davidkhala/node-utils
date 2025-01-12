@@ -31,14 +31,15 @@ export const FromFile = (filepath, headerLess) => {
 	});
 };
 /**
- * keys of first object populate header row
  * @returns {string}
  * @param {[Object]} data
- * @param {Object} opts Options
- * @param {boolean} [discoverFields]
+ * @param {Object} [opts] Options
+ * @param inflateHeader
  */
-export const ToFile = (data = [{}], opts = {newline: '\r\n'}, discoverFields) => {
-	if (discoverFields) {
+export const ToFile = (data = [{}], opts = {newline: '\n'}, inflateHeader) => {
+
+	if (inflateHeader) {
+		// This iterates over data, thus low in performance
 		const fields = data.map(entry => (Object.keys(entry))).reduce((sum, entry) => sum.concat(entry), []);
 		if (fields.length > 0) {
 			const data1 = data[0];
@@ -48,12 +49,7 @@ export const ToFile = (data = [{}], opts = {newline: '\r\n'}, discoverFields) =>
 				}
 			}
 		}
-	} else {
-		// case: first row as header
-		// case: data = {fields, data}
-		// rely on papaParse:do nothing
 	}
-
 
 	return papaParse.unparse(data, opts);
 };

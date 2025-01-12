@@ -1,7 +1,13 @@
 import path from 'path';
-import {FromFile, ToFile} from '../index.js';
 import {filedirname} from '@davidkhala/light/es6.mjs';
 import * as assert from 'assert';
+import download from 'download';
+import {FromFile, ToFile} from '../index.js';
+import decompress from 'decompress';
+import decompressUnzip from 'decompress-unzip';
+import fs from 'fs';
+import _ from 'lodash';
+import papaParse from 'papaparse';
 
 filedirname(import.meta);
 describe('FromFile', () => {
@@ -10,30 +16,51 @@ describe('FromFile', () => {
 		const recoveredMatrix = FromFile(path.resolve(__dirname, 'dummy.csv'));
 		console.info(recoveredMatrix);
 	});
-	it('sample', () => {
-		const recoveredMatrix = FromFile(path.resolve(__dirname, 'HRDataset_v14.csv'));
+	it('HRDataset_v14.csv', async () => {
+		const url = 'https://www.kaggle.com/api/v1/datasets/download/rhuebner/human-resources-data-set';
+		const zipDir = __dirname;
+		await download(url, zipDir);
+
+		const zipPath = path.resolve(zipDir, 'human-resources-data-set.zip');
+		const csvDir = __dirname;
+		await decompress(zipPath, csvDir, {plugins: [decompressUnzip()]});
+
+		const cvsPath = path.resolve(csvDir, 'HRDataset_v14.csv');
+		const recoveredMatrix = FromFile(cvsPath);
 		console.info(recoveredMatrix);
+		// cleanup
+		fs.unlinkSync(cvsPath);
+		fs.unlinkSync(zipPath);
 	});
+
 
 });
 
 describe('ToFile', () => {
-	it('dummy', () => {
-		const opts = {newline: '\n'};
-		const recoveredCSV = ToFile([
+	it('inflateHeader', () => {
+
+		const data = [
 			{a: 'b', c: 'd'},
 			{a: 'b', c: 'd', Column1: 'foo', Column2: 'bar',}
-		], opts, true);
-		const expected = `a,c,Column1,Column2
+		];
+		const data2 = _.cloneDeep(data);
+		const expected1 = `a,c,Column1,Column2
 b,d,,
 b,d,foo,bar`;
-		assert.strictEqual(recoveredCSV, expected);
-		console.debug(recoveredCSV);
+		assert.strictEqual(ToFile(data, undefined, true), expected1);
+
+		assert.strictEqual(ToFile(data2), 'a,c\nb,d\nb,d');
 	});
-	it('boundary', () => {
+	it('empty data array', () => {
 		const recoveredCSV = ToFile([]);
 		assert.strictEqual(recoveredCSV, '');
-
+		assert.strictEqual(papaParse.unparse([]), '');
+	});
+	it('undefined value', () => {
+		const data = [{a: null}];
+		const recoveredCSV = ToFile(data);
+		const expect1 = 'a\n';
+		assert.strictEqual(recoveredCSV, expect1);
 	});
 });
 
