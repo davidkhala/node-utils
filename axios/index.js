@@ -29,7 +29,7 @@ import fs from 'fs';
  * @param {RequestExtraOptions} [otherOptions]
  * @return {Promise<Object>}
  */
-export async function axiosPromise({url, body, method = 'POST', formData, params}, otherOptions = {}) {
+export default async function axiosPromise({url, body, method = 'POST', formData, params}, otherOptions = {}) {
 
 	const {cert, key, ca, rejectUnauthorized, passphrase} = otherOptions;
 	if (cert || key || ca || passphrase || typeof rejectUnauthorized === 'boolean') {

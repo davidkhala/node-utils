@@ -1,4 +1,4 @@
-import {axiosPromise} from '../index.js';
+import axiosPromise from '../index.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {filedirname} from '@davidkhala/light/es6.mjs';
 import assert from 'assert';
@@ -18,7 +18,7 @@ describe('https', () => {
 			url: `https://localhost:${port}`,
 			method: 'GET'
 		}, {
-			cert, 
+			cert,
 			rejectUnauthorized: false
 		});
 

@@ -1,4 +1,4 @@
-import {axiosPromise} from '../index.js';
+import axiosPromise from '../index.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {URL} from 'url'
 const logger = consoleLogger('test:axios');
