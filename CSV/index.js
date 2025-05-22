@@ -22,12 +22,14 @@ import fs from 'fs';
  *
  * @param filepath
  * @param {boolean} [headerLess]
+ * @param {string} [delimiter]
  * @returns {{data:string[][], meta:Meta, errors:CSVError[]}}
  */
-export const FromFile = (filepath, headerLess) => {
+export const FromFile = (filepath, headerLess, delimiter) => {
     const str = fs.readFileSync(filepath).toString();
     return papaParse.parse(str, {
-        header: !headerLess
+        header: !headerLess,
+        delimiter
     });
 };
 /**
@@ -36,14 +38,14 @@ export const FromFile = (filepath, headerLess) => {
  * @param {Object} [opts] Options
  * @param [inflateHeader]
  */
-export const ToFile = (data = [{}], opts = {newline: '\n'}, inflateHeader) => {
+export const ToFile = (data = [{}], opts = { newline: '\n' }, inflateHeader) => {
 
     if (inflateHeader) {
         // This iterates over data, thus low in performance
 
         const fields = data.map(entry => (Object.keys(entry))).reduce((sum, entry) => sum.concat(entry), []);
         // Array.concat cannot guarantee element unique. But papaparse will create the magic
-        
+
         if (fields.length > 0) {
             const data1 = data[0];
             for (const field of fields) {
