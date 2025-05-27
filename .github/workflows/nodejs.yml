@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@main
       - run: npm install
       - run: npm test
-  extensions:
+  modules:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest ]

@@ -1,6 +1,6 @@
 {
   "name": "@davidkhala/nodeutils",
-  "version": "0.1.1-alpha",
+  "version": "0.1.1",
   "author": "david Liu  <david-khala@hotmail.com>",
   "repository": "davidkhala/node-utils",
   "license": "Apache-2.0",
