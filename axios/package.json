@@ -1,6 +1,7 @@
 {
   "name": "@davidkhala/axios",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "main": "index.js",
   "scripts": {
     "test": "mocha test"
   },
@@ -11,7 +12,10 @@
     "@davidkhala/light": "latest",
     "@davidkhala/logger": "latest",
     "mocha": "latest",
-    "form-data": "^3.0.0"
+    "form-data": "latest"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "type": "module"
 }
