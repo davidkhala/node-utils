@@ -5,8 +5,7 @@ import download from 'download';
 import {FromFile, ToFile} from '../index.js';
 import decompress from 'decompress';
 import decompressUnzip from 'decompress-unzip';
-import fs from 'fs';
-import _ from 'lodash';
+import fs from 'node:fs';
 import papaParse from 'papaparse';
 
 filedirname(import.meta);
@@ -45,23 +44,21 @@ describe('ToFile', () => {
             Column1: 'foo',
             Column2: 'bar',
         }];
-        const data2 = _.cloneDeep(data);
         const expected1 = `a,c,Column1,Column2
 b,d,,
 b,d,foo,bar
 b,d,foo,bar`;
-        assert.strictEqual(ToFile(data, undefined, true), expected1);
+        assert.strictEqual(ToFile({data}), expected1);
 
-        assert.strictEqual(ToFile(data2), 'a,c\nb,d\nb,d\nb,d');
     });
     it('empty data array', () => {
-        const recoveredCSV = ToFile([]);
+        const recoveredCSV = ToFile({data: []});
         assert.strictEqual(recoveredCSV, '');
         assert.strictEqual(papaParse.unparse([]), '');
     });
     it('undefined value', () => {
         const data = [{a: null}];
-        const recoveredCSV = ToFile(data);
+        const recoveredCSV = ToFile({data});
         const expect1 = 'a\n';
         assert.strictEqual(recoveredCSV, expect1);
     });

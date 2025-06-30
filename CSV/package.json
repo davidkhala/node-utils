@@ -1,6 +1,6 @@
 {
   "name": "@davidkhala/csv",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "scripts": {
     "test": "mocha test"
   },
@@ -12,8 +12,7 @@
     "@davidkhala/light": "latest",
     "download": "latest",
     "decompress": "latest",
-    "decompress-unzip": "latest",
-    "lodash": "latest"
+    "decompress-unzip": "latest"
   },
   "publishConfig": {
     "access": "public"

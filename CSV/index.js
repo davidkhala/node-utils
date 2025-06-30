@@ -34,29 +34,25 @@ export const FromFile = (filepath, headerLess, delimiter) => {
 };
 /**
  * @returns {string}
- * @param {[Object]} data
+ * @param {Object[]} data
+ * @param {string[]} [fields] csv header
  * @param {Object} [opts] Options
- * @param [inflateHeader]
  */
-export const ToFile = (data = [{}], opts = { newline: '\n' }, inflateHeader) => {
+export const ToFile = ({data, fields}, opts = {}) => {
 
-    if (inflateHeader) {
+    const options = Object.assign({
+        newline: '\n'
+    }, opts)
+    if (!fields) {
         // This iterates over data, thus low in performance
-
-        const fields = data.map(entry => (Object.keys(entry))).reduce((sum, entry) => sum.concat(entry), []);
-        // Array.concat cannot guarantee element unique. But papaparse will create the magic
-
-        if (fields.length > 0) {
-            const data1 = data[0];
-            for (const field of fields) {
-                if (!data1[field]) {
-                    data1[field] = '';
-                }
-            }
-        }
+        const duplicatedFields = data.map(_ => (Object.keys(_)))
+            .reduce((sum, _) => sum.concat(_), [])
+        fields = [...new Set(duplicatedFields)]
     }
 
-    return papaParse.unparse(data, opts);
+    return papaParse.unparse({
+        data, fields
+    }, options);
 
 
 };
