@@ -8,11 +8,6 @@
  * @description
  * This function converts a hexadecimal string to a PEM string with
  * a specified header. Its line break will be CRLF("\r\n").
- * @example
- * hextopem('616161', 'RSA PRIVATE KEY') &rarr;
- * -----BEGIN PRIVATE KEY-----
- * YWFh
- * -----END PRIVATE KEY-----
  */
 export function hex2pem(dataHex, pemHeader) {
 	const pemBody = hex2base64nl(dataHex);
