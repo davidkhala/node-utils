@@ -1,4 +1,4 @@
-export function bind(app, onError, logger = console) {
+export function bind(app, onError) {
     if (!onError) {
         onError = (err, res) => {
             let status = 500;
@@ -12,9 +12,7 @@ export function bind(app, onError, logger = console) {
         };
     }
     app.use((err, req, res, next) => {
-        logger.error(err);
         if (res.headersSent) {
-            logger.error(`error happened after res.headersSent=${res.headersSent}`);
             return next(err);
         }
         onError(err, res);

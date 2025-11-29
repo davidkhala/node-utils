@@ -1,15 +1,9 @@
-export function successHandle (message, res, logger)  {
-	if (logger) {
-		logger.info('message', message);
-	}
+export function successHandle (message, res)  {
 	res.json({
 		errCode: 'success',
 		message
 	});
 }
-export function errorSyntaxHandle (err, res, logger) {
-	if (logger) {
-		logger.error(err);
-	}
+export function errorSyntaxHandle (err, res) {
 	res.json({errCode: 'error', message: err.message});
 }

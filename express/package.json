@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "pm2 start test/app.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/davidkhala/node-utils.git"
@@ -21,8 +18,8 @@
     "@davidkhala/light": "latest"
   },
   "devDependencies": {
-    "pm2": "latest",
-    "mocha": "latest"
+    "mocha": "latest",
+    "@davidkhala/axios": "latest"
   },
   "type": "module"
 }

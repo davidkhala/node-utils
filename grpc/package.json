@@ -5,13 +5,8 @@
     "@grpc/grpc-js": "latest",
     "@grpc/proto-loader": "latest"
   },
-  "scripts": {
-    "test": "mocha test/test.js",
-    "start": "pm2 start ./test/app.js"
-  },
   "devDependencies": {
     "mocha": "latest",
-    "pm2": "latest",
     "@davidkhala/light": "latest"
   },
   "type": "module"

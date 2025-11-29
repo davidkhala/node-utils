@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
-        dir: [ grpc, websocket ]
+        dir: [ grpc, websocket, express]
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -20,7 +20,7 @@ jobs:
       - run: npm install pm2@latest -g
       - run: npm install
       - run: pm2 start test/app.js
-      - run: npm test
+      - run: npx run mocha test/client.js
   pm2:
     defaults:
       run:
