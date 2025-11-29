@@ -1,5 +1,4 @@
 import find_process from 'find-process';
-import {execSync} from '@davidkhala/light/devOps.js';
 
 /**
  * @typedef {Object} processObject
@@ -14,14 +13,13 @@ import {execSync} from '@davidkhala/light/devOps.js';
 /**
  *
  * @param {string|RegExp} [name]
- * @param {string|number|RegExp} [pid]
+ * @param {number} [pid]
  * @param {string|number} [port]
  * @param {boolean} [strict]
  * @param {boolean} [verbose]
  * @return {processObject|string[]}
  */
 export async function findProcess({name, pid, port}, strict, verbose) {
-	execSync('netstat >/dev/null'); // throw if not exist
 
 	let result;
 	if (port) {

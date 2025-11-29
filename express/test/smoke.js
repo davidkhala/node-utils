@@ -1,4 +1,4 @@
-import {run} from '../baseApp.js'
+import {run} from '../index.js'
 
 describe('baseApp', function () {
     this.timeout(0)

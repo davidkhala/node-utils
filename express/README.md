@@ -1,0 +1,11 @@
+- TLS options:
+    - `minVersion` set the minimum TLS version to allow.
+      - optional values: ['TLSv1.3','TLSv1.2', 'TLSv1.1', 'TLSv1']
+      - default value `TLSv1.2` (`tls.DEFAULT_MIN_VERSION`)
+      - recommended values to use less than TLSv1.2.
+      - > Cannot be specified along with the `secureProtocol` option
+    - `secureProtocol`
+      - > Legacy mechanism to select the TLS protocol version to use
+      - [Option list:`secureProtocols`](./constants.js). 
+      - It is not recommended to use TLS versions less than 1.2.
+      - Default: none

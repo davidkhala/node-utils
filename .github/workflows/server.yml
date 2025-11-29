@@ -1,36 +1,34 @@
-name: nodejs frequent usage
+name: servers
 on: push
 
 jobs:
-  root:
+  client-server:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/setup-node@main
-        with:
-          check-latest: true
-          node-version: lts/*
-      - uses: actions/checkout@main
-      - run: npm install
-      - run: npm test
-  modules:
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, windows-latest ]
-        extension: [CSV, light,logger, main, crypto]
+        dir: [ grpc, websocket ]
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        working-directory: ${{ matrix.extension }}
+        working-directory: ${{ matrix.dir }}
     steps:
       - uses: actions/setup-node@main
         with:
           check-latest: true
           node-version: lts/*
       - uses: actions/checkout@main
+      - run: npm install pm2@latest -g
       - run: npm install
+      - run: pm2 start test/app.js
       - run: npm test
-
-
+  pm2:
+    defaults:
+      run:
+        working-directory: pm2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@main
+      - run: npm install pm2@latest -g
+      - run: npm install
+      - run: ./test/CLI/test.sh
