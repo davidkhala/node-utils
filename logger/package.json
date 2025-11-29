@@ -14,8 +14,7 @@
     "fs-extra": "latest",
     "signale": "latest",
     "mocha": "latest",
-    "loglevel": "latest",
-    "simple-node-logger": "latest"
+    "loglevel": "latest"
   },
   "publishConfig": {
     "tag": "latest"
