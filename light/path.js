@@ -12,6 +12,7 @@ export function isHiddenFile(path) {
 	const basename = Path.basename(path);
 	return basename !== '.' && basename[0] === '.';
 }
+export const extname = (filePath) => Path.basename(filePath, Path.extname(filePath));
 
 export const splitPath = (dir) => dir.split(Path.sep);
 export const isPath = (str) => !!str && str !== Path.basename(str);
