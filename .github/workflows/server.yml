@@ -20,7 +20,8 @@ jobs:
       - run: npm install pm2@latest -g
       - run: npm install
       - run: pm2 start test/app.js
-      - run: npx run mocha test/client.js
+      - run: ping -c 3 localhost
+      - run: npx mocha test/client.js
   pm2:
     defaults:
       run:
