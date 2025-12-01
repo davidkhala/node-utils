@@ -1,7 +1,7 @@
 import {run} from '../index.js';
 import {bind} from '../error.js';
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 
 const {app} = run(port);
 app.get('/', (req, res) => {
