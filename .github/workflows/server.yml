@@ -21,6 +21,9 @@ jobs:
       - run: npm install
       - run: pm2 start test/app.js
       - run: ping -c 3 localhost
+        if: runner.os != 'Windows'
+      - run: ping -n 3 localhost
+        if: runner.os == 'Windows'
       - run: npx mocha test/client.js
   pm2:
     defaults:

@@ -11,17 +11,14 @@
     "access": "public"
   },
   "dependencies": {
-    "body-parser": "latest",
-    "cors": "latest",
     "date-format": "latest",
-    "express": "latest",
     "find-process": "latest",
     "fs-extra": "latest",
     "js-yaml": "latest",
-    "multer": "latest",
     "tmp": "latest",
     "@davidkhala/light": "latest",
-    "klaw-sync": "latest"
+    "klaw-sync": "latest",
+    "jsonwebtoken": "latest"
   },
   "devDependencies": {
     "mocha": "latest",

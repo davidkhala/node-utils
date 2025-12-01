@@ -1,4 +1,5 @@
-import find_process from 'find-process';
+import pkg from 'find-process';
+const find_process = pkg.default
 
 /**
  * @typedef {Object} processObject
@@ -20,7 +21,6 @@ import find_process from 'find-process';
  * @return {processObject|string[]}
  */
 export async function findProcess({name, pid, port}, strict, verbose) {
-
 	let result;
 	if (port) {
 		result = await find_process('port', port, strict);
