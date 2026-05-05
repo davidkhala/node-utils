@@ -2,6 +2,9 @@
 ## `package.json` syntax
 - Consider also setting `"private": true` to prevent accidental publication.
 - There is a forgoten command option can format the package.json. Alternatively, use `npx format-package -w`
+- `optionalDependencies`：可选依赖，安装失败不会导致整个安装失败。
+- `peerDependencies`：声明“我需要你项目里也安装某个库”
+    - 常用于插件库，菱形依赖
 
 
 ## npm cli
