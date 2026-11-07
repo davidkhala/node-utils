@@ -1,5 +1,4 @@
-import pkg from 'find-process';
-const find_process = pkg.default
+import find_process from 'find-process';
 
 /**
  * @typedef {Object} processObject

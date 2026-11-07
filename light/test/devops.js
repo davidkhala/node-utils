@@ -1,6 +1,6 @@
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import assert from 'assert';
-import {execStream, hostname, ip, tempdir, execSync, os, uid, homedir} from '../devOps.js';
+import {execStream, hostname, ip, tempdir, os, uid, homedir, execFileSync} from '../devOps.js';
 import OS from 'os';
 import Path from 'path';
 
@@ -11,7 +11,7 @@ describe('devOps', function () {
 	this.timeout(0);
 	if (os.platform === 'linux' && !process.env.CI) {
 		it('exec: apt update', () => {
-			execSync('sudo apt update');
+			execFileSync('sudo', ['apt', 'update']);
 			// Test passed: sudo have interactive input
 			// Test failed: on Oracle Linux 8
 		});

@@ -1,9 +1,9 @@
-import yaml from 'js-yaml';
+import {load, dump} from 'js-yaml';
 import fs from 'fs';
 
 export const read = (yamlFile) => {
-	return yaml.load(fs.readFileSync(yamlFile));
+	return load(fs.readFileSync(yamlFile, 'utf8'));
 };
 export const write = (data, yamlFile) => {
-	fs.writeFileSync(yamlFile, yaml.dump(data, {lineWidth: 180}));
+	fs.writeFileSync(yamlFile, dump(data, {lineWidth: 180}));
 };

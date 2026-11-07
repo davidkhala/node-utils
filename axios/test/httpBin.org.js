@@ -1,10 +1,10 @@
 import axiosPromise from '../index.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
-import {URL} from 'url'
+import {URL, fileURLToPath} from 'url'
 const logger = consoleLogger('test:axios');
 describe('httpbin.org: https', function () {
 	this.timeout(0)
-	const cert = new URL('httpbin.org.pem', import.meta.url).pathname;
+	const cert = fileURLToPath(new URL('httpbin.org.pem', import.meta.url));
 
 	it('get', async () => {
 
