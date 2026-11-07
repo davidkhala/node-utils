@@ -1,5 +1,5 @@
-import assert from 'assert';
-import path from 'path';
+import assert from 'node:assert';
+import path from 'node:path';
 
 import {filedirname, importFrom} from '../es6.mjs';
 import {isPath} from '../path.js';

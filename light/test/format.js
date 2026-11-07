@@ -1,6 +1,6 @@
 import {int2Chars, chars2Hex, bytes2String, base64, hex2chars, md5} from '../format.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
-import assert from 'assert';
+import assert from 'node:assert';
 
 const logger = consoleLogger('test:format');
 const charSpace = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';

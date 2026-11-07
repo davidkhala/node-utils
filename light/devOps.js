@@ -1,7 +1,7 @@
-import OS from 'os';
-import childProcess from 'child_process';
-import {Socket} from 'net';
-import {promisify} from 'util';
+import OS from 'node:os';
+import childProcess from 'node:child_process';
+import {Socket} from 'node:net';
+import {promisify} from 'node:util';
 
 const execFileAsync = promisify(childProcess.execFile);
 export const localhost = '127.0.0.1';

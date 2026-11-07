@@ -1,7 +1,7 @@
-import path from 'path';
+import path from 'node:path';
 import {create} from '../npm-tar.js';
 import {sha2_256} from 'khala-fabric-formatter/helper.js';
-import fs from 'fs';
+import fs from 'node:fs';
 import {sleep} from '@davidkhala/light';
 import {filedirname} from '@davidkhala/light/es6.mjs';
 filedirname(import.meta);

@@ -1,8 +1,8 @@
 import {consoleLogger} from '@davidkhala/logger/log4.js';
-import assert from 'assert';
+import assert from 'node:assert';
 import {execStream, hostname, ip, tempdir, os, uid, homedir, execFileSync} from '../devOps.js';
-import OS from 'os';
-import Path from 'path';
+import OS from 'node:os';
+import Path from 'node:path';
 
 const logger = consoleLogger('devops');
 

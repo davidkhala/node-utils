@@ -1,6 +1,6 @@
 import axiosPromise from '../index.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
-import {URL, fileURLToPath} from 'url'
+import {URL, fileURLToPath} from 'node:url'
 const logger = consoleLogger('test:axios');
 describe('httpbin.org: https', function () {
 	this.timeout(0)

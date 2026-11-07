@@ -1,6 +1,6 @@
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import CTX from '@davidkhala/milagro-crypto-js';
-import assert from 'assert';
+import assert from 'node:assert';
 
 const logger = consoleLogger('test:amcl');
 const algorithmList = [

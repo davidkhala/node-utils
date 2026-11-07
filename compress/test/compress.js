@@ -1,10 +1,10 @@
 import {filedirname} from '@davidkhala/light/es6.mjs';
 import {sha2_256} from 'khala-fabric-formatter/helper.js';
-import path from 'path';
-import fs from 'fs';
+import path from 'node:path';
+import fs from 'node:fs';
 import compressing from 'compressing';
 import {sleep} from '@davidkhala/light';
-import assert from 'assert';
+import assert from 'node:assert';
 
 filedirname(import.meta);
 

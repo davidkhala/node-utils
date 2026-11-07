@@ -1,5 +1,5 @@
 import {load, dump} from 'js-yaml';
-import fs from 'fs';
+import fs from 'node:fs';
 
 export const read = (yamlFile) => {
 	return load(fs.readFileSync(yamlFile, 'utf8'));

@@ -1,6 +1,6 @@
-import assert from 'assert';
-import path from 'path';
-import fs from 'fs';
+import assert from 'node:assert';
+import path from 'node:path';
+import fs from 'node:fs';
 import {File, isDirectory, read} from '../file.js';
 import {filedirname, importFrom, resolve} from '../es6.mjs';
 

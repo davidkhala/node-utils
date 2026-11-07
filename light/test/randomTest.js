@@ -1,6 +1,6 @@
 import {randomHex, randomString, randomChars, randomKeyOf} from '../random.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
-import assert from 'assert';
+import assert from 'node:assert';
 
 const logger = consoleLogger('test:random');
 

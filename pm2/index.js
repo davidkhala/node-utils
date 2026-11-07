@@ -2,7 +2,7 @@ import pm2 from 'pm2';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 
 const logger = consoleLogger('pm2 Manager');
-import fs from 'fs';
+import fs from 'node:fs';
 
 export class PM2 {
 	constructor() {

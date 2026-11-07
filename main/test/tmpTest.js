@@ -1,5 +1,5 @@
-import fs from 'fs';
-import assert from 'assert';
+import fs from 'node:fs';
+import assert from 'node:assert';
 import {createTmpFile, createTmpDir, randomName} from '../tmp.js';
 import {isDirectory} from '@davidkhala/light/file.js';
 import {tempdir} from '@davidkhala/light/devOps.js';

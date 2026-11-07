@@ -1,8 +1,8 @@
 import axiosPromise from '../index.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {filedirname} from '@davidkhala/light/es6.mjs';
-import assert from 'assert';
-import fs from 'fs';
+import assert from 'node:assert';
+import fs from 'node:fs';
 import FormData from 'form-data';
 
 filedirname(import.meta);

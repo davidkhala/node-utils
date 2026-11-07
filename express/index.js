@@ -1,9 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import http from 'http';
-import https from 'https';
+import http from 'node:http';
+import https from 'node:https';
 import cors from 'cors';
-import fs from 'fs';
+import fs from 'node:fs';
 import {isPath} from '@davidkhala/light/path.js';
 
 

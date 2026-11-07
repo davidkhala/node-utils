@@ -1,5 +1,5 @@
 import papaParse from 'papaparse';
-import fs from 'fs';
+import fs from 'node:fs';
 
 /**
  * @typedef {Object} Meta

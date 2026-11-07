@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 
 export function randomKeyOf(obj) {
 	const keys = Object.keys(obj);

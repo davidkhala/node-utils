@@ -1,6 +1,6 @@
-import path from 'path';
+import path from 'node:path';
 import {filedirname} from '@davidkhala/light/es6.mjs';
-import * as assert from 'assert';
+import * as assert from 'node:assert';
 import download from 'download';
 import {FromFile, ToFile} from '../index.js';
 import decompress from 'decompress';

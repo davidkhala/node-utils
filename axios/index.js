@@ -1,6 +1,6 @@
 import axios from 'axios';
-import https from 'https';
-import fs from 'fs';
+import https from 'node:https';
+import fs from 'node:fs';
 
 /**
  * @typedef {Object} TLSExtraOptions

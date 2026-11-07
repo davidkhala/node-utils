@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'node:assert';
 import {findIndexesOf, isCommentOnly, splitBySpace} from '../syntax.js';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {isFloat, removeUndefinedValues} from '../syntax.js';

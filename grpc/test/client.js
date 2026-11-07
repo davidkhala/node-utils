@@ -1,5 +1,5 @@
 import {grpcRequest} from '../index.js';
-import path from 'path';
+import path from 'node:path';
 import {filedirname} from '@davidkhala/light/es6.mjs';
 filedirname(import.meta)
 

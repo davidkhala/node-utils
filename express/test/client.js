@@ -1,5 +1,5 @@
 import {axiosPromise} from '@davidkhala/axios/index.js';
-import assert from 'assert';
+import assert from 'node:assert';
 
 describe('http', function () {
     this.timeout(0);

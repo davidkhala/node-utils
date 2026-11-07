@@ -1,5 +1,5 @@
 import dateFormat from 'dateformat';
-import assert from 'assert';
+import assert from 'node:assert';
 
 describe('why we not choosing npm dateformat', () => {
 	it('case sensitive pattern', () => {

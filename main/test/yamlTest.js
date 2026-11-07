@@ -1,5 +1,5 @@
 import {read, write} from '../yaml.js';
-import path from 'path';
+import path from 'node:path';
 import {consoleLogger} from '@davidkhala/logger/log4.js';
 import {filedirname} from '@davidkhala/light/es6.mjs';
 

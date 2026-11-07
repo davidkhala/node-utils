@@ -1,4 +1,4 @@
-import util from 'util';
+import util from 'node:util';
 
 export const repeat = (len, value) => new Array(len).fill(value);
 

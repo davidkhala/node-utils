@@ -1,5 +1,5 @@
-import Path from 'path';
-import os from 'os';
+import Path from 'node:path';
+import os from 'node:os';
 
 export function homeResolve(...tokens) {
 	if (!tokens) {

@@ -1,4 +1,4 @@
-import util from 'util';
+import util from 'node:util';
 import {createHash} from 'node:crypto';
 
 export const JSONReadable = (data) => JSON.stringify(data, null, 2);

@@ -1,6 +1,6 @@
 import tar from 'tar';
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import {isDirectory} from '@davidkhala/light/file.js';
 
 export const create = (src, dst, opt = {}) => {

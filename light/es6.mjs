@@ -1,7 +1,7 @@
-import {URL} from 'url';
-import fs from 'fs';
-import path from 'path';
-import os from 'os';
+import {URL} from 'node:url';
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
 
 /**
  *
